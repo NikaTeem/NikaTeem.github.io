@@ -12,14 +12,25 @@
 <meta property="og:image" content="https://nikanet.dpdns.org/assets/logo-512.jpg">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
+@font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-700-italic.woff2) format("woff2");font-weight:700;font-style:italic;font-display:swap}
+@font-face{font-family:"Elite";src:url(assets/fonts/special-elite-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Vazir";src:url(assets/fonts/vazirmatn-arabic-400-normal.woff2) format("woff2");font-weight:400;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF;font-display:swap}
+@font-face{font-family:"Vazir";src:url(assets/fonts/vazirmatn-arabic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF;font-display:swap}
+@font-face{font-family:"Vazir";src:url(assets/fonts/vazirmatn-arabic-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF;font-display:swap}
+@font-face{font-family:"Vazir";src:url(assets/fonts/vazirmatn-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Vazir";src:url(assets/fonts/vazirmatn-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 /* ═══════════════════════════  TOKENS  ═══════════════════════════ */
 :root{
   --paper:#d8d1c2;--paper-2:#cdc5b4;--paper-3:#bfb7a5;--paper-hi:#e6e0d2;
   --ink:#171512;--ink-2:#332f2a;--graphite:#57524b;--pencil:#7a746c;--line:#8c867d;
   --line-soft:rgba(55,50,44,.26);
-  --serif:"Georgia","Times New Roman","Noto Serif",serif;
-  --mono:"Courier New","Courier","Liberation Mono",monospace;
-  --fa:"Vazirmatn","Sahel","IRANSans","Noto Naskh Arabic","Tahoma",serif;
+  --serif:"Playfair","Georgia","Times New Roman",serif;
+  --mono:"Elite","Courier New","Courier",monospace;
+  --fa:"Vazir","Vazirmatn","Sahel","Tahoma",serif;
+  --invert:0;
   --ease:cubic-bezier(.22,1,.36,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -31,6 +42,18 @@ a{color:inherit}img{max-width:100%;display:block}
 .wrap{width:min(1180px,92%);margin-inline:auto}
 ::selection{background:var(--ink);color:var(--paper)}
 
+html.dark{--paper:#1d1c1a;--paper-2:#232220;--paper-3:#2c2a27;--paper-hi:#34322e;--ink:#e6e0d2;--ink-2:#cfc8b9;--graphite:#a8a194;--pencil:#8a847a;--line:#5b564f;--line-soft:rgba(230,224,210,.18);--invert:1}
+html.dark body::before{opacity:.12;mix-blend-mode:screen;filter:invert(1)}
+html.dark body::after{background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.55) 100%)}
+html.dark .grain{opacity:.09}
+html.dark .frame img,html.dark .art img,html.dark .brand img{filter:grayscale(1) invert(1) contrast(1.05);mix-blend-mode:screen}
+html.dark .code{background:#0d0c0b;box-shadow:10px 10px 0 #3a3733}
+html.dark .msg.me{background:var(--ink);color:var(--paper)}
+html.dark .pano img{filter:grayscale(1) invert(1);mix-blend-mode:screen}
+html.dark .plane{filter:grayscale(1) invert(1)!important;mix-blend-mode:screen!important}
+html.dark .divider img{filter:grayscale(1) invert(1);mix-blend-mode:screen}
+html.dark .shot-frame{box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
+html,body{transition:background .5s,color .5s}
 /* paper + grain + vignette + blueprint grid */
 body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("assets/paper.jpg");background-size:600px 308px;opacity:.26;mix-blend-mode:multiply}
 body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,rgba(35,30,24,.42) 100%)}
@@ -166,7 +189,7 @@ h2 .ul path{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stro
 .card .ico svg{width:28px;height:28px;stroke:var(--ink);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
 .card .ico path,.card .ico circle{stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.4s var(--ease)}
 .in .card .ico path,.in .card .ico circle{stroke-dashoffset:0}
-.card h3{font-family:var(--fa);font-size:1.22rem;margin-bottom:6px}
+.card h3{font-family:var(--fa);letter-spacing:0;font-size:1.22rem;margin-bottom:6px}
 .card h3 .en{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);font-weight:400;margin-top:3px}
 .card p{color:var(--ink-2);font-size:.95rem}
 .card .idx{position:absolute;top:14px;left:20px;font-family:var(--mono);font-size:.66rem;color:var(--pencil);letter-spacing:.2em;direction:ltr}
@@ -252,6 +275,53 @@ footer a:hover{border-color:var(--ink);color:var(--ink)}
 .copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);border-top:1px dashed var(--line);padding-top:22px}
 @media(max-width:760px){.f-grid{grid-template-columns:1fr}}
 
+/* ── panorama (horizontal scroll-driven) ── */
+.pano{position:relative;overflow:hidden;padding:0;border-block:1px dashed var(--line);background:rgba(255,255,255,.04)}
+.pano img{width:160%;max-width:none;height:auto;filter:grayscale(1) contrast(1.08) brightness(1.02);mix-blend-mode:multiply;will-change:transform;opacity:.9;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(#000 70%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(#000 70%,transparent);mask-composite:intersect}
+.pano::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(var(--paper) 0%,transparent 12%,transparent 78%,var(--paper) 100%)}
+.pano .lbl{position:absolute;bottom:18px;inset-inline-start:5%;font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pencil);background:var(--paper);padding:6px 12px;border:1px dashed var(--line);direction:ltr}
+/* ── ornament divider ── */
+.divider{display:flex;justify-content:center;padding:10px 0}
+.divider img{width:min(720px,80%);filter:grayscale(1);mix-blend-mode:multiply;opacity:.85}
+/* ── showcase (sticky) ── */
+.showcase{position:relative}
+.sc-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:64px;align-items:start}
+.sc-steps{padding-top:10vh}
+.sc-step{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.25;transition:opacity .6s var(--ease);transform:translateX(0)}
+.sc-step.on{opacity:1}
+.sc-step .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pencil);margin-bottom:10px;direction:ltr;text-align:start}
+.sc-step h3{font-size:1.6rem;font-weight:800;margin-bottom:10px}
+.sc-step h3 .en{display:block;font-family:var(--serif);font-weight:400;font-style:italic;font-size:1.1rem;color:var(--graphite)}
+.sc-step p{color:var(--ink-2)}
+.sc-stick{position:sticky;top:110px}
+.shot-frame{position:relative;border:1px solid var(--line);padding:10px;background:var(--paper-hi);box-shadow:0 50px 90px -30px rgba(20,15,10,.65),12px 12px 0 -4px var(--paper-3),12px 12px 0 -3px var(--graphite);transform:rotate(.6deg);aspect-ratio:16/10;overflow:hidden}
+.shot-frame::before{content:"";position:absolute;inset:4px;border:1px dashed var(--line-soft);pointer-events:none;z-index:3}
+.shot-frame .bar{position:absolute;top:10px;left:10px;right:10px;height:26px;background:var(--paper-2);border-bottom:1px dashed var(--line);z-index:2;display:flex;align-items:center;gap:6px;padding:0 12px;direction:ltr}
+.shot-frame .bar i{width:9px;height:9px;border-radius:50%;border:1px solid var(--ink);display:block}
+.shot-frame .bar span{margin-left:auto;font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;color:var(--pencil)}
+.shot-frame img{position:absolute;top:36px;left:10px;right:10px;width:calc(100% - 20px);height:calc(100% - 46px);object-fit:cover;object-position:top;opacity:0;transition:opacity .7s var(--ease),transform 1s var(--ease);transform:scale(1.03)}
+.shot-frame img.on{opacity:1;transform:none}
+.shot-frame .tape{top:-14px;left:50%;z-index:4}
+.shot-note{position:absolute;bottom:-22px;right:-10px;font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);background:var(--paper);padding:4px 10px;border:1px dashed var(--line);direction:ltr;transform:rotate(-2deg)}
+@media(max-width:900px){.sc-grid{grid-template-columns:1fr}.sc-stick{position:relative;top:0}.sc-step{min-height:auto;opacity:1;padding:20px 0}.sc-steps{padding-top:0}.shot-frame{margin-bottom:30px}}
+/* ── compare ── */
+.cmp{width:100%;border-collapse:collapse;font-size:.95rem;border:1px solid var(--line)}
+.cmp th,.cmp td{padding:16px 18px;border-bottom:1px dashed var(--line);text-align:start}
+.cmp th{font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pencil);font-weight:400;background:rgba(255,255,255,.06)}
+.cmp td:not(:first-child){text-align:center;font-family:var(--serif);font-size:1.1rem}
+.cmp tr:hover td{background:rgba(255,255,255,.08)}
+.cmp td.y{color:var(--ink)}.cmp td.n{color:var(--pencil);opacity:.6}
+.cmp .hl{background:rgba(255,255,255,.1);border-inline:1px dashed var(--line)}
+/* ── faq ── */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px dashed var(--line);padding:6px 0}
+.faq summary{cursor:none;list-style:none;padding:20px 0;font-size:1.1rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--serif);font-size:1.6rem;font-weight:400;color:var(--graphite);transition:.4s var(--ease);flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--ink-2);padding:0 0 22px;max-width:65ch}
+/* ── marginalia doodles ── */
+.doodle{position:absolute;pointer-events:none;opacity:.35;stroke:var(--ink);fill:none;stroke-width:.8}
 /* ── reveal ── */
 .rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -263,6 +333,7 @@ html.en [data-en]{display:revert!important}
 html.en li[data-en]{display:flex!important}
 html.en span[data-en]{display:inline!important}
 html.en{direction:ltr}
+.tb-d{display:none}html.dark .tb-l{display:none}html.dark .tb-d{display:inline}
 html.en body{font-family:var(--serif)}
 html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-family:var(--serif)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
@@ -286,10 +357,12 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
     <a class="brand" href="#top"><img src="assets/logo-512.jpg" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
     <div class="links" id="links">
       <a href="#features" data-fa>ویژگی‌ها</a><a href="#features" data-en>Features</a>
+      <a href="#showcase" data-fa>نگاهی به پنل</a><a href="#showcase" data-en>The panel</a>
       <a href="#protocols" data-fa>پروتکل‌ها</a><a href="#protocols" data-en>Protocols</a>
       <a href="#start" data-fa>شروع سریع</a><a href="#start" data-en>Quick start</a>
       <a href="#bot" data-fa>ربات</a><a href="#bot" data-en>Bot</a>
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
     </div>
     <button class="burger" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
@@ -330,6 +403,9 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
   <span>VLESS</span>✦<span>Trojan</span>✦<span>WARP</span>✦<span>Cloudflare Workers</span>✦<span>Free Tier</span>✦<span>Multi-user</span>✦<span>Clean-IP Scanner</span>✦<span>RTL · فارسی</span>✦<span>MIT License</span>✦
   <span>VLESS</span>✦<span>Trojan</span>✦<span>WARP</span>✦<span>Cloudflare Workers</span>✦<span>Free Tier</span>✦<span>Multi-user</span>✦<span>Clean-IP Scanner</span>✦<span>RTL · فارسی</span>✦<span>MIT License</span>✦
 </div></div>
+
+<!-- PANORAMA -->
+<div class="pano" id="pano"><img src="assets/art-panorama.jpg" alt="Network landscape sketch"><span class="lbl">fig. 05 — the landscape · scroll →</span></div>
 
 <!-- INTRO SPLIT (globe) -->
 <section class="wrap rv">
@@ -389,6 +465,37 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
   <div><b data-count="1">0</b><span data-fa>فایل قابل استقرار</span><span data-en>Deployable file</span></div>
   <div><b>MIT</b><span data-fa>لایسنس آزاد</span><span data-en>Open license</span></div>
 </div>
+
+<div class="divider rv"><img src="assets/art-divider.jpg" alt=""></div>
+
+<!-- SHOWCASE -->
+<section id="showcase" class="wrap showcase rv">
+  <div class="sec-head">
+    <div class="num">— The panel</div>
+    <h2 class="en" dir="ltr">Take a look <span class="ul">inside.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>نگاهی به داخل پنل.</p>
+    <p data-fa>اسکرول کن؛ پنل صفحه‌به‌صفحه ورق می‌خورد.</p><p data-en>Scroll — the panel turns page by page.</p>
+  </div>
+  <div class="sc-grid">
+    <div class="sc-steps">
+      <div class="sc-step on" data-shot="0"><div class="k">01 / dashboard</div><h3 data-fa>داشبورد<span class="en">Everything at a glance</span></h3><h3 data-en>Dashboard<span class="en">Everything at a glance</span></h3><p data-fa>کاربران فعال، درخواست‌های امروز، مصرف گیگابایت، پروتکل‌های روشن و نمودار ترافیک ۷ روز اخیر — همه در یک نگاه، با همان تم گرافیتی.</p><p data-en>Active users, today's requests, gigabytes used, live protocols and a 7-day traffic chart — all at a glance, in the same graphite theme.</p></div>
+      <div class="sc-step" data-shot="1"><div class="k">02 / users</div><h3 data-fa>مدیریت کاربران<span class="en">Quota · expiry · one private link</span></h3><h3 data-en>Users<span class="en">Quota · expiry · one private link</span></h3><p data-fa>برای هر نفر سهمیه‌ی حجم و روز تعیین کن، با یک کلیک فعال/غیرفعال کن و لینک وضعیت خصوصی‌اش را بفرست.</p><p data-en>Set a GB quota and day limit per person, toggle them on/off with a click, and hand them a private status link.</p></div>
+      <div class="sc-step" data-shot="2"><div class="k">03 / dark mode</div><h3 data-fa>حالت تخته‌سیاه<span class="en">Same panel, chalk on slate</span></h3><h3 data-en>Chalkboard mode<span class="en">Same panel, chalk on slate</span></h3><p data-fa>یک کلیک، و کاغذ کاهی به تخته‌سیاه تبدیل می‌شود. برای شب‌ها.</p><p data-en>One click and the paper turns to slate. For late nights.</p></div>
+      <div class="sc-step" data-shot="3"><div class="k">04 / ip scanner</div><h3 data-fa>رادار IP تمیز<span class="en">Probe · rank · apply</span></h3><h3 data-en>Clean-IP radar<span class="en">Probe · rank · apply</span></h3><p data-fa>از شبکه‌ی خودت ۴۲۰+ آی‌پی کلادفلر را تست می‌کند، بر اساس تأخیر رتبه می‌دهد و بهترین‌ها را روی همه‌ی کانفیگ‌ها می‌نشاند. تست دامنه‌ی رله هم همین‌جاست.</p><p data-en>Probes 420+ Cloudflare IPs from your own network, ranks by latency and applies the best to every config. Relay-domain testing lives here too.</p></div>
+    </div>
+    <div class="sc-stick">
+      <div class="shot-frame">
+        <span class="tape"></span>
+        <div class="bar"><i></i><i></i><i></i><span>nika.workers.dev/admin</span></div>
+        <img class="on" src="assets/shot-fa-light-dash.jpg" alt="Dashboard">
+        <img src="assets/shot-fa-light-users.jpg" alt="Users">
+        <img src="assets/shot-en-dark-dash.jpg" alt="Dark mode">
+        <img src="assets/shot-en-dark-scanner.jpg" alt="IP scanner">
+        <span class="shot-note">fig. 06 — actual panel</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CLOUD SPLIT -->
 <section class="wrap rv">
@@ -484,11 +591,51 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <p style="color:var(--ink-2);margin-bottom:26px" data-en>A companion Telegram bot — also on free Cloudflare Workers — with a direct token link (permissions pre-selected), encrypted token storage, and one-tap panel deployment.</p>
       <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net/tree/main/bot" target="_blank" rel="noopener"><span data-fa>راهنمای ربات</span><span data-en>Bot guide</span> ↗</a>
     </div>
+    <div style="position:relative">
+      <img src="assets/art-plane.jpg" alt="" style="position:absolute;width:170px;top:-70px;inset-inline-end:-40px;filter:grayscale(1);mix-blend-mode:multiply;opacity:.8;transform:rotate(8deg);pointer-events:none" class="plane">
     <div class="sketch">
       <div class="msg"><small>Nika Launcher</small>👋 Welcome. Send me your Cloudflare token — or tap the link to create one with the right permissions.</div>
       <div class="msg me"><small>you</small>/deploy</div>
       <div class="msg"><small>Nika Launcher</small>✏️ Sketching your worker…<br>✔ Worker created<br>✔ KV bound as NIKA_KV<br>✔ Panel live → https://nika-xxxx.workers.dev/admin</div>
-    </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="wrap rv">
+  <div class="sec-head">
+    <div class="num">05 — Compared</div>
+    <h2 class="en" dir="ltr">Why not <span class="ul">a VPS?<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>چرا VPS نه؟</p>
+  </div>
+  <div style="overflow-x:auto">
+  <table class="cmp">
+    <thead><tr><th></th><th class="hl">Nika Net</th><th>VPS + X-UI</th><th data-fa>سرویس اشتراکی</th><th data-en>Shared service</th></tr></thead>
+    <tbody>
+      <tr><td data-fa>هزینه ماهانه</td><td data-en>Monthly cost</td><td class="hl y">0 $</td><td class="n">5–10 $</td><td class="n">3–8 $</td></tr>
+      <tr><td data-fa>سرور اختصاصی خودت</td><td data-en>Your own server</td><td class="hl y">✔</td><td class="y">✔</td><td class="n">✕</td></tr>
+      <tr><td data-fa>نگهداری / آپدیت</td><td data-en>Maintenance</td><td class="hl y">✔ صفر</td><td class="n">✕</td><td class="y">✔</td></tr>
+      <tr><td data-fa>IP سوختنی</td><td data-en>Burnable IP</td><td class="hl y">✔ Anycast</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>چندکاربره + سهمیه</td><td data-en>Multi-user + quota</td><td class="hl y">✔</td><td class="y">✔</td><td class="n">✕</td></tr>
+      <tr><td data-fa>متن‌باز</td><td data-en>Open source</td><td class="hl y">✔ MIT</td><td class="y">✔</td><td class="n">✕</td></tr>
+      <tr><td data-fa>UDP / تماس</td><td data-en>UDP / calls</td><td class="hl y">WARP</td><td class="y">✔</td><td class="n">؟</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- FAQ -->
+<section class="wrap rv">
+  <div class="sec-head" style="margin-inline:auto;text-align:center">
+    <div class="num" style="justify-content:center">06 — Questions</div>
+    <h2 class="en" dir="ltr">Asked <span class="ul">often.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>سؤال‌های پرتکرار</p>
+  </div>
+  <div class="faq">
+    <details><summary data-fa>واقعاً رایگان است؟</summary><summary data-en>Is it really free?</summary><p data-fa>بله. پلن رایگان Cloudflare روزانه ۱۰۰٬۰۰۰ درخواست Worker می‌دهد که برای استفاده‌ی شخصی و چند کاربر کافی است. دامنه‌ی <code>workers.dev</code> هم رایگان است.</p><p data-en>Yes. Cloudflare's free plan gives 100,000 Worker requests per day — plenty for personal use and a handful of users. The <code>workers.dev</code> domain is free too.</p></details>
+    <details><summary data-fa>به دانش فنی نیاز دارم؟</summary><summary data-en>Do I need technical skills?</summary><p data-fa>نه چندان. دکمه‌ی «Deploy to Cloudflare» یا ربات Launcher همه‌چیز را انجام می‌دهد؛ فقط یک حساب Cloudflare لازم داری.</p><p data-en>Not much. The "Deploy to Cloudflare" button or the Launcher bot does everything — you only need a Cloudflare account.</p></details>
+    <details><summary data-fa>چرا تماس صوتی روی VLESS کار نمی‌کند؟</summary><summary data-en>Why don't voice calls work over VLESS?</summary><p data-fa>Workers ترافیک UDP را حمل نمی‌کند. برای تماس‌ها از خروجی WARP (WireGuard) استفاده کن که داخل پنل ساخته می‌شود.</p><p data-en>Workers don't carry UDP. Use the WARP (WireGuard) export generated inside the panel for calls.</p></details>
+    <details><summary data-fa>اطلاعات کاربران کجا ذخیره می‌شود؟</summary><summary data-en>Where is user data stored?</summary><p data-fa>در KV یا D1 حساب خودت. هیچ داده‌ای به جایی ارسال نمی‌شود؛ کد متن‌باز است و می‌توانی خودت بررسی کنی.</p><p data-en>In the KV or D1 of your own account. Nothing is sent anywhere; the code is open source and auditable.</p></details>
+    <details><summary data-fa>با چه کلاینت‌هایی سازگار است؟</summary><summary data-en>Which clients are supported?</summary><p data-fa>v2rayNG، Hiddify، Streisand، NekoBox، Clash/Mihomo، Sing-box و WireGuard — لینک اشتراک هر کاربر برای همه‌ی این‌ها خروجی دارد.</p><p data-en>v2rayNG, Hiddify, Streisand, NekoBox, Clash/Mihomo, Sing-box and WireGuard — each subscription link serves all of them.</p></details>
   </div>
 </section>
 
@@ -534,6 +681,8 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
 <script>
 // lang
 function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')}
+if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
 function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
 applyLang(localStorage.getItem('nika-lang')||'fa');
 // preloader
@@ -562,6 +711,13 @@ if(fr&&matchMedia('(hover:hover)').matches){addEventListener('mousemove',e=>{con
 // parallax illustrations
 const px=[...document.querySelectorAll('.px')];
 addEventListener('scroll',()=>{px.forEach(el=>{const r=el.getBoundingClientRect(),c=(r.top+r.height/2-innerHeight/2)/innerHeight;el.firstElementChild.style.transform=`translateY(${-c*el.dataset.depth*4}px) rotate(${c*1.5}deg)`})},{passive:true});
+// showcase sticky
+const scSteps=[...document.querySelectorAll('.sc-step')],scImgs=[...document.querySelectorAll('.shot-frame img')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=+e.target.dataset.shot;scSteps.forEach(s=>s.classList.toggle('on',s===e.target));scImgs.forEach((im,k)=>im.classList.toggle('on',k===i))}}),{rootMargin:'-45% 0px -45% 0px'});
+scSteps.forEach(s=>so.observe(s));
+// panorama horizontal drift
+const pano=document.getElementById('pano');
+addEventListener('scroll',()=>{if(!pano)return;const r=pano.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const p=(innerHeight-r.top)/(innerHeight+r.height);pano.firstElementChild.style.transform=`translateX(${-p*37}%)`},{passive:true});
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
