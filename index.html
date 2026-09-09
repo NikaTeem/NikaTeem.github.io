@@ -11,7 +11,7 @@
 <meta property="og:description" content="A pencil-drawn, censorship-resistant proxy panel — VLESS · Trojan · WARP on a single Cloudflare Worker.">
 <meta property="og:image" content="https://nikanet.dpdns.org/assets/logo-512.webp">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <!-- preloader -->
@@ -33,7 +33,8 @@
       <a href="#showcase" data-fa>نگاهی به پنل</a><a href="#showcase" data-en>The panel</a>
       <a href="#protocols" data-fa>پروتکل‌ها</a><a href="#protocols" data-en>Protocols</a>
       <a href="#start" data-fa>شروع سریع</a><a href="#start" data-en>Quick start</a>
-            <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
+            <a href="#telegram" data-fa>تلگرام</a><a href="#telegram" data-en>Telegram</a>
+      <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
@@ -48,14 +49,14 @@
 <!-- HERO -->
 <header class="wrap hero">
   <div class="hero-text">
-    <div class="tag">Graphite edition · v0.2</div>
+    <div class="tag"><span data-fa>نسخه‌ی گرافیت · ۰٫۲</span><span data-en>Graphite edition · v0.2</span></div>
     <h1 class="en" dir="ltr"><span class="w"><span>Freedom.</span></span><br><span class="w"><span>Speed.</span></span><br><span class="w"><span class="thin">Security, your way.</span></span></h1>
     <p class="hero-fa rv d3" data-fa>آزادی، سرعت، امنیت — به روش خودت.</p>
-    <p class="lead rv d4" data-fa><b>نیکا نت</b> یک پنل پروکسی مقاوم در برابر سانسور است که روی یک Cloudflare Worker <b>رایگان</b> اجرا می‌شود. VLESS، Trojan و WARP؛ روی حساب خودت، با دامنه‌ی خودت، بدون سرور مشترک و بدون واسطه. طراحی‌شده با حس نوستالژیک مداد و کاغذ.</p>
-    <p class="lead rv d4" data-en><b>Nika Net</b> is a censorship-resistant proxy panel running on a single, <b>free</b> Cloudflare Worker. VLESS, Trojan &amp; WARP — on your own account, your own domain, no shared server, no middleman. Drawn in graphite and paper.</p>
+    <p class="lead rv d4" data-fa>پنل پروکسی شخصی‌ات، روی یک Cloudflare Worker <b>رایگان</b>. VLESS، Trojan و WARP — روی حساب خودت، بدون سرور، بدون واسطه، بدون هزینه. با مداد کشیده شده.</p>
+    <p class="lead rv d4" data-en>Your personal proxy panel on one <b>free</b> Cloudflare Worker. VLESS, Trojan &amp; WARP — your account, no server, no middleman, no bill. Drawn in graphite.</p>
     <div class="cta rv d5">
       <a class="btn solid mag" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار روی Cloudflare</span><span data-en>Deploy to Cloudflare</span> ⚡</a>
-      <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>مشاهده کد در GitHub</span><span data-en>View on GitHub</span> ↗</a>
+      <a class="btn mag" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener"><span data-fa>ساخت با ربات تلگرام</span><span data-en>Build via Telegram bot</span> ✈</a>
     </div>
     <div class="ticker rv d5">
       <div><b data-count="0" data-prefix="$">$0</b><span data-fa>هزینه ماهانه</span><span data-en>per month</span></div>
@@ -67,7 +68,7 @@
   <div class="hero-art">
     <svg class="orbit" viewBox="0 0 400 400">
       <g class="o1"><circle cx="200" cy="200" r="196"/><circle class="dot" cx="200" cy="4" r="3"/></g>
-      <g class="o2"><ellipse cx="200" cy="200" rx="185" ry="120" transform="rotate(-20 200 200)"/><circle class="dot" cx="385" cy="200" r="2.5" transform="rotate(-20 200 200)"/></g>
+      <g class="o2"><ellipse cx="200" cy="200" rx="185" ry="120" transform="rotate(-20 200 200)"/></g>
     </svg>
     <div class="frame" id="frame">
       <svg class="draw-over" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" pathLength="1"/><path d="M26 76V24l48 52V24" pathLength="1"/><ellipse cx="50" cy="50" rx="52" ry="18" transform="rotate(-22 50 50)" pathLength="1"/></svg>
@@ -76,8 +77,7 @@
       <div class="annot a2">from idea<br>to connection</div>
     </div>
   </div>
-    <div class="scroll-hint"><i></i>scroll</div>
-</header>
+    </header>
 
 
 <!-- PANORAMA -->
@@ -109,6 +109,42 @@
         <img loading="lazy" src="assets/shot-en-dark-scanner.webp" alt="IP scanner">
         <div class="phone"><img loading="lazy" src="assets/shot-mobile.webp" alt="Mobile"></div>
         <span class="shot-note">fig. 06 — actual panel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="telegram" class="wrap rv">
+  <div class="tg">
+    <div class="tg-art"><img loading="lazy" src="assets/art-telegram.webp" alt="Telegraph key sending paper planes"><span class="cap">fig. 07 — the wire</span></div>
+    <div class="tg-body">
+      <div class="num">— Telegram</div>
+      <h2 class="en" dir="ltr">Two wires into <span class="ul">the workshop.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+      <p class="h2-fa" data-fa>دو سیم به کارگاه ما.</p>
+      <p data-fa>یکی برایت پنل می‌سازد، دیگری تو را در جریان نگه می‌دارد. هر دو رایگان، هر دو داخل تلگرام.</p>
+      <p data-en>One builds your panel for you, the other keeps you in the loop. Both free, both inside Telegram.</p>
+      <div class="tg-cards">
+        <a class="tg-card" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">
+          <div class="tg-ico"><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4z"/><path d="M8 4h8M12 4v3M8 12h.01M12 12h.01M16 12h.01M9 15h6"/></svg></div>
+          <div>
+            <div class="tg-k">Launcher bot</div>
+            <b>@NikaNetLauncher_bot</b>
+            <p data-fa>توکن Cloudflare را بده — یا با لینک آماده بساز — و ربات در چند ثانیه Worker، KV و پنل را برایت مستقر می‌کند. بدون ترمینال.</p>
+            <p data-en>Hand it a Cloudflare token — or create one via its ready link — and it deploys the Worker, KV and panel in seconds. No terminal.</p>
+            <span class="tg-go"><span data-fa>شروع با ربات</span><span data-en>Open the bot</span> →</span>
+          </div>
+        </a>
+        <a class="tg-card" href="https://t.me/NikaSociety" target="_blank" rel="noopener">
+          <div class="tg-ico"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/><path d="M11 15l6-8"/></svg></div>
+          <div>
+            <div class="tg-k">Channel</div>
+            <b>@NikaSociety</b>
+            <p data-fa>اعلان نسخه‌های جدید، آی‌پی‌های تمیز تازه، ترفندهای اتصال و بحث با بقیه‌ی کسانی که پنل خودشان را دارند.</p>
+            <p data-en>Release notes, fresh clean-IP lists, connection tips and conversation with others who run their own panel.</p>
+            <span class="tg-go"><span data-fa>عضویت در کانال</span><span data-en>Join the channel</span> →</span>
+          </div>
+        </a>
       </div>
     </div>
   </div>
@@ -249,27 +285,6 @@
   </table></div>
 </section>
 
-<!-- BOT -->
-<section id="bot" class="wrap rv">
-  <div class="split">
-    <div>
-      <div class="num">07 — Launcher bot</div>
-      <h2 class="en" dir="ltr">A bot that builds<br><span class="ul">your panel for you.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
-      <p class="h2-fa" data-fa>رباتی که پنل را برایت می‌سازد.</p>
-      <p style="color:var(--ink-2);margin-bottom:26px" data-fa>ربات تلگرامی همراه، که خودش هم روی Cloudflare Workers رایگان اجرا می‌شود: لینک مستقیم ساخت توکن با دسترسی‌های از پیش انتخاب‌شده، ذخیره‌سازی رمزنگاری‌شده‌ی توکن و استقرار پنل با یک لمس.</p>
-      <p style="color:var(--ink-2);margin-bottom:26px" data-en>A companion Telegram bot — also on free Cloudflare Workers — with a direct token link (permissions pre-selected), encrypted token storage, and one-tap panel deployment.</p>
-      <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net/tree/main/bot" target="_blank" rel="noopener"><span data-fa>راهنمای ربات</span><span data-en>Bot guide</span> ↗</a>
-    </div>
-    <div style="position:relative">
-      <img loading="lazy" src="assets/art-plane.webp" alt="" style="position:absolute;width:170px;top:-70px;inset-inline-end:-40px;filter:grayscale(1);mix-blend-mode:multiply;opacity:.8;transform:rotate(8deg);pointer-events:none" class="plane">
-    <div class="sketch">
-      <div class="msg"><small>Nika Launcher</small>👋 Send me a Cloudflare token — or tap the link to create one.</div>
-      <div class="msg me"><small>you</small>/deploy</div>
-      <div class="msg"><small>Nika Launcher</small>✏️ Sketching your worker…<br>✔ Worker created<br>✔ KV bound as NIKA_KV<br>✔ Panel live → https://nika-xxxx.workers.dev/admin</div>
-    </div></div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="wrap rv">
   <div class="sec-head" style="margin-inline:auto;text-align:center">
@@ -279,6 +294,7 @@
   </div>
   <div class="faq">
     <details><summary><span data-fa>واقعاً رایگان است؟</span><span data-en>Is it really free?</span></summary><p data-fa>بله. پلن رایگان Cloudflare روزانه ۱۰۰٬۰۰۰ درخواست Worker می‌دهد که برای استفاده‌ی شخصی و چند کاربر کافی است. دامنه‌ی <code>workers.dev</code> هم رایگان است.</p><p data-en>Yes. Cloudflare's free plan gives 100,000 Worker requests per day — plenty for personal use and a handful of users. The <code>workers.dev</code> domain is free too.</p></details>
+    <details><summary><span data-fa>ربات تلگرام دقیقاً چه می‌کند؟</span><span data-en>What exactly does the Telegram bot do?</span></summary><p data-fa>ربات <a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a> با توکن Cloudflare تو (که فقط دسترسی Workers دارد) یک Worker می‌سازد، کد Nika Net را در آن می‌گذارد، KV را متصل می‌کند و آدرس پنل را برمی‌گرداند. توکن رمزنگاری‌شده ذخیره می‌شود و هر وقت بخواهی می‌توانی از داخل Cloudflare باطلش کنی.</p><p data-en><a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a> takes your Cloudflare token (Workers scope only), creates a Worker, uploads Nika Net, binds KV and returns your panel URL. The token is stored encrypted and can be revoked from Cloudflare any time.</p></details>
     <details><summary><span data-fa>به دانش فنی نیاز دارم؟</span><span data-en>Do I need technical skills?</span></summary><p data-fa>نه چندان. دکمه‌ی «Deploy to Cloudflare» یا ربات Launcher همه‌چیز را انجام می‌دهد؛ فقط یک حساب Cloudflare لازم داری.</p><p data-en>Not much. The "Deploy to Cloudflare" button or the Launcher bot does everything — you only need a Cloudflare account.</p></details>
     <details><summary><span data-fa>چرا تماس صوتی روی VLESS کار نمی‌کند؟</span><span data-en>Why don't voice calls work over VLESS?</span></summary><p data-fa>Workers ترافیک UDP را حمل نمی‌کند. برای تماس‌ها از خروجی WARP (WireGuard) استفاده کن که داخل پنل ساخته می‌شود.</p><p data-en>Workers don't carry UDP. Use the WARP (WireGuard) export generated inside the panel for calls.</p></details>
     <details><summary><span data-fa>اطلاعات کاربران کجا ذخیره می‌شود؟</span><span data-en>Where is user data stored?</span></summary><p data-fa>در KV یا D1 حساب خودت. هیچ داده‌ای به جایی ارسال نمی‌شود؛ کد متن‌باز است و می‌توانی خودت بررسی کنی.</p><p data-en>In the KV or D1 of your own account. Nothing is sent anywhere; the code is open source and auditable.</p></details>
@@ -298,7 +314,7 @@
       <p data-en>A free Cloudflare account is all you need. No credit card, no server, no expertise.</p>
       <div class="cta" style="margin-top:28px">
         <a class="btn solid mag" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار با یک کلیک</span><span data-en>One-click deploy</span> ⚡</a>
-        <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener"><span data-fa>راهنمای فارسی</span><span data-en>Read the guide</span> →</a>
+        <a class="btn mag" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener"><span data-fa>یا با ربات تلگرام</span><span data-en>or via Telegram bot</span> ✈</a>
       </div>
     </div>
   </div>
@@ -317,6 +333,7 @@
 </section>
 </main>
 
+<a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
 <footer>
   <div class="wrap">
     <div class="f-grid">
@@ -334,7 +351,8 @@
       <div><h5>Links</h5><ul>
         <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
         <li><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a></li>
-        <li><a href="https://github.com/NikaTeem/Nika-Net/tree/main/bot" target="_blank" rel="noopener">Telegram Launcher bot</a></li></ul></div>
+        <li><a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a></li>
+        <li><a href="https://t.me/NikaSociety" target="_blank" rel="noopener">@NikaSociety — channel</a></li></ul></div>
     </div>
     <div class="copy"><span>© 2026 Nika Net · nikanet.dpdns.org · Drawn in graphite</span><span>Freedom · Speed · Security · Your way</span></div>
   </div>
@@ -378,6 +396,8 @@ scSteps.forEach(s=>so.observe(s));
 // panorama horizontal drift
 const pano=document.getElementById('pano');
 addEventListener('scroll',()=>{if(!pano)return;const r=pano.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const p=(innerHeight-r.top)/(innerHeight+r.height);pano.firstElementChild.style.transform=`translateX(${-p*37}%)`},{passive:true});
+const pill=document.getElementById('tgpill');
+addEventListener('scroll',()=>pill&&pill.classList.toggle('show',scrollY>innerHeight*.8),{passive:true});
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
