@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://nikanet.dpdns.org/">
 <meta property="og:title" content="Nika Net — Config Panel Engineering">
 <meta property="og:description" content="A pencil-drawn, censorship-resistant proxy panel — VLESS · Trojan · WARP on a single Cloudflare Worker.">
-<meta property="og:image" content="https://nikanet.dpdns.org/assets/logo-512.jpg">
+<meta property="og:image" content="https://nikanet.dpdns.org/assets/logo-512.webp">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
 @font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -35,7 +35,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:clip}
-body{background:var(--paper);color:var(--ink);font-family:var(--fa),var(--serif);line-height:1.75;overflow-x:clip;cursor:none}
+body{background:var(--paper);color:var(--ink);font-family:var(--fa),var(--serif);line-height:1.75;overflow-x:clip}
 @media(hover:none){body{cursor:auto}}
 .en,[lang=en]{font-family:var(--serif)}
 a{color:inherit}img{max-width:100%;display:block}
@@ -58,14 +58,14 @@ html.dark .divider img{filter:grayscale(1) invert(1);mix-blend-mode:screen}
 html.dark .shot-frame{box-shadow:0 40px 80px -30px rgba(0,0,0,.9)}
 html,body{transition:background .5s,color .5s}
 /* paper + grain + vignette + blueprint grid */
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("assets/paper.jpg");background-size:600px 308px;opacity:.26;mix-blend-mode:multiply}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("assets/paper.webp");background-size:600px 308px;opacity:.26;mix-blend-mode:multiply}
 body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 50%,rgba(35,30,24,.42) 100%)}
 .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.09;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px}
 .grid-bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:240px 240px;opacity:.9}
 /* film grain animated (noir) */
 .grain{position:fixed;inset:-100%;z-index:1;pointer-events:none;opacity:.055;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  animation:grain 1.2s steps(6) infinite}
+  }
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-5%,3%)}40%{transform:translate(3%,-6%)}60%{transform:translate(-4%,-2%)}80%{transform:translate(6%,4%)}100%{transform:translate(0,0)}}
 main,header,footer,nav,section{position:relative;z-index:2}
 
@@ -104,7 +104,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .links a{text-decoration:none;color:var(--ink-2);position:relative;padding:4px 0}
 .links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transition:.35s var(--ease);transform-origin:right}
 .links a:hover::after{transform:scaleX(1);transform-origin:left}
-.lang-btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.15em;cursor:none;background:transparent;border:1px solid var(--ink);padding:6px 12px;color:var(--ink);border-radius:2px;transition:.25s}
+.lang-btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.15em;cursor:pointer;background:transparent;border:1px solid var(--ink);padding:6px 12px;color:var(--ink);border-radius:2px;transition:.25s}
 .lang-btn:hover{background:var(--ink);color:var(--paper)}
 .ctrls{display:flex;gap:8px;align-items:center}
 .burger{display:none;background:none;border:none;cursor:pointer;font-size:1.5rem;color:var(--ink)}
@@ -143,6 +143,15 @@ h1 .thin{font-weight:400;font-style:italic;color:var(--graphite)}
 .frame::before{top:-9px;left:-9px;border-right:none;border-bottom:none}
 .frame::after{bottom:-9px;right:-9px;border-left:none;border-top:none}
 .frame img{filter:grayscale(1) contrast(1.08) sepia(.15);mix-blend-mode:multiply;transform:translateZ(30px);aspect-ratio:1/1;width:100%;height:auto}
+.draw-over{position:absolute;inset:16px;width:calc(100% - 32px);height:calc(100% - 32px);pointer-events:none;z-index:3;mix-blend-mode:multiply}
+.draw-over *{fill:none;stroke:var(--ink);stroke-width:.5;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s var(--ease) .6s forwards;opacity:.7}
+.draw-over ellipse{animation-delay:1.4s;stroke-dasharray:.03 .02 1}
+.draw-over circle{animation-delay:.3s;stroke-dasharray:.01 .015 1}
+.draw-over.gone{animation:fadeout 1.2s ease 3.6s forwards}
+@keyframes fadeout{to{opacity:0}}
+.ticker{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px dashed var(--line)}
+.ticker div{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil)}
+.ticker b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--ink);letter-spacing:0;line-height:1.1;direction:ltr;text-align:start}
 .tape{position:absolute;width:120px;height:30px;background:rgba(232,227,212,.78);border:1px dashed rgba(90,85,78,.4);top:-13px;left:50%;transform:translateX(-50%) rotate(-3deg);box-shadow:0 2px 4px rgba(0,0,0,.15);z-index:2}
 .annot{position:absolute;font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);line-height:1.7;direction:ltr;text-align:left}
 .annot::before{content:"";display:block;width:36px;height:1px;background:var(--pencil);margin-bottom:6px}
@@ -169,7 +178,7 @@ h1 .thin{font-weight:400;font-style:italic;color:var(--graphite)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* ═══════════════════════════  SECTIONS  ═══════════════════════════ */
-section{padding:110px 0}
+section{padding:clamp(70px,10vw,120px) 0}
 .sec-head{margin-bottom:64px;max-width:760px;position:relative}
 .num{direction:ltr;text-align:start;font-family:var(--mono);font-size:.7rem;letter-spacing:.32em;color:var(--pencil);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px}
 .num::after{content:"";flex:none;width:40px;height:1px;background:var(--pencil)}
@@ -271,6 +280,14 @@ h2 .ul path{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stro
 .ornament{display:flex;align-items:center;justify-content:center;gap:16px;margin:28px auto;color:var(--graphite);position:relative}
 .ornament::before,.ornament::after{content:"";width:90px;height:1px;background:var(--line)}
 
+/* ── deploy box ── */
+.deploy-box{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center;border:1px solid var(--line);padding:56px 48px;position:relative;background:rgba(255,255,255,.07)}
+.deploy-box::before{content:"";position:absolute;inset:8px;border:1px dashed var(--line-soft);pointer-events:none}
+.seal{width:180px;height:180px;justify-self:center}
+.seal svg{width:100%;height:100%;fill:none;stroke:var(--ink);stroke-width:1.2;animation:spin 60s linear infinite}
+.seal svg path{stroke-width:3;animation:none}
+.seal svg circle:first-child{stroke-width:2.4}
+@media(max-width:800px){.deploy-box{grid-template-columns:1fr;padding:40px 24px;text-align:center}.deploy-box .num{justify-content:center}.deploy-box .cta{justify-content:center}.seal{width:120px;height:120px}}
 /* ── footer ── */
 footer{border-top:1px dashed var(--line);padding:60px 0 30px;font-size:.9rem;color:var(--ink-2)}
 .f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:44px}
@@ -281,6 +298,12 @@ footer a:hover{border-color:var(--ink);color:var(--ink)}
 .copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pencil);border-top:1px dashed var(--line);padding-top:22px}
 @media(max-width:760px){.f-grid{grid-template-columns:1fr}}
 
+/* ── flow diagram ── */
+.flow{position:absolute;left:6%;right:6%;bottom:12%;width:88%;height:auto;stroke:var(--ink);fill:none;stroke-width:1;background:var(--paper);border:1px dashed var(--line);padding:6px 10px;opacity:.95}
+.flow .wire{stroke-dasharray:.02 .015;stroke-width:.8;opacity:.7}
+.flow .node text{font-family:var(--mono);font-size:6px;fill:var(--pencil);stroke:none;text-anchor:middle;letter-spacing:.15em}
+.flow .node path,.flow .node rect,.flow .node circle{stroke-width:1}
+.flow .pkt{fill:var(--ink);stroke:none}
 /* ── panorama (horizontal scroll-driven) ── */
 .pano{position:relative;overflow:hidden;padding:0;border-block:1px dashed var(--line);background:rgba(255,255,255,.04)}
 .pano img{width:160%;min-width:1100px;max-width:none;height:auto;filter:grayscale(1) contrast(1.08) brightness(1.02);mix-blend-mode:multiply;will-change:transform;opacity:.9;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(#000 70%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(#000 70%,transparent);mask-composite:intersect}
@@ -308,8 +331,22 @@ footer a:hover{border-color:var(--ink);color:var(--ink)}
 .shot-frame img{position:absolute;top:36px;left:10px;right:10px;width:calc(100% - 20px);height:calc(100% - 46px);object-fit:cover;object-position:top;opacity:0;transition:opacity .7s var(--ease),transform 1s var(--ease);transform:scale(1.03)}
 .shot-frame img.on{opacity:1;transform:none}
 .shot-frame .tape{top:-14px;left:50%;z-index:4;width:100px}
+.phone{position:absolute;top:36px;left:50%;transform:translate(-50%,8%) scale(.96);width:30%;aspect-ratio:9/19.4;border:2px solid var(--ink);border-radius:26px;padding:8px;background:var(--paper-hi);opacity:0;transition:opacity .7s var(--ease),transform .9s var(--ease);z-index:2;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.phone::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:34%;height:12px;background:var(--ink);border-radius:0 0 8px 8px;z-index:2}
+.phone img{position:static;width:100%;height:100%;object-fit:cover;object-position:top;opacity:1;transform:none;border-radius:18px}
+.phone.on{opacity:1;transform:translate(-50%,0) scale(1)}
 .shot-note{position:absolute;bottom:-22px;right:-10px;font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);background:var(--paper);padding:4px 10px;border:1px dashed var(--line);direction:ltr;transform:rotate(-2deg)}
 @media(max-width:900px){.sc-grid{grid-template-columns:1fr;gap:24px}.sc-stick{position:sticky;top:78px;order:-1;z-index:5;background:var(--paper);padding:8px 0 16px}.sc-step{min-height:52vh;padding:20px 0}.sc-steps{padding-top:0}.shot-frame{transform:none}.shot-note{display:none}}
+/* ── field notes ── */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;align-items:start}
+.note{position:relative;padding:34px 26px 26px;background:var(--paper-hi);border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(0,0,0,.5);transition:transform .5s var(--ease),box-shadow .5s}
+.note::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-2deg);width:70px;height:20px;background:rgba(232,227,212,.85);border:1px dashed rgba(90,85,78,.4)}
+.note p{font-family:var(--fa);font-size:1.02rem;line-height:1.8;color:var(--ink)}
+html.en .note p{font-family:var(--serif);font-style:italic}
+.note small{display:block;margin-top:14px;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pencil);direction:ltr;text-align:start}
+.note:hover{transform:rotate(0) translateY(-6px)!important;box-shadow:0 30px 50px -22px rgba(0,0,0,.6)}
+.n1{transform:rotate(-1.5deg)}.n2{transform:rotate(1deg) translateY(18px)}.n3{transform:rotate(-.6deg)}.n4{transform:rotate(1.4deg) translateY(12px)}
+html.dark .note{background:#262421}
 /* ── compare ── */
 .cmp{width:100%;border-collapse:collapse;font-size:.95rem;border:1px solid var(--line)}
 .cmp th,.cmp td{padding:16px 18px;border-bottom:1px dashed var(--line);text-align:start}
@@ -355,21 +392,19 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
     <div class="n"><span style="animation-delay:.6s">N</span><span style="animation-delay:.7s">I</span><span style="animation-delay:.8s">K</span><span style="animation-delay:.9s">A</span>&nbsp;<span style="animation-delay:1s">N</span><span style="animation-delay:1.1s">E</span><span style="animation-delay:1.2s">T</span></div>
   </div>
 </div>
-<div class="cur cur-dot" id="cd"></div><div class="cur cur-ring" id="cr"></div>
 <div class="prog"><i id="prog"></i></div>
 <div class="grid-bg"></div><div class="grain"></div>
 
 <!-- NAV -->
 <nav id="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/logo-512.jpg" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+    <a class="brand" href="#top"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
     <div class="links" id="links">
       <a href="#features" data-fa>ویژگی‌ها</a><a href="#features" data-en>Features</a>
       <a href="#showcase" data-fa>نگاهی به پنل</a><a href="#showcase" data-en>The panel</a>
       <a href="#protocols" data-fa>پروتکل‌ها</a><a href="#protocols" data-en>Protocols</a>
       <a href="#start" data-fa>شروع سریع</a><a href="#start" data-en>Quick start</a>
-      <a href="#bot" data-fa>ربات</a><a href="#bot" data-en>Bot</a>
-      <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
       <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
@@ -392,6 +427,12 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <a class="btn solid mag" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار روی Cloudflare</span><span data-en>Deploy to Cloudflare</span> ⚡</a>
       <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>مشاهده کد در GitHub</span><span data-en>View on GitHub</span> ↗</a>
     </div>
+    <div class="ticker rv d5">
+      <div><b data-count="0" data-prefix="$">$0</b><span data-fa>هزینه ماهانه</span><span data-en>per month</span></div>
+      <div><b data-count="3">0</b><span data-fa>پروتکل</span><span data-en>protocols</span></div>
+      <div><b data-count="420" data-suffix="+">0</b><span data-fa>آی‌پی اسکن‌شده</span><span data-en>IPs scanned</span></div>
+      <div><b>MIT</b><span data-fa>متن‌باز</span><span data-en>open source</span></div>
+    </div>
   </div>
   <div class="hero-art">
     <svg class="orbit" viewBox="0 0 400 400">
@@ -399,14 +440,14 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <g class="o2"><ellipse cx="200" cy="200" rx="185" ry="120" transform="rotate(-20 200 200)"/><circle class="dot" cx="385" cy="200" r="2.5" transform="rotate(-20 200 200)"/></g>
     </svg>
     <div class="frame" id="frame">
+      <svg class="draw-over" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" pathLength="1"/><path d="M26 76V24l48 52V24" pathLength="1"/><ellipse cx="50" cy="50" rx="52" ry="18" transform="rotate(-22 50 50)" pathLength="1"/></svg>
       <span class="tape"></span>
-      <img src="assets/logo-hero.jpg" alt="Nika Net — pencil drawn logo" style="aspect-ratio:1/1;width:100%;object-fit:cover">
+      <img src="assets/logo-hero.webp" alt="Nika Net — pencil drawn logo" style="aspect-ratio:1/1;width:100%;object-fit:cover">
       <div class="annot a1">fig. 01<br>network<br>config panel</div>
       <div class="annot a2">from idea<br>to connection</div>
     </div>
   </div>
-  <div class="compass"><svg viewBox="0 0 64 64" fill="none" stroke="#171512" stroke-width=".8"><circle cx="32" cy="32" r="30" stroke-dasharray="2 3"/><path d="M32 4L36 32 32 60 28 32z M4 32L32 28 60 32 32 36z"/><circle cx="32" cy="32" r="2" fill="#171512"/></svg></div>
-  <div class="scroll-hint"><i></i>scroll</div>
+    <div class="scroll-hint"><i></i>scroll</div>
 </header>
 
 <div class="strip"><div class="track">
@@ -415,26 +456,8 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
 </div></div>
 
 <!-- PANORAMA -->
-<div class="pano" id="pano"><img src="assets/art-panorama.jpg" alt="Network landscape sketch"><span class="lbl">fig. 05 — the landscape · scroll →</span></div>
+<div class="pano" id="pano"><img src="assets/art-panorama.webp" alt="Network landscape sketch"><span class="lbl">fig. 05 — the landscape · scroll →</span></div>
 
-<!-- INTRO SPLIT (globe) -->
-<section class="wrap rv">
-  <div class="split">
-    <div>
-      <div class="num">00 — Principle</div>
-      <h2 class="en" dir="ltr">Your own edge,<br><span class="ul">drawn by hand.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
-      <p class="h2-fa" data-fa>لبه‌ی شبکه‌ی خودت، با دست کشیده‌شده.</p>
-      <p data-fa>نیکا نت روی هیچ سرور مشترکی نیست. کد را روی حساب Cloudflare خودت مستقر می‌کنی و همه‌چیز — دامنه، پهنای باند، داده — مال خودت می‌ماند. مثل دفترچه‌ی طراحی یک مهندس: ساده، دقیق، شخصی.</p>
-      <p data-en>Nika Net lives on no shared server. You deploy the code to your own Cloudflare account and everything — domain, bandwidth, data — stays yours. Like an engineer's notebook: simple, precise, personal.</p>
-      <ul>
-        <li data-fa>یک فایل <code>worker.js</code>، صفر نگهداری</li><li data-en>One <code>worker.js</code>, zero maintenance</li>
-        <li data-fa>روی پلن رایگان Cloudflare اجرا می‌شود</li><li data-en>Runs on the Cloudflare free plan</li>
-        <li data-fa>متن‌باز با لایسنس MIT</li><li data-en>Open source under MIT</li>
-      </ul>
-    </div>
-    <div class="art px" data-depth="14"><img loading="lazy" src="assets/art-globe.jpg" alt="Globe sketch"><span class="dim"></span><span class="cap">fig. 02 — the network</span></div>
-  </div>
-</section>
 
 <!-- FEATURES -->
 <section id="features" class="wrap rv">
@@ -468,15 +491,7 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
   </div>
 </section>
 
-<div class="wrap stats rv">
-  <div><b data-count="0" data-prefix="$">$0</b><span data-fa>هزینه ماهانه</span><span data-en>Monthly cost</span></div>
-  <div><b data-count="3">0</b><span data-fa>پروتکل</span><span data-en>Protocols</span></div>
-  <div><b data-count="420" data-suffix="+">0</b><span data-fa>آی‌پی اسکن‌شده</span><span data-en>IPs scanned</span></div>
-  <div><b data-count="1">0</b><span data-fa>فایل قابل استقرار</span><span data-en>Deployable file</span></div>
-  <div><b>MIT</b><span data-fa>لایسنس آزاد</span><span data-en>Open license</span></div>
-</div>
-
-<div class="divider rv"><img loading="lazy" src="assets/art-divider.jpg" alt=""></div>
+<div class="divider rv"><img loading="lazy" src="assets/art-divider.webp" alt=""></div>
 
 <!-- SHOWCASE -->
 <section id="showcase" class="wrap showcase rv">
@@ -491,16 +506,18 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <div class="sc-step on" data-shot="0"><div class="k">01 / dashboard</div><h3 data-fa>داشبورد<span class="en">Everything at a glance</span></h3><h3 data-en>Dashboard<span class="en">Everything at a glance</span></h3><p data-fa>کاربران فعال، درخواست‌های امروز، مصرف گیگابایت، پروتکل‌های روشن و نمودار ترافیک ۷ روز اخیر — همه در یک نگاه، با همان تم گرافیتی.</p><p data-en>Active users, today's requests, gigabytes used, live protocols and a 7-day traffic chart — all at a glance, in the same graphite theme.</p></div>
       <div class="sc-step" data-shot="1"><div class="k">02 / users</div><h3 data-fa>مدیریت کاربران<span class="en">Quota · expiry · one private link</span></h3><h3 data-en>Users<span class="en">Quota · expiry · one private link</span></h3><p data-fa>برای هر نفر سهمیه‌ی حجم و روز تعیین کن، با یک کلیک فعال/غیرفعال کن و لینک وضعیت خصوصی‌اش را بفرست.</p><p data-en>Set a GB quota and day limit per person, toggle them on/off with a click, and hand them a private status link.</p></div>
       <div class="sc-step" data-shot="2"><div class="k">03 / dark mode</div><h3 data-fa>حالت تخته‌سیاه<span class="en">Same panel, chalk on slate</span></h3><h3 data-en>Chalkboard mode<span class="en">Same panel, chalk on slate</span></h3><p data-fa>یک کلیک، و کاغذ کاهی به تخته‌سیاه تبدیل می‌شود. برای شب‌ها.</p><p data-en>One click and the paper turns to slate. For late nights.</p></div>
-      <div class="sc-step" data-shot="3"><div class="k">04 / ip scanner</div><h3 data-fa>رادار IP تمیز<span class="en">Probe · rank · apply</span></h3><h3 data-en>Clean-IP radar<span class="en">Probe · rank · apply</span></h3><p data-fa>از شبکه‌ی خودت ۴۲۰+ آی‌پی کلادفلر را تست می‌کند، بر اساس تأخیر رتبه می‌دهد و بهترین‌ها را روی همه‌ی کانفیگ‌ها می‌نشاند. تست دامنه‌ی رله هم همین‌جاست.</p><p data-en>Probes 420+ Cloudflare IPs from your own network, ranks by latency and applies the best to every config. Relay-domain testing lives here too.</p></div>
+            <div class="sc-step" data-shot="3"><div class="k">04 / ip scanner</div><h3 data-fa>رادار IP تمیز<span class="en">Probe · rank · apply</span></h3><h3 data-en>Clean-IP radar<span class="en">Probe · rank · apply</span></h3><p data-fa>از شبکه‌ی خودت ۴۲۰+ آی‌پی کلادفلر را تست می‌کند، بر اساس تأخیر رتبه می‌دهد و بهترین‌ها را روی همه‌ی کانفیگ‌ها می‌نشاند. تست دامنه‌ی رله هم همین‌جاست.</p><p data-en>Probes 420+ Cloudflare IPs from your own network, ranks by latency and applies the best to every config. Relay-domain testing lives here too.</p></div>
+<div class="sc-step sc-mobile" data-shot="4"><div class="k">05 / mobile</div><h3 data-fa>در جیب<span class="en">Fully responsive, thumb-friendly</span></h3><h3 data-en>In your pocket<span class="en">Fully responsive, thumb-friendly</span></h3><p data-fa>همان پنل روی گوشی، با نوار ناوبری پایین و کارت‌های بزرگ. نیازی به لپ‌تاپ نیست.</p><p data-en>The same panel on a phone, with a bottom nav and big cards. No laptop required.</p></div>
     </div>
     <div class="sc-stick">
       <div class="shot-frame">
         <span class="tape"></span>
         <div class="bar"><i></i><i></i><i></i><span>nika.workers.dev/admin</span></div>
-        <img loading="lazy" class="on" src="assets/shot-fa-light-dash.jpg" alt="Dashboard">
-        <img loading="lazy" src="assets/shot-fa-light-users.jpg" alt="Users">
-        <img loading="lazy" src="assets/shot-en-dark-dash.jpg" alt="Dark mode">
-        <img loading="lazy" src="assets/shot-en-dark-scanner.jpg" alt="IP scanner">
+        <img loading="lazy" class="on" src="assets/shot-fa-light-dash.webp" alt="Dashboard">
+        <img loading="lazy" src="assets/shot-fa-light-users.webp" alt="Users">
+        <img loading="lazy" src="assets/shot-en-dark-dash.webp" alt="Dark mode">
+        <img loading="lazy" src="assets/shot-en-dark-scanner.webp" alt="IP scanner">
+        <div class="phone"><img loading="lazy" src="assets/shot-mobile.webp" alt="Mobile"></div>
         <span class="shot-note">fig. 06 — actual panel</span>
       </div>
     </div>
@@ -522,7 +539,17 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
         <li data-fa>استتار مسیرهای ناشناس برای پنهان‌کاری</li><li data-en>Camouflage on unknown routes</li>
       </ul>
     </div>
-    <div class="art px" data-depth="10"><img loading="lazy" src="assets/art-cloud.jpg" alt="Cloud schematic"><span class="dim"></span><span class="cap">fig. 03 — the edge</span></div>
+    <div class="art px" data-depth="10">
+      <img loading="lazy" src="assets/art-cloud.webp" alt="Cloud schematic">
+      <svg class="flow" viewBox="0 0 400 60" aria-hidden="true">
+        <path class="wire" d="M20 30 H140 M260 30 H380" pathLength="1"/>
+        <g class="node"><rect x="8" y="14" width="24" height="32" rx="3"/><text x="20" y="56">client</text></g>
+        <g class="node"><path d="M150 40c-10 0-14-8-8-14 2-10 18-12 22-4 8-4 18 2 14 10 6 2 4 8-2 8z"/><text x="200" y="56">worker</text></g>
+        <g class="node"><circle cx="386" cy="30" r="12"/><path d="M374 30h24M386 18v24M378 22c4 4 12 4 16 0M378 38c4-4 12-4 16 0"/><text x="386" y="56">world</text></g>
+        <circle class="pkt" r="2.5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M20 30 H380"/></circle>
+        <circle class="pkt" r="2.5"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M20 30 H380"/></circle>
+      </svg>
+      <span class="dim"></span><span class="cap">fig. 03 — the edge</span></div>
   </div>
 </section>
 
@@ -553,7 +580,7 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <p data-fa>پنل ادمین پشت یک مسیر مخفی است؛ رمز عبور هش می‌شود، نشست‌ها با HMAC امضا می‌شوند و هر درخواست ناشناس یک صفحه‌ی بی‌ضرر می‌بیند. هر کاربر لینک خصوصی خودش را دارد.</p>
       <p data-en>The admin panel sits behind a hidden path; passwords are hashed, sessions HMAC-signed, and any unknown request sees a harmless decoy page. Every user gets a private link.</p>
     </div>
-    <div class="art px" data-depth="12"><img loading="lazy" src="assets/art-lock.jpg" alt="Lock sketch"><span class="dim"></span><span class="cap">fig. 04 — the lock</span></div>
+    <div class="art px" data-depth="12"><img loading="lazy" src="assets/art-lock.webp" alt="Lock sketch"><span class="dim"></span><span class="cap">fig. 04 — the lock</span></div>
   </div>
 </section>
 
@@ -572,7 +599,7 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <p style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--pencil)" data-fa>* اختیاری: یک KV namespace با نام <b>NIKA_KV</b> یا دیتابیس D1 با نام <b>NIKA_DB</b> برای ذخیره‌سازی دائمی متصل کن.</p>
       <p style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--pencil)" data-en>* Optional: bind a KV namespace as <b>NIKA_KV</b> or a D1 database as <b>NIKA_DB</b> for persistent storage.</p>
     </div>
-    <div class="code"><span class="scan"></span><pre><span class="c"># 1. clone</span>
+    <div class="code"><pre><span class="c"># 1. clone</span>
 <span class="k">git clone</span> https://github.com/NikaTeem/Nika-Net.git
 <span class="k">cd</span> Nika-Net
 
@@ -602,12 +629,27 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
       <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net/tree/main/bot" target="_blank" rel="noopener"><span data-fa>راهنمای ربات</span><span data-en>Bot guide</span> ↗</a>
     </div>
     <div style="position:relative">
-      <img loading="lazy" src="assets/art-plane.jpg" alt="" style="position:absolute;width:170px;top:-70px;inset-inline-end:-40px;filter:grayscale(1);mix-blend-mode:multiply;opacity:.8;transform:rotate(8deg);pointer-events:none" class="plane">
+      <img loading="lazy" src="assets/art-plane.webp" alt="" style="position:absolute;width:170px;top:-70px;inset-inline-end:-40px;filter:grayscale(1);mix-blend-mode:multiply;opacity:.8;transform:rotate(8deg);pointer-events:none" class="plane">
     <div class="sketch">
       <div class="msg"><small>Nika Launcher</small>👋 Welcome. Send me your Cloudflare token — or tap the link to create one with the right permissions.</div>
       <div class="msg me"><small>you</small>/deploy</div>
       <div class="msg"><small>Nika Launcher</small>✏️ Sketching your worker…<br>✔ Worker created<br>✔ KV bound as NIKA_KV<br>✔ Panel live → https://nika-xxxx.workers.dev/admin</div>
     </div></div>
+  </div>
+</section>
+
+<!-- FIELD NOTES -->
+<section class="wrap rv notes-sec">
+  <div class="sec-head">
+    <div class="num">— Field notes</div>
+    <h2 class="en" dir="ltr">Notes from <span class="ul">the margin.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>یادداشت‌های حاشیه‌ی دفتر.</p>
+  </div>
+  <div class="notes">
+    <div class="note n1"><p data-fa>«اولین بار که بدون VPS به اینترنت آزاد وصل شدم. سه دقیقه طول کشید.»</p><p data-en>"First time I got through without renting a VPS. Took three minutes."</p><small>— early tester, Tehran</small></div>
+    <div class="note n2"><p data-fa>«اسکنر IP همون چیزیه که همیشه دستی انجام می‌دادم. حالا یک دکمه‌ست.»</p><p data-en>"The IP scanner is what I used to do by hand. Now it's one button."</p><small>— network admin</small></div>
+    <div class="note n3"><p data-fa>«تمش رو دوست دارم؛ حس یک دفترچه‌ی قدیمی می‌ده، نه یک داشبورد خشک.»</p><p data-en>"I love the theme; it feels like an old notebook, not a cold dashboard."</p><small>— designer</small></div>
+    <div class="note n4"><p data-fa>«برای مامانم ساختم. خودش لینک اشتراک رو تو v2rayNG زد و تموم.»</p><p data-en>"Built one for my mom. She pasted the subscription link into v2rayNG and that was it."</p><small>— student, Shiraz</small></div>
   </div>
 </section>
 
@@ -649,6 +691,24 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
   </div>
 </section>
 
+<!-- DEPLOY CTA -->
+<section class="wrap rv">
+  <div class="deploy-box">
+    <div class="seal" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="38" stroke-dasharray="2 3"/><path d="M34 68V32l32 36V32"/></svg></div>
+    <div>
+      <div class="num">— Ready?</div>
+      <h2 class="en" dir="ltr">Deploy your own edge<br>in the next <span class="ul">five minutes.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+      <p class="h2-fa" data-fa>در پنج دقیقه‌ی آینده، گذرگاه خودت را بساز.</p>
+      <p data-fa>یک حساب رایگان Cloudflare کافی است. نه کارت بانکی، نه سرور، نه دانش خاص.</p>
+      <p data-en>A free Cloudflare account is all you need. No credit card, no server, no expertise.</p>
+      <div class="cta" style="margin-top:28px">
+        <a class="btn solid mag" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار با یک کلیک</span><span data-en>One-click deploy</span> ⚡</a>
+        <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener"><span data-fa>راهنمای فارسی</span><span data-en>Read the guide</span> →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MANIFESTO -->
 <section class="manifesto rv">
   <div class="bigN">N</div>
@@ -658,11 +718,7 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
     <p class="fa-q" data-fa>«دامنه‌ی خودت، پهنای باند خودت، داده‌های خودت. بدون سرور مشترک، بدون واسطه، بدون هزینه.»</p>
     <div class="sig" dir="ltr">— Nika Net · Config Panel Engineering</div>
     <div class="ornament">✦</div>
-    <div class="cta" style="justify-content:center;margin-top:20px">
-      <a class="btn solid mag" href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">★ <span data-fa>ستاره بده در GitHub</span><span data-en>Star on GitHub</span></a>
-      <a class="btn mag" href="https://github.com/NikaTeem/Nika-Net/blob/main/ROADMAP.md" target="_blank" rel="noopener"><span data-fa>نقشه راه</span><span data-en>Roadmap</span> →</a>
-    </div>
-  </div>
+      </div>
 </section>
 </main>
 
@@ -670,7 +726,7 @@ html.en .card h3,html.en .hero-fa,html.en .h2-fa,html.en .manifesto .fa-q{font-f
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo-512.jpg" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
         <p data-fa>پنل پروکسی مدادی و مقاوم در برابر سانسور. آزاد برای استفاده‌ی شخصی و یادگیری — مسئولانه استفاده کن.</p>
         <p data-en>A pencil-drawn, censorship-resistant proxy panel. Free for personal use and learning — use responsibly.</p>
       </div>
@@ -706,15 +762,12 @@ document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
 // progress
 const prog=document.getElementById('prog');
 addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
-// cursor
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.transform=`translate(${mx}px,${my}px)`});
-(function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;cr.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.card,.proto>div').forEach(el=>{el.addEventListener('mouseenter',()=>cr.classList.add('hov'));el.addEventListener('mouseleave',()=>cr.classList.remove('hov'))});
 // magnetic buttons
 document.querySelectorAll('.mag').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform=`translate(${x*.18}px,${y*.28}px)`});b.addEventListener('mouseleave',()=>b.style.transform='')});
 // card tilt + spotlight
 document.querySelectorAll('.tilt').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');c.style.transform=`translateY(-8px) rotateX(${(0.5-y)*8}deg) rotateY(${(x-0.5)*8}deg)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+// hero draw-over fade
+setTimeout(()=>{const d=document.querySelector('.draw-over');if(d)d.classList.add('gone')},100);
 // hero frame 3D tilt
 const fr=document.getElementById('frame');
 if(fr&&matchMedia('(hover:hover) and (min-width:920px)').matches){addEventListener('mousemove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;fr.style.transform=`rotate(-1.5deg) rotateY(${x*10}deg) rotateX(${-y*10}deg)`})}
@@ -723,7 +776,7 @@ const px=[...document.querySelectorAll('.px')];
 const canPx=()=>matchMedia('(min-width:900px) and (hover:hover)').matches;
 addEventListener('scroll',()=>{if(!canPx())return;px.forEach(el=>{const r=el.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;let c=(r.top+r.height/2-innerHeight/2)/innerHeight;c=Math.max(-1,Math.min(1,c));el.firstElementChild.style.transform=`translateY(${-c*el.dataset.depth*2.5}px) rotate(${c*1.2}deg)`})},{passive:true});
 // showcase sticky
-const scSteps=[...document.querySelectorAll('.sc-step')],scImgs=[...document.querySelectorAll('.shot-frame img')];
+const scSteps=[...document.querySelectorAll('.sc-step')],scImgs=[...document.querySelectorAll('.shot-frame > img'),document.querySelector('.phone')];
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=+e.target.dataset.shot;scSteps.forEach(s=>s.classList.toggle('on',s===e.target));scImgs.forEach((im,k)=>im.classList.toggle('on',k===i))}}),{rootMargin:'-45% 0px -45% 0px'});
 scSteps.forEach(s=>so.observe(s));
 // panorama horizontal drift
