@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="assets/favicon.png"><link rel="stylesheet" href="style.css?v=4"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json"><title>404 — Nika Net</title>
+<style>.nf{min-height:calc(100vh - 70px);display:grid;place-items:center;text-align:center;padding:60px 0}
+.nf .big{font-family:var(--serif);font-size:clamp(6rem,22vw,16rem);line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--ink);font-weight:700;position:relative}
+.nf .big::after{content:"";position:absolute;left:10%;right:10%;bottom:6%;height:3px;background:repeating-linear-gradient(90deg,var(--ink) 0 8px,transparent 8px 14px);transform:rotate(-2deg)}
+.nf h1{font-family:var(--fa);font-size:clamp(1.4rem,3vw,2.2rem);margin:20px 0 10px;text-shadow:none}html.en .nf h1{font-family:var(--serif)}
+.nf p{color:var(--ink-2);max-width:48ch;margin:0 auto 30px}</style></head><body><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+    <div class="links" id="links">
+      <a href="/#features" data-fa>ویژگی‌ها</a><a href="/#features" data-en>Features</a>
+      <a href="/#showcase" data-fa>نگاهی به پنل</a><a href="/#showcase" data-en>The panel</a>
+      <a href="/#protocols" data-fa>پروتکل‌ها</a><a href="/#protocols" data-en>Protocols</a>
+      <a href="/#start" data-fa>شروع سریع</a><a href="/#start" data-en>Quick start</a>
+            <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="ctrls">
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
+      <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
+      <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+<main class="wrap nf"><div>
+  <div class="num" style="justify-content:center">— fig. 404</div>
+  <div class="big">404</div>
+  <h1 data-fa>این صفحه در دفتر طراحی نیست.</h1><h1 data-en>This page isn't in the sketchbook.</h1>
+  <p data-fa>شاید پاک شده، شاید هرگز کشیده نشده. از اول شروع کن.</p><p data-en>Maybe it was erased, maybe never drawn. Start from the first page.</p>
+  <div class="cta" style="justify-content:center"><a class="btn solid" href="/"><span data-fa>بازگشت به خانه</span><span data-en>Back home</span></a><a class="btn" href="/docs.html"><span data-fa>مستندات</span><span data-en>Docs</span></a></div>
+</div></main>
+<script>
+function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')}
+if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
+function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
+applyLang(localStorage.getItem('nika-lang')||'fa');
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
+</script>
+</body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="assets/favicon.png"><link rel="stylesheet" href="style.css?v=4"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json"><title>Docs — Nika Net</title>
+<style>
+.doc{display:grid;grid-template-columns:240px 1fr;gap:56px;padding:60px 0 100px}
+.toc{position:sticky;top:100px;align-self:start;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.toc a{display:block;padding:8px 0;color:var(--pencil);text-decoration:none;border-inline-start:1px dashed var(--line);padding-inline-start:14px;transition:.2s}
+.toc a:hover,.toc a.on{color:var(--ink);border-inline-start:1.5px solid var(--ink)}
+.prose h2{font-size:clamp(1.6rem,3vw,2.3rem);margin:70px 0 18px;scroll-margin-top:100px}
+.prose h2:first-child{margin-top:0}
+.prose h3{font-size:1.15rem;margin:34px 0 10px}
+.prose p,.prose li{color:var(--ink-2);max-width:70ch}
+.prose ul,.prose ol{padding-inline-start:22px;margin:10px 0}
+.prose code{font-family:var(--mono);font-size:.88em;background:rgba(0,0,0,.06);padding:2px 6px;border:1px dashed var(--line-soft)}
+html.dark .prose code{background:rgba(255,255,255,.08)}
+.prose .code{margin:18px 0 26px;font-size:.8rem}
+.prose table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.92rem}
+.prose th,.prose td{padding:10px 12px;border-bottom:1px dashed var(--line);text-align:start}
+.prose th{font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);font-weight:400}
+.callout{border:1px solid var(--line);padding:18px 22px;margin:22px 0;position:relative;background:rgba(255,255,255,.07)}
+.callout::before{content:"";position:absolute;inset:5px;border:1px dashed var(--line-soft);pointer-events:none}
+.callout b{font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;display:block;margin-bottom:6px;color:var(--pencil)}
+@media(max-width:860px){.doc{grid-template-columns:1fr}.toc{position:static;display:flex;flex-wrap:wrap;gap:4px 18px}.toc a{border:none;padding-inline-start:0}}
+</style></head><body><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+    <div class="links" id="links">
+      <a href="/#features" data-fa>ویژگی‌ها</a><a href="/#features" data-en>Features</a>
+      <a href="/#showcase" data-fa>نگاهی به پنل</a><a href="/#showcase" data-en>The panel</a>
+      <a href="/#protocols" data-fa>پروتکل‌ها</a><a href="/#protocols" data-en>Protocols</a>
+      <a href="/#start" data-fa>شروع سریع</a><a href="/#start" data-en>Quick start</a>
+            <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="ctrls">
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
+      <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
+      <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+<main class="wrap doc">
+<aside class="toc">
+  <a href="#intro" data-fa>معرفی</a><a href="#intro" data-en>Intro</a>
+  <a href="#deploy" data-fa>استقرار</a><a href="#deploy" data-en>Deploy</a>
+  <a href="#storage" data-fa>ذخیره‌سازی</a><a href="#storage" data-en>Storage</a>
+  <a href="#admin" data-fa>پنل ادمین</a><a href="#admin" data-en>Admin panel</a>
+  <a href="#users" data-fa>کاربران</a><a href="#users" data-en>Users</a>
+  <a href="#clients" data-fa>کلاینت‌ها</a><a href="#clients" data-en>Clients</a>
+  <a href="#scanner" data-fa>اسکنر IP</a><a href="#scanner" data-en>IP scanner</a>
+  <a href="#api">API</a>
+  <a href="#security" data-fa>امنیت</a><a href="#security" data-en>Security</a>
+  <a href="#trouble" data-fa>رفع اشکال</a><a href="#trouble" data-en>Troubleshooting</a>
+</aside>
+<article class="prose">
+  <div class="num">Documentation · v0.2</div>
+  <h2 id="intro" data-fa>معرفی</h2><h2 id="intro" data-en>Intro</h2>
+  <p data-fa>نیکا نت یک Cloudflare Worker است که هم‌زمان نقش <b>پروکسی</b> (VLESS و Trojan روی WebSocket) و <b>پنل مدیریت</b> را دارد. همه‌چیز در یک فایل <code>worker.js</code> جمع شده و روی پلن رایگان اجرا می‌شود.</p>
+  <p data-en>Nika Net is a single Cloudflare Worker that acts as both a <b>proxy</b> (VLESS and Trojan over WebSocket) and a <b>management panel</b>. Everything is bundled into one <code>worker.js</code> and runs on the free plan.</p>
+  <div class="callout"><b>Limits · free plan</b><p data-fa>۱۰۰٬۰۰۰ درخواست در روز، ۱۰ms CPU برای هر درخواست، بدون UDP. برای تماس صوتی/تصویری از خروجی WARP استفاده کن.</p><p data-en>100,000 requests/day, 10 ms CPU per request, no UDP. Use the WARP export for voice/video.</p></div>
+
+  <h2 id="deploy" data-fa>استقرار</h2><h2 id="deploy" data-en>Deploy</h2>
+  <h3 data-fa>روش ۱ — یک کلیک</h3><h3 data-en>Option 1 — One click</h3>
+  <p data-fa>روی <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a> بزن، وارد حساب Cloudflare شو و مراحل را تأیید کن. در پایان آدرسی مثل <code>https://nika-net.&lt;you&gt;.workers.dev</code> می‌گیری.</p>
+  <p data-en>Click <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a>, sign in and confirm. You'll get a URL like <code>https://nika-net.&lt;you&gt;.workers.dev</code>.</p>
+  <h3 data-fa>روش ۲ — خط فرمان</h3><h3 data-en>Option 2 — CLI</h3>
+  <div class="code"><pre>git clone https://github.com/NikaTeem/Nika-Net.git
+cd Nika-Net
+npm install
+npm run build          # → dist/worker.js
+npx wrangler login
+npm run deploy</pre></div>
+  <h3 data-fa>روش ۳ — دستی در داشبورد</h3><h3 data-en>Option 3 — Dashboard paste</h3>
+  <ol>
+    <li data-fa>Cloudflare → Workers &amp; Pages → <b>Create Worker</b></li><li data-en>Cloudflare → Workers &amp; Pages → <b>Create Worker</b></li>
+    <li data-fa>محتوای <code>dist/worker.js</code> را جای‌گذاری کن → <b>Save and Deploy</b></li><li data-en>Paste <code>dist/worker.js</code> → <b>Save and Deploy</b></li>
+    <li data-fa><code>/admin</code> را باز کن و رمز را در اولین ورود تعیین کن</li><li data-en>Open <code>/admin</code> and set the password on first login</li>
+  </ol>
+
+  <h2 id="storage" data-fa>ذخیره‌سازی</h2><h2 id="storage" data-en>Storage</h2>
+  <p data-fa>بدون binding، داده در حافظه است و با هر دیپلوی پاک می‌شود. برای پایداری یکی از این دو را متصل کن:</p>
+  <p data-en>Without a binding, data lives in memory and resets on redeploy. Bind one of these for persistence:</p>
+  <table><tr><th>Binding</th><th data-fa>نوع</th><th data-en>Type</th><th data-fa>توضیح</th><th data-en>Notes</th></tr>
+  <tr><td><code>NIKA_KV</code></td><td>KV namespace</td><td data-fa>ساده‌ترین؛ Workers → Settings → Bindings → KV</td><td data-en>Simplest; Workers → Settings → Bindings → KV</td></tr>
+  <tr><td><code>NIKA_DB</code></td><td>D1 database</td><td data-fa>جدول <code>kv (key TEXT PRIMARY KEY, value TEXT)</code> را بساز</td><td data-en>Create table <code>kv (key TEXT PRIMARY KEY, value TEXT)</code></td></tr></table>
+
+  <h2 id="admin" data-fa>پنل ادمین</h2><h2 id="admin" data-en>Admin panel</h2>
+  <p data-fa>مسیر پیش‌فرض <code>/admin</code> است؛ از تنظیمات می‌توانی آن را به یک مسیر مخفی تغییر دهی. زبان (FA/EN) و تم (روشن/تیره) با دکمه‌های بالای پنل عوض می‌شوند. هر مسیر ناشناس یک صفحه‌ی استتار بی‌ضرر نشان می‌دهد.</p>
+  <p data-en>Default path is <code>/admin</code>; change it to a hidden path in Settings. Language (FA/EN) and theme toggle from the top bar. Unknown routes serve a harmless decoy page.</p>
+
+  <h2 id="users" data-fa>کاربران</h2><h2 id="users" data-en>Users</h2>
+  <ul>
+    <li data-fa><b>سهمیه (GB)</b> و <b>مدت (روز)</b> برای هر کاربر؛ صفر یعنی نامحدود</li><li data-en><b>Quota (GB)</b> and <b>days</b> per user; zero means unlimited</li>
+    <li data-fa>هر کاربر یک <b>لینک اشتراک</b> خصوصی دارد: <code>/sub/&lt;token&gt;</code></li><li data-en>Each user has a private <b>subscription link</b>: <code>/sub/&lt;token&gt;</code></li>
+    <li data-fa>غیرفعال کردن فوری با یک کلیک؛ حذف کاربر UUID را باطل می‌کند</li><li data-en>Instant toggle off; deleting a user revokes the UUID</li>
+  </ul>
+
+  <h2 id="clients" data-fa>کلاینت‌ها</h2><h2 id="clients" data-en>Clients</h2>
+  <table><tr><th data-fa>کلاینت</th><th data-en>Client</th><th data-fa>لینک</th><th data-en>Link</th></tr>
+  <tr><td>v2rayNG · Hiddify · Streisand · NekoBox</td><td><code>/sub/&lt;token&gt;</code></td></tr>
+  <tr><td>Clash · Mihomo · Stash</td><td><code>/sub/&lt;token&gt;.yaml</code></td></tr>
+  <tr><td>Sing-box</td><td><code>/sub/&lt;token&gt;.json</code></td></tr>
+  <tr><td>WireGuard (WARP)</td><td data-fa>از پنل → کاربر → WARP دانلود کن</td><td data-en>Panel → user → WARP export</td></tr></table>
+
+  <h2 id="scanner" data-fa>اسکنر IP تمیز</h2><h2 id="scanner" data-en>Clean-IP scanner</h2>
+  <p data-fa>از مرورگر <em>خودت</em> ۴۲۰+ آی‌پی Cloudflare را روی پورت‌های TLS تست می‌کند و بر اساس تأخیر مرتب می‌کند. «Apply» بهترین‌ها را در تنظیمات ذخیره می‌کند و همه‌ی کانفیگ‌ها از آن‌ها استفاده می‌کنند. بخش <b>Relay Test</b> هم بهترین دامنه‌ی رله (workers.dev یا دامنه‌ی خودت) را پیدا می‌کند.</p>
+  <p data-en>Probes 420+ Cloudflare IPs on TLS ports from <em>your</em> browser and ranks them by latency. "Apply" saves the best to settings and every config uses them. <b>Relay Test</b> finds the healthiest relay domain (workers.dev or your own).</p>
+
+  <h2 id="api">API</h2>
+  <table><tr><th>Route</th><th data-fa>توضیح</th><th data-en>Description</th></tr>
+  <tr><td><code>POST /api/login</code></td><td data-fa>ورود (اولین بار رمز را ست می‌کند)</td><td data-en>Sign in (first call sets password)</td></tr>
+  <tr><td><code>GET /api/status</code></td><td data-fa>وضعیت پنل</td><td data-en>Panel status</td></tr>
+  <tr><td><code>GET/POST/DELETE /api/users</code></td><td data-fa>مدیریت کاربران</td><td data-en>User management</td></tr>
+  <tr><td><code>GET/POST /api/settings</code></td><td data-fa>تنظیمات</td><td data-en>Settings</td></tr>
+  <tr><td><code>GET /api/gen?id=</code></td><td data-fa>تولید کانفیگ کاربر</td><td data-en>Generate user configs</td></tr>
+  <tr><td><code>WS ?uuid=&amp;proto=vless|trojan</code></td><td data-fa>اتصال پروکسی</td><td data-en>Proxy connection</td></tr></table>
+
+  <h2 id="security" data-fa>امنیت</h2><h2 id="security" data-en>Security</h2>
+  <ul>
+    <li data-fa>رمز ادمین با SHA-256 هش می‌شود؛ نشست‌ها با HMAC امضا و به کوکی HttpOnly محدودند</li><li data-en>Admin password is SHA-256 hashed; sessions are HMAC-signed HttpOnly cookies</li>
+    <li data-fa>مسیر ادمین را تغییر بده و لینک اشتراک را فقط به خود کاربر بده</li><li data-en>Change the admin path and share subscription links only with their owner</li>
+    <li data-fa>Trojan برای شرایطی که VLESS شناسایی می‌شود پنهان‌کارتر است</li><li data-en>Trojan is stealthier when VLESS gets fingerprinted</li>
+  </ul>
+
+  <h2 id="trouble" data-fa>رفع اشکال</h2><h2 id="trouble" data-en>Troubleshooting</h2>
+  <h3 data-fa>کانفیگ وصل نمی‌شود</h3><h3 data-en>Config won't connect</h3>
+  <ul>
+    <li data-fa>اسکنر IP را اجرا و Apply کن؛ سپس اشتراک را در کلاینت به‌روزرسانی کن</li><li data-en>Run the IP scanner and Apply; then refresh the subscription in your client</li>
+    <li data-fa>Relay Test را اجرا کن — گاهی <code>workers.dev</code> در یک ISP بسته است</li><li data-en>Run Relay Test — <code>workers.dev</code> is sometimes blocked on a given ISP</li>
+    <li data-fa>پروتکل را به Trojan تغییر بده</li><li data-en>Switch the protocol to Trojan</li>
+  </ul>
+  <h3 data-fa>بعد از دیپلوی کاربران پاک شدند</h3><h3 data-en>Users vanished after redeploy</h3>
+  <p data-fa>Binding ذخیره‌سازی نداری. بخش <a href="#storage">ذخیره‌سازی</a> را ببین.</p><p data-en>You have no storage binding. See <a href="#storage">Storage</a>.</p>
+  <h3 data-fa>خطای 1101 / CPU</h3><h3 data-en>Error 1101 / CPU limit</h3>
+  <p data-fa>تعداد کاربران هم‌زمان زیاد است یا اسکن IP از خود Worker اجرا شده؛ اسکنر همیشه از مرورگر اجرا می‌شود.</p><p data-en>Too many concurrent users, or the IP scan ran from the Worker; the scanner always runs from the browser.</p>
+</article>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="brand" href="/" style="margin-bottom:16px"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+        <p data-fa>پنل پروکسی مدادی و مقاوم در برابر سانسور. آزاد برای استفاده‌ی شخصی و یادگیری — مسئولانه استفاده کن.</p>
+        <p data-en>A pencil-drawn, censorship-resistant proxy panel. Free for personal use and learning — use responsibly.</p>
+      </div>
+      <div><h5>Project</h5><ul>
+        <li><a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Nika-Net repository</a></li>
+        <li><a href="docs.html">Docs / مستندات</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener">راهنمای فارسی</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li></ul></div>
+      <div><h5>Links</h5><ul>
+        <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
+        <li><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/tree/main/bot" target="_blank" rel="noopener">Telegram Launcher bot</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Nika Net · nikanet.dpdns.org · Drawn in graphite</span><span>Freedom · Speed · Security · Your way</span></div>
+  </div>
+</footer>
+<script>
+function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')}
+if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
+function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
+applyLang(localStorage.getItem('nika-lang')||'fa');
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
+</script>
+<script>
+const tl=[...document.querySelectorAll('.toc a')],hs=[...document.querySelectorAll('.prose h2')];
+const to=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){tl.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-20% 0px -70% 0px'});
+hs.forEach(h=>to.observe(h));
+</script>
+</body></html>
