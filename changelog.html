@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog & Roadmap — Nika Net</title><meta name="description" content="Nika Net release history (live from GitHub) and the road ahead.">
+<link rel="canonical" href="https://nikanet.dpdns.org/changelog.html"><meta property="og:title" content="Changelog & Roadmap — Nika Net"><meta property="og:image" content="https://nikanet.dpdns.org/assets/og.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png"><link rel="stylesheet" href="style.css?v=14"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json">
+<style>
+.cl{padding:60px 0 100px}
+.cl-head{max-width:760px;margin-bottom:56px}
+.cl-tabs{display:flex;margin:0 0 40px;border-bottom:1px dashed var(--line)}
+.cl-tabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 22px;font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pencil);cursor:pointer;transition:.2s}
+.cl-tabs button.on{color:var(--ink);border-color:var(--ink)}
+.tl{position:relative;padding-inline-start:34px}
+.tl::before{content:"";position:absolute;top:8px;bottom:0;inset-inline-start:8px;width:1px;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 10px)}
+.rel{position:relative;margin-bottom:46px;opacity:0;transform:translateY(16px);animation:up .7s var(--ease) forwards;animation-delay:calc(var(--i) * .07s)}
+.rel::before{content:"";position:absolute;inset-inline-start:-31px;top:8px;width:11px;height:11px;border:1.5px solid var(--ink);background:var(--paper);border-radius:50%}
+.rel.latest::before{background:var(--ink);box-shadow:0 0 0 5px rgba(23,21,18,.12)}
+.rel-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.rel-h b{font-family:var(--serif);font-size:1.6rem;direction:ltr}
+.rel-h time{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pencil)}
+.rel-h .tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--ink);padding:2px 8px}
+.rel ul{list-style:none;padding:0}
+.rel li{padding:6px 0;color:var(--ink-2);font-size:.98rem;line-height:1.7;display:flex;gap:12px;align-items:baseline}
+.rel li a{font-family:var(--mono);font-size:.68rem;color:var(--pencil);text-decoration:none;flex:none;border-bottom:1px dashed var(--line-soft)}
+.rel li a:hover{color:var(--ink)}
+.rel li .e{flex:none;width:1.4em;text-align:center}
+.rd{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rd-col h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pencil);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.rd-col h3::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.rd-card{border:1px solid var(--line);padding:16px 18px;margin-bottom:14px;background:rgba(255,255,255,.08);position:relative;transition:.3s var(--ease)}
+html.dark .rd-card{background:rgba(255,255,255,.03)}
+.rd-card::before{content:"";position:absolute;inset:4px;border:1px dashed var(--line-soft);pointer-events:none}
+.rd-card:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--graphite)}
+.rd-card b{display:block;font-size:1rem;margin-bottom:6px}
+.rd-card p{font-size:.86rem;color:var(--ink-2);line-height:1.7}
+.rd-card .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);margin-top:8px;display:block}
+.empty{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;color:var(--pencil);padding:30px 0}
+@media(max-width:860px){.rd{grid-template-columns:1fr}}
+</style>
+</head><body><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+    <div class="links" id="links">
+      <a href="/#features" data-fa>ویژگی‌ها</a><a href="/#features" data-en>Features</a>
+      <a href="/#showcase" data-fa>نگاهی به پنل</a><a href="/#showcase" data-en>The panel</a>
+      <a href="/#protocols" data-fa>پروتکل‌ها</a><a href="/#protocols" data-en>Protocols</a>
+      <a href="/#start" data-fa>شروع سریع</a><a href="/#start" data-en>Quick start</a>
+            <a href="/#telegram" data-fa>تلگرام</a><a href="/#telegram" data-en>Telegram</a>
+      <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
+      <a href="changelog.html" data-fa>تغییرات</a><a href="changelog.html" data-en>Changelog</a>
+      <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="ctrls">
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
+      <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
+      <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+<main class="wrap cl" id="top">
+  <div class="cl-head">
+    <div class="num">— Ledger of changes</div>
+    <h2 class="en" dir="ltr">Every line <span class="ul">we drew.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>هر خطی که کشیدیم.</p>
+    <p data-fa>تاریخچهٔ کامل نسخه‌ها، مستقیم از کامیت‌های GitHub — گروه‌بندی‌شده بر اساس شماره نسخه. و نقشهٔ راه: چیزهایی که در راه است.</p>
+    <p data-en>The complete release history, pulled straight from GitHub commits and grouped by version. And the roadmap: what’s on the drawing board.</p>
+  </div>
+  <div class="cl-tabs"><button class="on" data-t="log"><span data-fa>تاریخچه</span><span data-en>Changelog</span></button><button data-t="road"><span data-fa>نقشهٔ راه</span><span data-en>Roadmap</span></button></div>
+  <section id="log"><div class="tl" id="tl"><div class="empty" data-fa>در حال خواندن دفتر…</div><div class="empty" data-en>Reading the ledger…</div></div></section>
+  <section id="road" hidden><div class="rd" id="rd"></div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
+        <p data-fa>پنل پروکسی مدادی و مقاوم در برابر سانسور. آزاد برای استفاده‌ی شخصی و یادگیری — مسئولانه استفاده کن.</p>
+        <p data-en>A pencil-drawn, censorship-resistant proxy panel. Free for personal use and learning — use responsibly.</p>
+      </div>
+      <div><h5>Project</h5><ul>
+        <li><a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Nika-Net repository</a></li>
+        <li><a href="docs.html">Docs / مستندات</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener">راهنمای فارسی</a></li>
+        <li><a href="changelog.html">Changelog / Roadmap</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li></ul></div>
+      <div><h5>Links</h5><ul>
+        <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
+        <li><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a></li>
+        <li><a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a></li>
+        <li><a href="https://t.me/NikaSociety" target="_blank" rel="noopener">@NikaSociety — channel</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Nika Net · nikanet.dpdns.org · Drawn in graphite</span><span>Freedom · Speed · Security · Your way</span></div>
+  </div>
+</footer>
+<script>
+function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')}
+if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
+function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
+applyLang(localStorage.getItem('nika-lang')||'fa');
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
+</script>
+<script>
+const ROADMAP={
+ "doing":[
+  {"fa":"Mini App پشتیبانی در تلگرام","en":"Support Mini App inside Telegram","dfa":"چت مستقیم کاربر با مالک، بدون خروج از تلگرام.","den":"Direct user↔owner chat without leaving Telegram.","k":"launcher bot"},
+  {"fa":"صندوق انتقادات و پیشنهادات","en":"Public suggestion box","dfa":"آمار زنده، رأی‌گیری، نظارت — همین سایت.","den":"Live stats, voting, moderation — on this site.","k":"website"}
+ ],
+ "next":[
+  {"fa":"پشتیبانی از Reality / gRPC","en":"Reality / gRPC transports","dfa":"مسیرهای جدید برای شرایط سخت‌تر فیلترینگ.","den":"New transports for harsher filtering conditions.","k":"core"},
+  {"fa":"پشتیبان‌گیری و بازیابی یک‌کلیکی","en":"One-click backup & restore","dfa":"خروجی رمزشده از KV/D1 و بازگردانی روی Worker جدید.","den":"Encrypted export from KV/D1, restore onto a fresh Worker.","k":"panel"},
+  {"fa":"اعلان انقضا در تلگرام","en":"Expiry alerts via Telegram","dfa":"به کاربر و مالک قبل از پایان حجم/زمان خبر بده.","den":"Warn user and owner before quota or time runs out.","k":"launcher bot"}
+ ],
+ "later":[
+  {"fa":"چند Worker، یک پنل","en":"Multi-Worker fleet from one panel","dfa":"مدیریت چند استقرار روی چند حساب Cloudflare.","den":"Manage several deployments across Cloudflare accounts.","k":"panel"},
+  {"fa":"صفحهٔ وضعیت عمومی","en":"Public status page","dfa":"سلامت لبه‌ها و آی‌پی‌های تمیز، به‌صورت زنده.","den":"Edge health and clean-IP freshness, live.","k":"website"},
+  {"fa":"افزونهٔ مرورگر","en":"Browser extension","dfa":"روشن/خاموش کردن پروکسی و دیدن مصرف، از نوار مرورگر.","den":"Toggle proxy and see usage from the toolbar.","k":"client"}
+ ]
+};
+const isEn=()=>document.documentElement.classList.contains('en');
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let commits=null;
+async function load(){const out=[];for(let p=1;p<=3;p++){const r=await fetch(`https://api.github.com/repos/NikaTeem/Nika-Net/commits?per_page=100&page=${p}`);if(!r.ok)break;const d=await r.json();out.push(...d);if(d.length<100)break}return out}
+function group(cs){const g=[];let cur=null;for(const c of cs){const m=c.commit.message.split('\n')[0];const v=(m.match(/v?(\d+\.\d+\.\d+)/)||[])[1];const emoji=(m.match(/^\p{Extended_Pictographic}/u)||[''])[0];const msg=m.replace(/^[^\w\u0600-\u06FF]*/,'').replace(/^v?\d+\.\d+\.\d+\s*[:：-]?\s*/,'');const key=v||(cur?cur.v:'pre');if(!cur||cur.v!==key){cur={v:key,date:c.commit.author.date,items:[]};g.push(cur)}cur.items.push({sha:c.sha,url:c.html_url,msg,emoji})}return g}
+function fmtDate(d){const x=new Date(d);return isEn()?x.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}):x.toLocaleDateString('fa-IR',{day:'2-digit',month:'long',year:'numeric'})}
+function renderLog(){const tl=document.getElementById('tl');if(!commits)return;const g=group(commits);tl.innerHTML=g.map((r,i)=>`<article class="rel ${i===0?'latest':''}" style="--i:${Math.min(i,12)}"><div class="rel-h"><b>${r.v==='pre'?'—':'v'+r.v}</b><time>${fmtDate(r.date)}</time>${i===0?`<span class="tag">${isEn()?'latest':'آخرین'}</span>`:''}</div><ul>${r.items.map(it=>`<li><span class="e">${it.emoji}</span><span dir="auto">${esc(it.msg)}</span><a href="${it.url}" target="_blank" rel="noopener">${it.sha.slice(0,7)}</a></li>`).join('')}</ul></article>`).join('')}
+function renderRoad(){const rd=document.getElementById('rd');const col=(k,tfa,ten)=>`<div class="rd-col"><h3>${isEn()?ten:tfa}</h3>${ROADMAP[k].map(x=>`<div class="rd-card"><b>${isEn()?x.en:x.fa}</b><p>${isEn()?x.den:x.dfa}</p><span class="k">${x.k}</span></div>`).join('')}</div>`;rd.innerHTML=col('doing','در حال کار','In progress')+col('next','بعدی','Up next')+col('later','بعدتر','Later')}
+load().then(c=>{commits=c;renderLog()}).catch(()=>{document.getElementById('tl').innerHTML=`<div class="empty">${isEn()?'GitHub is unreachable right now.':'الان دسترسی به GitHub نیست.'}</div>`});
+renderRoad();
+document.querySelectorAll('.cl-tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.cl-tabs button').forEach(x=>x.classList.toggle('on',x===b));document.getElementById('log').hidden=b.dataset.t!=='log';document.getElementById('road').hidden=b.dataset.t!=='road';history.replaceState(null,'','#'+b.dataset.t)});
+if(location.hash==='#road')document.querySelector('[data-t=road]').click();
+new MutationObserver(()=>{renderLog();renderRoad()}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+</script></body></html>

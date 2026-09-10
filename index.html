@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -59,6 +59,7 @@
             <a href="#telegram" data-fa>تلگرام</a><a href="#telegram" data-en>Telegram</a>
       <a href="#feedback" data-fa>صندوق</a><a href="#feedback" data-en>Feedback</a>
       <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
+      <a href="changelog.html" data-fa>تغییرات</a><a href="changelog.html" data-en>Changelog</a>
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
@@ -343,7 +344,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
     <p data-en>The workshop ledger — latest commits, pulled straight from GitHub. Nothing here is typed by hand.</p>
   </div>
   <div class="ledger" id="ledger" dir="ltr"><div class="ledger-empty" data-fa>در حال خواندن دفترچه…</div><div class="ledger-empty" data-en>Reading the ledger…</div></div>
-  <div class="ledger-foot" dir="ltr"><a href="https://github.com/NikaTeem/Nika-Net/commits/main" target="_blank" rel="noopener">full history on GitHub ↗</a><span id="ledgerVer"></span></div>
+  <div class="ledger-foot" dir="ltr"><a href="changelog.html">full changelog →</a><span id="ledgerVer"></span></div>
 </section>
 <!-- COMPARE -->
 <section class="wrap rv">
@@ -509,7 +510,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
         <li><a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Nika-Net repository</a></li>
         <li><a href="docs.html">Docs / مستندات</a></li>
         <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener">راهنمای فارسی</a></li>
-        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/ROADMAP.md" target="_blank" rel="noopener">Roadmap</a></li>
+        <li><a href="changelog.html">Changelog / Roadmap</a></li>
         <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li></ul></div>
       <div><h5>Links</h5><ul>
         <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
@@ -633,6 +634,7 @@ const PAL=[
  {k:'language english farsi persian',fa:'Switch to English',en:'تغییر زبان به فارسی',run:()=>toggleLang()},
  {k:'deploy cloudflare',fa:'استقرار روی Cloudflare ↗',en:'Deploy to Cloudflare ↗',run:()=>open('https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net','_blank')},
  {k:'github repo source',fa:'مخزن GitHub ↗',en:'GitHub repository ↗',run:()=>open('https://github.com/NikaTeem/Nika-Net','_blank')},
+ {k:'changelog roadmap releases versions',fa:'تاریخچهٔ تغییرات و نقشهٔ راه',en:'Changelog & roadmap',run:()=>location.href='changelog.html'},
  {k:'docs documentation',fa:'مستندات',en:'Documentation',run:()=>location.href='docs.html'},
  {k:'telegram bot launcher',fa:'ربات تلگرام ↗',en:'Telegram bot ↗',run:()=>open('https://t.me/NikaNetLauncher_bot','_blank')},
  {k:'copy link url share',fa:'کپی لینک سایت',en:'Copy site link',run:()=>navigator.clipboard&&navigator.clipboard.writeText('https://nikanet.dpdns.org/')},
