@@ -901,3 +901,113 @@ html:not(.dark){--paper-hi:#e9e3d5}
 
 /* --- mobile tune for display type --- */
 @media(max-width:720px){.hero-fa{font-size:2rem}.h2-fa{font-size:1.75rem}.card h3{font-size:1.3rem}.sc-step h3{font-size:1.55rem}.faq summary{font-size:1.15rem}.fa-q{font-size:1.5rem}}
+
+/* =====================================================================
+   v17 · SEAL & GOLD — one accent (vermilion seal + old gold), micro-motion
+   ===================================================================== */
+:root{--seal:#a8322a;--seal-soft:rgba(168,50,42,.14);--gold:#a8853a;--gold-soft:rgba(168,133,58,.18)}
+html.dark{--seal:#d4574d;--seal-soft:rgba(212,87,77,.16);--gold:#c9a55a;--gold-soft:rgba(201,165,90,.14)}
+
+/* --- highlight marker (hand-drawn red pencil under key words) --- */
+mark.hl{background:none;color:inherit;position:relative;white-space:nowrap}
+mark.hl::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;height:.42em;background:var(--seal);opacity:.22;border-radius:2px;transform:skew(-6deg) scaleX(0);transform-origin:right;transition:transform .9s var(--ease-out) .5s;z-index:-1}
+.in mark.hl::after,.hero mark.hl::after{transform:skew(-6deg) scaleX(1)}
+html.en mark.hl::after{transform-origin:left}
+b.acc{color:var(--seal);font-weight:800}
+
+/* --- underline swashes go vermilion --- */
+h2 .ul path{stroke:var(--seal);opacity:.85}
+.prog i{background:repeating-linear-gradient(90deg,var(--seal) 0 6px,transparent 6px 9px)}
+.pre-bar b{background:repeating-linear-gradient(90deg,var(--seal) 0 6px,transparent 6px 9px)}
+.pre-bar .pct{color:var(--seal)}
+.num::after,.num::before{background:var(--gold);opacity:.8}
+.num{color:var(--graphite)}
+.proto .st::before{color:var(--seal)}
+.step .n{border-color:var(--seal);color:var(--seal)}
+.sc-step.on .k{color:var(--seal)}
+.card .idx{color:var(--gold)}
+.card:hover .ico{border-color:var(--seal)}
+.card:hover .ico svg{stroke:var(--seal)}
+.fb-type.t-critique{background:var(--seal);border-color:var(--seal);color:#fff}
+.fb-type.t-idea{border-color:var(--gold);color:var(--gold)}
+.fb-vote.voted,.fb-vote:hover{background:var(--seal);border-color:var(--seal);color:#fff}
+.tg-pill{background:var(--seal)}
+.tg-pill:hover{background:#8d281f}
+.wire .live i{background:var(--seal)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(168,50,42,.55)}100%{box-shadow:0 0 0 12px rgba(168,50,42,0)}}
+html.dark .wire .live i{animation-name:pulse}
+.wire .live{color:var(--seal)}
+.ledger::after{background:var(--seal);opacity:.35}
+.lg-ver{border-color:var(--gold);color:var(--gold)}
+.rel.latest::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 5px var(--seal-soft)}
+.rel-h .tag{border-color:var(--seal);color:var(--seal)}
+.rail a.on b{color:var(--seal)}.rail a.on b::after{background:var(--seal)}
+.bp-node.on rect,.bp-node.on circle,.bp-node.on ellipse,.bp-node.on path:not(.bolt){stroke:var(--seal)}
+.bp-node .bolt{fill:var(--seal)}
+.pk{fill:var(--seal)}
+.bp-card.on{border-color:var(--seal)}
+.faq details[open] summary::after{background:var(--seal);border-color:var(--seal);color:#fff}
+.manifesto .ornament{color:var(--gold)}
+.manifesto .signature path{stroke:var(--seal)}
+.pre-star{color:var(--gold)}
+.pre-ring .ticks{fill:var(--seal);stroke:var(--seal)}
+.fb-score{color:var(--gold)}
+.fb-score i{color:var(--line)}
+#stars label{transition:transform .2s,color .2s}
+#stars input:checked~label,#stars label:hover,#stars label:hover~label{color:var(--gold)}
+.copy .ok,.copylink.ok,.code .copy.ok{border-color:var(--seal)!important;color:var(--seal)!important}
+.share a:hover,.share button:hover{color:var(--seal);border-color:var(--seal)}
+.pal li.sel{background:var(--seal)}
+.rd-card .k{color:var(--gold)}
+.cl-tabs button.on{border-color:var(--seal);color:var(--ink)}
+.toc a.on{border-color:var(--seal)!important;color:var(--ink)}
+
+/* --- primary button: ink with a red wax edge; secondary: paper with gold hairline --- */
+.btn.solid{box-shadow:5px 6px 0 0 var(--seal)}
+.btn.solid:hover{box-shadow:7px 9px 0 0 var(--seal)}
+.btn.solid:active{box-shadow:2px 2px 0 0 var(--seal)}
+.btn.solid::before{border-color:rgba(255,255,255,.28)}
+.btn:not(.solid){box-shadow:var(--shadow-soft),0 0 0 0 var(--gold-soft)}
+.btn:not(.solid):hover{border-color:var(--ink);box-shadow:6px 7px 0 -1px var(--paper),6px 7px 0 0 var(--gold)}
+.btn:not(.solid)::after{background:var(--paper-hi)}
+.btn:not(.solid):hover{color:var(--ink)}
+/* shimmer sweep on primary button */
+.btn.solid{background-image:linear-gradient(115deg,transparent 0 40%,rgba(255,255,255,.14) 50%,transparent 60% 100%);background-size:260% 100%;background-position:120% 0;background-repeat:no-repeat}
+.btn.solid:hover{background-position:-20% 0;transition:background-position 1.1s var(--ease-out),transform .35s var(--ease-out),box-shadow .35s var(--ease-out),color .35s}
+.lang-btn:hover{border-color:var(--seal);color:var(--seal);background:transparent}
+.links a::after{background:var(--seal)}
+.totop:hover{background:var(--seal);border-color:var(--seal);color:#fff}
+
+/* --- rotating seal badge in hero --- */
+.stamp{position:absolute;bottom:4%;inset-inline-start:-4%;width:124px;height:124px;display:block;z-index:5;transform:translateZ(60px);text-decoration:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.18));transition:transform .5s var(--ease-out)}
+.stamp:hover{transform:scale(1.06) rotate(-6deg)}
+.stamp svg{width:100%;height:100%;overflow:visible}
+.stamp .ring{animation:spin 28s linear infinite;transform-origin:60px 60px;transform-box:view-box}
+.stamp circle{fill:none;stroke:var(--seal);stroke-width:1.4}
+.stamp circle:first-of-type{fill:var(--paper-hi);stroke-dasharray:2 3}
+.stamp text{font-family:var(--mono);font-size:8.4px;letter-spacing:.12em;fill:var(--seal);text-transform:uppercase;direction:ltr}
+.stamp text.c{font-family:var(--serif);font-size:30px;font-weight:700;text-anchor:middle;letter-spacing:0;fill:var(--seal);direction:ltr}
+html.dark .stamp circle:first-of-type{fill:var(--paper-2)}
+@media(max-width:920px){.stamp{width:84px;height:84px;bottom:-10px;inset-inline-start:0}.stamp text{font-size:9.6px}}
+
+/* --- micro-motion: headings ink-in per word, nav link lift, card icon nudge --- */
+.rv h2.en,.rv .h2-fa{transition:opacity 1s var(--ease),transform 1s var(--ease),letter-spacing 1.2s var(--ease-out)}
+.rv:not(.in) h2.en{letter-spacing:.02em;opacity:0;transform:translateY(8px)}
+.rv:not(.in) .h2-fa{opacity:0;transform:translateY(8px)}
+.card:hover h3{transform:translateX(0)}
+.card h3{transition:color .3s}
+.card:hover h3{color:var(--ink)}
+.faq summary>span{transition:padding-inline-start .35s var(--ease-out)}
+.faq summary:hover>span{padding-inline-start:6px}
+.step:hover .n{background:var(--seal);color:#fff;transition:.3s}
+.proto>div:hover .name{color:var(--seal)}
+.proto .name{transition:color .4s}
+.fb-types input:checked+span{background:var(--ink);border-color:var(--ink)}
+.fb-types label:nth-child(1) input:checked+span{background:var(--seal);border-color:var(--seal)}
+.fb-types label:nth-child(3) input:checked+span{background:var(--gold);border-color:var(--gold)}
+
+/* --- gold hairline on section dividers' knot --- */
+.sk-div path{stroke:var(--gold);opacity:.9}
+
+/* --- selection colour --- */
+::selection{background:var(--seal);color:#fff}
