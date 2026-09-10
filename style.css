@@ -1,4 +1,6 @@
 
+@font-face{font-family:"Parastoo";src:url(assets/fonts/parastoo-700.woff2) format("woff2");font-weight:700;font-display:swap;unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}
+@font-face{font-family:"Parastoo";src:url(assets/fonts/parastoo-400.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}
 @font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Playfair";src:url(assets/fonts/playfair-display-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
@@ -824,3 +826,78 @@ html.en .links a{font-weight:400}
 .links a{white-space:nowrap}
 html.en .links{gap:16px;font-size:.64rem}
 @media(max-width:1250px){html.en .links{gap:12px;font-size:.6rem}}
+
+/* =====================================================================
+   v16 · EDITORIAL LAYER — Persian display type, ink details, finish
+   ===================================================================== */
+:root{--fa-display:"Parastoo","Vazir","Vazirmatn",serif}
+/* Persian display headings → Parastoo (calligraphic, matches the pencil/serif world) */
+.hero-fa,.h2-fa,.fa-q,.card h3,.step h4,.faq summary>span,.tg-body .h2-fa,.deploy-box .h2-fa,.sc-step h3,.bp-card b,.fb-item p,.rd-card b,.pre-sub-fa,.nf h2{font-family:var(--fa-display)}
+.hero-fa{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:700;line-height:1.3;letter-spacing:0}
+.h2-fa{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;line-height:1.3;letter-spacing:0}
+.card h3{font-size:1.45rem;font-weight:700;line-height:1.3}
+.step h4{font-size:1.3rem;font-weight:700}
+.faq summary{font-size:1.28rem;font-weight:700}
+.sc-step h3{font-size:1.85rem;font-weight:700;line-height:1.3}
+.bp-card b,.rd-card b{font-size:1.15rem;font-weight:700}
+.fb-item p{font-size:1.08rem;line-height:1.85}
+.fa-q{font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1.6;font-weight:400}
+.deploy-box .h2-fa{font-size:clamp(1.8rem,3.2vw,2.5rem)}
+html:not(.en) .btn{font-family:var(--fa);font-weight:700}
+
+/* --- ink-bleed hover on section titles: a soft graphite halo --- */
+h2.en{transition:text-shadow .6s var(--ease-out)}
+.sec-head:hover h2.en{text-shadow:0 0 18px rgba(23,21,18,.18)}
+html.dark .sec-head:hover h2.en{text-shadow:0 0 18px rgba(230,224,210,.2)}
+
+/* --- refined numerals in stats/tickers: old-style serif, hairline rules --- */
+.ticker b,.fb-stats b{font-family:var(--serif);font-variant-numeric:oldstyle-nums tabular-nums;font-weight:400;letter-spacing:-.01em}
+.ticker b{font-size:2.1rem}
+.fb-stats b{font-size:2.25rem}
+.ticker div{position:relative;padding-inline-start:14px}
+.ticker div::before{content:"";position:absolute;inset-inline-start:0;top:6px;bottom:6px;width:1px;background:var(--line-soft)}
+
+/* --- manifesto: drop cap & ornaments --- */
+.manifesto .fa-q{position:relative;padding:0 .4em}
+.manifesto .fa-q::before,.manifesto .fa-q::after{font-family:var(--serif);font-size:3.2em;line-height:0;position:absolute;color:var(--graphite);opacity:.35}
+.manifesto .fa-q::before{content:"\201D";top:.35em;inset-inline-start:-.35em}
+.manifesto .fa-q::after{content:"\201C";bottom:-.2em;inset-inline-end:-.35em}
+.manifesto .ornament{letter-spacing:.6em;opacity:.7}
+
+/* --- section numbers get a hairline "ruler" feel --- */
+.num{display:flex;align-items:center;gap:14px}
+.num::before{content:"";width:22px;height:1px;background:var(--pencil);opacity:.6}
+.sec-head[style*="center"] .num::before{display:none}
+
+/* --- card corner ticks like drafting marks --- */
+.card{background-clip:padding-box}
+.card .ico{box-shadow:0 0 0 4px var(--paper),0 0 0 5px var(--line-soft)}
+html.dark .card .ico{box-shadow:0 0 0 4px var(--paper-2),0 0 0 5px var(--line-soft)}
+
+/* --- links in prose: underline with graphite pencil --- */
+.sec-head a,.faq p a,.card p a,.tg-body a:not(.btn){color:var(--ink);text-decoration:none;background:linear-gradient(var(--ink),var(--ink)) no-repeat 0 100%/100% 1px;transition:background-size .3s}
+.sec-head a:hover,.faq p a:hover,.card p a:hover{background-size:100% 2px}
+
+/* --- proto names get a hand-drawn underline on hover --- */
+.proto .name{position:relative;display:block;width:fit-content;margin-inline-start:0}
+.proto .name::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-out);opacity:.7}
+.proto>div:hover .name::after{transform:scaleX(1)}
+
+/* --- FAQ answers: first letter emphasis, softer measure --- */
+.faq p{max-width:62ch}
+.faq details[open] summary{color:var(--ink)}
+.faq details[open]{background:linear-gradient(90deg,transparent,rgba(23,21,18,.025),transparent)}
+html.dark .faq details[open]{background:linear-gradient(90deg,transparent,rgba(230,224,210,.03),transparent)}
+
+/* --- nav brand lockup finish --- */
+.brand b{letter-spacing:.16em}
+.brand small{letter-spacing:.3em;opacity:.8}
+
+/* --- footer bottom line: tighter, classier --- */
+.copy{font-size:.62rem;letter-spacing:.2em}
+
+/* --- global: slightly warmer paper highlight in light mode --- */
+html:not(.dark){--paper-hi:#e9e3d5}
+
+/* --- mobile tune for display type --- */
+@media(max-width:720px){.hero-fa{font-size:2rem}.h2-fa{font-size:1.75rem}.card h3{font-size:1.3rem}.sc-step h3{font-size:1.55rem}.faq summary{font-size:1.15rem}.fa-q{font-size:1.5rem}}
