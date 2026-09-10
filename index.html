@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -57,6 +57,7 @@
       <a href="#protocols" data-fa>پروتکل‌ها</a><a href="#protocols" data-en>Protocols</a>
       <a href="#start" data-fa>شروع سریع</a><a href="#start" data-en>Start</a>
             <a href="#telegram" data-fa>تلگرام</a><a href="#telegram" data-en>Telegram</a>
+      <a href="#toolkit" data-fa>ابزارها</a><a href="#toolkit" data-en>Tools</a>
       <a href="#feedback" data-fa>صندوق</a><a href="#feedback" data-en>Feedback</a>
       <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
       <a href="changelog.html" data-fa>تغییرات</a><a href="changelog.html" data-en>Changes</a>
@@ -353,6 +354,62 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   <div class="ledger" id="ledger" dir="ltr"><div class="ledger-empty" data-fa>در حال خواندن دفترچه…</div><div class="ledger-empty" data-en>Reading the ledger…</div></div>
   <div class="ledger-foot" dir="ltr"><a href="changelog.html">full changelog →</a><span id="ledgerVer"></span></div>
 </section>
+<!-- TOOLKIT -->
+<section class="wrap rv" id="toolkit">
+  <div class="sec-head">
+    <div class="num">— Toolkit</div>
+    <h2 class="en" dir="ltr">Tools from <span class="ul">the drawer.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>ابزارهای <mark class="hl">کشوی میز</mark>.</p>
+    <p data-fa>سه ابزار کوچک که همین‌جا در مرورگر شما اجرا می‌شوند — هیچ داده‌ای به سروری فرستاده نمی‌شود.</p>
+    <p data-en>Three small tools that run right here in your browser — nothing is sent to any server.</p>
+  </div>
+  <div class="tk-tabs" role="tablist">
+    <button class="on" data-tk="probe" role="tab"><i>01</i><span data-fa>بررسی اتصال</span><span data-en>Connection check</span></button>
+    <button data-tk="decode" role="tab"><i>02</i><span data-fa>خوانندهٔ کانفیگ</span><span data-en>Config reader</span></button>
+    <button data-tk="client" role="tab"><i>03</i><span data-fa>کدام کلاینت؟</span><span data-en>Which client?</span></button>
+  </div>
+  <div class="tk-panel" id="tk-probe">
+    <div class="tk-grid">
+      <div class="tk-copy">
+        <h3 data-fa>وضعیت شما نسبت به Cloudflare</h3><h3 data-en>Where you stand vs. Cloudflare</h3>
+        <p data-fa>می‌سنجیم آیا از این‌جا به لبهٔ Cloudflare می‌رسید، کدام دیتاسنتر به شما سرویس می‌دهد و تأخیر تقریبی چقدر است. اگر این کار کند، Nika Net هم برای شما کار می‌کند.</p>
+        <p data-en>We test whether you can reach the Cloudflare edge from here, which data center serves you, and rough latency. If this works, Nika Net will work for you.</p>
+        <button class="btn solid" id="probeBtn" type="button"><span data-fa>شروع بررسی</span><span data-en>Run check</span><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="tk-out" id="probeOut" dir="ltr">
+        <div class="pr-row" data-k="edge"><em>edge reachable</em><b>—</b></div>
+        <div class="pr-row" data-k="colo"><em>data center</em><b>—</b></div>
+        <div class="pr-row" data-k="lat"><em>latency</em><b>—</b></div>
+        <div class="pr-row" data-k="tls"><em>tls</em><b>—</b></div>
+        <div class="pr-row" data-k="warp"><em>warp</em><b>—</b></div>
+        <div class="pr-row" data-k="ip"><em>your ip</em><b>—</b></div>
+        <div class="pr-verdict" id="probeVerdict"></div>
+      </div>
+    </div>
+  </div>
+  <div class="tk-panel" id="tk-decode" hidden>
+    <div class="tk-grid">
+      <div class="tk-copy">
+        <h3 data-fa>کانفیگ را بخوان، نه حفظ کن</h3><h3 data-en>Read the config, don’t memorize it</h3>
+        <p data-fa>یک لینک <code>vless://</code> یا <code>trojan://</code> را این‌جا بچسبانید تا اجزایش را (سرور، پورت، انتقال، TLS، SNI، مسیر) خوانا ببینید. همه‌چیز محلی است.</p>
+        <p data-en>Paste a <code>vless://</code> or <code>trojan://</code> link to see its parts (host, port, transport, TLS, SNI, path) in plain language. Everything stays local.</p>
+        <textarea id="decIn" rows="4" spellcheck="false" placeholder="vless://uuid@host:443?type=ws&security=tls&sni=example.com&path=%2Fws#name" dir="ltr"></textarea>
+      </div>
+      <div class="tk-out" id="decOut" dir="ltr"><div class="tk-empty" data-fa>منتظر لینک…</div><div class="tk-empty" data-en>Waiting for a link…</div></div>
+    </div>
+  </div>
+  <div class="tk-panel" id="tk-client" hidden>
+    <div class="tk-grid">
+      <div class="tk-copy">
+        <h3 data-fa>برای دستگاه شما، کدام اپ؟</h3><h3 data-en>Which app for your device?</h3>
+        <p data-fa>سیستم‌عامل شما را تشخیص دادیم. کلاینت‌های پیشنهادی برای VLESS/Trojan/WARP با لینک رسمی.</p>
+        <p data-en>We detected your OS. Recommended clients for VLESS/Trojan/WARP with official links.</p>
+        <div class="os-pick" id="osPick"><button data-os="android">Android</button><button data-os="ios">iOS</button><button data-os="windows">Windows</button><button data-os="mac">macOS</button><button data-os="linux">Linux</button></div>
+      </div>
+      <div class="tk-out" id="cliOut" dir="ltr"></div>
+    </div>
+  </div>
+</section>
 <!-- COMPARE -->
 <section class="wrap rv">
   <div class="sec-head">
@@ -486,10 +543,11 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <a href="#protocols" data-r="protocols"><b>V</b><span>Protocols</span></a>
 <a href="#blueprint" data-r="blueprint"><b>VI</b><span>Blueprint</span></a>
 <a href="#start" data-r="start"><b>VII</b><span>Start</span></a>
-<a href="#logbook" data-r="logbook"><b>VIII</b><span>Logbook</span></a>
-<a href="#feedback" data-r="feedback"><b>IX</b><span>Box</span></a>
-<a href="#faq" data-r="faq"><b>X</b><span>FAQ</span></a>
-<a href="#manifesto" data-r="manifesto"><b>XI</b><span>Manifesto</span></a>
+<a href="#toolkit" data-r="toolkit"><b>VIII</b><span>Toolkit</span></a>
+<a href="#logbook" data-r="logbook"><b>IX</b><span>Logbook</span></a>
+<a href="#feedback" data-r="feedback"><b>X</b><span>Box</span></a>
+<a href="#faq" data-r="faq"><b>XI</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>XII</b><span>Manifesto</span></a>
 </div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
 <div class="lb" id="lb" hidden><button class="lb-x" aria-label="close">×</button><img alt=""><div class="lb-cap" id="lbCap"></div></div>
@@ -634,6 +692,7 @@ const PAL=[
  {k:'go protocols vless trojan warp',fa:'برو به: پروتکل‌ها',en:'Go to: Protocols',run:()=>location.hash='#protocols'},
  {k:'go blueprint how works route',fa:'برو به: نقشهٔ مسیر',en:'Go to: Blueprint',run:()=>location.hash='#blueprint'},
  {k:'go start deploy quick',fa:'برو به: شروع سریع',en:'Go to: Quick start',run:()=>location.hash='#start'},
+ {k:'go toolkit tools check decode client',fa:'برو به: ابزارها',en:'Go to: Toolkit',run:()=>location.hash='#toolkit'},
  {k:'go logbook commits changelog',fa:'برو به: دفترچهٔ کار',en:'Go to: Logbook',run:()=>location.hash='#logbook'},
  {k:'go feedback box suggestion',fa:'برو به: صندوق انتقادات',en:'Go to: Suggestion box',run:()=>location.hash='#feedback'},
  {k:'go faq questions',fa:'برو به: سؤال‌های پرتکرار',en:'Go to: FAQ',run:()=>location.hash='#faq'},
@@ -670,6 +729,51 @@ const io=new IntersectionObserver(es=>es.forEach(e=>bp.classList.toggle('live',e
 const close=()=>{lb.classList.remove('on');document.body.style.overflow='';setTimeout(()=>lb.hidden=true,250)};lb.addEventListener('click',close);addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)close()})})();
 // ---- easter egg: type "nika"
 (()=>{let buf='';addEventListener('keydown',e=>{if(/input|textarea/i.test(document.activeElement.tagName))return;buf=(buf+e.key.toLowerCase()).slice(-4);if(buf==='nika'){buf='';document.documentElement.classList.add('doodle');setTimeout(()=>document.documentElement.classList.remove('doodle'),6000)}})})();
+
+// ---- toolkit tabs
+(()=>{const tabs=document.querySelectorAll('.tk-tabs button');tabs.forEach(b=>b.onclick=()=>{tabs.forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.tk-panel').forEach(p=>p.hidden=p.id!=='tk-'+b.dataset.tk)})})();
+// ---- 01 connection probe (real, via Cloudflare trace endpoints)
+(()=>{const btn=document.getElementById('probeBtn'),out=document.getElementById('probeOut'),ver=document.getElementById('probeVerdict');if(!btn)return;const set=(k,v,cls)=>{const r=out.querySelector(`[data-k=${k}]`);r.querySelector('b').textContent=v;r.className='pr-row '+(cls||'')};
+btn.onclick=async()=>{btn.disabled=true;['edge','colo','lat','tls','warp','ip'].forEach(k=>set(k,'…','wait'));ver.textContent='';
+const t0=performance.now();let ok=false,o={};try{const r=await fetch('https://1.1.1.1/cdn-cgi/trace',{cache:'no-store'});const t=await r.text();o=Object.fromEntries(t.trim().split('\n').map(l=>l.split('=')));ok=true}catch(e){try{const r=await fetch('/cdn-cgi/trace',{cache:'no-store'});const t=await r.text();o=Object.fromEntries(t.trim().split('\n').map(l=>l.split('=')));ok=true}catch(e2){}}
+const lat=Math.round(performance.now()-t0);
+if(!ok){set('edge',isEn()?'blocked / unreachable':'مسدود / در دسترس نیست','bad');['colo','lat','tls','warp','ip'].forEach(k=>set(k,'—'));ver.textContent=isEn()?'Cloudflare edge is not reachable from this network right now. Nika Net relies on it — try another network or a clean IP.':'الان از این شبکه به لبهٔ Cloudflare نمی‌رسید. نیکا نت به آن متکی است — شبکهٔ دیگری یا آی‌پی تمیز امتحان کنید.';btn.disabled=false;return}
+// second sample for latency
+let l2=lat;try{const s=performance.now();await fetch('https://1.1.1.1/cdn-cgi/trace',{cache:'no-store'});l2=Math.round(performance.now()-s)}catch(e){}
+const L=Math.min(lat,l2);
+set('edge',isEn()?'yes':'بله','good');set('colo',o.colo||'—');set('lat',L+' ms',L<120?'good':L<300?'':'bad');set('tls',(o.tls||'—').toUpperCase());set('warp',o.warp==='on'?'on':o.warp==='plus'?'plus':'off',o.warp&&o.warp!=='off'?'good':'');set('ip',o.ip||'—');
+ver.textContent=L<150?(isEn()?'Excellent. A Worker deployed today would feel snappy from here.':'عالی. یک Worker که امروز مستقر کنید، از این‌جا سریع خواهد بود.'):L<350?(isEn()?'Usable. Pick a clean IP from the in-panel scanner for best results.':'قابل استفاده. برای نتیجهٔ بهتر از اسکنر داخل پنل یک آی‌پی تمیز بردارید.'):(isEn()?'Slow path. Try the clean-IP scanner or a different network.':'مسیر کند است. اسکنر آی‌پی تمیز یا شبکهٔ دیگری را امتحان کنید.');btn.disabled=false}})();
+// ---- 02 config reader (local only)
+(()=>{const inp=document.getElementById('decIn'),out=document.getElementById('decOut');if(!inp)return;
+const row=(k,v,warn)=>v?`<div class="pr-row ${warn?'bad':''}"><em>${k}</em><b>${esc(String(v))}</b></div>`:'';
+const render=()=>{const s=inp.value.trim();if(!s){out.innerHTML=`<div class="tk-empty">${isEn()?'Waiting for a link…':'منتظر لینک…'}</div>`;return}
+let u;try{u=new URL(s)}catch(e){out.innerHTML=`<div class="tk-empty bad">${isEn()?'That doesn’t parse as a URI.':'این یک لینک معتبر نیست.'}</div>`;return}
+const proto=u.protocol.replace(':','');if(!['vless','trojan','vmess','ss'].includes(proto)){out.innerHTML=`<div class="tk-empty bad">${isEn()?'Unsupported scheme: ':'پروتکل پشتیبانی‌نشده: '}${esc(proto)}</div>`;return}
+const q=Object.fromEntries(u.searchParams.entries());const name=decodeURIComponent(u.hash.slice(1)||'');const id=decodeURIComponent(u.username||'');const port=u.port||(q.security==='tls'?'443':'80');
+const tls=(q.security||'none');const type=q.type||'tcp';const warnTls=tls==='none';const warnPort=port==='80';
+const en=isEn();out.innerHTML=[
+ row(en?'protocol':'پروتکل',proto.toUpperCase()),
+ row(en?'name':'نام',name),
+ row(en?'server':'سرور',u.hostname),
+ row(en?'port':'پورت',port,warnPort),
+ row(en?'transport':'انتقال',type+(q.path?' · path '+decodeURIComponent(q.path):'')),
+ row(en?'security':'امنیت',tls,warnTls),
+ row('sni',q.sni||q.host||''),
+ row(en?'fingerprint':'اثر انگشت',q.fp||''),
+ row(en?'flow':'flow',q.flow||''),
+ row(en?'id':'شناسه',id?id.slice(0,8)+'…'+id.slice(-4):''),
+ `<div class="pr-verdict">${warnTls?(en?'⚠ No TLS — traffic is readable on the wire. Nika Net always issues TLS configs.':'⚠ بدون TLS — ترافیک روی خط قابل خواندن است. نیکا نت همیشه کانفیگ TLS می‌دهد.'):(type==='ws'&&tls==='tls'?(en?'Looks like a Worker-style WebSocket+TLS config. Good.':'شبیه کانفیگ WebSocket+TLS روی Worker است. خوب است.'):(en?'Parsed. Nothing left the page.':'خوانده شد. هیچ‌چیز از صفحه خارج نشد.'))}</div>`].join('')};
+inp.addEventListener('input',render);new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
+// ---- 03 client picker
+(()=>{const pick=document.getElementById('osPick'),out=document.getElementById('cliOut');if(!pick)return;
+const C={android:[['v2rayNG','https://github.com/2dust/v2rayNG/releases','VLESS · Trojan','open source, most used'],['Hiddify','https://hiddify.com','VLESS · Trojan · WARP','one-tap subscription'],['NekoBox','https://github.com/MatsuriDayo/NekoBoxForAndroid/releases','VLESS · Trojan','sing-box core']],
+ios:[['Streisand','https://apps.apple.com/app/streisand/id6450534064','VLESS · Trojan','free, xray core'],['Hiddify','https://apps.apple.com/app/hiddify-proxy-vpn/id6596777532','VLESS · Trojan · WARP','one-tap subscription'],['Shadowrocket','https://apps.apple.com/app/shadowrocket/id932747118','VLESS · Trojan','paid, very stable']],
+windows:[['Hiddify','https://hiddify.com','VLESS · Trojan · WARP','simplest'],['v2rayN','https://github.com/2dust/v2rayN/releases','VLESS · Trojan','power users'],['Nekoray','https://github.com/MatsuriDayo/nekoray/releases','VLESS · Trojan','sing-box / xray']],
+mac:[['Hiddify','https://hiddify.com','VLESS · Trojan · WARP','simplest'],['V2Box','https://apps.apple.com/app/v2box-v2ray-client/id6446814690','VLESS · Trojan','App Store'],['Clash Verge','https://github.com/clash-verge-rev/clash-verge-rev/releases','VLESS · Trojan','Clash configs']],
+linux:[['Nekoray','https://github.com/MatsuriDayo/nekoray/releases','VLESS · Trojan','GUI'],['Hiddify','https://hiddify.com','VLESS · Trojan · WARP','AppImage'],['sing-box (CLI)','https://sing-box.sagernet.org','VLESS · Trojan · WARP','for servers & scripts']]};
+const detect=()=>{const ua=navigator.userAgent;if(/android/i.test(ua))return'android';if(/iphone|ipad|ipod/i.test(ua))return'ios';if(/mac/i.test(ua))return'mac';if(/linux/i.test(ua))return'linux';return'windows'};
+let cur=detect();const render=()=>{pick.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.os===cur));out.innerHTML=C[cur].map((c,i)=>`<a class="cli" href="${c[1]}" target="_blank" rel="noopener" style="--i:${i}"><span class="n">${c[0]}</span><span class="p">${c[2]}</span><span class="d">${c[3]}</span><span class="a">↗</span></a>`).join('')+`<div class="pr-verdict">${isEn()?'Paste your Nika Net subscription link into any of these.':'لینک اشتراک نیکا نت را در هرکدام از این‌ها بچسبانید.'}</div>`};
+pick.addEventListener('click',e=>{const b=e.target.closest('button');if(b){cur=b.dataset.os;render()}});render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
