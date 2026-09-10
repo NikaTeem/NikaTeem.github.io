@@ -11,7 +11,7 @@
 <meta property="og:description" content="A pencil-drawn, censorship-resistant proxy panel — VLESS · Trojan · WARP on a single Cloudflare Worker.">
 <meta property="og:image" content="https://nikanet.dpdns.org/assets/logo-512.webp">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <!-- preloader -->
@@ -39,7 +39,7 @@
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
-      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
+      <button class="lang-btn" onclick="toggleTheme(event)" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
       <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
     </div>
@@ -59,6 +59,7 @@
       <a class="btn solid mag" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار روی Cloudflare</span><span data-en>Deploy to Cloudflare</span> ⚡</a>
       <a class="btn mag" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener"><span data-fa>ساخت با ربات تلگرام</span><span data-en>Build via Telegram bot</span> ✈</a>
     </div>
+    <div class="typer rv d4" dir="ltr"><span>// running:</span> <b id="typer"></b><i></i></div>
     <div class="ticker rv d5">
       <div><b data-count="0" data-prefix="$">$0</b><span data-fa>هزینه ماهانه</span><span data-en>per month</span></div>
       <div><b data-count="3">0</b><span data-fa>پروتکل</span><span data-en>protocols</span></div>
@@ -79,7 +80,7 @@
     </div>
   </div>
     </header>
-
+<div class="wire rv" id="wire" dir="ltr"><span class="live"><i></i>live wire</span><div class="wire-items" id="wireItems"></div></div>
 
 <!-- PANORAMA -->
 <div class="pano" id="pano"><img src="assets/art-panorama.webp" alt="Network landscape sketch"><span class="lbl">fig. 05 — the landscape · scroll →</span></div>
@@ -153,6 +154,7 @@
 
 <div class="divider rv"><img loading="lazy" src="assets/art-divider.webp" alt=""></div>
 
+<div class="sk-div rv"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path pathLength="1" d="M0 30 C 150 10, 250 50, 400 30 S 560 8, 590 30 c 6 6 -8 14 -12 4 s 10 -18 22 -4 C 640 44, 760 12, 900 30 S 1100 50, 1200 30"/></svg></div>
 <!-- FEATURES -->
 <section id="features" class="wrap rv">
   <div class="sec-head">
@@ -231,6 +233,7 @@
   </div>
 </section>
 
+<div class="sk-div rv"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path pathLength="1" d="M0 30 C 150 10, 250 50, 400 30 S 560 8, 590 30 c 6 6 -8 14 -12 4 s 10 -18 22 -4 C 640 44, 760 12, 900 30 S 1100 50, 1200 30"/></svg></div>
 <!-- QUICK START -->
 <section id="start" class="wrap rv">
   <div class="sec-head">
@@ -286,6 +289,7 @@
   </table></div>
 </section>
 
+<div class="sk-div rv"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path pathLength="1" d="M0 30 C 150 10, 250 50, 400 30 S 560 8, 590 30 c 6 6 -8 14 -12 4 s 10 -18 22 -4 C 640 44, 760 12, 900 30 S 1100 50, 1200 30"/></svg></div>
 <!-- FEEDBACK BOX -->
 <section id="feedback" class="wrap rv">
   <div class="sec-head">
@@ -339,7 +343,7 @@
 </div>
 
 <!-- FAQ -->
-<section class="wrap rv">
+<section class="wrap rv" id="faq">
   <div class="sec-head" style="margin-inline:auto;text-align:center">
     <div class="num" style="justify-content:center">08 — Questions</div>
     <h2 class="en" dir="ltr">Asked <span class="ul">often.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
@@ -355,6 +359,7 @@
   </div>
 </section>
 
+<div class="sk-div rv"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path pathLength="1" d="M0 30 C 150 10, 250 50, 400 30 S 560 8, 590 30 c 6 6 -8 14 -12 4 s 10 -18 22 -4 C 640 44, 760 12, 900 30 S 1100 50, 1200 30"/></svg></div>
 <!-- DEPLOY CTA -->
 <section class="wrap rv">
   <div class="deploy-box">
@@ -374,20 +379,33 @@
 </section>
 
 <!-- MANIFESTO -->
-<section class="manifesto rv">
+<section class="manifesto rv" id="manifesto">
   <div class="bigN">N</div>
   <div class="wrap">
     <div class="ornament">✦</div>
     <blockquote class="en" dir="ltr">"Your domain, your bandwidth, your data.<br>No shared server. No middleman. No cost."</blockquote>
     <p class="fa-q" data-fa>«دامنه‌ی خودت، پهنای باند خودت، داده‌های خودت. بدون سرور مشترک، بدون واسطه، بدون هزینه.»</p>
+    <svg class="signature" viewBox="0 0 320 90" aria-hidden="true"><path pathLength="1" d="M18 66 C 30 40, 40 20, 44 14 C 46 30, 40 56, 36 68 C 50 50, 62 34, 70 24 C 66 44, 74 60, 88 52 C 96 46, 98 36, 92 34 C 84 38, 90 56, 104 50 C 116 44, 120 30, 118 26 C 116 40, 118 56, 128 52 C 140 46, 150 30, 146 24 C 142 40, 152 58, 166 48 C 176 40, 178 28, 172 26 C 164 30, 170 52, 186 46 M 200 30 C 230 18, 262 22, 296 34 M 40 80 C 100 74, 200 74, 300 78"/></svg>
     <div class="sig" dir="ltr">— Nika Net · Config Panel Engineering</div>
     <div class="ornament">✦</div>
       </div>
 </section>
 </main>
 
+<div class="rail" id="rail" role="navigation" aria-label="Chapters" dir="ltr">
+<a href="#top" data-r="top"><b>I</b><span>Hero</span></a>
+<a href="#showcase" data-r="showcase"><b>II</b><span>Panel</span></a>
+<a href="#telegram" data-r="telegram"><b>III</b><span>Telegram</span></a>
+<a href="#features" data-r="features"><b>IV</b><span>Features</span></a>
+<a href="#protocols" data-r="protocols"><b>V</b><span>Protocols</span></a>
+<a href="#start" data-r="start"><b>VI</b><span>Start</span></a>
+<a href="#feedback" data-r="feedback"><b>VII</b><span>Box</span></a>
+<a href="#faq" data-r="faq"><b>VIII</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>IX</b><span>Manifesto</span></a>
+</div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
 <footer>
+  <div class="wordmark" id="wordmark" aria-hidden="true">NIKA NET</div>
   <div class="wrap">
     <div class="f-grid">
       <div>
@@ -414,7 +432,7 @@
 <script>
 // lang
 function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
-function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')}
+function toggleTheme(ev){const h=document.documentElement,go=()=>{h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')};if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches)return go();const x=ev?ev.clientX:innerWidth/2,y=ev?ev.clientY:40,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));document.startViewTransition(go).ready.then(()=>document.documentElement.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:700,easing:'cubic-bezier(.7,0,.2,1)',pseudoElement:'::view-transition-new(root)'}))}
 if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
 function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
 applyLang(localStorage.getItem('nika-lang')||'fa');
@@ -480,6 +498,23 @@ const form=document.getElementById('fbForm');if(form){form.onsubmit=async ev=>{e
   else msg.textContent=r.error==='rate limit'?(isEn()?'Too many notes for now — try later.':'فعلاً زیاد فرستادی — بعداً دوباره امتحان کن.'):(isEn()?'Something went wrong.':'مشکلی پیش آمد.')}catch(e){msg.textContent=isEn()?'Network error.':'خطای شبکه.'}
  btn.disabled=false}}
 const fbSec=document.getElementById('feedback');if(fbSec){new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){fbStats();fbList();fbFeatured();o.disconnect()}},{rootMargin:'600px'}).observe(fbSec)}
+
+// typewriter
+(()=>{const el=document.getElementById('typer');if(!el)return;const W=['VLESS + WS + TLS','Trojan + TLS','WARP over Worker','clean-IP radar','one free Worker'];let i=0,j=0,del=false;const tick=()=>{const w=W[i];el.textContent=w.slice(0,j);if(!del&&j<w.length){j++;setTimeout(tick,70)}else if(!del){del=true;setTimeout(tick,1600)}else if(j>0){j--;setTimeout(tick,35)}else{del=false;i=(i+1)%W.length;setTimeout(tick,300)}};setTimeout(tick,1200)})();
+// live wire (real data only)
+(async()=>{const box=document.getElementById('wireItems');if(!box)return;const items=[];const add=(k,v)=>{if(v!=null&&v!=='')items.push(`<span><em>${k}</em>${v}</span>`)};
+const rel=t=>{const s=(Date.now()-new Date(t))/1e3;if(s<3600)return Math.max(1,s/60|0)+' min ago';if(s<86400)return (s/3600|0)+' h ago';return (s/86400|0)+' d ago'};
+const jobs=[fetch('/cdn-cgi/trace').then(r=>r.text()).then(t=>{const o=Object.fromEntries(t.trim().split('\n').map(l=>l.split('=')));add('edge',o.colo);add('you',o.ip);add('tls',o.tls)}).catch(()=>{}),
+fetch('https://api.github.com/repos/NikaTeem/Nika-Net').then(r=>r.json()).then(d=>{if(d.pushed_at)add('last commit',rel(d.pushed_at));if(d.stargazers_count>0)add('stars',d.stargazers_count)}).catch(()=>{}),
+fetch(FB+'/api/stats').then(r=>r.json()).then(s=>{add('box',(s.total||0)+' notes')}).catch(()=>{})];
+await Promise.allSettled(jobs);add('license','MIT');add('cost','$0 / month');box.innerHTML=items.join('<i>—</i>');box.classList.add('on')})();
+// chapter rail
+(()=>{const rail=document.getElementById('rail');if(!rail)return;const links=[...rail.querySelectorAll('a')];const map={};links.forEach(a=>map[a.dataset.r]=a);const secs=links.map(a=>document.getElementById(a.dataset.r)).filter(Boolean);
+const setA=id=>links.forEach(a=>a.classList.toggle('on',a.dataset.r===id));
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setA(e.target.id)})},{rootMargin:'-40% 0px -55% 0px'});secs.forEach(s=>ro.observe(s));
+addEventListener('scroll',()=>rail.classList.toggle('show',scrollY>innerHeight*.6),{passive:true})})();
+// footer wordmark parallax
+(()=>{const w=document.getElementById('wordmark');if(!w)return;addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*30,y=(e.clientY/innerHeight-.5)*12;w.style.transform=`translate(${x}px,${y}px)`},{passive:true})})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
