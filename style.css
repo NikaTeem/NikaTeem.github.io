@@ -676,7 +676,7 @@ html.dark .bp-node rect,html.dark .bp-node circle,html.dark .bp-node ellipse,htm
 .bp.live .p1{animation:pk1 3.2s linear infinite}
 .bp.live .p2{animation:pk1 3.2s linear infinite 1.1s}
 .bp.live .p3{animation:pk1 3.2s linear infinite 2.2s}
-@keyframes pk1{0%{opacity:0;offset-distance:0%}5%{opacity:1}95%{opacity:1}100%{opacity:0;offset-distance:100%}}
+@keyframes pk1{ 0%{opacity:0;offset-distance:0%} 5%{opacity:1} 95%{opacity:1} 100%{opacity:0;offset-distance:100%} }
 .pk{offset-path:path("M150 170 C 240 170, 300 170, 395 170 L 421 170 C 470 170, 500 170, 560 170 L 660 170 C 720 170, 760 170, 840 170");offset-rotate:0deg}
 .bp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
 .bp-card{padding:16px 18px;border:1px dashed var(--line-soft);opacity:.55;transition:.35s var(--ease);cursor:default}
