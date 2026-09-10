@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=20">
+<link rel="stylesheet" href="style.css?v=21">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -311,6 +311,38 @@
     <h2 class="en" dir="ltr">From idea to connection<br><span class="ul">in three moves.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
     <p class="h2-fa" data-fa>از ایده تا اتصال، در سه حرکت.</p>
   </div>
+  <div class="ways" role="tablist" aria-label="deploy method">
+    <button class="on" data-way="click" role="tab"><i>A</i><span data-fa>یک‌کلیکی</span><span data-en>One click</span><small data-fa>بدون ترمینال</small><small data-en>no terminal</small></button>
+    <button data-way="bot" role="tab"><i>B</i><span data-fa>ربات تلگرام</span><span data-en>Telegram bot</span><small data-fa>از گوشی</small><small data-en>from your phone</small></button>
+    <button data-way="cli" role="tab"><i>C</i><span data-fa>ترمینال</span><span data-en>Terminal</span><small data-fa>برای حرفه‌ای‌ها</small><small data-en>for tinkerers</small></button>
+  </div>
+  <div class="way-panel" id="way-click">
+    <div class="way-grid">
+      <ol class="way-steps">
+        <li><b data-fa>دکمه را بزن</b><b data-en>Press the button</b><span data-fa>به Cloudflare می‌روی؛ اگر حساب نداری، ساختش رایگان و یک‌دقیقه‌ای است.</span><span data-en>You land on Cloudflare; a free account takes a minute if you don’t have one.</span></li>
+        <li><b data-fa>یک نام انتخاب کن</b><b data-en>Pick a name</b><span data-fa>Cloudflare مخزن را می‌کشد، می‌سازد و روی <code>&lt;name&gt;.workers.dev</code> مستقر می‌کند.</span><span data-en>Cloudflare pulls the repo, builds it and deploys to <code>&lt;name&gt;.workers.dev</code>.</span></li>
+        <li><b data-fa><code>/admin</code> را باز کن</b><b data-en>Open <code>/admin</code></b><span data-fa>رمز ادمین را بگذار، اولین کاربر را بساز، لینک اشتراکش را کپی کن. تمام.</span><span data-en>Set the admin password, add your first user, copy their subscription link. Done.</span></li>
+      </ol>
+      <div class="way-cta">
+        <a class="btn solid big" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار روی Cloudflare</span><span data-en>Deploy to Cloudflare</span><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></a>
+        <div class="way-note"><span data-fa>≈ ۲ دقیقه · بدون کارت بانکی · پلن رایگان کافی است</span><span data-en>≈ 2 minutes · no card · free plan is enough</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="way-panel" id="way-bot" hidden>
+    <div class="way-grid">
+      <ol class="way-steps">
+        <li><b data-fa>ربات را باز کن</b><b data-en>Open the bot</b><span data-fa>در تلگرام به <a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a> برو و <code>/start</code> بزن.</span><span data-en>Go to <a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a> and send <code>/start</code>.</span></li>
+        <li><b data-fa>توکن API بده</b><b data-en>Hand it an API token</b><span data-fa>ربات لینک ساخت توکن Cloudflare با دسترسی درست را می‌دهد؛ توکن را برایش بفرست.</span><span data-en>The bot links you to a Cloudflare token template with the right scopes; paste it back.</span></li>
+        <li><b data-fa>منتظر پیام «آماده است» باش</b><b data-en>Wait for “ready”</b><span data-fa>Worker و KV ساخته می‌شوند و آدرس پنل + رمز اولیه برایت می‌آید.</span><span data-en>Worker and KV are created; you get the panel URL and first password.</span></li>
+      </ol>
+      <div class="way-cta">
+        <a class="btn big" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener"><span data-fa>باز کردن ربات</span><span data-en>Open the bot</span><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg></a>
+        <div class="way-note"><span data-fa>تمام مراحل روی گوشی · توکن فقط برای استقرار استفاده می‌شود</span><span data-en>Entirely on your phone · token is used only for deployment</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="way-panel" id="way-cli" hidden>
   <div class="steps">
     <div>
       <div class="step"><div class="n">۱</div><div><h4 data-fa>کلون کن</h4><h4 data-en>Clone</h4><p data-fa>مخزن را از GitHub بگیر و وارد پوشه شو.</p><p data-en>Grab the repository from GitHub and step inside.</p></div></div>
@@ -338,6 +370,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 
 <span class="c"># open https://&lt;your-worker&gt;.workers.dev/admin</span> <span class="cursor"></span></pre></div>
   </div>
+</div>
 </section>
 
 <div class="wrap rule"></div>
@@ -585,6 +618,8 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <footer>
   <div class="wordmark" id="wordmark" aria-hidden="true">NIKA NET</div>
   <div class="wrap">
+    <div class="status" id="status" dir="ltr"><span class="st-l" data-en>System status</span><span class="st-l" data-fa>وضعیت سرویس‌ها</span>
+      <span class="st" data-st="site"><i></i>site</span><span class="st" data-st="edge"><i></i>cloudflare edge</span><span class="st" data-st="api"><i></i>feedback api</span><span class="st" data-st="repo"><i></i>github</span><time id="stTime"></time></div>
     <div class="share" dir="ltr"><span data-en>Pass it on —</span><span data-fa>دست‌به‌دست کنید —</span>
       <a href="https://t.me/share/url?url=https%3A%2F%2Fnikanet.dpdns.org&text=Nika%20Net%20%E2%80%94%20free%20proxy%20panel%20on%20Cloudflare" target="_blank" rel="noopener">Telegram</a>
       <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnikanet.dpdns.org&text=Nika%20Net%20%E2%80%94%20pencil-drawn%20proxy%20panel%20on%20a%20free%20Cloudflare%20Worker" target="_blank" rel="noopener">X</a>
@@ -725,6 +760,7 @@ const PAL=[
  {k:'uuid generate id',fa:'ابزار: ساخت UUID',en:'Tool: generate UUID',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=gen]').click()}},
  {k:'qr code',fa:'ابزار: QR کانفیگ',en:'Tool: config QR',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=gen]').click()}},
  {k:'dns domain check',fa:'ابزار: بررسی دامنه',en:'Tool: domain check',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=dns]').click()}},
+ {k:'deploy one click cloudflare',fa:'استقرار یک‌کلیکی',en:'One-click deploy',run:()=>{location.hash='#start';document.querySelector('[data-way=click]').click()}},
  {k:'theme dark light toggle',fa:'تغییر تم روشن/تاریک',en:'Toggle dark / light theme',run:()=>toggleTheme()},
  {k:'language english farsi persian',fa:'Switch to English',en:'تغییر زبان به فارسی',run:()=>toggleLang()},
  {k:'deploy cloudflare',fa:'استقرار روی Cloudflare ↗',en:'Deploy to Cloudflare ↗',run:()=>open('https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net','_blank')},
@@ -856,6 +892,23 @@ b.addEventListener('pointerdown',e=>{const r=b.getBoundingClientRect(),d=documen
 (()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 document.querySelectorAll('.sec-head .h2-fa mark.hl').forEach(el=>{el.classList.add('circ');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 200 60');svg.setAttribute('preserveAspectRatio','none');svg.classList.add('circ-svg');svg.innerHTML='<path d="M12 30 C 10 8, 90 2, 150 8 S 200 28, 180 44 S 90 62, 30 52 S -6 30, 40 14 S 140 4, 170 12"/>';el.appendChild(svg)});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('drawn');io.unobserve(e.target)}}),{threshold:.9});document.querySelectorAll('.circ').forEach(el=>io.observe(el))})();
+// ---- v21 deploy ways
+(()=>{const tabs=document.querySelectorAll('.ways button');if(!tabs.length)return;tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.way-panel').forEach(p=>{p.hidden=p.id!=='way-'+b.dataset.way});b.setAttribute('aria-selected','true')}));})();
+// ---- v21 toast
+window.toast=(fa,en)=>{let t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t)}t.textContent=isEn()?en:fa;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1800)};
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>toast('کپی شد ✓','Copied ✓')));
+const _uc=document.getElementById('uuidCopy');if(_uc)_uc.addEventListener('click',()=>toast('UUID کپی شد ✓','UUID copied ✓'));
+// ---- v21 status strip
+(()=>{const box=document.getElementById('status');if(!box)return;const set=(k,ok,ms)=>{const el=box.querySelector(`[data-st=${k}]`);el.classList.add(ok?'ok':'bad');if(ms!=null)el.dataset.ms=ms+'ms'};
+const t=(k,f)=>{const s=performance.now();return f().then(ok=>set(k,ok,Math.round(performance.now()-s))).catch(()=>set(k,false))};
+const io=new IntersectionObserver(es=>{if(!es.some(e=>e.isIntersecting))return;io.disconnect();
+Promise.all([t('site',()=>fetch('manifest.json?'+Date.now(),{cache:'no-store'}).then(r=>r.ok)),
+t('edge',()=>fetch('https://1.1.1.1/cdn-cgi/trace',{cache:'no-store'}).then(r=>r.ok)),
+t('api',()=>fetch('https://nika-feedback.nikanetteem.workers.dev/stats').then(r=>r.ok)),
+t('repo',()=>fetch('https://api.github.com/repos/NikaTeem/Nika-Net',{cache:'force-cache'}).then(r=>r.ok||r.status===403))]).then(()=>{document.getElementById('stTime').textContent=new Date().toLocaleTimeString(isEn()?'en-GB':'fa-IR',{hour:'2-digit',minute:'2-digit'})})},{rootMargin:'300px'});io.observe(box)})();
+// ---- v21 word reveal on English display headings
+(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;document.querySelectorAll('.sec-head h2.en').forEach(h=>{h.classList.add('wr');let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3&&c.textContent.trim()){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(w));return}const s=document.createElement('span');s.className='w';s.style.setProperty('--i',i++);s.innerHTML='<span>'+w+'</span>';f.appendChild(s)});c.replaceWith(f)}else if(c.nodeType===1&&c.tagName!=='SVG'&&!c.classList.contains('circ-svg'))walk(c)})};walk(h)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('.wr').forEach(h=>io.observe(h))})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
