@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -228,6 +228,43 @@
   </div>
 </section>
 
+<!-- BLUEPRINT -->
+<section class="wrap rv" id="blueprint">
+  <div class="sec-head">
+    <div class="num">— Blueprint</div>
+    <h2 class="en" dir="ltr">How a packet <span class="ul">gets through.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>یک بسته چطور رد می‌شود.</p>
+    <p data-fa>نقشهٔ مهندسی مسیر: از دستگاه شما، از دل فیلترینگ، تا لبهٔ Cloudflare و از آن‌جا به اینترنت آزاد. روی هر ایستگاه بایستید.</p>
+    <p data-en>The engineering plan of the route: from your device, through the filter, to the Cloudflare edge and out to the open internet. Hover each station.</p>
+  </div>
+  <div class="bp" id="bp">
+    <svg viewBox="0 0 1000 340" class="bp-svg" dir="ltr">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5 0 10z"/></marker></defs>
+      <g class="bp-grid"><path d="M0 60H1000M0 120H1000M0 180H1000M0 240H1000M0 300H1000M100 0V340M300 0V340M500 0V340M700 0V340M900 0V340"/></g>
+      <!-- wall -->
+      <g class="bp-wall"><path d="M400 30v280M416 30v280"/><path d="M400 60h16M400 100h16M400 140h16M400 180h16M400 220h16M400 260h16M400 300h16"/><text x="408" y="24">FILTER</text></g>
+      <!-- links -->
+      <path class="bp-link l1" pathLength="1" d="M150 170 C 240 170, 300 170, 395 170"/>
+      <path class="bp-link l2" pathLength="1" d="M421 170 C 470 170, 500 170, 560 170"/>
+      <path class="bp-link l3" pathLength="1" d="M660 170 C 720 170, 760 170, 840 170"/>
+      <!-- tunnel overlay -->
+      <path class="bp-tunnel" d="M150 170 C 240 170, 300 170, 395 170 L 421 170 C 470 170, 500 170, 560 170" pathLength="1"/>
+      <!-- stations -->
+      <g class="bp-node" data-n="0" transform="translate(100 170)"><rect x="-46" y="-34" width="92" height="68" rx="6"/><rect x="-36" y="-24" width="72" height="44" rx="2"/><circle cy="27" r="2.5"/><text y="58">YOUR DEVICE</text></g>
+      <g class="bp-node" data-n="1" transform="translate(610 170)"><path d="M-34 14 a22 22 0 1 1 6 -40 a28 28 0 0 1 54 4 a20 20 0 0 1 -2 36z"/><path class="bolt" d="M-4 -16 L-12 4 h9 l-5 16 L10 -2 h-9 l4 -14z"/><text y="58">CLOUDFLARE EDGE</text><text y="72" class="sub">your worker · tls 1.3</text></g>
+      <g class="bp-node" data-n="2" transform="translate(900 170)"><circle r="34"/><ellipse rx="14" ry="34"/><path d="M-34 0h68M-30 -16h60M-30 16h60"/><text y="58">OPEN INTERNET</text></g>
+      <!-- packets -->
+      <circle class="pk p1" r="4"/><circle class="pk p2" r="4"/><circle class="pk p3" r="4"/>
+      <text class="bp-note" x="270" y="140">encrypted · looks like https</text>
+      <text class="bp-note" x="750" y="140">plain request from CF</text>
+    </svg>
+    <div class="bp-cards">
+      <div class="bp-card on" data-n="0"><b data-fa>۱ · دستگاه شما</b><b data-en>1 · Your device</b><p data-fa>کلاینت (v2rayNG، Hiddify، Clash…) کانفیگ VLESS/Trojan را می‌گیرد و ترافیک را داخل یک اتصال WebSocket + TLS می‌پیچد — از بیرون فقط یک HTTPS معمولی دیده می‌شود.</p><p data-en>Your client (v2rayNG, Hiddify, Clash…) takes the VLESS/Trojan config and wraps traffic inside WebSocket + TLS — from the outside it looks like ordinary HTTPS.</p></div>
+      <div class="bp-card" data-n="1"><b data-fa>۲ · لبهٔ Cloudflare</b><b data-en>2 · Cloudflare edge</b><p data-fa>Worker شما در نزدیک‌ترین دیتاسنتر اجرا می‌شود، بسته را باز می‌کند و به مقصد وصل می‌شود. با «آی‌پی تمیز» به یکی از آدرس‌های CF می‌رسید که فیلتر نشده.</p><p data-en>Your Worker runs in the nearest data center, unwraps the packet and connects to the destination. A “clean IP” lands you on a CF address that isn’t blocked.</p></div>
+      <div class="bp-card" data-n="2"><b data-fa>۳ · اینترنت آزاد</b><b data-en>3 · Open internet</b><p data-fa>مقصد فقط Cloudflare را می‌بیند. نه سروری اجاره کرده‌اید، نه لاگی جایی ذخیره می‌شود؛ وقتی نباشید، Worker هم خاموش است. هزینه: صفر.</p><p data-en>The destination only sees Cloudflare. No rented server, no logs kept anywhere; when you’re away the Worker is simply idle. Cost: zero.</p></div>
+    </div>
+  </div>
+</section>
 <!-- CLOUD SPLIT -->
 <section class="wrap rv">
   <div class="split rev">
@@ -439,13 +476,15 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <a href="#telegram" data-r="telegram"><b>III</b><span>Telegram</span></a>
 <a href="#features" data-r="features"><b>IV</b><span>Features</span></a>
 <a href="#protocols" data-r="protocols"><b>V</b><span>Protocols</span></a>
-<a href="#start" data-r="start"><b>VI</b><span>Start</span></a>
-<a href="#logbook" data-r="logbook"><b>VII</b><span>Logbook</span></a>
-<a href="#feedback" data-r="feedback"><b>VIII</b><span>Box</span></a>
-<a href="#faq" data-r="faq"><b>IX</b><span>FAQ</span></a>
-<a href="#manifesto" data-r="manifesto"><b>X</b><span>Manifesto</span></a>
+<a href="#blueprint" data-r="blueprint"><b>VI</b><span>Blueprint</span></a>
+<a href="#start" data-r="start"><b>VII</b><span>Start</span></a>
+<a href="#logbook" data-r="logbook"><b>VIII</b><span>Logbook</span></a>
+<a href="#feedback" data-r="feedback"><b>IX</b><span>Box</span></a>
+<a href="#faq" data-r="faq"><b>X</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>XI</b><span>Manifesto</span></a>
 </div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
+<div class="lb" id="lb" hidden><button class="lb-x" aria-label="close">×</button><img alt=""><div class="lb-cap" id="lbCap"></div></div>
 <div class="pal" id="pal" hidden><div class="pal-bg" onclick="closePal()"></div><div class="pal-box" role="dialog" aria-modal="true" dir="ltr">
   <input id="palIn" type="text" autocomplete="off" spellcheck="false" placeholder="Type a command — go to, theme, language, copy…">
   <ul id="palList"></ul>
@@ -585,6 +624,7 @@ const PAL=[
  {k:'go telegram bot channel',fa:'برو به: تلگرام',en:'Go to: Telegram',run:()=>location.hash='#telegram'},
  {k:'go features',fa:'برو به: ویژگی‌ها',en:'Go to: Features',run:()=>location.hash='#features'},
  {k:'go protocols vless trojan warp',fa:'برو به: پروتکل‌ها',en:'Go to: Protocols',run:()=>location.hash='#protocols'},
+ {k:'go blueprint how works route',fa:'برو به: نقشهٔ مسیر',en:'Go to: Blueprint',run:()=>location.hash='#blueprint'},
  {k:'go start deploy quick',fa:'برو به: شروع سریع',en:'Go to: Quick start',run:()=>location.hash='#start'},
  {k:'go logbook commits changelog',fa:'برو به: دفترچهٔ کار',en:'Go to: Logbook',run:()=>location.hash='#logbook'},
  {k:'go feedback box suggestion',fa:'برو به: صندوق انتقادات',en:'Go to: Suggestion box',run:()=>location.hash='#feedback'},
@@ -610,6 +650,17 @@ palList.addEventListener('mousemove',e=>{const li=e.target.closest('li[data-i]')
 addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.hidden?openPal():closePal()}else if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();openPal()}});
 // ?lang=en support
 if(new URLSearchParams(location.search).get('lang')==='en'&&!localStorage.getItem('nika-lang')){applyLang('en')}
+
+// ---- blueprint interaction
+(()=>{const bp=document.getElementById('bp');if(!bp)return;const nodes=bp.querySelectorAll('.bp-node'),cards=bp.querySelectorAll('.bp-card');const set=n=>{nodes.forEach(x=>x.classList.toggle('on',x.dataset.n===n));cards.forEach(x=>x.classList.toggle('on',x.dataset.n===n))};set('0');
+nodes.forEach(x=>{x.addEventListener('mouseenter',()=>set(x.dataset.n));x.addEventListener('click',()=>set(x.dataset.n))});cards.forEach(x=>x.addEventListener('mouseenter',()=>set(x.dataset.n)));
+let auto=setInterval(()=>{const cur=[...cards].findIndex(c=>c.classList.contains('on'));set(String((cur+1)%3))},4200);bp.addEventListener('mouseenter',()=>clearInterval(auto),{once:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>bp.classList.toggle('live',e.isIntersecting)),{threshold:.2});io.observe(bp)})();
+// ---- lightbox for panel shots
+(()=>{const lb=document.getElementById('lb');if(!lb)return;const img=lb.querySelector('img'),cap=document.getElementById('lbCap');document.querySelectorAll('.shot-frame img').forEach(i=>{i.style.cursor='zoom-in';i.addEventListener('click',()=>{img.src=i.currentSrc||i.src;cap.textContent=i.alt||'';lb.hidden=false;requestAnimationFrame(()=>lb.classList.add('on'));document.body.style.overflow='hidden'})});
+const close=()=>{lb.classList.remove('on');document.body.style.overflow='';setTimeout(()=>lb.hidden=true,250)};lb.addEventListener('click',close);addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)close()})})();
+// ---- easter egg: type "nika"
+(()=>{let buf='';addEventListener('keydown',e=>{if(/input|textarea/i.test(document.activeElement.tagName))return;buf=(buf+e.key.toLowerCase()).slice(-4);if(buf==='nika'){buf='';document.documentElement.classList.add('doodle');setTimeout(()=>document.documentElement.classList.remove('doodle'),6000)}})})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
