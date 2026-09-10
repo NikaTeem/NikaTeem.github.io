@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=19">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -360,13 +360,15 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
     <div class="num">— Toolkit</div>
     <h2 class="en" dir="ltr">Tools from <span class="ul">the drawer.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
     <p class="h2-fa" data-fa>ابزارهای <mark class="hl">کشوی میز</mark>.</p>
-    <p data-fa>سه ابزار کوچک که همین‌جا در مرورگر شما اجرا می‌شوند — هیچ داده‌ای به سروری فرستاده نمی‌شود.</p>
-    <p data-en>Three small tools that run right here in your browser — nothing is sent to any server.</p>
+    <p data-fa>پنج ابزار کوچک که همین‌جا در مرورگر شما اجرا می‌شوند — هیچ داده‌ای به سروری فرستاده نمی‌شود.</p>
+    <p data-en>Five small tools that run right here in your browser — nothing is sent to any server.</p>
   </div>
   <div class="tk-tabs" role="tablist">
     <button class="on" data-tk="probe" role="tab"><i>01</i><span data-fa>بررسی اتصال</span><span data-en>Connection check</span></button>
     <button data-tk="decode" role="tab"><i>02</i><span data-fa>خوانندهٔ کانفیگ</span><span data-en>Config reader</span></button>
     <button data-tk="client" role="tab"><i>03</i><span data-fa>کدام کلاینت؟</span><span data-en>Which client?</span></button>
+    <button data-tk="dns" role="tab"><i>04</i><span data-fa>بررسی دامنه</span><span data-en>Domain check</span></button>
+    <button data-tk="gen" role="tab"><i>05</i><span data-fa>UUID و QR</span><span data-en>UUID &amp; QR</span></button>
   </div>
   <div class="tk-panel" id="tk-probe">
     <div class="tk-grid">
@@ -407,6 +409,29 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
         <div class="os-pick" id="osPick"><button data-os="android">Android</button><button data-os="ios">iOS</button><button data-os="windows">Windows</button><button data-os="mac">macOS</button><button data-os="linux">Linux</button></div>
       </div>
       <div class="tk-out" id="cliOut" dir="ltr"></div>
+    </div>
+  </div>
+  <div class="tk-panel" id="tk-dns" hidden>
+    <div class="tk-grid">
+      <div class="tk-copy">
+        <h3 data-fa>دامنه‌ات به کلادفلر رسیده؟</h3><h3 data-en>Is your domain on Cloudflare yet?</h3>
+        <p data-fa>دامنه‌ای که می‌خواهید روی Worker بگذارید را بنویسید. رکوردهای DNS را از DoH کلادفلر می‌خوانیم و می‌گوییم پروکسی نارنجی فعال است یا نه.</p>
+        <p data-en>Type the domain you plan to attach to your Worker. We read its DNS over Cloudflare DoH and tell you if the orange proxy is on.</p>
+        <form class="tk-form" id="dnsForm"><input id="dnsIn" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="my-panel.example.com" dir="ltr"><button class="btn solid" type="submit"><span data-fa>بررسی</span><span data-en>Look up</span><span class="ic-t">→</span></button></form>
+      </div>
+      <div class="tk-out" id="dnsOut" dir="ltr"><div class="tk-empty" data-fa>منتظر دامنه…</div><div class="tk-empty" data-en>Waiting for a domain…</div></div>
+    </div>
+  </div>
+  <div class="tk-panel" id="tk-gen" hidden>
+    <div class="tk-grid">
+      <div class="tk-copy">
+        <h3 data-fa>شناسه بساز، QR بگیر</h3><h3 data-en>Mint an ID, get a QR</h3>
+        <p data-fa>برای متغیر <code>UUID</code> ورکر یک شناسهٔ تصادفی امن بسازید (با <code>crypto.randomUUID</code>). یا هر لینک اشتراک/کانفیگی را بچسبانید تا QR واقعی‌اش را همین‌جا اسکن کنید.</p>
+        <p data-en>Generate a cryptographically random <code>UUID</code> for your Worker variable. Or paste any subscription/config link to get a real, scannable QR — offline.</p>
+        <div class="uuid-box"><code id="uuidOut" dir="ltr">— — — —</code><div class="uuid-acts"><button type="button" class="btn" id="uuidNew"><span data-fa>تازه</span><span data-en>New</span><span class="ic-t">↻</span></button><button type="button" class="btn solid" id="uuidCopy"><span data-fa>کپی</span><span data-en>Copy</span><span class="ic-t">⧉</span></button></div></div>
+        <textarea id="qrIn" rows="3" spellcheck="false" placeholder="https://… or vless://…" dir="ltr"></textarea>
+      </div>
+      <div class="tk-out qr-out" id="qrOut" dir="ltr"><div class="tk-empty" data-fa>QR این‌جا ظاهر می‌شود</div><div class="tk-empty" data-en>Your QR will appear here</div></div>
     </div>
   </div>
 </section>
@@ -696,6 +721,10 @@ const PAL=[
  {k:'go logbook commits changelog',fa:'برو به: دفترچهٔ کار',en:'Go to: Logbook',run:()=>location.hash='#logbook'},
  {k:'go feedback box suggestion',fa:'برو به: صندوق انتقادات',en:'Go to: Suggestion box',run:()=>location.hash='#feedback'},
  {k:'go faq questions',fa:'برو به: سؤال‌های پرتکرار',en:'Go to: FAQ',run:()=>location.hash='#faq'},
+ {k:'shortcuts keys help ?',fa:'کلیدهای میانبر',en:'Keyboard shortcuts',run:()=>openKeys()},
+ {k:'uuid generate id',fa:'ابزار: ساخت UUID',en:'Tool: generate UUID',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=gen]').click()}},
+ {k:'qr code',fa:'ابزار: QR کانفیگ',en:'Tool: config QR',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=gen]').click()}},
+ {k:'dns domain check',fa:'ابزار: بررسی دامنه',en:'Tool: domain check',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=dns]').click()}},
  {k:'theme dark light toggle',fa:'تغییر تم روشن/تاریک',en:'Toggle dark / light theme',run:()=>toggleTheme()},
  {k:'language english farsi persian',fa:'Switch to English',en:'تغییر زبان به فارسی',run:()=>toggleLang()},
  {k:'deploy cloudflare',fa:'استقرار روی Cloudflare ↗',en:'Deploy to Cloudflare ↗',run:()=>open('https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net','_blank')},
@@ -774,6 +803,59 @@ linux:[['Nekoray','https://github.com/MatsuriDayo/nekoray/releases','VLESS · Tr
 const detect=()=>{const ua=navigator.userAgent;if(/android/i.test(ua))return'android';if(/iphone|ipad|ipod/i.test(ua))return'ios';if(/mac/i.test(ua))return'mac';if(/linux/i.test(ua))return'linux';return'windows'};
 let cur=detect();const render=()=>{pick.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.os===cur));out.innerHTML=C[cur].map((c,i)=>`<a class="cli" href="${c[1]}" target="_blank" rel="noopener" style="--i:${i}"><span class="n">${c[0]}</span><span class="p">${c[2]}</span><span class="d">${c[3]}</span><span class="a">↗</span></a>`).join('')+`<div class="pr-verdict">${isEn()?'Paste your Nika Net subscription link into any of these.':'لینک اشتراک نیکا نت را در هرکدام از این‌ها بچسبانید.'}</div>`};
 pick.addEventListener('click',e=>{const b=e.target.closest('button');if(b){cur=b.dataset.os;render()}});render();new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
+// ---- 04 dns check
+(()=>{const f=document.getElementById('dnsForm'),inp=document.getElementById('dnsIn'),out=document.getElementById('dnsOut');if(!f)return;
+const cf=ip=>/^(104\.(1[6-9]|2\d|3[01])\.|172\.(6[4-9]|7[01])\.|188\.114\.|141\.101\.|162\.15[89]\.|173\.245\.|190\.93\.|197\.234\.|198\.41\.|103\.2[12]\.|103\.31\.)/.test(ip);
+const gh=ip=>/^185\.199\.10[89]\.|^185\.199\.11[01]\./.test(ip);
+const row=(k,v,c)=>`<div class="pr-row ${c||''}"><em>${k}</em><b>${esc(String(v))}</b></div>`;
+const q=(n,t)=>fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(n)}&type=${t}`,{headers:{accept:'application/dns-json'}}).then(r=>r.json()).catch(()=>({}));
+f.addEventListener('submit',async e=>{e.preventDefault();let d=inp.value.trim().replace(/^https?:\/\//,'').split('/')[0].toLowerCase();if(!d)return;const en=isEn();
+out.innerHTML=row('domain',d)+row('status',en?'looking up…':'در حال جست‌وجو…','wait');
+const [a,cn,ns,aaaa]=await Promise.all([q(d,'A'),q(d,'CNAME'),q(d,'NS'),q(d,'AAAA')]);
+const A=(a.Answer||[]).filter(x=>x.type===1).map(x=>x.data),CN=(cn.Answer||[]).filter(x=>x.type===5).map(x=>x.data.replace(/\.$/,'')),NS=(ns.Answer||[]).filter(x=>x.type===2).map(x=>x.data.replace(/\.$/,'')),A6=(aaaa.Answer||[]).filter(x=>x.type===28).map(x=>x.data);
+const onCF=A.length&&A.every(cf),cfNS=NS.some(n=>/cloudflare\.com$/.test(n)),isWorker=CN.some(c=>/workers\.dev$/.test(c)),isGH=A.some(gh);
+let verdict;if(!A.length&&!CN.length)verdict=en?'No records found — the domain isn’t resolving yet (or is a typo).':'رکوردی پیدا نشد — دامنه هنوز resolve نمی‌شود (یا غلط تایپی است).';
+else if(onCF)verdict=en?'✓ Traffic is proxied through Cloudflare (orange cloud). Ready for a Worker route.':'✓ ترافیک از پروکسی کلادفلر (ابر نارنجی) می‌گذرد. برای مسیر Worker آماده است.';
+else if(isGH)verdict=en?'Points at GitHub Pages (DNS-only). Fine for a site; a Worker route needs the orange cloud on.':'به GitHub Pages اشاره می‌کند (فقط DNS). برای سایت خوب است؛ مسیر Worker ابر نارنجی می‌خواهد.';
+else if(cfNS)verdict=en?'Nameservers are Cloudflare but the record is DNS-only. Flip the cloud to orange.':'نیم‌سرورها کلادفلر است اما رکورد فقط DNS است. ابر را نارنجی کنید.';
+else verdict=en?'Not behind Cloudflare. Move the nameservers to Cloudflare first (free plan works).':'پشت کلادفلر نیست. اول نیم‌سرورها را به کلادفلر ببرید (پلن رایگان کافی است).';
+out.innerHTML=[row('domain',d),row('A',A.join('  ')||'—',A.length?(onCF?'good':''):'bad'),A6.length?row('AAAA',A6.slice(0,2).join('  ')):'',CN.length?row('CNAME',CN.join('  '),isWorker?'good':''):'',row('NS',NS.slice(0,2).join('  ')||'—',cfNS?'good':''),row(en?'cloudflare proxy':'پروکسی کلادفلر',onCF?'on':'off',onCF?'good':'bad'),`<div class="pr-verdict">${verdict}</div>`].join('')});
+inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();f.requestSubmit()}})})();
+// ---- 05 uuid + qr
+(()=>{const o=document.getElementById('uuidOut'),nb=document.getElementById('uuidNew'),cb=document.getElementById('uuidCopy'),qi=document.getElementById('qrIn'),qo=document.getElementById('qrOut');if(!o)return;
+const mk=()=>{o.textContent=crypto.randomUUID();o.classList.remove('flash');void o.offsetWidth;o.classList.add('flash')};mk();nb.addEventListener('click',mk);
+cb.addEventListener('click',()=>{navigator.clipboard.writeText(o.textContent).then(()=>{cb.classList.add('did');setTimeout(()=>cb.classList.remove('did'),1400)}).catch(()=>{})});
+let lib;const load=()=>lib||(lib=new Promise((res,rej)=>{if(window.qrcode)return res(window.qrcode);const s=document.createElement('script');s.src='assets/qr.js';s.onload=()=>res(window.qrcode);s.onerror=rej;document.head.appendChild(s)}));
+let t;const draw=()=>{const v=qi.value.trim();if(!v){qo.innerHTML=`<div class="tk-empty">${isEn()?'Your QR will appear here':'QR این‌جا ظاهر می‌شود'}</div>`;return}
+load().then(Q=>{let q;try{q=Q(0,'M');q.addData(v,'Byte');q.make()}catch(e){qo.innerHTML=`<div class="tk-empty bad">${isEn()?'Too long for a QR (max ~2.9 KB).':'برای QR خیلی بلند است (حداکثر ~۲.۹ کیلوبایت).'}</div>`;return}
+const n=q.getModuleCount(),cells=[];for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))cells.push(`M${c} ${r}h1v1h-1z`);
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 ${n+4} ${n+4}" shape-rendering="crispEdges"><rect x="-2" y="-2" width="${n+4}" height="${n+4}" fill="#f4efe4"/><path d="${cells.join('')}" fill="#171512"/></svg>`;
+const url='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+qo.innerHTML=`<div class="qr-wrap">${svg}</div><div class="qr-meta"><span>${n}×${n} · ${v.length} chars · ECC M</span><a class="btn" download="nika-qr.svg" href="${url}"><span data-fa>دانلود SVG</span><span data-en>Download SVG</span><span class="ic-t">↓</span></a></div>`}).catch(()=>{qo.innerHTML='<div class="tk-empty bad">QR engine failed to load.</div>'})};
+qi.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(draw,200)});
+const dec=document.getElementById('decIn');if(dec)dec.addEventListener('input',()=>{if(!qi.value.trim()||qi.dataset.auto==='1'){qi.value=dec.value;qi.dataset.auto='1';draw()}});
+new MutationObserver(()=>{if(qi.value.trim())draw()}).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
+// ---- keyboard cheatsheet (?)
+(()=>{const el=document.createElement('div');el.className='keys';el.id='keys';el.hidden=true;el.innerHTML=`<div class="keys-card"><div class="num">— Shortcuts</div><h3 data-fa>کلیدهای میانبر</h3><h3 data-en>Keyboard shortcuts</h3><dl>
+<dt><kbd>⌘</kbd><kbd>K</kbd> / <kbd>/</kbd></dt><dd data-fa>پالت فرمان</dd><dd data-en>Command palette</dd>
+<dt><kbd>?</kbd></dt><dd data-fa>همین راهنما</dd><dd data-en>This card</dd>
+<dt><kbd>Esc</kbd></dt><dd data-fa>بستن هر پنجره</dd><dd data-en>Close any overlay</dd>
+<dt><kbd>n</kbd><kbd>i</kbd><kbd>k</kbd><kbd>a</kbd></dt><dd data-fa>یک سورپرایز</dd><dd data-en>A little surprise</dd>
+</dl><small data-fa>برای بستن Esc یا کلیک بیرون.</small><small data-en>Esc or click outside to close.</small></div>`;document.body.appendChild(el);
+const open=()=>{el.hidden=false;requestAnimationFrame(()=>el.classList.add("on"))},close=()=>{el.classList.remove('on');setTimeout(()=>el.hidden=true,250)};
+el.addEventListener('click',e=>{if(e.target===el)close()});
+addEventListener('keydown',e=>{if(/input|textarea/i.test(document.activeElement.tagName))return;if(e.key==='?'){e.preventDefault();el.hidden?open():close()}else if(e.key==='Escape'&&!el.hidden)close()});
+window.openKeys=open})();
+// ---- v19 magnetic buttons + ink ripple
+(()=>{if(matchMedia('(hover:none)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+document.querySelectorAll('.btn,.tk-tabs button,.os-pick button').forEach(b=>{b.classList.add('mag');
+b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.setProperty('--mx',(x*.18).toFixed(1)+'px');b.style.setProperty('--my',(y*.28).toFixed(1)+'px')});
+b.addEventListener('mouseleave',()=>{b.style.setProperty('--mx','0px');b.style.setProperty('--my','0px')});
+b.addEventListener('pointerdown',e=>{const r=b.getBoundingClientRect(),d=document.createElement('i');d.className='ink';d.style.left=(e.clientX-r.left)+'px';d.style.top=(e.clientY-r.top)+'px';b.appendChild(d);setTimeout(()=>d.remove(),700)})})})();
+// ---- v19 pencil circle around section titles
+(()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+document.querySelectorAll('.sec-head .h2-fa mark.hl').forEach(el=>{el.classList.add('circ');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 200 60');svg.setAttribute('preserveAspectRatio','none');svg.classList.add('circ-svg');svg.innerHTML='<path d="M12 30 C 10 8, 90 2, 150 8 S 200 28, 180 44 S 90 62, 30 52 S -6 30, 40 14 S 140 4, 170 12"/>';el.appendChild(svg)});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('drawn');io.unobserve(e.target)}}),{threshold:.9});document.querySelectorAll('.circ').forEach(el=>io.observe(el))})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
