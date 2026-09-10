@@ -9,11 +9,16 @@
 <link rel="canonical" href="https://nikanet.dpdns.org/">
 <meta property="og:title" content="Nika Net — Config Panel Engineering">
 <meta property="og:description" content="A pencil-drawn, censorship-resistant proxy panel — VLESS · Trojan · WARP on a single Cloudflare Worker.">
-<meta property="og:image" content="https://nikanet.dpdns.org/assets/logo-512.webp">
+<meta property="og:image" content="https://nikanet.dpdns.org/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="website"><meta property="og:site_name" content="Nika Net"><meta property="og:locale" content="fa_IR"><meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Nika Net — Config Panel Engineering"><meta name="twitter:description" content="A pencil-drawn, censorship-resistant proxy panel — VLESS · Trojan · WARP on a single free Cloudflare Worker."><meta name="twitter:image" content="https://nikanet.dpdns.org/assets/og.jpg">
+<link rel="alternate" hreflang="fa" href="https://nikanet.dpdns.org/"><link rel="alternate" hreflang="en" href="https://nikanet.dpdns.org/?lang=en"><link rel="alternate" hreflang="x-default" href="https://nikanet.dpdns.org/">
+<link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
+<a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
 <!-- preloader -->
 <div class="pre" id="pre" aria-hidden="true">
   <div class="pre-corner tl"></div><div class="pre-corner tr"></div><div class="pre-corner bl"></div><div class="pre-corner br"></div>
@@ -57,6 +62,7 @@
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
+      <button class="lang-btn kbtn" onclick="openPal()" title="Command palette (Ctrl+K)" aria-label="Command palette">⌘K</button>
       <button class="lang-btn" onclick="toggleTheme(event)" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
       <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
@@ -267,7 +273,12 @@
       <p style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--pencil)" data-fa>* اختیاری: یک KV namespace با نام <b>NIKA_KV</b> یا دیتابیس D1 با نام <b>NIKA_DB</b> برای ذخیره‌سازی دائمی متصل کن.</p>
       <p style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--pencil)" data-en>* Optional: bind a KV namespace as <b>NIKA_KV</b> or a D1 database as <b>NIKA_DB</b> for persistent storage.</p>
     </div>
-    <div class="code"><pre><span class="c"># 1. clone</span>
+    <div class="code"><button class="copy" type="button" data-copy="git clone https://github.com/NikaTeem/Nika-Net.git
+cd Nika-Net
+npm install
+npm run build
+npx wrangler login
+npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <span class="k">git clone</span> https://github.com/NikaTeem/Nika-Net.git
 <span class="k">cd</span> Nika-Net
 
@@ -285,6 +296,18 @@
 
 <div class="wrap rule"></div>
 
+<!-- LOGBOOK -->
+<section class="wrap rv" id="logbook">
+  <div class="sec-head">
+    <div class="num">— Logbook</div>
+    <h2 class="en" dir="ltr">Still <span class="ul">being drawn.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>هنوز داریم می‌کشیم.</p>
+    <p data-fa>دفترچهٔ کار — آخرین تغییرات مخزن، مستقیم از GitHub. هیچ‌چیز این‌جا دستی نوشته نشده.</p>
+    <p data-en>The workshop ledger — latest commits, pulled straight from GitHub. Nothing here is typed by hand.</p>
+  </div>
+  <div class="ledger" id="ledger" dir="ltr"><div class="ledger-empty" data-fa>در حال خواندن دفترچه…</div><div class="ledger-empty" data-en>Reading the ledger…</div></div>
+  <div class="ledger-foot" dir="ltr"><a href="https://github.com/NikaTeem/Nika-Net/commits/main" target="_blank" rel="noopener">full history on GitHub ↗</a><span id="ledgerVer"></span></div>
+</section>
 <!-- COMPARE -->
 <section class="wrap rv">
   <div class="sec-head">
@@ -417,14 +440,26 @@
 <a href="#features" data-r="features"><b>IV</b><span>Features</span></a>
 <a href="#protocols" data-r="protocols"><b>V</b><span>Protocols</span></a>
 <a href="#start" data-r="start"><b>VI</b><span>Start</span></a>
-<a href="#feedback" data-r="feedback"><b>VII</b><span>Box</span></a>
-<a href="#faq" data-r="faq"><b>VIII</b><span>FAQ</span></a>
-<a href="#manifesto" data-r="manifesto"><b>IX</b><span>Manifesto</span></a>
+<a href="#logbook" data-r="logbook"><b>VII</b><span>Logbook</span></a>
+<a href="#feedback" data-r="feedback"><b>VIII</b><span>Box</span></a>
+<a href="#faq" data-r="faq"><b>IX</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>X</b><span>Manifesto</span></a>
 </div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
+<div class="pal" id="pal" hidden><div class="pal-bg" onclick="closePal()"></div><div class="pal-box" role="dialog" aria-modal="true" dir="ltr">
+  <input id="palIn" type="text" autocomplete="off" spellcheck="false" placeholder="Type a command — go to, theme, language, copy…">
+  <ul id="palList"></ul>
+  <div class="pal-hint"><kbd>↑↓</kbd> navigate <kbd>↵</kbd> run <kbd>esc</kbd> close</div>
+</div></div>
+<button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
 <footer>
   <div class="wordmark" id="wordmark" aria-hidden="true">NIKA NET</div>
   <div class="wrap">
+    <div class="share" dir="ltr"><span data-en>Pass it on —</span><span data-fa>دست‌به‌دست کنید —</span>
+      <a href="https://t.me/share/url?url=https%3A%2F%2Fnikanet.dpdns.org&text=Nika%20Net%20%E2%80%94%20free%20proxy%20panel%20on%20Cloudflare" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fnikanet.dpdns.org&text=Nika%20Net%20%E2%80%94%20pencil-drawn%20proxy%20panel%20on%20a%20free%20Cloudflare%20Worker" target="_blank" rel="noopener">X</a>
+      <button type="button" class="copylink" data-copy="https://nikanet.dpdns.org/"><span data-en>copy link</span><span data-fa>کپی لینک</span></button>
+    </div>
     <div class="f-grid">
       <div>
         <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo-512.webp" alt="Nika Net"><span><b>Nika Net</b><small>Config Panel Engineering</small></span></a>
@@ -533,6 +568,48 @@ const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setA(e
 addEventListener('scroll',()=>rail.classList.toggle('show',scrollY>innerHeight*.6),{passive:true})})();
 // footer wordmark parallax
 (()=>{const w=document.getElementById('wordmark');if(!w)return;addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*30,y=(e.clientY/innerHeight-.5)*12;w.style.transform=`translate(${x}px,${y}px)`},{passive:true})})();
+
+// ---- logbook (GitHub, real)
+(()=>{const box=document.getElementById('ledger');if(!box)return;const relT=t=>{const s=(Date.now()-new Date(t))/1e3,en=isEn();if(s<3600){const m=Math.max(1,s/60|0);return en?m+' min ago':fmtN(m)+' دقیقه پیش'}if(s<86400){const hh=s/3600|0;return en?hh+' h ago':fmtN(hh)+' ساعت پیش'}const d=s/86400|0;return en?d+' d ago':fmtN(d)+' روز پیش'};
+let data=null;const render=()=>{if(!data)return;box.innerHTML=data.map((c,i)=>{const m=c.commit.message.split('\n')[0];const v=(m.match(/v?\d+\.\d+\.\d+/)||[])[0];const msg=esc(m.replace(/^[^\w\u0600-\u06FF]*/,'').replace(/^v?\d+\.\d+\.\d+:?\s*/,''));const rtl=/[\u0600-\u06FF]/.test(msg);return `<a class="lg-row" style="--i:${i}" href="${c.html_url}" target="_blank" rel="noopener"><span class="lg-sha">${c.sha.slice(0,7)}</span><span class="lg-msg" ${rtl?'dir="rtl"':''}>${msg}</span>${v?`<span class="lg-ver">${v}</span>`:''}<time class="lg-time">${relT(c.commit.author.date)}</time></a>`}).join('');const ver=document.getElementById('ledgerVer');const top=data.map(c=>(c.commit.message.match(/v?\d+\.\d+\.\d+/)||[])[0]).find(Boolean);if(top&&ver)ver.textContent='latest · '+top};
+const io=new IntersectionObserver(es=>{if(!es.some(e=>e.isIntersecting))return;io.disconnect();fetch('https://api.github.com/repos/NikaTeem/Nika-Net/commits?per_page=7').then(r=>r.ok?r.json():Promise.reject()).then(d=>{data=d;render()}).catch(()=>{box.innerHTML=`<div class="ledger-empty">${isEn()?'GitHub is quiet right now — see the full history ↗':'الان دسترسی به GitHub نیست — تاریخچهٔ کامل را ببینید ↗'}</div>`})},{rootMargin:'200px'});io.observe(box);
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
+// ---- copy buttons
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy)}catch(e){}b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),1600)}));
+// ---- back to top
+(()=>{const t=document.getElementById('totop');addEventListener('scroll',()=>t.classList.toggle('show',scrollY>innerHeight*1.2),{passive:true});t.onclick=()=>scrollTo({top:0,behavior:'smooth'})})();
+// ---- command palette
+const PAL=[
+ {k:'go',fa:'برو به: بالای صفحه',en:'Go to: Top',run:()=>scrollTo({top:0,behavior:'smooth'})},
+ {k:'go showcase panel',fa:'برو به: نگاهی به داخل پنل',en:'Go to: Inside the panel',run:()=>location.hash='#showcase'},
+ {k:'go telegram bot channel',fa:'برو به: تلگرام',en:'Go to: Telegram',run:()=>location.hash='#telegram'},
+ {k:'go features',fa:'برو به: ویژگی‌ها',en:'Go to: Features',run:()=>location.hash='#features'},
+ {k:'go protocols vless trojan warp',fa:'برو به: پروتکل‌ها',en:'Go to: Protocols',run:()=>location.hash='#protocols'},
+ {k:'go start deploy quick',fa:'برو به: شروع سریع',en:'Go to: Quick start',run:()=>location.hash='#start'},
+ {k:'go logbook commits changelog',fa:'برو به: دفترچهٔ کار',en:'Go to: Logbook',run:()=>location.hash='#logbook'},
+ {k:'go feedback box suggestion',fa:'برو به: صندوق انتقادات',en:'Go to: Suggestion box',run:()=>location.hash='#feedback'},
+ {k:'go faq questions',fa:'برو به: سؤال‌های پرتکرار',en:'Go to: FAQ',run:()=>location.hash='#faq'},
+ {k:'theme dark light toggle',fa:'تغییر تم روشن/تاریک',en:'Toggle dark / light theme',run:()=>toggleTheme()},
+ {k:'language english farsi persian',fa:'Switch to English',en:'تغییر زبان به فارسی',run:()=>toggleLang()},
+ {k:'deploy cloudflare',fa:'استقرار روی Cloudflare ↗',en:'Deploy to Cloudflare ↗',run:()=>open('https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net','_blank')},
+ {k:'github repo source',fa:'مخزن GitHub ↗',en:'GitHub repository ↗',run:()=>open('https://github.com/NikaTeem/Nika-Net','_blank')},
+ {k:'docs documentation',fa:'مستندات',en:'Documentation',run:()=>location.href='docs.html'},
+ {k:'telegram bot launcher',fa:'ربات تلگرام ↗',en:'Telegram bot ↗',run:()=>open('https://t.me/NikaNetLauncher_bot','_blank')},
+ {k:'copy link url share',fa:'کپی لینک سایت',en:'Copy site link',run:()=>navigator.clipboard&&navigator.clipboard.writeText('https://nikanet.dpdns.org/')},
+ {k:'copy deploy command clone',fa:'کپی دستورات نصب',en:'Copy install commands',run:()=>navigator.clipboard&&navigator.clipboard.writeText('git clone https://github.com/NikaTeem/Nika-Net.git && cd Nika-Net && npm install && npm run build && npx wrangler login && npm run deploy')},
+];
+const pal=document.getElementById('pal'),palIn=document.getElementById('palIn'),palList=document.getElementById('palList');let palSel=0,palItems=[];
+function palRender(){const q=palIn.value.trim().toLowerCase();palItems=PAL.filter(c=>!q||c.k.includes(q)||c.fa.includes(q)||c.en.toLowerCase().includes(q));palSel=Math.min(palSel,Math.max(0,palItems.length-1));palList.innerHTML=palItems.map((c,i)=>`<li class="${i===palSel?'sel':''}" data-i="${i}"><span dir="auto">${isEn()?c.en:c.fa}</span><i>${c.k.split(' ')[0]}</i></li>`).join('')||`<li class="none">${isEn()?'nothing drawn for that':'چیزی پیدا نشد'}</li>`}
+function openPal(){pal.hidden=false;palIn.value='';palSel=0;palRender();requestAnimationFrame(()=>{pal.classList.add('on');palIn.focus()})}
+function closePal(){pal.classList.remove('on');setTimeout(()=>pal.hidden=true,220)}
+function palRun(i){const c=palItems[i];if(!c)return;closePal();setTimeout(()=>c.run(),120)}
+palIn.addEventListener('input',()=>{palSel=0;palRender()});
+palIn.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){palSel=(palSel+1)%palItems.length;palRender();e.preventDefault()}else if(e.key==='ArrowUp'){palSel=(palSel-1+palItems.length)%palItems.length;palRender();e.preventDefault()}else if(e.key==='Enter'){palRun(palSel)}else if(e.key==='Escape'){closePal()}});
+palList.addEventListener('click',e=>{const li=e.target.closest('li[data-i]');if(li)palRun(+li.dataset.i)});
+palList.addEventListener('mousemove',e=>{const li=e.target.closest('li[data-i]');if(li&&+li.dataset.i!==palSel){palSel=+li.dataset.i;palRender()}});
+addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.hidden?openPal():closePal()}else if(e.key==='/'&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();openPal()}});
+// ?lang=en support
+if(new URLSearchParams(location.search).get('lang')==='en'&&!localStorage.getItem('nika-lang')){applyLang('en')}
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
