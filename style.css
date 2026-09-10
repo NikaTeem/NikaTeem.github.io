@@ -1102,10 +1102,28 @@ html.dark .keys-card kbd{background:var(--paper-2)}
 .btn:hover .ic-t{transform:translateX(3px)}html:not(.en) .btn:hover .ic-t{transform:translateX(-3px)}
 .mag{transform:translate(var(--mx,0),var(--my,0));transition:transform .25s var(--ease-out),color .35s,box-shadow .35s,background .3s,border-color .3s}
 .btn.mag:hover{transform:translate(calc(var(--mx,0) - 2px),calc(var(--my,0) - 2px))}
-.ink{position:absolute;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:currentColor;opacity:.35;pointer-events:none;animation:inkrip .7s var(--ease-out) forwards;z-index:2}
+.rip{position:absolute;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:currentColor;opacity:.35;pointer-events:none;animation:inkrip .7s var(--ease-out) forwards;z-index:2}
 @keyframes inkrip{to{transform:scale(60);opacity:0}}
 .circ{position:relative;display:inline-block}
 .circ-svg{position:absolute;inset:-38% -14%;width:128%;height:176%;pointer-events:none;overflow:visible;fill:none;stroke:var(--seal);stroke-width:1.6;stroke-linecap:round;opacity:.7;vector-effect:non-scaling-stroke}
 .circ-svg path{stroke-dasharray:760;stroke-dashoffset:760;vector-effect:non-scaling-stroke}
 .circ.drawn .circ-svg path{animation:circdraw 1.4s var(--ease-out) .25s forwards}
 @keyframes circdraw{to{stroke-dashoffset:0}}
+/* ===== v20: button & dark-theme refinement ===== */
+.btn{border-radius:3px;letter-spacing:.16em}
+.btn::before{inset:5px;border-color:rgba(23,21,18,.28)}
+.btn:not(.solid):hover::after{background:var(--seal)}
+.btn:not(.solid):hover{color:#fff;border-color:var(--seal);box-shadow:5px 6px 0 0 var(--graphite)}
+.btn:not(.solid):hover::before{border-color:rgba(255,255,255,.45)}
+.btn:active{transform:translate(1px,1px)!important;box-shadow:2px 2px 0 0 var(--graphite)!important}
+html.dark .btn{border-color:var(--ink)}
+html.dark .btn.solid{background:var(--seal);border-color:var(--seal);color:#fff;box-shadow:5px 6px 0 0 var(--gold)}
+html.dark .btn.solid::after{background:var(--ink)}
+html.dark .btn.solid:hover{color:var(--paper);border-color:var(--ink);box-shadow:7px 9px 0 0 var(--gold)}
+html.dark .btn:not(.solid):hover{box-shadow:5px 6px 0 0 var(--gold)}
+html.dark .btn.solid::before{border-color:rgba(255,255,255,.35)}
+html.dark .frame{border-color:rgba(168,133,58,.55);box-shadow:0 40px 70px -30px rgba(0,0,0,.9),inset 0 0 0 1px rgba(168,133,58,.18)}
+html.dark .frame::after{content:"";position:absolute;inset:-7px;border:1px dashed rgba(168,133,58,.35);pointer-events:none}
+html.dark .tk-tabs button.on{background:var(--seal);border-color:var(--seal);color:#fff;box-shadow:4px 4px 0 0 var(--gold)}
+html.dark .tk-tabs button.on i{color:#fff;opacity:.8}
+html.dark mark.hl{background:linear-gradient(transparent 55%,rgba(168,50,42,.55) 55%)}

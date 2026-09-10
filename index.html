@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="style.css?v=19">
+<link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -851,7 +851,7 @@ window.openKeys=open})();
 document.querySelectorAll('.btn,.tk-tabs button,.os-pick button').forEach(b=>{b.classList.add('mag');
 b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.setProperty('--mx',(x*.18).toFixed(1)+'px');b.style.setProperty('--my',(y*.28).toFixed(1)+'px')});
 b.addEventListener('mouseleave',()=>{b.style.setProperty('--mx','0px');b.style.setProperty('--my','0px')});
-b.addEventListener('pointerdown',e=>{const r=b.getBoundingClientRect(),d=document.createElement('i');d.className='ink';d.style.left=(e.clientX-r.left)+'px';d.style.top=(e.clientY-r.top)+'px';b.appendChild(d);setTimeout(()=>d.remove(),700)})})})();
+b.addEventListener('pointerdown',e=>{const r=b.getBoundingClientRect(),d=document.createElement('i');d.className='rip';d.style.left=(e.clientX-r.left)+'px';d.style.top=(e.clientY-r.top)+'px';b.appendChild(d);setTimeout(()=>d.remove(),700)})})})();
 // ---- v19 pencil circle around section titles
 (()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 document.querySelectorAll('.sec-head .h2-fa mark.hl').forEach(el=>{el.classList.add('circ');const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 200 60');svg.setAttribute('preserveAspectRatio','none');svg.classList.add('circ-svg');svg.innerHTML='<path d="M12 30 C 10 8, 90 2, 150 8 S 200 28, 180 44 S 90 62, 30 52 S -6 30, 40 14 S 140 4, 170 12"/>';el.appendChild(svg)});
