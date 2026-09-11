@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand — Nika Net</title><meta name="description" content="Nika Net brand kit: logo, colors, type, slogans, and a share-card maker.">
+<link rel="canonical" href="https://nikanet.dpdns.org/brand.html"><meta property="og:title" content="Brand — Nika Net"><meta property="og:image" content="https://nikanet.dpdns.org/assets/og.jpg?v=2"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="stylesheet" href="style.css?v=33"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json">
+<style>
+.br{padding:60px 0 100px}
+.br-head{max-width:760px;margin-bottom:56px}
+.br-sec{margin:0 0 84px;position:relative}
+.br-sec>.num{margin-bottom:18px}
+.br-h3{font-family:var(--serif);font-size:1.7rem;font-weight:400;margin-bottom:8px;direction:ltr;text-align:start}
+html:not(.en) .br-h3{font-family:var(--fa-display);direction:rtl;font-size:1.65rem;font-weight:700}
+.br-sec>p{color:var(--ink-2);max-width:62ch;margin-bottom:26px;line-height:1.9}
+.story{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.story blockquote{font-family:var(--fa-display);font-size:clamp(1.9rem,4vw,3rem);line-height:1.35;font-weight:700;margin:0 0 18px}
+html.en .story blockquote{font-family:var(--serif);font-style:italic;font-weight:400}
+.story blockquote mark{background:linear-gradient(transparent 55%,var(--seal-soft) 55%);color:inherit}
+.story .sig{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil)}
+.story figure{margin:0;position:relative;transform:rotate(1.5deg)}
+.story figure img{width:100%;max-width:380px;display:block;border:1px solid var(--line);background:var(--paper-hi);padding:14px;box-shadow:6px 8px 0 -1px var(--paper),6px 8px 0 0 var(--graphite);margin-inline:auto}
+.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.brlg{border:1px solid var(--line);background:var(--paper-hi);padding:14px;position:relative;transition:.35s var(--ease-out);text-decoration:none;color:inherit;display:block}
+.brlg::before{content:"";position:absolute;inset:5px;border:1px dashed var(--line-soft);pointer-events:none}
+.brlg:hover{transform:translateY(-4px);box-shadow:6px 7px 0 -1px var(--paper),6px 7px 0 0 var(--graphite)}
+.brlg img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border:1px solid var(--line-soft)}
+.brlg.dk{background:#1d1b18}.brlg.dk b,.brlg.dk small{color:#f3f1e8}
+.brlg b{display:block;margin-top:12px;font-size:.95rem}
+.brlg small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pencil);margin-top:4px}
+.dl{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;align-items:center}
+.dl .hint{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;color:var(--pencil);text-transform:uppercase}
+.brpal{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.brsw{border:1px solid var(--line);padding:0;cursor:pointer;background:var(--paper-hi);text-align:start;font:inherit;color:inherit;position:relative;transition:.3s}
+.brsw:hover{transform:translateY(-3px);box-shadow:4px 5px 0 0 var(--graphite)}
+.brsw i{display:block;height:84px;border-bottom:1px solid var(--line)}
+.brsw b{display:block;padding:10px 12px 0;font-size:.9rem}
+.brsw span{display:block;padding:2px 12px 12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--pencil);direction:ltr;text-align:start}
+.brsw.ok::after{content:"copied";position:absolute;top:8px;inset-inline-end:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:3px 7px}
+.brtype{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ty{border:1px solid var(--line);padding:22px 24px;background:var(--paper-hi);position:relative}
+.ty::before{content:"";position:absolute;inset:5px;border:1px dashed var(--line-soft);pointer-events:none}
+.ty small{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pencil);display:block;margin-bottom:14px}
+.ty .s1{font-family:var(--serif);font-size:2.4rem;line-height:1.1;direction:ltr}
+.ty .s2{font-family:var(--fa-display);font-size:2.2rem;font-weight:700;line-height:1.3;direction:rtl}
+.ty .s3{font-family:var(--fa);font-size:1.05rem;line-height:1.9;direction:rtl}
+.ty .s4{font-family:var(--mono);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;direction:ltr}
+.voice{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vc{border:1px solid var(--line);padding:22px;background:var(--paper-hi);position:relative}
+.vc::before{content:"";position:absolute;inset:5px;border:1px dashed var(--line-soft);pointer-events:none}
+.vc small{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);display:block;margin-bottom:10px}
+.vc b{display:block;font-size:1.15rem;margin-bottom:8px}
+.vc p{font-size:.92rem;color:var(--ink-2);line-height:1.85}
+.rules{columns:2;column-gap:40px;list-style:none;padding:0;counter-reset:r}
+.rules li{break-inside:avoid;padding:12px 0 12px 40px;position:relative;border-bottom:1px dashed var(--line-soft);color:var(--ink-2);line-height:1.8;counter-increment:r}
+html:not(.en) .rules li{padding:12px 40px 12px 0}
+.rules li::before{content:counter(r,upper-roman);position:absolute;inset-inline-start:0;top:14px;font-family:var(--serif);color:var(--seal)}
+/* card maker */
+.mk{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
+.mk-prev{border:1px solid var(--line);background:var(--paper-hi);padding:16px;position:relative}
+.mk-prev canvas{width:100%;height:auto;display:block;border:1px solid var(--line-soft)}
+.mk-prev .cap{position:absolute;top:-10px;inset-inline-start:18px;background:var(--paper);padding:0 8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pencil)}
+.mk-form{display:grid;gap:12px;border:1px solid var(--line);padding:22px;background:var(--paper-hi)}
+.mk-form label{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pencil);display:block;margin-bottom:6px}
+.mk-form input,.mk-form textarea,.mk-form select{width:100%;font:inherit;background:var(--paper);border:1px solid var(--line);padding:10px 12px;color:var(--ink);resize:vertical}
+.mk-form textarea{min-height:88px;line-height:1.7}
+.mk-form input:focus,.mk-form textarea:focus,.mk-form select:focus{outline:0;border-color:var(--ink)}
+.mk-seg{display:flex;gap:6px;flex-wrap:wrap}
+.mk-seg button{flex:1;background:none;border:1px solid var(--line);padding:8px 10px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;color:var(--ink-2);border-radius:999px;transition:.25s}
+.mk-seg button.on{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:3px 3px 0 0 var(--seal)}
+.mk-acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mk-acts .btn{flex:1;justify-content:center;padding:11px 14px;font-size:.88rem}
+@media(max-width:900px){.story,.mk,.brtype{grid-template-columns:1fr}.logos{grid-template-columns:repeat(2,1fr)}.voice{grid-template-columns:1fr}.rules{columns:1}.story figure{transform:none}}
+</style>
+</head><body><div class="wood" aria-hidden="true"></div><div class="chalk-tray" aria-hidden="true"></div><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/logo-512.webp?v=2" alt="Nika Net"><span><b>Nika Net</b><small>Connecting Intelligence</small></span></a>
+    <div class="links" id="links">
+      <a href="/#features" data-fa>ویژگی‌ها</a><a href="/#features" data-en>Features</a>
+      <a href="/#showcase" data-fa>نگاهی به پنل</a><a href="/#showcase" data-en>The panel</a>
+      <a href="/#protocols" data-fa>پروتکل‌ها</a><a href="/#protocols" data-en>Protocols</a>
+      <a href="/#start" data-fa>شروع سریع</a><a href="/#start" data-en>Quick start</a>
+            <a href="/#telegram" data-fa>تلگرام</a><a href="/#telegram" data-en>Telegram</a>
+      <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
+      <a href="changelog.html" data-fa>تغییرات</a><a href="changelog.html" data-en>Changelog</a>
+      <a href="brand.html" data-fa>برند</a><a href="brand.html" data-en>Brand</a>
+      <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="ctrls">
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">▦</span><span class="tb-b">☀</span></button>
+      <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
+      <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+<main class="wrap br" id="top">
+  <div class="br-head">
+    <div class="num">— Brand · Press kit</div>
+    <h2 class="en" dir="ltr">Drawn by hand, <span class="ul">shared by heart.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>با دست کشیده شد، دست‌به‌دست شد.</p>
+    <p data-fa>هر چیزی که برای نوشتن، ساختن یا معرفی نیکا نت لازم داری: لوگو، رنگ‌ها، فونت‌ها، لحن — و یک کارت‌ساز برای این‌که خبرت را با همین سبک به اشتراک بگذاری.</p>
+    <p data-en>Everything you need to write about, build on, or introduce Nika Net: logos, colors, type, voice — and a card maker so your post looks like it came from the same sketchbook.</p>
+  </div>
+
+  <section class="br-sec">
+    <div class="num">01 — The story</div>
+    <div class="story">
+      <div>
+        <blockquote data-fa>اینترنت، <mark>دست‌نوشتهٔ</mark> خودت.</blockquote>
+        <blockquote data-en>The internet, in your <mark>own handwriting.</mark></blockquote>
+        <p data-fa>«نیکا» یعنی خوب، نیک. «نت» یعنی شبکه. نیکا نت با یک سؤال شروع شد: چرا اتصال آزاد باید پیچیده، گران یا وابسته به دیگران باشد؟ جواب یک پنل روی حساب خودِ کاربر بود؛ بدون سرور، بدون واسطه، بدون هزینه. سبک مدادی هم تصادفی نیست — چیزی که با دست کشیده شده، مال کسی است که کشیده.</p>
+        <p data-en>“Nika” means good, kind. “Net” is the network. Nika Net began with one question: why should a free connection be complicated, expensive, or in someone else’s hands? The answer was a panel on the user’s own account — no server, no middleman, no bill. The pencil style isn’t decoration: what’s drawn by hand belongs to the hand that drew it.</p>
+        <div class="sig" dir="ltr">Connecting Intelligence · est. 2025 · MIT</div>
+      </div>
+      <figure><img src="assets/logo-512.webp?v=2" alt="Nika Net logo" width="380" height="380"></figure>
+    </div>
+  </section>
+
+  <section class="br-sec">
+    <div class="num">02 — Logo</div>
+    <h3 class="br-h3" data-fa>چهار نسخه، یک چهره</h3><h3 class="br-h3" data-en>Four versions, one face</h3>
+    <p data-fa>روی هر پس‌زمینه‌ای یکی از این‌ها را بردار. پرتره را کِش نده، رنگش نکن، افکت نگذار — خاکستری اشکال ندارد، معکوس‌کردن نه.</p>
+    <p data-en>Pick the one for your background. Don’t stretch, recolor or add effects to the portrait — grayscale is fine, inversion is not.</p>
+    <div class="logos">
+      <a class="brlg" href="assets/brand/nika-logo-paper.png" download><img src="assets/brand/thumb-paper.webp" alt="" width="320" height="320"><b data-fa>روی کاغذ</b><b data-en>On paper</b><small>primary · png 512</small></a>
+      <a class="brlg dk" href="assets/brand/nika-logo-dark.png" download><img src="assets/brand/thumb-dark.webp" alt="" width="320" height="320"><b data-fa>روی تیره</b><b data-en>On dark</b><small>dark · png 512</small></a>
+      <a class="brlg" href="assets/brand/nika-logo-mono.png" download><img src="assets/brand/thumb-mono.webp" alt="" width="320" height="320"><b data-fa>تک‌رنگ</b><b data-en>Mono</b><small>print · png 512</small></a>
+      <a class="brlg" href="assets/brand/nika-logo-stamp.png" download><img src="assets/brand/thumb-stamp.webp" alt="" width="320" height="320"><b data-fa>مُهر</b><b data-en>Stamp</b><small>stickers · png 512</small></a>
+    </div>
+    <div class="dl">
+      <a class="btn solid" href="assets/brand/nika-brand-kit.zip" download><span data-fa>دانلود کیت برند (ZIP)</span><span data-en>Download brand kit (ZIP)</span></a>
+      <a class="btn" href="assets/brand/nika-wordmark.svg" download><span data-fa>وردمارک SVG</span><span data-en>Wordmark SVG</span></a>
+      <a class="btn" href="assets/brand/nika-seal.svg" download><span data-fa>مُهر SVG</span><span data-en>Seal SVG</span></a>
+      <span class="hint">logos · svg · palette.json · fonts · readme</span>
+    </div>
+  </section>
+
+  <section class="br-sec">
+    <div class="num">03 — Palette</div>
+    <h3 class="br-h3" data-fa>کاغذ، جوهر، لاک</h3><h3 class="br-h3" data-en>Paper, ink, wax</h3>
+    <p data-fa>کاغذ و جوهر خودِ برند هستند. قرمز لاکی فقط برای تأکید — کم و به‌جا. روی هر رنگ بزن تا کدش کپی شود.</p>
+    <p data-en>Paper and ink are the brand. Seal red is an accent — rare and deliberate. Click any swatch to copy its hex.</p>
+    <div class="brpal" id="pal"></div>
+  </section>
+
+  <section class="br-sec">
+    <div class="num">04 — Type</div>
+    <h3 class="br-h3" data-fa>چهار صدا روی کاغذ</h3><h3 class="br-h3" data-en>Four voices on paper</h3>
+    <div class="brtype">
+      <div class="ty"><small>Display · Latin — Playfair Display</small><div class="s1">Freedom. Speed. Security.</div></div>
+      <div class="ty"><small>Display · Persian — Parastoo</small><div class="s2">آزادی، سرعت، امنیت — به روش خودت.</div></div>
+      <div class="ty"><small>Text · Persian — Vazirmatn</small><div class="s3">پنل پروکسی شخصی‌ات، روی یک Cloudflare Worker رایگان. بدون سرور، بدون واسطه، بدون هزینه.</div></div>
+      <div class="ty"><small>Labels — Special Elite (typewriter)</small><div class="s4">// running: vless + ws + tls</div></div>
+    </div>
+  </section>
+
+  <section class="br-sec">
+    <div class="num">05 — Voice</div>
+    <h3 class="br-h3" data-fa>چطور حرف می‌زنیم</h3><h3 class="br-h3" data-en>How we talk</h3>
+    <div class="voice">
+      <div class="vc"><small>01 · plain</small><b data-fa>ساده، نه ساده‌لوح</b><b data-en>Plain, not simplistic</b><p data-fa>جمله‌های کوتاه. اصطلاح فنی را اگر لازم است بگو، بعد یک خط توضیح بده. کاربر ما مهندس نیست؛ آدمی است که می‌خواهد وصل شود.</p><p data-en>Short sentences. Use the technical word when it’s needed, then explain it in one line. Our reader isn’t an engineer — they’re someone who wants to connect.</p></div>
+      <div class="vc"><small>02 · warm</small><b data-fa>گرم، دوم‌شخص</b><b data-en>Warm, second person</b><p data-fa>«خودت»، «حسابت»، «روش خودت». نیکا نت با کاربر حرف می‌زند، نه دربارهٔ او. لحن رسمیِ اداری ممنوع.</p><p data-en>“You”, “your account”, “your way”. Nika Net speaks to the user, never about them. No corporate register.</p></div>
+      <div class="vc"><small>03 · honest</small><b data-fa>صادق دربارهٔ محدودیت‌ها</b><b data-en>Honest about limits</b><p data-fa>سهمیهٔ رایگان، شرایط سخت شبکه، چیزهایی که هنوز ساخته نشده — همه را می‌گوییم. اعتماد، خودِ محصول است.</p><p data-en>Free-tier quotas, harsh network days, things not built yet — we say them out loud. Trust is the product.</p></div>
+    </div>
+  </section>
+
+  <section class="br-sec">
+    <div class="num">06 — Card maker</div>
+    <h3 class="br-h3" data-fa>خبرت را با همین سبک بفرست</h3><h3 class="br-h3" data-en>Share your news in this style</h3>
+    <p data-fa>یک کارت مدادی بساز — برای معرفی نیکا نت در کانالت، اعلام نسخهٔ جدید، یا یک نقل‌قول. تصویر همین‌جا در مرورگرت ساخته می‌شود؛ چیزی جایی فرستاده نمی‌شود.</p>
+    <p data-en>Make a pencil card — to introduce Nika Net in your channel, announce a release, or share a quote. The image is rendered right here in your browser; nothing is uploaded.</p>
+    <div class="mk">
+      <div class="mk-prev"><span class="cap">preview · 1200 × 630</span><canvas id="cv" width="1200" height="630"></canvas></div>
+      <form class="mk-form" id="mk" onsubmit="return false">
+        <div><label data-fa>قالب</label><label data-en>Template</label><div class="mk-seg" id="tpl"><button type="button" class="on" data-t="intro">Intro</button><button type="button" data-t="release">Release</button><button type="button" data-t="quote">Quote</button></div></div>
+        <div><label data-fa>عنوان</label><label data-en>Headline</label><input id="mkT" maxlength="60" value="اینترنت، دست‌نوشتهٔ خودت."></div>
+        <div><label data-fa>متن</label><label data-en>Body</label><textarea id="mkB" maxlength="180">پنل پروکسی شخصی روی حساب Cloudflare خودت — VLESS، Trojan و WARP. رایگان، متن‌باز، بدون سرور.</textarea></div>
+        <div><label data-fa>برچسب (مثلاً نسخه)</label><label data-en>Tag (e.g. version)</label><input id="mkV" maxlength="24" placeholder="v0.13.4" dir="ltr"></div>
+        <div><label data-fa>پس‌زمینه</label><label data-en>Background</label><div class="mk-seg" id="bg"><button type="button" class="on" data-b="paper">Paper</button><button type="button" data-b="dark">Graphite</button><button type="button" data-b="board">Board</button></div></div>
+        <div class="mk-acts"><button type="button" class="btn solid" id="mkDl"><span data-fa>دانلود PNG</span><span data-en>Download PNG</span></button><button type="button" class="btn" id="mkCp"><span data-fa>کپی تصویر</span><span data-en>Copy image</span></button></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="br-sec">
+    <div class="num">07 — Rules</div>
+    <h3 class="br-h3" data-fa>هفت خط قرمز (لاکی)</h3><h3 class="br-h3" data-en>Seven lines in seal red</h3>
+    <ol class="rules">
+      <li data-fa>نام همیشه «نیکا نت» / «Nika Net» است؛ نه NikaNet، نه Nika-Net (جز آدرس مخزن).</li><li data-en>The name is always “Nika Net” — not NikaNet, not Nika-Net (except the repo slug).</li>
+      <li data-fa>پرتره را برش نزن، نچرخان، فیلتر نگذار. هالهٔ گرد و حرف N باید سالم بماند.</li><li data-en>Never crop, rotate or filter the portrait. The circle and the N must stay intact.</li>
+      <li data-fa>دورتادور لوگو حداقل به اندازهٔ ارتفاع حرف N فضای خالی بگذار.</li><li data-en>Keep clear space around the logo at least the height of the N.</li>
+      <li data-fa>قرمز لاکی حداکثر برای یک عنصر در هر صفحه. طلایی فقط برای برچسب‌های ریز.</li><li data-en>Seal red for at most one element per view. Gold only for small labels.</li>
+      <li data-fa>تیتر فارسی با پرستو، متن با وزیر؛ فارسی هرگز با فونت ماشین‌تحریر نوشته نمی‌شود.</li><li data-en>Persian display in Parastoo, text in Vazirmatn; Persian is never set in the typewriter face.</li>
+      <li data-fa>شعار رسمی: «اینترنت، دست‌نوشتهٔ خودت.» — تگ‌لاین: Connecting Intelligence.</li><li data-en>Official slogan: “The internet, in your own handwriting.” — tagline: Connecting Intelligence.</li>
+      <li data-fa>هر جا از نام یا لوگو استفاده می‌کنی، به nikanet.dpdns.org لینک بده. همین.</li><li data-en>Wherever you use the name or logo, link to nikanet.dpdns.org. That’s all.</li>
+    </ol>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo-512.webp?v=2" alt="Nika Net"><span><b>Nika Net</b><small>Connecting Intelligence</small></span></a>
+        <p data-fa>پنل پروکسی مدادی و مقاوم در برابر سانسور. آزاد برای استفاده‌ی شخصی و یادگیری — مسئولانه استفاده کن.</p>
+        <p data-en>A pencil-drawn, censorship-resistant proxy panel. Free for personal use and learning — use responsibly.</p>
+      </div>
+      <div><h5>Project</h5><ul>
+        <li><a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Nika-Net repository</a></li>
+        <li><a href="docs.html">Docs / مستندات</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener">راهنمای فارسی</a></li>
+        <li><a href="changelog.html">Changelog / Roadmap</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li></ul></div>
+      <div><h5>Links</h5><ul>
+        <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
+        <li><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a></li>
+        <li><a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a></li>
+        <li><a href="https://t.me/NikaSociety" target="_blank" rel="noopener">@NikaSociety — channel</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Nika Net · nikanet.dpdns.org · Drawn in graphite</span><span>Freedom · Speed · Security · Your way</span></div>
+  </div>
+</footer>
+<script>
+function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function toggleTheme(){const h=document.documentElement;const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)}
+(()=>{const t=localStorage.getItem('nika-theme');if(t==='dark')document.documentElement.classList.add('dark');if(t==='board')document.documentElement.classList.add('dark','board')})();
+function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
+applyLang(localStorage.getItem('nika-lang')||'fa');
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
+</script>
+<script>
+const isEn=()=>document.documentElement.classList.contains("en");
+// palette
+const COLORS=[['paper','#d8d1c2','کاغذ','Paper'],['paper-hi','#ebe6da','کاغذ روشن','Paper hi'],['ink','#171512','جوهر','Ink'],['ink-2','#4a463f','جوهر ملایم','Ink 2'],['graphite','#8b857a','گرافیت','Graphite'],['seal','#a8322a','لاک','Seal'],['gold','#a8853a','طلایی','Gold'],['dark','#1d1b18','گرافیت تیره','Dark paper'],['chalk','#f3f1e8','گچ','Chalk']];
+const pal=document.getElementById('pal');
+function renderPal(){pal.innerHTML=COLORS.map(c=>`<button class="brsw" type="button" data-c="${c[1]}"><i style="background:${c[1]}"></i><b>${isEn()?c[3]:c[2]}</b><span>${c[1]} · --${c[0]}</span></button>`).join('');pal.querySelectorAll('.brsw').forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.c)}catch(e){}b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),1400)})}
+renderPal();
+// card maker
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');const logo=new Image();logo.src='assets/logo-512.webp?v=2';
+const st={t:'intro',bg:'paper'};const $=id=>document.getElementById(id);
+const PRESET={intro:{fa:['اینترنت، دست‌نوشتهٔ خودت.','پنل پروکسی شخصی روی حساب Cloudflare خودت — VLESS، Trojan و WARP. رایگان، متن‌باز، بدون سرور.',''],en:['The internet, in your own handwriting.','A personal proxy panel on your own Cloudflare account — VLESS, Trojan & WARP. Free, open source, no server.','']},release:{fa:['نسخهٔ جدید نیکا نت رسید','اسکنر آی‌پی تمیز، به‌روزرسانی خودکار و پشتیبانی بهتر از تلگرام. از پنل‌ات «به‌روزرسانی» را بزن.','v0.13.4'],en:['A new Nika Net release','Clean-IP scanner, auto-update and better Telegram support. Hit “Update” in your panel.','v0.13.4']},quote:{fa:['«چیزی که با دست کشیده شده، مال کسی است که کشیده.»','— مانیفست نیکا نت',''],en:['“What is drawn by hand belongs to the hand that drew it.”','— the Nika Net manifesto','']}};
+function seg(id,key){$(id).querySelectorAll('button').forEach(b=>b.onclick=()=>{$(id).querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));st[key]=b.dataset.t||b.dataset.b;if(key==='t'){const p=PRESET[st.t][isEn()?'en':'fa'];$('mkT').value=p[0];$('mkB').value=p[1];$('mkV').value=p[2]}draw()})}
+seg('tpl','t');seg('bg','bg');['mkT','mkB','mkV'].forEach(i=>$(i).oninput=draw);
+function wrap(text,max,font){cx.font=font;const words=text.split(/\s+/),lines=[];let cur='';for(const w of words){const t=cur?cur+' '+w:w;if(cx.measureText(t).width>max&&cur){lines.push(cur);cur=w}else cur=t}if(cur)lines.push(cur);return lines}
+function grain(){const id=cx.getImageData(0,0,1200,630),d=id.data;for(let i=0;i<d.length;i+=16){const n=(Math.random()-.5)*14;d[i]+=n;d[i+1]+=n;d[i+2]+=n}cx.putImageData(id,0,0)}
+function draw(){const en=isEn(),rtl=!en&&/[\u0600-\u06FF]/.test($('mkT').value+$('mkB').value);const th={paper:{bg:'#d8d1c2',bg2:'#cfc7b6',ink:'#171512',ink2:'#4a463f',pen:'#8b857a',seal:'#a8322a',line:'#b9b1a0'},dark:{bg:'#1d1b18',bg2:'#151311',ink:'#ebe6da',ink2:'#bdb6a8',pen:'#8b857a',seal:'#d4574d',line:'#3a362f'},board:{bg:'#1f2321',bg2:'#181b19',ink:'#f3f1e8',ink2:'#d3d0c4',pen:'#9a9c92',seal:'#e0b25a',line:'#3a4039'}}[st.bg];
+const g=cx.createLinearGradient(0,0,1200,630);g.addColorStop(0,th.bg);g.addColorStop(1,th.bg2);cx.fillStyle=g;cx.fillRect(0,0,1200,630);
+// pencil grid
+cx.strokeStyle=th.line;cx.globalAlpha=.35;cx.lineWidth=1;for(let x=0;x<1200;x+=60){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,630);cx.stroke()}for(let y=0;y<630;y+=60){cx.beginPath();cx.moveTo(0,y);cx.lineTo(1200,y);cx.stroke()}cx.globalAlpha=1;
+// frame
+cx.strokeStyle=th.line;cx.lineWidth=1.5;cx.strokeRect(28,28,1144,574);cx.setLineDash([3,5]);cx.strokeRect(40,40,1120,550);cx.setLineDash([]);
+// logo
+const lx=rtl?1200-70-200:70,ly=140;if(logo.complete&&logo.naturalWidth){cx.save();cx.translate(lx+100,ly+100);cx.rotate(rtl?.03:-.03);cx.fillStyle=th.bg;cx.fillRect(-116,-116,232,232);cx.strokeStyle=th.line;cx.strokeRect(-116,-116,232,232);if(st.bg!=='paper')cx.filter='grayscale(1)';cx.drawImage(logo,-100,-100,200,200);cx.filter='none';cx.restore();cx.fillStyle=th.pen;cx.font='500 16px Elite,"Special Elite",monospace';cx.textAlign='center';cx.fillText('EST. 2025 · MIT',lx+100,ly+250)}
+// text block
+const tx=rtl?1200-70-260-40:70+260+40,tw=1200-260-40-140;cx.textAlign=rtl?'right':'left';cx.direction=rtl?'rtl':'ltr';
+cx.fillStyle=th.pen;cx.font='16px Elite,"Special Elite",monospace';cx.direction='ltr';cx.fillText((st.t==='release'?'// RELEASE NOTE':st.t==='quote'?'// FROM THE MANIFESTO':'// NIKA NET · CONNECTING INTELLIGENCE'),tx,120);cx.direction=rtl?'rtl':'ltr';
+const v=$('mkV').value.trim();if(v){cx.font='18px Elite,"Special Elite",monospace';const w=cx.measureText(v).width+28;const bx=rtl?tx-w:tx;cx.fillStyle=th.seal;cx.fillRect(bx,140,w,34);cx.fillStyle=st.bg==='paper'?'#fff':th.bg;cx.textAlign='center';cx.fillText(v,bx+w/2,164);cx.textAlign=rtl?'right':'left'}
+const hf=rtl?'700 54px Parastoo,Vazir,sans-serif':(st.t==='quote'?'italic 400 52px Playfair,"Playfair Display",Georgia,serif':'400 56px Playfair,"Playfair Display",Georgia,serif');
+const hl=wrap($('mkT').value,tw,hf);const bf0=rtl?'400 24px Vazir,Vazirmatn,sans-serif':'400 24px Vazir,Vazirmatn,sans-serif';const bl0=wrap($('mkB').value,tw,bf0);const blockH=Math.min(hl.length,3)*(rtl?72:66)+Math.min(bl0.length,4)*40+10;let y=Math.max(v?250:230,Math.round((630-blockH)/2)+60);cx.fillStyle=th.ink;cx.font=hf;for(const l of hl.slice(0,3)){cx.fillText(l,tx,y);y+=rtl?72:66}
+// underline seal
+const uw=Math.min(tw,cx.measureText(hl[hl.length-1]||'').width);cx.strokeStyle=th.seal;cx.lineWidth=3;cx.beginPath();const ux=rtl?tx-uw:tx;cx.moveTo(ux,y-40);cx.bezierCurveTo(ux+uw*.3,y-46,ux+uw*.6,y-34,ux+uw,y-40);cx.stroke();
+const bf=rtl?'400 24px Vazir,Vazirmatn,sans-serif':'400 24px Vazir,Vazirmatn,sans-serif';const bl=wrap($('mkB').value,tw,bf);cx.fillStyle=th.ink2;cx.font=bf;y+=6;for(const l of bl.slice(0,4)){cx.fillText(l,tx,y);y+=40}
+// footer
+cx.fillStyle=th.pen;cx.font='16px Elite,"Special Elite",monospace';cx.textAlign='left';cx.direction='ltr';cx.fillText('nikanet.dpdns.org',70,570);cx.textAlign='right';cx.fillText('@NikaSociety · github.com/NikaTeem',1130,570);
+cx.strokeStyle=th.line;cx.lineWidth=1;cx.beginPath();cx.moveTo(70,545);cx.lineTo(1130,545);cx.stroke();
+if(st.bg==='paper')grain()}
+logo.onload=draw;Promise.all([document.fonts.load('700 54px Parastoo','آزادی'),document.fonts.load('16px Elite','NIKA'),document.fonts.load('56px Playfair','Freedom'),document.fonts.load('italic 52px Playfair','Freedom'),document.fonts.load('24px Vazir','پنل'),document.fonts.load('24px Vazir','panel')]).then(draw,draw);document.fonts.addEventListener('loadingdone',draw);draw();
+$('mkDl').onclick=()=>{const a=document.createElement('a');a.download=`nika-card-${st.t}.png`;a.href=cv.toDataURL('image/png');a.click()};
+$('mkCp').onclick=()=>cv.toBlob(async b=>{try{await navigator.clipboard.write([new ClipboardItem({'image/png':b})]);$('mkCp').querySelectorAll('span').forEach(s=>s.dataset.o=s.dataset.o||s.textContent);$('mkCp').querySelector('[data-fa]').textContent='کپی شد ✓';$('mkCp').querySelector('[data-en]').textContent='Copied ✓';setTimeout(()=>$('mkCp').querySelectorAll('span').forEach(s=>s.textContent=s.dataset.o),1500)}catch(e){$('mkDl').click()}});
+new MutationObserver(()=>{renderPal();const p=PRESET[st.t][isEn()?'en':'fa'];$('mkT').value=p[0];$('mkB').value=p[1];draw()}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+</script></body></html>
