@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=23">
+<link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -496,43 +496,71 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   <div class="sec-head">
     <div class="num">— Suggestion box</div>
     <h2 class="en" dir="ltr">The suggestion <span class="ul">box.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
-    <p class="h2-fa" data-fa>صندوق انتقادات و پیشنهادات</p>
+    <p class="h2-fa" data-fa>صندوق <mark class="hl">انتقادات</mark> و پیشنهادات</p>
     <p data-fa>هر عددی که این‌جا می‌بینی زنده است و از دیتابیس می‌آید — هیچ نظری از قبل کاشته نشده. انتقاد تند هم قبول است؛ ما با همان‌ها بهتر می‌شویم.</p>
     <p data-en>Every number here is live from the database — nothing is pre-seeded. Harsh critique welcome; that's how we get better.</p>
   </div>
 
-  <div class="fb-stats" id="fbStats">
-    <div><b data-k="total">—</b><span data-fa>کل نظرات</span><span data-en>total</span></div>
-    <div><b data-k="approved">—</b><span data-fa>منتشرشده</span><span data-en>published</span></div>
-    <div><b data-k="up">—</b><span data-fa>رأی مثبت</span><span data-en>upvotes</span></div>
-    <div><b data-k="avgScore">—</b><span data-fa>میانگین امتیاز</span><span data-en>avg score</span></div>
-    <div><b data-k="last7d">—</b><span data-fa>در ۷ روز اخیر</span><span data-en>last 7 days</span></div>
+  <div class="fb-board" id="fbStats">
+    <div class="fb-tally">
+      <div><b data-k="total">—</b><span data-fa>کل نظرات</span><span data-en>total</span></div>
+      <div><b data-k="approved">—</b><span data-fa>منتشرشده</span><span data-en>published</span></div>
+      <div><b data-k="up">—</b><span data-fa>رأی مثبت</span><span data-en>upvotes</span></div>
+      <div><b data-k="avgScore">—</b><span data-fa>میانگین امتیاز</span><span data-en>avg score</span></div>
+      <div><b data-k="last7d">—</b><span data-fa>در ۷ روز اخیر</span><span data-en>last 7 days</span></div>
+    </div>
+    <div class="fb-mix" id="fbMix" dir="ltr" aria-label="by type">
+      <i class="m-critique" style="--w:0"></i><i class="m-idea" style="--w:0"></i><i class="m-praise" style="--w:0"></i>
+      <span class="lg"><em class="m-critique"></em><b data-fa>انتقاد</b><b data-en>critique</b><u data-m="critique">0</u></span>
+      <span class="lg"><em class="m-idea"></em><b data-fa>پیشنهاد</b><b data-en>idea</b><u data-m="idea">0</u></span>
+      <span class="lg"><em class="m-praise"></em><b data-fa>تشویق</b><b data-en>praise</b><u data-m="praise">0</u></span>
+    </div>
   </div>
 
   <div class="fb-grid">
-    <form class="fb-form" id="fbForm" novalidate>
-      <div class="fb-types">
-        <label><input type="radio" name="type" value="critique" checked><span data-fa>انتقاد</span><span data-en>Critique</span></label>
-        <label><input type="radio" name="type" value="idea"><span data-fa>پیشنهاد</span><span data-en>Idea</span></label>
-        <label><input type="radio" name="type" value="praise"><span data-fa>تشویق</span><span data-en>Praise</span></label>
+    <div class="fb-desk">
+      <form class="fb-form fb-letter" id="fbForm" novalidate>
+        <div class="fb-letter-head"><span class="fb-stamp-corner" aria-hidden="true"><svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52"/><path d="M12 30h36M30 12v36" opacity=".35"/><text x="30" y="34">N</text></svg></span><span data-fa>نامه به تیم نیکا نت</span><span data-en>Letter to the Nika Net team</span></div>
+        <div class="fb-types">
+          <label><input type="radio" name="type" value="critique" checked><span><i>✎</i><b data-fa>انتقاد</b><b data-en>Critique</b></span></label>
+          <label><input type="radio" name="type" value="idea"><span><i>✦</i><b data-fa>پیشنهاد</b><b data-en>Idea</b></span></label>
+          <label><input type="radio" name="type" value="praise"><span><i>♥</i><b data-fa>تشویق</b><b data-en>Praise</b></span></label>
+        </div>
+        <div class="fb-ta"><textarea name="text" id="fbText" rows="5" maxlength="400" required data-fa-ph="بنویس چه چیزی خوب نیست، چه چیزی کم است، یا چه چیزی را دوست داشتی…" data-en-ph="Tell us what's wrong, what's missing, or what you liked…"></textarea><span class="fb-count" id="fbCount">0 / 400</span></div>
+        <div class="fb-row">
+          <input type="text" name="name" maxlength="40" data-fa-ph="امضا (اختیاری)" data-en-ph="Signature (optional)">
+          <div class="stars" id="stars" aria-label="score"><i data-v="1">★</i><i data-v="2">★</i><i data-v="3">★</i><i data-v="4">★</i><i data-v="5">★</i></div>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        </div>
+        <div class="fb-row">
+          <button class="btn solid" type="submit"><span data-fa>انداختن در صندوق</span><span data-en>Drop it in the box</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg></button>
+          <span class="fb-msg" id="fbMsg"></span>
+        </div>
+        <p class="fb-note" data-fa>نظرت پس از یک بازبینی کوتاه (فقط برای حذف اسپم) منتشر می‌شود. متن‌ها ویرایش نمی‌شوند.</p>
+        <p class="fb-note" data-en>Your note is published after a quick spam check. Texts are never edited.</p>
+      </form>
+      <div class="fb-box" id="fbBox" aria-hidden="true">
+        <svg viewBox="0 0 320 150">
+          <g class="bx">
+            <path class="lid" d="M20 40 L160 18 L300 40 L300 52 L160 30 L20 52 Z"/>
+            <rect class="slot" x="118" y="30" width="84" height="6" rx="3" transform="skewX(-2)"/>
+            <path class="body" d="M28 52 L292 52 L284 138 L36 138 Z"/>
+            <path class="grain" d="M40 70 Q160 62 280 70 M42 92 Q160 84 278 92 M44 114 Q160 106 276 114" />
+            <text class="lbl" x="160" y="100">SUGGESTIONS</text>
+            <text class="lbl2" x="160" y="118">nika net · est. 2025</text>
+          </g>
+          <g class="paper" id="fbPaper"><rect x="128" y="-60" width="64" height="44" rx="2"/><path d="M136 -48h48M136 -40h40M136 -32h44M136 -24h30"/></g>
+          <g class="wax" id="fbWax"><circle cx="262" cy="60" r="20"/><circle cx="262" cy="60" r="14"/><text x="262" y="65">✓</text></g>
+        </svg>
       </div>
-      <textarea name="text" id="fbText" rows="5" maxlength="400" required data-fa-ph="بنویس چه چیزی خوب نیست، چه چیزی کم است، یا چه چیزی را دوست داشتی…" data-en-ph="Tell us what's wrong, what's missing, or what you liked…"></textarea>
-      <div class="fb-row">
-        <input type="text" name="name" maxlength="40" data-fa-ph="نام (اختیاری)" data-en-ph="Name (optional)">
-        <div class="stars" id="stars" aria-label="score"><i data-v="1">★</i><i data-v="2">★</i><i data-v="3">★</i><i data-v="4">★</i><i data-v="5">★</i></div>
-        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      </div>
-      <div class="fb-row">
-        <button class="btn solid" type="submit"><span data-fa>انداختن در صندوق</span><span data-en>Drop it in the box</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg></button>
-        <span class="fb-msg" id="fbMsg"></span>
-      </div>
-      <p class="fb-note" data-fa>نظرت پس از یک بازبینی کوتاه (فقط برای حذف اسپم) منتشر می‌شود. متن‌ها ویرایش نمی‌شوند.</p>
-      <p class="fb-note" data-en>Your note is published after a quick spam check. Texts are never edited.</p>
-    </form>
+    </div>
 
-    <div class="fb-list" id="fbList">
-      <div class="fb-empty" data-fa>هنوز نظری منتشر نشده. اولین نفر باش.</div>
-      <div class="fb-empty" data-en>Nothing published yet. Be the first.</div>
+    <div class="fb-wall">
+      <div class="fb-wall-head"><span data-fa>دیوار نظرها</span><span data-en>The wall</span><small id="fbWallN" data-fa=" نظر" data-en=" notes"></small></div>
+      <div class="fb-list" id="fbList">
+        <div class="fb-empty" data-fa>هنوز نظری منتشر نشده. اولین نفر باش.</div>
+        <div class="fb-empty" data-en>Nothing published yet. Be the first.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -695,9 +723,10 @@ const fmtN=n=>n==null?'—':(isEn()?n.toLocaleString('en-US'):n.toLocaleString('
 const ago=ts=>{const d=Math.round((Date.now()-ts)/864e5);return isEn()?(d<1?'today':d===1?'yesterday':d+' days ago'):(d<1?'امروز':d===1?'دیروز':fmtN(d)+' روز پیش')};
 const T={critique:['انتقاد','Critique'],idea:['پیشنهاد','Idea'],praise:['تشویق','Praise']};
 const esc=t=>t.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-async function fbStats(){try{const d=await (await fetch(FB+'/api/stats')).json();document.querySelectorAll('#fbStats [data-k]').forEach(b=>{const k=b.dataset.k;b.textContent=k==='avgScore'?(d[k]==null?'—':fmtN(d[k])+' / '+fmtN(5)):fmtN(d[k])})}catch(e){}}
-function card(e){return `<article class="fb-item" data-id="${e.id}"><header><span class="fb-type t-${e.type}">${isEn()?T[e.type][1]:T[e.type][0]}</span>${e.score?`<span class="fb-score">${'★'.repeat(e.score)}<i>${'★'.repeat(5-e.score)}</i></span>`:''}<time>${ago(e.ts)}</time></header><p>${esc(e.text)}</p><footer><span class="fb-name">${e.name?esc(e.name):(isEn()?'anonymous':'ناشناس')}</span><button class="fb-vote" data-id="${e.id}" type="button">▲ <b>${fmtN(e.votes)}</b></button></footer></article>`}
-async function fbList(){try{const L=await (await fetch(FB+'/api/feedback?limit=12')).json();const box=document.getElementById('fbList');if(L.length){box.innerHTML=L.map(card).join('');box.querySelectorAll('.fb-vote').forEach(b=>b.onclick=()=>vote(b))}}catch(e){}}
+async function fbStats(){try{const d=await (await fetch(FB+'/api/stats')).json();document.querySelectorAll('#fbStats [data-k]').forEach(b=>{const k=b.dataset.k;const v=k==='avgScore'?(d[k]==null?'—':fmtN(d[k])+' / '+fmtN(5)):fmtN(d[k]);if(b.textContent!==v){b.textContent=v;b.classList.remove('tick');void b.offsetWidth;b.classList.add('tick')}});
+const bt=d.byType||{};const tot=Math.max(1,(bt.critique||0)+(bt.idea||0)+(bt.praise||0));const mix=document.getElementById('fbMix');if(mix){['critique','idea','praise'].forEach(k=>{mix.querySelector('i.m-'+k).style.setProperty('--w',((bt[k]||0)/tot*100).toFixed(1)+'%');mix.querySelector('[data-m='+k+']').textContent=fmtN(bt[k]||0)})}}catch(e){}}
+function card(e,i){const rot=((parseInt(e.id.slice(-2),36)%7)-3)*.6;return `<article class="fb-item t-${e.type}" data-id="${e.id}" style="--rot:${rot}deg;--i:${i||0}"><span class="pin" aria-hidden="true"></span><header><span class="fb-type t-${e.type}">${isEn()?T[e.type][1]:T[e.type][0]}</span>${e.score?`<span class="fb-score">${'★'.repeat(e.score)}<i>${'★'.repeat(5-e.score)}</i></span>`:''}<time>${ago(e.ts)}</time></header><p>${esc(e.text)}</p><footer><span class="fb-name">— ${e.name?esc(e.name):(isEn()?'anonymous':'ناشناس')}</span><button class="fb-vote" data-id="${e.id}" type="button" aria-label="upvote"><svg viewBox="0 0 24 24"><path d="M12 4l7 8h-4v8H9v-8H5z"/></svg><b>${fmtN(e.votes)}</b></button></footer></article>`}
+async function fbList(){try{const L=await (await fetch(FB+'/api/feedback?limit=12')).json();const box=document.getElementById('fbList');if(L.length){box.innerHTML=L.map((e,i)=>card(e,i)).join('');const wn=document.getElementById('fbWallN');if(wn)wn.textContent=fmtN(L.length);box.querySelectorAll('.fb-vote').forEach(b=>b.onclick=()=>vote(b))}}catch(e){}}
 async function vote(b){const voted=JSON.parse(localStorage.getItem('nika-voted')||'[]');if(voted.includes(b.dataset.id)){b.classList.add('done');return}
  try{const r=await (await fetch(FB+'/api/vote',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id:b.dataset.id})})).json();if(r.ok){b.querySelector('b').textContent=fmtN(r.votes);b.classList.add('done');voted.push(b.dataset.id);localStorage.setItem('nika-voted',JSON.stringify(voted));fbStats()}}catch(e){}}
 async function fbFeatured(){try{const L=await (await fetch(FB+'/api/featured')).json();const ban=document.getElementById('fbBanner');if(!L.length){ban.hidden=true;return}
@@ -712,7 +741,7 @@ fbPh();new MutationObserver(()=>{fbPh();fbList();fbFeatured();fbStats()}).observ
 const form=document.getElementById('fbForm');if(form){form.onsubmit=async ev=>{ev.preventDefault();const msg=document.getElementById('fbMsg');const text=form.text.value.trim();if(text.length<8){msg.textContent=isEn()?'A little more, please (8+ chars).':'کمی بیشتر بنویس (حداقل ۸ حرف).';return}
  msg.textContent=isEn()?'Sending…':'در حال ارسال…';const btn=form.querySelector('button[type=submit]');btn.disabled=true;
  try{const r=await (await fetch(FB+'/api/feedback',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({text,name:form.name.value,type:form.type.value,score,website:form.website.value})})).json();
-  if(r.ok){msg.textContent=isEn()?'✔ In the box. Thank you — it appears after review.':'✔ در صندوق افتاد. ممنون — بعد از بازبینی منتشر می‌شود.';form.reset();score=0;stars.forEach(x=>x.classList.remove('on'));fbStats()}
+  if(r.ok){msg.textContent=isEn()?'✔ In the box. Thank you — it appears after review.':'✔ در صندوق افتاد. ممنون — بعد از بازبینی منتشر می‌شود.';fbDrop();form.reset();score=0;stars.forEach(x=>x.classList.remove('on'));fbStats()}
   else msg.textContent=r.error==='rate limit'?(isEn()?'Too many notes for now — try later.':'فعلاً زیاد فرستادی — بعداً دوباره امتحان کن.'):(isEn()?'Something went wrong.':'مشکلی پیش آمد.')}catch(e){msg.textContent=isEn()?'Network error.':'خطای شبکه.'}
  btn.disabled=false}}
 const fbSec=document.getElementById('feedback');if(fbSec){new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){fbStats();fbList();fbFeatured();o.disconnect()}},{rootMargin:'600px'}).observe(fbSec)}
@@ -909,6 +938,9 @@ t('repo',()=>fetch('https://api.github.com/repos/NikaTeem/Nika-Net',{cache:'forc
 // ---- v21 word reveal on English display headings
 (()=>{if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;document.querySelectorAll('.sec-head h2.en').forEach(h=>{h.classList.add('wr');let i=0;const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3&&c.textContent.trim()){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){f.appendChild(document.createTextNode(w));return}const s=document.createElement('span');s.className='w';s.style.setProperty('--i',i++);s.innerHTML='<span>'+w+'</span>';f.appendChild(s)});c.replaceWith(f)}else if(c.nodeType===1&&c.tagName!=='SVG'&&!c.classList.contains('circ-svg'))walk(c)})};walk(h)});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.6});document.querySelectorAll('.wr').forEach(h=>io.observe(h))})();
+// ---- v24 suggestion box: counter + drop animation
+(()=>{const ta=document.getElementById('fbText'),c=document.getElementById('fbCount');if(!ta)return;const up=()=>{const n=ta.value.length;c.textContent=(isEn()?n:fmtN(n))+' / '+(isEn()?'400':fmtN(400));c.classList.toggle('warn',n>360);c.classList.toggle('low',n>0&&n<8)};ta.addEventListener('input',up);new MutationObserver(up).observe(document.documentElement,{attributes:true,attributeFilter:['class']});up();
+window.fbDrop=()=>{const box=document.getElementById('fbBox'),form=document.getElementById('fbForm');if(!box)return;form.classList.add('sent');box.classList.remove('drop');void box.offsetWidth;box.classList.add('drop');setTimeout(()=>form.classList.remove('sent'),2600);setTimeout(()=>box.classList.remove('drop'),4200)};})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
