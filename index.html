@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=25">
+<link rel="stylesheet" href="style.css?v=26">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -45,7 +45,7 @@
   <div class="pre-bar" dir="ltr"><span class="pct" id="prePct">00</span><i><b id="preFill"></b></i><span class="lbl">loading plate</span></div>
 </div>
 <div class="prog"><i id="prog"></i></div>
-<div class="grid-bg"></div><div class="grain"></div>
+<div class="grid-bg"></div><div class="grain"></div><div class="wood" aria-hidden="true"></div><div class="chalk-tray" aria-hidden="true"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <filter id="pencil" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="wobble" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="turbulence" baseFrequency=".02" numOctaves="1" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3"/></filter>
@@ -71,7 +71,7 @@
     </div>
     <div class="ctrls">
       <button class="lang-btn kbtn" onclick="openPal()" title="Command palette (Ctrl+K)" aria-label="Command palette">⌘K</button>
-      <button class="lang-btn" onclick="toggleTheme(event)" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
+      <button class="lang-btn" onclick="toggleTheme(event)" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">▦</span><span class="tb-b">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
       <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
     </div>
@@ -684,8 +684,8 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <script>
 // lang
 function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
-function toggleTheme(ev){const h=document.documentElement,go=()=>{h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')};if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches)return go();const x=ev?ev.clientX:innerWidth/2,y=ev?ev.clientY:40,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));document.startViewTransition(go).ready.then(()=>document.documentElement.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:700,easing:'cubic-bezier(.7,0,.2,1)',pseudoElement:'::view-transition-new(root)'}))}
-if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
+function toggleTheme(ev){const h=document.documentElement,go=()=>{const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)};if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches)return go();const x=ev?ev.clientX:innerWidth/2,y=ev?ev.clientY:40,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));document.startViewTransition(go).ready.then(()=>document.documentElement.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:700,easing:'cubic-bezier(.7,0,.2,1)',pseudoElement:'::view-transition-new(root)'}))}
+(()=>{const t=localStorage.getItem('nika-theme');if(t==='dark')document.documentElement.classList.add('dark');if(t==='board')document.documentElement.classList.add('dark','board')})();
 function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
 applyLang(localStorage.getItem('nika-lang')||'fa');
 // preloader
@@ -796,7 +796,8 @@ const PAL=[
  {k:'qr code',fa:'ابزار: QR کانفیگ',en:'Tool: config QR',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=gen]').click()}},
  {k:'dns domain check',fa:'ابزار: بررسی دامنه',en:'Tool: domain check',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=dns]').click()}},
  {k:'deploy one click cloudflare',fa:'استقرار یک‌کلیکی',en:'One-click deploy',run:()=>{location.hash='#start';document.querySelector('[data-way=click]').click()}},
- {k:'theme dark light toggle',fa:'تغییر تم روشن/تاریک',en:'Toggle dark / light theme',run:()=>toggleTheme()},
+ {k:'theme dark light toggle',fa:'تم بعدی (روشن → تاریک → تخته‌سیاه)',en:'Next theme (light → dark → blackboard)',run:()=>toggleTheme()},
+ {k:'theme blackboard chalk board',fa:'تم: تخته‌سیاه',en:'Theme: Blackboard',run:()=>{const h=document.documentElement;h.classList.add('dark','board');localStorage.setItem('nika-theme','board')}},
  {k:'language english farsi persian',fa:'Switch to English',en:'تغییر زبان به فارسی',run:()=>toggleLang()},
  {k:'deploy cloudflare',fa:'استقرار روی Cloudflare ↗',en:'Deploy to Cloudflare ↗',run:()=>open('https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net','_blank')},
  {k:'github repo source',fa:'مخزن GitHub ↗',en:'GitHub repository ↗',run:()=>open('https://github.com/NikaTeem/Nika-Net','_blank')},

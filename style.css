@@ -1373,3 +1373,97 @@ html.en .margin-note svg{transform:none}
 @media(max-width:1520px){.margin-note{display:none}}
 /* section titles: subtle ink bleed */
 .sec-head h2.en,.h2-fa{text-shadow:0 0 1px rgba(23,21,18,.12)}
+
+/* ===== v26: BLACKBOARD theme (html.dark.board) — chalk on slate ===== */
+.tb-b{display:none}
+html.board .tb-d{display:none}html.board .tb-b{display:inline}
+html.board{--paper:#101513;--paper-2:#151b18;--paper-3:#1b221f;--paper-hi:#212a26;--ink:#f3f1e8;--ink-2:#dbd8cc;--graphite:#b3b2a6;--pencil:#8f8e84;--line:#6d6f66;--line-soft:rgba(243,241,232,.22);--seal:#e98b7c;--seal-soft:rgba(233,139,124,.18);--gold:#ead58f;--gold-soft:rgba(234,213,143,.16);--chalk:#f3f1e8}
+html.board body{background:radial-gradient(ellipse at 30% 20%,#182019 0%,#101513 55%,#0b0f0d 100%);color:var(--ink)}
+html.board body::before{opacity:.22;mix-blend-mode:screen;filter:invert(1) contrast(1.2)}
+html.board body::after{background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65) 100%)}
+html.board .grain{opacity:.16}
+html.board .grid-bg{opacity:.09}
+/* wooden frame around the viewport */
+html.board body{box-shadow:inset 0 0 0 10px #5a3d23,inset 0 0 0 12px #3c2716,inset 0 0 0 13px rgba(255,255,255,.08),inset 0 0 60px 14px rgba(0,0,0,.55)}
+html.board .wood{position:fixed;inset:0;z-index:70;pointer-events:none;border:10px solid transparent;border-image:repeating-linear-gradient(90deg,#6b4a2b 0 3px,#5a3d23 3px 7px,#7a5533 7px 9px) 10;box-shadow:inset 0 0 0 2px #3a2514,inset 0 0 20px rgba(0,0,0,.6)}
+html.board .wood::after{content:"";position:absolute;inset:-10px;border:2px solid rgba(255,255,255,.06)}
+/* chalk typography */
+html.board h1,html.board h2,html.board h3,html.board h4,html.board .h2-fa,html.board .hero-fa,html.board .fa-q,html.board blockquote{color:var(--chalk);text-shadow:0 0 1px rgba(255,255,255,.55),0 0 8px rgba(243,241,232,.16)}
+html.board p,html.board li,html.board span{text-shadow:0 0 .5px rgba(255,255,255,.25)}
+html.board mark.hl::after{background:var(--seal);opacity:.35}
+html.board b.acc{color:var(--gold)}
+html.board ::selection{background:var(--chalk);color:#101513}
+/* borders → chalk lines: slightly rough dashes */
+html.board .card,html.board .tk-panel,html.board .way-grid,html.board .fb-wall,html.board .fb-board,html.board .deploy-box,html.board .fb-letter,html.board .fb-item,html.board .cmp,html.board .faq details,html.board .step .n,html.board .ways button,html.board .tk-tabs button,html.board .lang-btn,html.board .pr-row,html.board .cli,html.board .ledger,html.board .lg-row,html.board .tg-card,html.board .rd-card,html.board .bp-card,html.board .uuid-box,html.board .tk-out,html.board .fb-vote,html.board .os-pick button{border-color:rgba(243,241,232,.55)!important;border-style:solid;box-shadow:none;background:rgba(255,255,255,.025)}
+html.board .card::before,html.board .tk-panel::before,html.board .way-grid::before,html.board .fb-wall::before,html.board .fb-board::before,html.board .fb-letter::before,html.board .deploy-box::before{border-color:rgba(243,241,232,.3)}
+html.board .fb-letter,html.board .fb-item{background:rgba(255,255,255,.04);background-image:repeating-linear-gradient(transparent 0 30px,rgba(243,241,232,.12) 30px 31px)}
+html.board .code{background:#070908;box-shadow:8px 8px 0 rgba(243,241,232,.12);border:1px solid rgba(243,241,232,.5)}
+html.board nav{background:rgba(16,21,19,.9);border-bottom:1px dashed rgba(243,241,232,.45)}
+/* buttons: chalk outline / filled chalk */
+html.board .btn{border-color:var(--chalk);color:var(--chalk);border-width:1.5px;box-shadow:none}
+html.board .btn::before{border-color:rgba(243,241,232,.35)}
+html.board .btn.solid{background:var(--chalk);color:#101513;border-color:var(--chalk);box-shadow:5px 6px 0 0 var(--seal)}
+html.board .btn.solid::after{background:var(--seal)}
+html.board .btn.solid:hover{color:#101513;box-shadow:7px 9px 0 0 var(--chalk)}
+html.board .btn:not(.solid):hover{color:#101513;border-color:var(--chalk);box-shadow:5px 6px 0 0 var(--seal)}
+html.board .btn:not(.solid):hover::after{background:var(--chalk)}
+html.board .btn.solid .ic,html.board .btn.solid .ic-t{color:#101513}
+html.board .tk-tabs button.on,html.board .ways button.on,html.board .fb-types input:checked+span,html.board .os-pick button.on,html.board .fb-vote.done{background:var(--chalk)!important;color:#101513!important;border-color:var(--chalk)!important;box-shadow:4px 4px 0 0 var(--seal)}
+html.board .tk-tabs button.on i,html.board .ways button.on i{color:#101513}
+html.board .fb-types input:checked+span i{color:#101513}
+html.board .fb-type.t-critique,html.board .fb-type.t-idea{color:#101513}
+/* images → white chalk on black */
+html.board .frame{background:#0b0f0d;border-color:rgba(243,241,232,.6);box-shadow:0 40px 70px -30px #000,0 0 0 8px rgba(243,241,232,.06)}
+html.board .frame::after{border-color:rgba(243,241,232,.35)}
+html.board .frame img,html.board .ink img{filter:grayscale(1) contrast(1.1) brightness(.95)!important;mix-blend-mode:normal!important}
+html.board .ink .sk{filter:grayscale(1) invert(1) brightness(.3)!important}
+html.board .frame{background:#e9e4d6;padding:14px}
+html.board .brand img,html.board .pre img{filter:grayscale(1) contrast(1.05)!important}
+html.board .art img,html.board .pano img,html.board .plane{filter:grayscale(1) invert(1) contrast(1.2) brightness(1.1)!important;mix-blend-mode:screen!important}
+html.board .shot img,html.board .fig img{filter:grayscale(1) contrast(1.05) brightness(.9);box-shadow:0 0 0 1px rgba(243,241,232,.5)}
+html.board .tape{background:rgba(243,241,232,.18)}
+/* stamp / seal / rail / progress */
+html.board .stamp{filter:drop-shadow(0 0 6px rgba(233,139,124,.35))}
+html.board .rail a b,html.board .rail a span{color:var(--graphite)}
+html.board .rail a.on b{color:var(--seal)}
+html.board .prog.scribble path{stroke:var(--gold)}
+html.board .tg-pill{background:var(--chalk);color:#101513}
+html.board .totop{border-color:var(--chalk);color:var(--chalk)}
+html.board .num{color:var(--graphite)}
+html.board .sk-div path{stroke:rgba(243,241,232,.6)}
+html.board .plate-marks i,html.board .plate-no,html.board .plate-scale{color:var(--graphite);border-color:var(--graphite)}
+html.board .margin-note{color:var(--gold)}html.board .margin-note svg{stroke:var(--gold)}
+html.board .circ-svg{stroke:var(--gold)}
+html.board .ul svg path{stroke:var(--gold)}
+html.board .card .ico{background:transparent;border-color:var(--chalk)}
+html.board .card .ico svg{stroke:var(--chalk)}
+html.board .card:hover .ico{box-shadow:3px 3px 0 var(--seal)}
+html.board .fb-box .lid,html.board .fb-box .body{fill:#0b0f0d;stroke:var(--chalk)}
+html.board .fb-box .slot{fill:var(--chalk)}
+html.board .fb-box .lbl{fill:var(--chalk)}
+html.board .fb-item .pin{filter:saturate(.8)}
+html.board .keys-card,html.board .pal-box,html.board .toast{background:#101513;border-color:var(--chalk);color:var(--ink)}
+html.board .toast{background:var(--chalk);color:#101513;box-shadow:4px 4px 0 var(--seal)}
+html.board .keys-card kbd{background:transparent;border-color:var(--chalk);color:var(--chalk)}
+html.board .st.ok i{background:var(--gold);box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--gold),0 0 10px rgba(234,213,143,.5)}
+html.board .cmp .hl{background:rgba(243,241,232,.06);border-inline-color:rgba(243,241,232,.45)}
+html.board .cmp th,html.board .cmp td{border-bottom-color:rgba(243,241,232,.25)}
+html.board .fb-mix i.m-praise{background:var(--chalk)}html.board .fb-mix em.m-praise{background:var(--chalk)}
+html.board .way-steps li::before{border-color:var(--gold);color:var(--gold)}
+html.board .fb-letter::after{background:repeating-linear-gradient(90deg,var(--seal) 0 14px,transparent 14px 20px,var(--gold) 20px 34px,transparent 34px 40px)}
+/* chalk dust smudge near bottom */
+html.board .chalk-tray{position:fixed;left:0;right:0;bottom:0;height:64px;z-index:69;pointer-events:none;background:linear-gradient(to top,rgba(243,241,232,.10),transparent 70%)}
+html.board .chalk-tray::before{content:"";position:absolute;left:8%;right:8%;bottom:14px;height:6px;background:linear-gradient(90deg,transparent,rgba(243,241,232,.35) 20%,rgba(243,241,232,.5) 50%,rgba(243,241,232,.3) 80%,transparent);filter:blur(3px);border-radius:50%}
+html.board .chalk-tray::after{content:"";position:absolute;left:14%;bottom:18px;width:54px;height:8px;background:var(--chalk);border-radius:4px;transform:rotate(-3deg);box-shadow:120px 2px 0 -1px var(--seal),240px -1px 0 -2px var(--gold)}
+@media(max-width:720px){html.board body{box-shadow:inset 0 0 0 6px #5a3d23,inset 0 0 0 8px #3c2716}html.board .wood{border-width:6px}}
+html:not(.board) .wood,html:not(.board) .chalk-tray{display:none}
+
+/* chalk-line borders: dashed & slightly irregular */
+html.board .card,html.board .tk-panel,html.board .way-grid,html.board .fb-wall,html.board .fb-board,html.board .deploy-box,html.board .fb-letter,html.board .fb-item,html.board .tk-out,html.board .uuid-box,html.board .ways button,html.board .tk-tabs button{border-style:dashed!important;border-width:1.5px!important;border-color:rgba(243,241,232,.6)!important;filter:url(#pencil)}
+html.board .card{background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,0))}
+html.board .card::before,html.board .tk-panel::before,html.board .way-grid::before,html.board .fb-wall::before,html.board .fb-board::before{display:none}
+html.board .card .ico{border-style:dashed;border-width:1.5px}
+html.board .card .ico svg{stroke-width:1.2}
+html.board .h2-fa,html.board h2.en{letter-spacing:.01em}
+html.board .sec-head h2.en{color:var(--chalk)}
+html.board .pre{background:#101513}

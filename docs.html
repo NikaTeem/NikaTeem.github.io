@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="stylesheet" href="style.css?v=25"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json"><title>Docs — Nika Net</title>
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="stylesheet" href="style.css?v=26"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json"><title>Docs — Nika Net</title>
 <style>
 .doc{display:grid;grid-template-columns:240px 1fr;gap:56px;padding:60px 0 100px}
 .toc{position:sticky;top:100px;align-self:start;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
@@ -20,7 +20,7 @@ html.dark .prose code{background:rgba(255,255,255,.08)}
 .callout::before{content:"";position:absolute;inset:5px;border:1px dashed var(--line-soft);pointer-events:none}
 .callout b{font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;display:block;margin-bottom:6px;color:var(--pencil)}
 @media(max-width:860px){.doc{grid-template-columns:1fr}.toc{position:static;display:flex;flex-wrap:wrap;gap:4px 18px}.toc a{border:none;padding-inline-start:0}}
-</style></head><body><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
+</style></head><body><div class="wood" aria-hidden="true"></div><div class="chalk-tray" aria-hidden="true"></div><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
 <nav id="nav">
   <div class="wrap">
     <a class="brand" href="/"><img src="assets/logo-512.webp?v=2" alt="Nika Net"><span><b>Nika Net</b><small>Connecting Intelligence</small></span></a>
@@ -35,7 +35,7 @@ html.dark .prose code{background:rgba(255,255,255,.08)}
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
-      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">☀</span></button>
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">▦</span><span class="tb-b">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
       <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
     </div>
@@ -162,8 +162,8 @@ npm run deploy</pre></div>
 </footer>
 <script>
 function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
-function toggleTheme(){const h=document.documentElement;h.classList.toggle('dark');localStorage.setItem('nika-theme',h.classList.contains('dark')?'dark':'light')}
-if(localStorage.getItem('nika-theme')==='dark')document.documentElement.classList.add('dark');
+function toggleTheme(){const h=document.documentElement;const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)}
+(()=>{const t=localStorage.getItem('nika-theme');if(t==='dark')document.documentElement.classList.add('dark');if(t==='board')document.documentElement.classList.add('dark','board')})();
 function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
 applyLang(localStorage.getItem('nika-lang')||'fa');
 const prog=document.getElementById('prog');addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
