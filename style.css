@@ -1530,3 +1530,32 @@ html.en .pg-legend span{display:inline}
 html.dark .pg-cover{background:var(--paper)}
 html.board .pg-monitor{border-color:var(--chalk);box-shadow:none}
 html.board .pg-bar,html.board .pg-foot,html.board .pg-legend div{background:transparent;border-color:rgba(243,241,232,.35)}
+
+/* ── v29: releases timeline + new feature badges ── */
+.card.new{position:relative}
+.card.new .nb{position:absolute;top:14px;inset-inline-end:14px;font-style:normal;text-transform:uppercase;z-index:2;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--seal);border:1px solid var(--seal);padding:2px 7px;border-radius:4px;transform:rotate(-4deg);opacity:.85}
+.rel-wrap{margin-top:30px;border:1px solid var(--line);background:var(--paper-hi);position:relative}
+html.dark .rel-wrap{background:var(--paper-2)}
+.rel-line{padding:10px 0;max-height:640px;overflow:auto;scrollbar-width:thin}
+.rel-day{display:grid;grid-template-columns:160px 1fr;gap:0;border-bottom:1px dashed var(--line)}
+.rel-day:last-child{border-bottom:0}
+.rel-date{padding:16px 18px;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);border-inline-end:1px dashed var(--line);align-self:start;position:sticky;top:0;background:var(--paper-hi)}
+html.dark .rel-date{background:var(--paper-2)}html.board .rel-date{background:transparent;position:static}
+.rel-date small{display:block;font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.1em;color:var(--ink-2);margin-top:4px}
+html:not(.en) .rel-date{font-family:var(--fa);font-style:normal}
+.rel-items{display:flex;flex-direction:column}
+.rel{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:baseline;padding:11px 18px;text-decoration:none;color:var(--ink);border-bottom:1px dotted var(--line-soft);transition:background .25s var(--ease),padding-inline-start .3s var(--ease)}
+.rel:last-child{border-bottom:0}
+.rel:hover{background:var(--paper-3);padding-inline-start:26px}
+.rel b{font-family:var(--mono);font-weight:500;font-size:12.5px;color:var(--graphite);letter-spacing:.02em}
+.rel.major b{color:var(--seal);font-weight:700}
+.rel span{font-size:14px;line-height:1.55;color:var(--ink-2)}
+html:not(.en) .rel span{font-family:var(--fa)}
+.rel i{font-family:var(--mono);font-style:normal;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:2px 8px;border-radius:3px}
+.rel.latest{background:linear-gradient(90deg,var(--gold-soft),transparent 60%)}
+.rel-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-2)}
+.rel-foot a{color:var(--ink);text-decoration:none;border-bottom:1px dashed var(--line)}
+@media(max-width:700px){.rel-day{grid-template-columns:1fr}.rel-date{border-inline-end:0;border-bottom:1px dotted var(--line);padding:12px 16px;position:static}.rel{grid-template-columns:1fr;gap:4px;padding:10px 16px}.rel i{justify-self:start}}
+html.board .rel-wrap{background:transparent;border-color:rgba(243,241,232,.4)}
+html.board .rel.latest{background:rgba(224,180,88,.12)}
+html.board .rel i{background:var(--chalk);color:#1c1c1e}

@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=28">
+<link rel="stylesheet" href="style.css?v=29">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -96,7 +96,7 @@
     <div class="ticker rv d5">
       <div><b data-count="0" data-prefix="$">$0</b><span data-fa>هزینه ماهانه</span><span data-en>per month</span></div>
       <div><b data-count="3">0</b><span data-fa>پروتکل</span><span data-en>protocols</span></div>
-      <div><b data-count="420" data-suffix="+">0</b><span data-fa>آی‌پی اسکن‌شده</span><span data-en>IPs scanned</span></div>
+      <div><b data-count="79">0</b><span data-fa>کشور در استخر IP</span><span data-en>countries in IP pool</span></div>
       <div><b>MIT</b><span data-fa>متن‌باز</span><span data-en>open source</span></div>
     </div>
   </div>
@@ -263,6 +263,24 @@
     <div class="card tilt rv d3"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <h3 data-fa>امنیت<span class="en">Security</span></h3><h3 data-en>Security</h3>
       <p data-fa>رمز ادمین با SHA-256، نشست‌های امضاشده با HMAC، مسیر مخفی ادمین و استتار برای مسیرهای ناشناس.</p><p data-en>SHA-256 hashed admin password, HMAC-signed sessions, hidden admin path and camouflage for unknown routes.</p></div>
+    <div class="card tilt rv d1 new"><em class="nb">new</em><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17c4-9 7-9 9 0s5 9 9 0"/><path d="M12 3v3M4 8l2 2M20 8l-2 2"/></svg></div>
+      <h3 data-fa>موتور سرعت<span class="en">Speed Engine · v0.12</span></h3><h3 data-en>Speed Engine</h3>
+      <p data-fa>آی‌پی‌های کم‌پینگ بر اساس دیتاسنتر (colo) نزدیک به تو، اشتراک چندنودی، و تست سرعت <em>واقعی</em> از مسیر پروکسی — نه از یک سرور ثالث.</p><p data-en>Colo-aware low-ping IPs, multi-node subscriptions and a <em>real</em> speed test through the proxy path — not some third-party server.</p></div>
+    <div class="card tilt rv d2 new"><em class="nb">new</em><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/><path d="M5 7h14M5 17h14"/></svg></div>
+      <h3 data-fa>استخر IP کشوری<span class="en">Country IP Pool · v0.7</span></h3><h3 data-en>Country IP Pool</h3>
+      <p data-fa>کشور را انتخاب کن (۷۹ کشور)، پنل خودش تست می‌کند و بهترین‌ها را روی کانفیگ می‌نشاند — اسم کانفیگ هم پرچمش را می‌گیرد: 🇩🇪 Nika Net.</p><p data-en>Pick a country (79 available), the panel probes and applies the best — the config name even gets the flag: 🇩🇪 Nika Net.</p></div>
+    <div class="card tilt rv d3 new"><em class="nb">new</em><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 019 9M12 7a5 5 0 015 5"/><circle cx="12" cy="12" r="1.5"/><path d="M4 20l8-8"/></svg></div>
+      <h3 data-fa>مگا اسکنر + تست رله<span class="en">Mega scanner · v0.13</span></h3><h3 data-en>Mega scanner + relay test</h3>
+      <p data-fa>اسکن کامل رنج‌های کلادفلر (تا ۱٫۵ میلیون IP، IPv4 و IPv6) با ETA و ذخیرهٔ نتیجه؛ به‌علاوه تست همهٔ دامنه‌های رله و انتخاب خودکار بهترین.</p><p data-en>Full Cloudflare-range enumeration (up to 1.5M IPs, v4 + v6) with ETA and saved results, plus relay-domain testing with auto-pick.</p></div>
+    <div class="card tilt rv d1 new"><em class="nb">new</em><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4v8l4 2"/><circle cx="12" cy="12" r="9"/><path d="M3 12h2M19 12h2"/></svg></div>
+      <h3 data-fa>به‌روزرسانی خودکار (OTA)<span class="en">One-tap updates · v0.5</span></h3><h3 data-en>One-tap OTA updates</h3>
+      <p data-fa>پنل نسخهٔ جدید مخزن را می‌بیند، با یک دکمه خودش را جایگزین می‌کند و KV دست‌نخورده می‌ماند. ربات هم به همه اعلام می‌کند.</p><p data-en>The panel spots a new release, redeploys itself with one tap and keeps your KV intact. The bot announces it to everyone.</p></div>
+    <div class="card tilt rv d2 new"><em class="nb">new</em><div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></div>
+      <h3 data-fa>صفحهٔ وضعیت کاربر<span class="en">User status page · v0.7</span></h3><h3 data-en>User status page</h3>
+      <p data-fa>هر کاربر یک لینک خصوصی دارد: گیج دایره‌ای مصرف، روزهای باقی‌مانده، QR و دکمهٔ افزودن به کلاینت — با همان طراحی مدادی.</p><p data-en>Every user gets a private page: circular usage gauge, days left, QR code and add-to-client buttons — in the same pencil style.</p></div>
+    <div class="card tilt rv d3 new"><em class="nb">new</em><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></div>
+      <h3 data-fa>پشتیبانی داخل ربات<span class="en">In-bot support · v0.9</span></h3><h3 data-en>In-bot support</h3>
+      <p data-fa>تیکت با انتخاب دسته، پیام شخصی به مالک، پروفایل کاربر در پنل ادمین، جست‌وجو/فیلتر/خروجی CSV — همه در تلگرام.</p><p data-en>Category tickets, private messages to the owner, user profiles in the admin view, search/filter/CSV export — all inside Telegram.</p></div>
   </div>
 </section>
 
@@ -420,6 +438,22 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 </section>
 
 <div class="wrap rule"></div>
+
+
+<!-- RELEASES -->
+<section class="wrap rv" id="releases">
+  <div class="sec-head">
+    <div class="num">— Releases</div>
+    <h2 class="en" dir="ltr">Shipping <span class="ul">almost daily.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>تقریباً <mark class="hl">هر روز</mark> یک نسخه.</p>
+    <p data-fa>هر نسخه‌ای که منتشر شده، مستقیم از تاریخچهٔ <code>version.json</code> مخزن. پنل‌های نصب‌شده همین‌ها را با یک دکمه می‌گیرند.</p>
+    <p data-en>Every version ever shipped, read live from the repo's <code>version.json</code> history. Installed panels pull these with one tap.</p>
+  </div>
+  <div class="rel-wrap">
+    <div class="rel-line" id="relLine" dir="ltr"><div class="ledger-empty" data-fa>در حال خواندن نسخه‌ها…</div><div class="ledger-empty" data-en>Reading releases…</div></div>
+    <div class="rel-foot" dir="ltr"><span id="relCount"></span><a href="https://github.com/NikaTeem/Nika-Net/commits/main/version.json" target="_blank" rel="noopener">all releases ↗</a></div>
+  </div>
+</section>
 
 <!-- LOGBOOK -->
 <section class="wrap rv" id="logbook">
@@ -699,11 +733,12 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <a href="#blueprint" data-r="blueprint"><b>VII</b><span>Blueprint</span></a>
 <a href="#start" data-r="start"><b>VIII</b><span>Start</span></a>
 <a href="#toolkit" data-r="toolkit"><b>IX</b><span>Toolkit</span></a>
-<a href="#logbook" data-r="logbook"><b>X</b><span>Logbook</span></a>
-<a href="#feedback" data-r="feedback"><b>XI</b><span>Box</span></a>
-<a href="#mirrors" data-r="mirrors"><b>XII</b><span>Mirrors</span></a>
-<a href="#faq" data-r="faq"><b>XIII</b><span>FAQ</span></a>
-<a href="#manifesto" data-r="manifesto"><b>XIV</b><span>Manifesto</span></a>
+<a href="#releases" data-r="releases"><b>X</b><span>Releases</span></a>
+<a href="#logbook" data-r="logbook"><b>XI</b><span>Logbook</span></a>
+<a href="#feedback" data-r="feedback"><b>XII</b><span>Box</span></a>
+<a href="#mirrors" data-r="mirrors"><b>XIII</b><span>Mirrors</span></a>
+<a href="#faq" data-r="faq"><b>XIV</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>XV</b><span>Manifesto</span></a>
 </div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
 <div class="lb" id="lb" hidden><button class="lb-x" aria-label="close">×</button><img alt=""><div class="lb-cap" id="lbCap"></div></div>
@@ -847,6 +882,7 @@ const PAL=[
  {k:'go',fa:'برو به: بالای صفحه',en:'Go to: Top',run:()=>scrollTo({top:0,behavior:'smooth'})},
  {k:'go showcase panel',fa:'برو به: نگاهی به داخل پنل',en:'Go to: Inside the panel',run:()=>location.hash='#showcase'},
  {k:'go playground demo try sandbox',fa:'برو به: دموی زنده',en:'Go to: Live demo',run:()=>location.hash='#playground'},
+ {k:'go releases versions',fa:'برو به: نسخه‌ها',en:'Go to: Releases',run:()=>location.hash='#releases'},
  {k:'go telegram bot channel',fa:'برو به: تلگرام',en:'Go to: Telegram',run:()=>location.hash='#telegram'},
  {k:'go features',fa:'برو به: ویژگی‌ها',en:'Go to: Features',run:()=>location.hash='#features'},
  {k:'go protocols vless trojan warp',fa:'برو به: پروتکل‌ها',en:'Go to: Protocols',run:()=>location.hash='#protocols'},
@@ -1039,6 +1075,18 @@ go.addEventListener('click',power);
 rs.addEventListener('click',()=>{if(!on){power();return}f.src='about:blank';setTimeout(()=>{f.src=URL_+'?reset='+Date.now()},80);toast('دمو ریست شد','Demo reset')});
 fetch('https://raw.githubusercontent.com/NikaTeem/Nika-Net/main/version.json',{cache:'no-store'}).then(r=>r.json()).then(v=>{if(!v.version)return;const fa=v.version.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]).replace(/\./g,'٫');document.getElementById('verFa').textContent=fa;document.getElementById('verEn').textContent='v'+v.version;document.querySelectorAll('[data-ver]').forEach(e=>e.textContent='v'+v.version)}).catch(()=>{});
 })();
+
+// v29: releases timeline
+(()=>{const box=document.getElementById('relLine');if(!box)return;const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const io=new IntersectionObserver(es=>{if(!es.some(e=>e.isIntersecting))return;io.disconnect();
+fetch('https://api.github.com/repos/NikaTeem/Nika-Net/commits?per_page=100&path=version.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+const seen=new Set();const items=[];for(const c of d){const m=c.commit.message.split('\n')[0];const v=(m.match(/v?(\d+\.\d+(?:\.\d+)?)/)||[])[1];if(!v||seen.has(v))continue;seen.add(v);const title=m.replace(/^[^\p{L}\p{N}]+/u,'').replace(/^v?\d+\.\d+(\.\d+)?\s*[:—–-]?\s*/,'').replace(/\s*[—–(-]\s*v?\d+\.\d+(\.\d+)?\)?\s*$/,'');items.push({v,title,date:c.commit.author.date,sha:c.sha,url:c.html_url,major:/\.0$/.test(v)})}
+const byDay={};items.forEach(i=>{const k=i.date.slice(0,10);(byDay[k]=byDay[k]||[]).push(i)});
+const fa=n=>String(n).replace(/\d/g,x=>'۰۱۲۳۴۵۶۷۸۹'[x]);
+const dayFmt=k=>new Date(k).toLocaleDateString(isEn()?'en-GB':'fa-IR',{day:'numeric',month:'long'});
+let html='';let first=true;for(const k of Object.keys(byDay)){html+=`<div class="rel-day"><div class="rel-date">${dayFmt(k)}<small>${isEn()?byDay[k].length+' releases':fa(byDay[k].length)+' نسخه'}</small></div><div class="rel-items">`+byDay[k].map(i=>{const L=first;first=false;return `<a class="rel ${i.major?'major':''} ${L?'latest':''}" href="${i.url}" target="_blank" rel="noopener"><b>v${i.v}</b><span dir="auto">${esc(i.title)}</span>${L?'<i>'+(isEn()?'latest':'آخرین')+'</i>':''}</a>`}).join('')+'</div></div>'}
+box.innerHTML=html;const c=document.getElementById('relCount');const days=Object.keys(byDay).length;c.textContent=isEn()?`${items.length} releases in ${days} days`:`${fa(items.length)} نسخه در ${fa(days)} روز`;
+}).catch(()=>{box.innerHTML=`<div class="ledger-empty">${isEn()?'GitHub is quiet right now ↗':'الان دسترسی به GitHub نیست ↗'}</div>`})},{rootMargin:'300px'});io.observe(box)})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
