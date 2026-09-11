@@ -1664,3 +1664,12 @@ html.en .manifesto .slogan{font-family:var(--serif);font-style:italic;font-weigh
 .rel-share{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--seal);text-decoration:none;margin-inline-start:14px;border-bottom:1px dashed var(--seal)}
 html:not(.en) .rel-share{font-family:var(--fa);letter-spacing:0;text-transform:none;font-size:.82rem}
 .rel-share:hover{color:var(--ink);border-color:var(--ink)}
+/* v34: trust strip + pack */
+.oath-strip{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;width:min(1100px,calc(100% - 48px));margin:0 auto 0;padding:22px 28px;border:1px solid var(--ink);background:var(--paper-hi);text-decoration:none;color:inherit;position:relative;transition:.4s var(--ease-out)}
+.oath-strip::before{content:"";position:absolute;inset:6px;border:1px dashed var(--line-soft);pointer-events:none}
+.oath-strip:hover{transform:translateY(-3px);box-shadow:6px 7px 0 -1px var(--paper),6px 7px 0 0 var(--graphite)}
+.os-seal{width:54px;height:54px;border-radius:50%;border:2px solid var(--seal);color:var(--seal);font-family:var(--serif);font-size:1.7rem;display:grid;place-items:center;transform:rotate(-10deg);box-shadow:inset 0 0 0 4px var(--paper-hi),inset 0 0 0 5px var(--seal)}
+.os-t b{display:block;font-size:1.1rem;margin-bottom:4px}
+.os-t>span{display:block;color:var(--ink-2);font-size:.92rem;line-height:1.75}
+.os-go{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--seal);white-space:nowrap}
+@media(max-width:640px){.oath-strip{grid-template-columns:auto 1fr;padding:18px}.os-go{grid-column:1/-1;text-align:end}}

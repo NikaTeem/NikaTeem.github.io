@@ -1,11 +1,12 @@
 <!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brand — Nika Net</title><meta name="description" content="Nika Net brand kit: logo, colors, type, slogans, and a share-card maker.">
 <link rel="canonical" href="https://nikanet.dpdns.org/brand.html"><meta property="og:title" content="Brand — Nika Net"><meta property="og:image" content="https://nikanet.dpdns.org/assets/og.jpg?v=2"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="stylesheet" href="style.css?v=33"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"><link rel="stylesheet" href="style.css?v=34"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json">
 <style>
 .br{padding:60px 0 100px}
 .br-head{max-width:760px;margin-bottom:56px}
-.br-sec{margin:0 0 84px;position:relative}
+.br-sec{margin:0 0 84px;position:relative;padding:0}
+main.br section{padding:0}
 .br-sec>.num{margin-bottom:18px}
 .br-h3{font-family:var(--serif);font-size:1.7rem;font-weight:400;margin-bottom:8px;direction:ltr;text-align:start}
 html:not(.en) .br-h3{font-family:var(--fa-display);direction:rtl;font-size:1.65rem;font-weight:700}
@@ -53,6 +54,16 @@ html.en .story blockquote{font-family:var(--serif);font-style:italic;font-weight
 html:not(.en) .rules li{padding:12px 40px 12px 0}
 .rules li::before{content:counter(r,upper-roman);position:absolute;inset-inline-start:0;top:14px;font-family:var(--serif);color:var(--seal)}
 /* card maker */
+.walls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.wl{position:relative;display:block;border:1px solid var(--line);background:var(--paper-hi);padding:8px;text-decoration:none;color:inherit;transition:.35s var(--ease-out)}
+.wl:hover{transform:translateY(-4px);box-shadow:6px 7px 0 -1px var(--paper),6px 7px 0 0 var(--graphite)}
+.wl img{width:100%;display:block;aspect-ratio:9/19.5;object-fit:cover;border:1px solid var(--line-soft)}
+.wl.wide img{aspect-ratio:16/9}
+.wl small{display:block;margin-top:8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pencil)}
+.stk{position:relative;border:1px solid var(--line);background:var(--paper-hi);padding:10px;margin-bottom:6px}
+.stk img{width:100%;height:auto;display:block}
+.stk .cap{position:absolute;top:-10px;inset-inline-start:18px;background:var(--paper);padding:0 8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pencil)}
+@media(max-width:640px){.walls{grid-template-columns:repeat(2,1fr)}}
 .mk{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:start}
 .mk-prev{border:1px solid var(--line);background:var(--paper-hi);padding:16px;position:relative}
 .mk-prev canvas{width:100%;height:auto;display:block;border:1px solid var(--line-soft)}
@@ -82,6 +93,7 @@ html:not(.en) .rules li{padding:12px 40px 12px 0}
       <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
       <a href="changelog.html" data-fa>تغییرات</a><a href="changelog.html" data-en>Changelog</a>
       <a href="brand.html" data-fa>برند</a><a href="brand.html" data-en>Brand</a>
+      <a href="trust.html" data-fa>اعتماد</a><a href="trust.html" data-en>Trust</a>
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
     <div class="ctrls">
@@ -180,8 +192,29 @@ html:not(.en) .rules li{padding:12px 40px 12px 0}
     </div>
   </section>
 
+  <section class="br-sec" id="pack">
+    <div class="num">07 — Belong</div>
+    <h3 class="br-h3" data-fa>والپیپر، استیکر، آیکون</h3><h3 class="br-h3" data-en>Wallpapers, stickers, icons</h3>
+    <p data-fa>برای کسانی که نیکا نت را دوست دارند، نه فقط استفاده می‌کنند. سه تم سایت، برای گوشی و دسکتاپ؛ هشت استیکر آمادهٔ تلگرام؛ و آیکون‌های نصب.</p>
+    <p data-en>For people who love Nika Net, not just use it. All three site themes for phone and desktop; eight Telegram-ready stickers; and install icons.</p>
+    <div class="walls">
+      <a class="wl" href="assets/wall/nika-phone-paper.jpg" download><img src="assets/wall/nika-phone-paper-thumb.webp" alt="" loading="lazy"><small>phone · paper</small></a>
+      <a class="wl" href="assets/wall/nika-phone-graphite.jpg" download><img src="assets/wall/nika-phone-graphite-thumb.webp" alt="" loading="lazy"><small>phone · graphite</small></a>
+      <a class="wl" href="assets/wall/nika-phone-board.jpg" download><img src="assets/wall/nika-phone-board-thumb.webp" alt="" loading="lazy"><small>phone · board</small></a>
+      <a class="wl wide" href="assets/wall/nika-desktop-paper.jpg" download><img src="assets/wall/nika-desktop-paper-thumb.webp" alt="" loading="lazy"><small>desktop · paper · 2560×1440</small></a>
+      <a class="wl wide" href="assets/wall/nika-desktop-graphite.jpg" download><img src="assets/wall/nika-desktop-graphite-thumb.webp" alt="" loading="lazy"><small>desktop · graphite</small></a>
+      <a class="wl wide" href="assets/wall/nika-desktop-board.jpg" download><img src="assets/wall/nika-desktop-board-thumb.webp" alt="" loading="lazy"><small>desktop · board</small></a>
+    </div>
+    <div class="stk"><img src="assets/stickers/sheet.webp" alt="Nika Net sticker pack" width="1024" height="512" loading="lazy"><span class="cap">sticker pack · 8 × 512px · webp + png</span></div>
+    <div class="dl">
+      <a class="btn solid" href="assets/wall/nika-wallpapers.zip" download><span data-fa>دانلود والپیپرها (ZIP)</span><span data-en>Download wallpapers (ZIP)</span></a>
+      <a class="btn" href="assets/stickers/nika-stickers.zip" download><span data-fa>دانلود استیکرها (ZIP)</span><span data-en>Download stickers (ZIP)</span></a>
+      <span class="hint" data-fa>استیکرها را با ربات @Stickers تلگرام به پک تبدیل کن</span><span class="hint" data-en>turn stickers into a pack with Telegram’s @Stickers bot</span>
+    </div>
+  </section>
+
   <section class="br-sec">
-    <div class="num">07 — Rules</div>
+    <div class="num">08 — Rules</div>
     <h3 class="br-h3" data-fa>هفت خط قرمز (لاکی)</h3><h3 class="br-h3" data-en>Seven lines in seal red</h3>
     <ol class="rules">
       <li data-fa>نام همیشه «نیکا نت» / «Nika Net» است؛ نه NikaNet، نه Nika-Net (جز آدرس مخزن).</li><li data-en>The name is always “Nika Net” — not NikaNet, not Nika-Net (except the repo slug).</li>

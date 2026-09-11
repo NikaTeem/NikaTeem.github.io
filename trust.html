@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trust & Privacy — Nika Net</title><meta name="description" content="What Nika Net does and does not collect — site, panel, bot — and how to audit it yourself.">
+<link rel="canonical" href="https://nikanet.dpdns.org/trust.html"><meta property="og:title" content="Trust & Privacy — Nika Net"><meta property="og:image" content="https://nikanet.dpdns.org/assets/og.jpg?v=2"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"><link rel="stylesheet" href="style.css?v=34"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json">
+<style>
+.tr{padding:60px 0 100px}
+.tr-head{max-width:760px;margin-bottom:56px}
+.tr-sec{margin:0 0 84px;padding:0}
+main.tr section{padding:0}
+.tr-sec>.num{margin-bottom:18px}
+.tr-h3{font-family:var(--fa-display);font-size:1.65rem;font-weight:700;margin-bottom:8px}
+html.en .tr-h3{font-family:var(--serif);font-weight:400;font-size:1.7rem}
+.tr-sec>p{color:var(--ink-2);max-width:62ch;margin-bottom:26px;line-height:1.9}
+.oath{border:1px solid var(--ink);padding:38px 40px;position:relative;background:var(--paper-hi);max-width:820px}
+.oath::before{content:"";position:absolute;inset:7px;border:1px dashed var(--line);pointer-events:none}
+.oath h3{font-family:var(--fa-display);font-size:1.5rem;margin-bottom:18px}
+html.en .oath h3{font-family:var(--serif);font-weight:400;font-style:italic}
+.oath ol{list-style:none;padding:0;counter-reset:o}
+.oath li{counter-increment:o;position:relative;padding:10px 0 10px 44px;border-bottom:1px dashed var(--line-soft);line-height:1.85;color:var(--ink-2);font-size:1.02rem}
+html:not(.en) .oath li{padding:10px 44px 10px 0}
+.oath li::before{content:counter(o,upper-roman);position:absolute;inset-inline-start:0;top:12px;font-family:var(--serif);color:var(--seal);font-size:1.05rem}
+.oath li b{color:var(--ink)}
+.oath .stamp{position:absolute;inset-inline-end:26px;bottom:-26px;width:96px;height:96px;transform:rotate(-12deg);opacity:.85}
+.ledger{width:100%;border-collapse:collapse;font-size:.95rem}
+.ledger th{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pencil);text-align:start;padding:10px 14px;border-bottom:1px solid var(--ink);font-weight:400}
+.ledger td{padding:14px;border-bottom:1px dashed var(--line);vertical-align:top;line-height:1.75;color:var(--ink-2)}
+.ledger td:first-child{color:var(--ink);font-weight:700;white-space:nowrap}
+.ledger .no{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#2e8b57;border:1px solid #2e8b57;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ledger .yes{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ledger tr:hover td{background:rgba(23,21,18,.03)}
+.tr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tr-card{border:1px solid var(--line);background:var(--paper-hi);padding:22px;position:relative}
+.tr-card::before{content:"";position:absolute;inset:5px;border:1px dashed var(--line-soft);pointer-events:none}
+.tr-card small{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--seal);display:block;margin-bottom:10px}
+.tr-card b{display:block;font-size:1.1rem;margin-bottom:8px}
+.tr-card p{font-size:.92rem;color:var(--ink-2);line-height:1.85}
+.tr-card code{font-family:var(--mono);font-size:.78rem;background:var(--paper);border:1px solid var(--line);padding:1px 6px;direction:ltr;display:inline-block}
+.audit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.step{border:1px solid var(--line);background:var(--paper-hi);padding:20px 22px;position:relative;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.step i{font-family:var(--serif);font-style:normal;font-size:1.8rem;color:var(--seal);line-height:1}
+.step b{display:block;margin-bottom:6px}
+.step p{font-size:.9rem;color:var(--ink-2);line-height:1.8}
+.step .trcode{font-family:var(--mono);}
+.step .trcode{margin-top:10px;font-family:var(--mono);font-size:.74rem;direction:ltr;text-align:left;background:var(--ink);color:var(--paper);padding:10px 12px;overflow:auto;white-space:pre}
+html.dark .step .trcode{font-family:var(--mono);}
+.step .trcode{background:#0f0e0c}
+.hash{font-family:var(--mono);font-size:.74rem;direction:ltr;text-align:left;border:1px dashed var(--line);padding:12px 14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;color:var(--ink-2)}
+.hash b{color:var(--ink);font-weight:400;word-break:break-all}
+.hash .st-dot{width:9px;height:9px;border-radius:50%;background:var(--line);animation:blink 1.2s steps(1) infinite}
+.hash.ok .st-dot{background:#2e8b57;animation:none}.hash.bad .st-dot{background:var(--seal);animation:none}
+.contact{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tr-upd{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pencil);margin-top:40px}
+@media(max-width:900px){.tr-grid,.audit{grid-template-columns:1fr}.oath{padding:28px 22px}.ledger{font-size:.88rem}.ledger td,.ledger th{padding:10px 8px}.ledger td:first-child{white-space:normal}}
+</style>
+</head><body><div class="wood" aria-hidden="true"></div><div class="chalk-tray" aria-hidden="true"></div><div class="grid-bg"></div><div class="grain"></div><div class="prog"><i id="prog"></i></div>
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="assets/logo-512.webp?v=2" alt="Nika Net"><span><b>Nika Net</b><small>Connecting Intelligence</small></span></a>
+    <div class="links" id="links">
+      <a href="/#features" data-fa>ویژگی‌ها</a><a href="/#features" data-en>Features</a>
+      <a href="/#showcase" data-fa>نگاهی به پنل</a><a href="/#showcase" data-en>The panel</a>
+      <a href="/#protocols" data-fa>پروتکل‌ها</a><a href="/#protocols" data-en>Protocols</a>
+      <a href="/#start" data-fa>شروع سریع</a><a href="/#start" data-en>Quick start</a>
+            <a href="/#telegram" data-fa>تلگرام</a><a href="/#telegram" data-en>Telegram</a>
+      <a href="docs.html" data-fa>مستندات</a><a href="docs.html" data-en>Docs</a>
+      <a href="changelog.html" data-fa>تغییرات</a><a href="changelog.html" data-en>Changelog</a>
+      <a href="brand.html" data-fa>برند</a><a href="brand.html" data-en>Brand</a>
+      <a href="trust.html" data-fa>اعتماد</a><a href="trust.html" data-en>Trust</a>
+      <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="ctrls">
+      <button class="lang-btn" onclick="toggleTheme()" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">▦</span><span class="tb-b">☀</span></button>
+      <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
+      <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+<main class="wrap tr" id="top">
+  <div class="tr-head">
+    <div class="num">— Trust · Privacy · Audit</div>
+    <h2 class="en" dir="ltr">Nothing up <span class="ul">our sleeve.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>چیزی پشت پرده نیست.</p>
+    <p data-fa>ابزاری که قرار است تو را از دست ناظر آزاد کند، خودش نباید ناظر تازه‌ای باشد. این صفحه دقیقاً می‌گوید هر بخش نیکا نت چه چیزی می‌بیند، چه چیزی نگه می‌دارد، و چطور خودت می‌توانی راستی‌آزمایی کنی.</p>
+    <p data-en>A tool meant to free you from one watcher must never become another. This page states exactly what each part of Nika Net sees, what it keeps, and how you can verify it yourself.</p>
+  </div>
+
+  <section class="tr-sec">
+    <div class="num">01 — The oath</div>
+    <div class="oath">
+      <h3 data-fa>هفت چیزی که هرگز نمی‌کنیم</h3><h3 data-en>Seven things we will never do</h3>
+      <ol>
+        <li data-fa><b>ترافیک تو را نمی‌بینیم.</b> پنل روی حساب Cloudflare خودت اجرا می‌شود؛ ما نه کلیدی داریم، نه دسترسی‌ای، نه لاگی.</li><li data-en><b>We don’t see your traffic.</b> The panel runs on your own Cloudflare account — we hold no key, no access, no log.</li>
+        <li data-fa><b>سرور مرکزی نداریم.</b> هیچ نقطه‌ای وجود ندارد که همهٔ کاربران از آن عبور کنند یا بشود آن را خاموش کرد.</li><li data-en><b>There is no central server.</b> No single point every user passes through, and none that can be switched off.</li>
+        <li data-fa><b>ردیاب و تبلیغ نداریم.</b> نه Google Analytics، نه پیکسل، نه فونت از سرور بیرونی. همهٔ فایل‌های سایت از همین دامنه می‌آید.</li><li data-en><b>No trackers, no ads.</b> No Google Analytics, no pixels, no third-party fonts. Every file on this site is served from this domain.</li>
+        <li data-fa><b>حساب کاربری نمی‌سازیم.</b> سایت و ربات از تو ایمیل یا شماره نمی‌خواهند. صندوق پیشنهادات بدون نام هم کار می‌کند.</li><li data-en><b>We don’t create accounts.</b> The site and bot never ask for an email or phone. The suggestion box works anonymously.</li>
+        <li data-fa><b>آی‌پی خام ذخیره نمی‌کنیم.</b> تنها جایی که به آی‌پی نگاه می‌شود، محدودکنندهٔ اسپم صندوق است — و همان‌جا فقط یک هش کوتاه‌شدهٔ برگشت‌ناپذیر نگه داشته می‌شود.</li><li data-en><b>We don’t store raw IPs.</b> The only place an IP is looked at is the suggestion-box rate limiter — and even there only a truncated, irreversible hash is kept.</li>
+        <li data-fa><b>در خفا به‌روزرسانی نمی‌کنیم.</b> هر نسخه یک کامیت عمومی است؛ پنل فقط وقتی به‌روز می‌شود که خودت دکمه را بزنی.</li><li data-en><b>No silent updates.</b> Every release is a public commit; the panel updates only when you press the button.</li>
+        <li data-fa><b>هیچ‌وقت پولی نمی‌شویم.</b> MIT، متن‌باز، رایگان. اگر روزی کسی «نیکا نت پریمیوم» فروخت، ما نیستیم.</li><li data-en><b>We will never charge.</b> MIT, open source, free. If someone ever sells “Nika Net Premium”, it isn’t us.</li>
+      </ol>
+      <img class="stamp" src="assets/brand/nika-seal.svg" alt="" width="96" height="96">
+    </div>
+  </section>
+
+  <section class="tr-sec">
+    <div class="num">02 — Data ledger</div>
+    <h3 class="tr-h3" data-fa>دفتر داده‌ها — بخش به بخش</h3><h3 class="tr-h3" data-en>The data ledger — part by part</h3>
+    <p data-fa>هر سطر یک جزء نیکا نت است، چیزی که از نظر فنی می‌بیند، و چیزی که واقعاً نگه می‌دارد.</p>
+    <p data-en>Each row is one component, what it technically sees, and what it actually keeps.</p>
+    <table class="ledger">
+      <thead><tr><th data-fa>جزء</th><th data-en>Component</th><th data-fa>کجا اجرا می‌شود</th><th data-en>Runs where</th><th data-fa>می‌بیند</th><th data-en>Sees</th><th data-fa>نگه می‌دارد</th><th data-en>Keeps</th></tr></thead>
+      <tbody>
+        <tr><td data-fa>سایت nikanet.dpdns.org</td><td data-en>This website</td><td>GitHub Pages + Cloudflare CDN</td><td data-fa>درخواست‌های HTTP معمولی (لاگ‌های استاندارد میزبان)</td><td data-en>Ordinary HTTP requests (host’s standard logs)</td><td><span class="no">nothing by us</span> <span data-fa>— فقط تنظیمات زبان/تم در localStorage مرورگر خودت</span><span data-en>— only your language/theme in your own browser’s localStorage</span></td></tr>
+        <tr><td data-fa>پنل (Worker خودت)</td><td data-en>The panel (your Worker)</td><td data-fa>حساب Cloudflare خودت</td><td data-en>Your own Cloudflare account</td><td data-fa>ترافیک کاربران تو — فقط توسط تو</td><td data-en>Your users’ traffic — visible only to you</td><td><span class="yes">you decide</span> <span data-fa>— کاربران، سهمیه و تنظیمات در KV/D1 خودت</span><span data-en>— users, quotas and settings in your own KV/D1</span></td></tr>
+        <tr><td data-fa>ربات @NikaNetLauncher_bot</td><td data-en>@NikaNetLauncher_bot</td><td>Cloudflare Worker</td><td data-fa>شناسهٔ تلگرام و پیام‌هایی که به ربات می‌فرستی</td><td data-en>Your Telegram ID and the messages you send it</td><td><span class="yes">minimal</span> <span data-fa>— شناسهٔ چت برای پاسخ‌دادن؛ توکن Cloudflare فقط در طول جلسهٔ استقرار</span><span data-en>— chat ID to reply; your Cloudflare token only during the deploy session</span></td></tr>
+        <tr><td data-fa>صندوق پیشنهادات</td><td data-en>Suggestion box</td><td>Cloudflare Worker + KV</td><td data-fa>متن پیام، نام اختیاری، آی‌پی (برای محدودیت اسپم)</td><td data-en>Message text, optional name, IP (for rate limiting)</td><td><span class="yes">hashed</span> <span data-fa>— متن و نام؛ از آی‌پی فقط ۸ بایت اول SHA-256 برای شمارش و جلوگیری از رأی تکراری</span><span data-en>— text and name; of the IP only the first 8 bytes of a SHA-256 for counting and vote dedupe</span></td></tr>
+        <tr><td data-fa>دموی زنده</td><td data-en>Live demo</td><td>Cloudflare Worker + KV</td><td data-fa>کلیک‌های داخل دمو</td><td data-en>Clicks inside the sandbox</td><td><span class="no">resets daily</span> <span data-fa>— داده‌های ساختگی؛ هر ۲۴ ساعت پاک می‌شود</span><span data-en>— fake data; wiped every 24 h</span></td></tr>
+        <tr><td data-fa>بررسی نسخه / انتشارها</td><td data-en>Version & release feeds</td><td>raw.githubusercontent.com · api.github.com</td><td data-fa>یک درخواست GET از مرورگر تو به GitHub</td><td data-en>One GET from your browser to GitHub</td><td><span class="no">nothing by us</span> <span data-fa>— مشمول سیاست GitHub</span><span data-en>— subject to GitHub’s policy</span></td></tr>
+        <tr><td data-fa>سرویس‌ورکر آفلاین</td><td data-en>Offline service worker</td><td data-fa>مرورگر خودت</td><td data-en>Your own browser</td><td>—</td><td><span class="no">local only</span> <span data-fa>— کپی صفحات برای وقتی که اینترنت قطع است</span><span data-en>— page copies for when the network is down</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tr-sec">
+    <div class="num">03 — Verify it yourself</div>
+    <h3 class="tr-h3" data-fa>به ما اعتماد نکن؛ خودت ببین</h3><h3 class="tr-h3" data-en>Don’t trust us — check</h3>
+    <p data-fa>چهار کار ساده که هرکسی می‌تواند بکند و نیازی به دانش خاصی ندارد.</p>
+    <p data-en>Four simple checks anyone can do without special knowledge.</p>
+    <div class="audit">
+      <div class="step"><i>I</i><div><b data-fa>کد را بخوان</b><b data-en>Read the code</b><p data-fa>همهٔ ورکر در یک مخزن عمومی است. مسیر <code style="font-family:var(--mono);font-size:.8rem">src/</code> منطق و <code style="font-family:var(--mono);font-size:.8rem">dist/worker.js</code> خروجی نهایی است.</p><p data-en>The entire Worker lives in one public repo. <code style="font-family:var(--mono);font-size:.8rem">src/</code> is the logic, <code style="font-family:var(--mono);font-size:.8rem">dist/worker.js</code> the final build.</p><div class="trcode">https://github.com/NikaTeem/Nika-Net</div></div></div>
+      <div class="step"><i>II</i><div><b data-fa>ببین ورکرت با کی حرف می‌زند</b><b data-en>See who your Worker talks to</b><p data-fa>در داشبورد Cloudflare → Workers → Logs. تنها مقصدهای بیرونی باید مقصد کاربرانت و (اگر روشن کردی) بررسی نسخه در GitHub باشند.</p><p data-en>Cloudflare dashboard → Workers → Logs. The only outbound destinations should be your users’ targets and (if enabled) the GitHub version check.</p><div class="trcode">grep -n "fetch(" src/*.ts | grep -v "request"</div></div></div>
+      <div class="step"><i>III</i><div><b data-fa>سایت را زیر نظر بگیر</b><b data-en>Watch this site</b><p data-fa>در مرورگر F12 → Network را باز کن و صفحه را نو کن. هیچ دامنه‌ای جز همین سایت، GitHub و ورکرهای <code style="font-family:var(--mono);font-size:.8rem">nikanetteem.workers.dev</code> نباید ببینی.</p><p data-en>Open F12 → Network and reload. You should see no domain other than this site, GitHub, and the <code style="font-family:var(--mono);font-size:.8rem">nikanetteem.workers.dev</code> Workers.</p></div></div>
+      <div class="step"><i>IV</i><div><b data-fa>هش انتشار را مقایسه کن</b><b data-en>Compare the release hash</b><p data-fa>هش SHA-256 آخرین <code style="font-family:var(--mono);font-size:.8rem">dist/worker.js</code> همین حالا در مرورگر تو از GitHub محاسبه می‌شود. با فایلی که روی ورکرت است مقایسه کن.</p><p data-en>The SHA-256 of the latest <code style="font-family:var(--mono);font-size:.8rem">dist/worker.js</code> is computed in your browser from GitHub right now. Compare it with what’s deployed on your Worker.</p><div class="hash" id="hash"><span class="st-dot"></span><span data-fa>در حال محاسبه…</span><span data-en>computing…</span></div><div class="trcode">curl -sL https://raw.githubusercontent.com/NikaTeem/Nika-Net/main/dist/worker.js | sha256sum</div></div></div>
+    </div>
+  </section>
+
+  <section class="tr-sec">
+    <div class="num">04 — Threat model, honestly</div>
+    <h3 class="tr-h3" data-fa>از چه چیزی محافظت می‌کند — و از چه چیزی نه</h3><h3 class="tr-h3" data-en>What it protects against — and what it doesn’t</h3>
+    <div class="tr-grid">
+      <div class="tr-card"><small>protects</small><b data-fa>در برابر فیلترینگ و شنود مسیر</b><b data-en>Against filtering & on-path snooping</b><p data-fa>ترافیک با TLS به لبهٔ Cloudflare می‌رود و برای اپراتور مثل بازدید از یک سایت معمولی است. محتوا برای واسطه‌ها خوانا نیست.</p><p data-en>Traffic reaches Cloudflare’s edge over TLS and looks to the ISP like an ordinary website visit. Intermediaries can’t read the contents.</p></div>
+      <div class="tr-card"><small>partly</small><b data-fa>در برابر شناسایی الگو (DPI)</b><b data-en>Against pattern detection (DPI)</b><p data-fa>WebSocket روی ۴۴۳ معمول است، اما در روزهای سخت ممکن است کند یا قطع شود. آی‌پی‌های تمیز و WARP کمک می‌کنند؛ تضمین نمی‌کنند.</p><p data-en>WebSocket on 443 is common, but on harsh days it may slow or drop. Clean IPs and WARP help; they don’t guarantee.</p></div>
+      <div class="tr-card"><small>does not</small><b data-fa>در برابر Cloudflare یا مقصد</b><b data-en>Against Cloudflare or the destination</b><p data-fa>Cloudflare ترافیک را رمزگشایی می‌کند (این ماهیت CDN است) و سایت مقصد آی‌پی Cloudflare را می‌بیند، نه تو را. اگر مدل تهدیدت شامل Cloudflare است، این ابزار برای تو نیست.</p><p data-en>Cloudflare terminates TLS (that’s what a CDN is) and the destination sees Cloudflare’s IP, not yours. If Cloudflare is in your threat model, this isn’t the tool for you.</p></div>
+    </div>
+  </section>
+
+  <section class="tr-sec">
+    <div class="num">05 — Report</div>
+    <h3 class="tr-h3" data-fa>اگر چیزی پیدا کردی</h3><h3 class="tr-h3" data-en>If you find something</h3>
+    <p data-fa>آسیب‌پذیری امنیتی را لطفاً اول خصوصی گزارش کن تا قبل از اعلام عمومی وصله شود. ظرف ۷۲ ساعت پاسخ می‌دهیم و نامت (اگر بخواهی) در تغییرات ذکر می‌شود.</p>
+    <p data-en>Please report security issues privately first so they can be patched before disclosure. We answer within 72 hours and credit you (if you wish) in the changelog.</p>
+    <div class="contact">
+      <a class="btn solid" href="https://github.com/NikaTeem/Nika-Net/security/advisories/new" target="_blank" rel="noopener"><span data-fa>گزارش خصوصی در GitHub</span><span data-en>Private report on GitHub</span></a>
+      <a class="btn" href="https://t.me/NikaSociety" target="_blank" rel="noopener"><span data-fa>پیام در تلگرام</span><span data-en>Message on Telegram</span></a>
+      <a class="btn" href="/#feedback"><span data-fa>صندوق پیشنهادات</span><span data-en>Suggestion box</span></a>
+    </div>
+    <div class="tr-upd" dir="ltr">Last reviewed · 2026-09-12 · this page is itself in the repo — every change is a commit</div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:16px"><img src="assets/logo-512.webp?v=2" alt="Nika Net"><span><b>Nika Net</b><small>Connecting Intelligence</small></span></a>
+        <p data-fa>پنل پروکسی مدادی و مقاوم در برابر سانسور. آزاد برای استفاده‌ی شخصی و یادگیری — مسئولانه استفاده کن.</p>
+        <p data-en>A pencil-drawn, censorship-resistant proxy panel. Free for personal use and learning — use responsibly.</p>
+      </div>
+      <div><h5>Project</h5><ul>
+        <li><a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Nika-Net repository</a></li>
+        <li><a href="docs.html">Docs / مستندات</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/README.fa.md" target="_blank" rel="noopener">راهنمای فارسی</a></li>
+        <li><a href="changelog.html">Changelog / Roadmap</a></li>
+        <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li></ul></div>
+      <div><h5>Links</h5><ul>
+        <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
+        <li><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a></li>
+        <li><a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a></li>
+        <li><a href="https://t.me/NikaSociety" target="_blank" rel="noopener">@NikaSociety — channel</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Nika Net · nikanet.dpdns.org · Drawn in graphite</span><span>Freedom · Speed · Security · Your way</span></div>
+  </div>
+</footer>
+<script>
+function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function toggleTheme(){const h=document.documentElement;const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)}
+(()=>{const t=localStorage.getItem('nika-theme');if(t==='dark')document.documentElement.classList.add('dark');if(t==='board')document.documentElement.classList.add('dark','board')})();
+function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
+applyLang(localStorage.getItem('nika-lang')||'fa');
+const prog=document.getElementById('prog');addEventListener('scroll',()=>{const d=document.documentElement;prog.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'},{passive:true});
+document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
+</script>
+<script>
+(async()=>{const el=document.getElementById('hash');try{const r=await fetch('https://raw.githubusercontent.com/NikaTeem/Nika-Net/main/dist/worker.js',{cache:'no-store'});if(!r.ok)throw 0;const buf=await r.arrayBuffer();const h=[...new Uint8Array(await crypto.subtle.digest('SHA-256',buf))].map(x=>x.toString(16).padStart(2,'0')).join('');el.classList.add('ok');el.innerHTML=`<span class="st-dot"></span><span>sha256 · dist/worker.js · ${(buf.byteLength/1024|0)} KB</span><b>${h}</b>`}catch(e){el.classList.add('bad');el.innerHTML='<span class="st-dot"></span><span data-fa>الان دسترسی به GitHub نیست — از دستور زیر استفاده کن.</span><span data-en>GitHub unreachable right now — use the command below.</span>'}})();
+</script></body></html>
