@@ -1589,3 +1589,10 @@ html.dark .cl{background:var(--paper-2)}
 @media(max-width:700px){.cl-how{grid-template-columns:1fr}}
 html.board .cl,html.board .cmp td.hl{background:transparent}
 html.board .cmp-tabs button.on,html.board .cl-tabs button.on{background:var(--chalk);color:#1c1c1e;border-color:var(--chalk)}
+
+/* v31: feedback replies + pins */
+.fb-reply{margin:10px 0 12px;padding:8px 12px;border-inline-start:3px solid var(--gold);background:var(--gold-soft);font-size:.9rem;line-height:1.7;color:var(--ink-2)}
+.fb-reply b{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.fb-item.pinned{border-color:var(--gold);box-shadow:4px 4px 0 0 var(--gold-soft)}
+.fb-pinned{position:absolute;top:-9px;inset-inline-end:14px;font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--paper);padding:2px 8px;transform:rotate(1.5deg)}
+html.board .fb-reply{background:rgba(224,180,88,.1)}
