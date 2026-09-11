@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=26">
+<link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -577,6 +577,28 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   <div class="fb-track" id="fbTrack"></div>
 </div>
 
+<!-- MIRRORS -->
+<section class="wrap rv" id="mirrors">
+  <div class="sec-head">
+    <div class="num">— Mirrors</div>
+    <h2 class="en" dir="ltr">If this page <span class="ul">goes dark.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>اگر این صفحه <mark class="hl">خاموش</mark> شد</p>
+    <p data-fa>این سایت از چند مسیر مستقل در دسترس است. یکی را ذخیره کن — اگر دامنهٔ اصلی فیلتر شد، بقیه کار می‌کنند. نسخهٔ آفلاین هم در همین مرورگر ذخیره می‌شود.</p>
+    <p data-en>This site is reachable through several independent routes. Bookmark one — if the main domain is blocked, the others keep working. An offline copy is also stored in this browser.</p>
+  </div>
+  <div class="mir-grid">
+    <a class="mir" data-mir href="https://nikanet.dpdns.org/" data-ping="https://nikanet.dpdns.org/manifest.json"><i></i><b>nikanet.dpdns.org</b><span data-fa>دامنهٔ اصلی · Cloudflare DNS</span><span data-en>primary · Cloudflare DNS</span><small>—</small></a>
+    <a class="mir" data-mir href="https://nikateem.github.io/" data-ping="https://nikateem.github.io/manifest.json"><i></i><b>nikateem.github.io</b><span data-fa>مستقیم از GitHub Pages</span><span data-en>straight from GitHub Pages</span><small>—</small></a>
+    <a class="mir" data-mir href="https://nikanet-mirror.nikanetteem.workers.dev/" data-ping="https://nikanet-mirror.nikanetteem.workers.dev/manifest.json"><i></i><b>nikanet-mirror.workers.dev</b><span data-fa>آینه روی لبهٔ Cloudflare</span><span data-en>mirror on the Cloudflare edge</span><small>—</small></a>
+    <a class="mir" data-mir href="https://github.com/NikaTeem/NikaTeem.github.io/archive/refs/heads/main.zip" data-ping="" data-static><i></i><b>source .zip</b><span data-fa>کل سایت را دانلود کن و آفلاین باز کن</span><span data-en>download the whole site, open offline</span><small>zip</small></a>
+  </div>
+  <div class="mir-foot">
+    <div class="mir-sw" id="mirSw"><i></i><span data-fa>نسخهٔ آفلاین: در حال بررسی…</span><span data-en>Offline copy: checking…</span></div>
+    <button class="btn" type="button" id="mirCopy"><span data-fa>کپی همهٔ آدرس‌ها</span><span data-en>Copy all addresses</span><span class="ic-t">⧉</span></button>
+    <a class="btn" href="https://t.me/NikaSociety" target="_blank" rel="noopener"><span data-fa>آدرس‌های جدید در کانال</span><span data-en>New addresses on the channel</span><span class="ic-t">↗</span></a>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="wrap rv" id="faq">
   <div class="sec-head" style="margin-inline:auto;text-align:center">
@@ -638,8 +660,9 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <a href="#toolkit" data-r="toolkit"><b>VIII</b><span>Toolkit</span></a>
 <a href="#logbook" data-r="logbook"><b>IX</b><span>Logbook</span></a>
 <a href="#feedback" data-r="feedback"><b>X</b><span>Box</span></a>
-<a href="#faq" data-r="faq"><b>XI</b><span>FAQ</span></a>
-<a href="#manifesto" data-r="manifesto"><b>XII</b><span>Manifesto</span></a>
+<a href="#mirrors" data-r="mirrors"><b>XI</b><span>Mirrors</span></a>
+<a href="#faq" data-r="faq"><b>XII</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>XIII</b><span>Manifesto</span></a>
 </div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
 <div class="lb" id="lb" hidden><button class="lb-x" aria-label="close">×</button><img alt=""><div class="lb-cap" id="lbCap"></div></div>
@@ -790,6 +813,7 @@ const PAL=[
  {k:'go toolkit tools check decode client',fa:'برو به: ابزارها',en:'Go to: Toolkit',run:()=>location.hash='#toolkit'},
  {k:'go logbook commits changelog',fa:'برو به: دفترچهٔ کار',en:'Go to: Logbook',run:()=>location.hash='#logbook'},
  {k:'go feedback box suggestion',fa:'برو به: صندوق انتقادات',en:'Go to: Suggestion box',run:()=>location.hash='#feedback'},
+ {k:'go mirrors offline blocked backup',fa:'برو به: آینه‌ها / نسخهٔ آفلاین',en:'Go to: Mirrors / offline',run:()=>location.hash='#mirrors'},
  {k:'go faq questions',fa:'برو به: سؤال‌های پرتکرار',en:'Go to: FAQ',run:()=>location.hash='#faq'},
  {k:'shortcuts keys help ?',fa:'کلیدهای میانبر',en:'Keyboard shortcuts',run:()=>openKeys()},
  {k:'uuid generate id',fa:'ابزار: ساخت UUID',en:'Tool: generate UUID',run:()=>{location.hash='#toolkit';document.querySelector('[data-tk=gen]').click()}},
@@ -959,6 +983,11 @@ const prog=document.getElementById('prog');if(prog){prog.classList.add('scribble
 // marginalia (desktop only)
 if(innerWidth>1520){const notes={showcase:['↑ اسکرین‌شات‌های واقعی، نه ماکاپ','↑ real screenshots, not mock-ups'],features:['هر کارت را لمس کن','tilt me'],protocols:['سه در، یک کلید','three doors, one key'],toolkit:['همه‌چیز محلی می‌ماند','everything stays local'],feedback:['نامه‌ات را بینداز','drop your letter'],start:['۲ دقیقه، جدی','2 minutes, really']};
 Object.entries(notes).forEach(([id,[fa,en]])=>{const sec=document.getElementById(id);if(!sec)return;const m=document.createElement('div');m.className='margin-note';m.innerHTML=`<svg viewBox="0 0 60 40"><path d="M2 36 C 14 30, 30 14, 56 6 M46 4 l10 2 -4 9"/></svg><span data-fa>${fa}</span><span data-en>${en}</span>`;sec.appendChild(m)})}})();
+// ---- v27 mirrors + service worker
+(()=>{const els=document.querySelectorAll('[data-mir]');els.forEach(a=>{if(a.hasAttribute('data-static')){a.classList.add('ok');return}const s=performance.now();fetch(a.dataset.ping+'?'+Date.now(),{mode:'no-cors',cache:'no-store'}).then(r=>{if(r.type!=='opaque'&&!r.ok)throw 0;a.classList.add('ok');a.querySelector('small').textContent=Math.round(performance.now()-s)+' ms'}).catch(()=>{a.classList.add('bad');a.querySelector('small').textContent=isEn()?'unreachable':'در دسترس نیست'})});
+const cp=document.getElementById('mirCopy');if(cp)cp.addEventListener('click',()=>{const t=[...els].map(a=>a.href).join('\n');navigator.clipboard.writeText(t).then(()=>toast('آدرس‌ها کپی شد ✓','Addresses copied ✓')).catch(()=>{})});
+const sw=document.getElementById('mirSw');const set=(cls,fa,en)=>{if(!sw)return;sw.className='mir-sw '+cls;sw.querySelector('[data-fa]').textContent=fa;sw.querySelector('[data-en]').textContent=en};
+if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('/sw.js').then(reg=>{const ready=()=>set('ok','نسخهٔ آفلاین ذخیره شد — این صفحه بدون اینترنت هم باز می‌شود.','Offline copy saved — this page opens without internet.');if(reg.active)ready();else reg.addEventListener('updatefound',()=>{const w=reg.installing;w&&w.addEventListener('statechange',()=>{if(w.state==='activated')ready()})})}).catch(()=>set('bad','مرورگر اجازهٔ ذخیرهٔ آفلاین نداد.','Browser refused the offline copy.'))}else set('','نسخهٔ آفلاین فقط روی https فعال می‌شود.','Offline copy is only available over https.')})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));

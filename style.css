@@ -1467,3 +1467,24 @@ html.board .card .ico svg{stroke-width:1.2}
 html.board .h2-fa,html.board h2.en{letter-spacing:.01em}
 html.board .sec-head h2.en{color:var(--chalk)}
 html.board .pre{background:#101513}
+
+/* ===== v27: mirrors ===== */
+.mir-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:22px}
+.mir{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"i b s" "i sp s";column-gap:16px;row-gap:2px;align-items:center;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;text-decoration:none;color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.12),transparent);box-shadow:var(--shadow-soft);transition:.3s var(--ease-out)}
+.mir::before{content:"";position:absolute;inset:6px;border:1px dashed var(--line-soft);pointer-events:none;opacity:.7}
+.mir:hover{transform:translateY(-2px);border-color:var(--ink);box-shadow:4px 4px 0 0 var(--graphite)}
+.mir i{grid-area:i;width:12px;height:12px;border-radius:50%;background:var(--line);box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--line);animation:blink 1.2s steps(1) infinite}
+.mir.ok i{background:#2e8b57;box-shadow:0 0 0 3px var(--paper),0 0 0 4px #2e8b57,0 0 12px rgba(46,139,87,.6);animation:none}
+.mir.bad i{background:var(--seal);box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--seal);animation:none}
+.mir b{grid-area:b;font-family:var(--mono);font-size:.86rem;letter-spacing:.04em;direction:ltr;text-align:start}
+.mir span{grid-area:sp;font-size:.86rem;color:var(--ink-2)}
+.mir small{grid-area:s;font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;color:var(--gold);direction:ltr;text-transform:uppercase}
+.mir.bad small{color:var(--seal)}
+.mir-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.mir-sw{display:inline-flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-2);margin-inline-end:auto;padding:10px 14px;border:1px dashed var(--line);border-radius:var(--r)}
+.mir-sw i{width:9px;height:9px;border-radius:50%;background:var(--line);animation:blink 1.2s steps(1) infinite}
+.mir-sw.ok i{background:#2e8b57;animation:none;box-shadow:0 0 8px rgba(46,139,87,.6)}
+.mir-sw.bad i{background:var(--seal);animation:none}
+html.board .mir{background:rgba(255,255,255,.03);border-style:dashed;border-width:1.5px;border-color:rgba(243,241,232,.6)}
+@media(max-width:760px){.mir-grid{grid-template-columns:1fr}.mir-sw{margin-inline-end:0;width:100%}}
+.fb-wall{align-self:stretch;display:flex;flex-direction:column}.fb-list{flex:1}
