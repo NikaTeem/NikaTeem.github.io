@@ -1559,3 +1559,33 @@ html:not(.en) .rel span{font-family:var(--fa)}
 html.board .rel-wrap{background:transparent;border-color:rgba(243,241,232,.4)}
 html.board .rel.latest{background:rgba(224,180,88,.12)}
 html.board .rel i{background:var(--chalk);color:#1c1c1e}
+
+/* ── v30: comparison tabs + clients ── */
+.cmp-tabs,.cl-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 18px}
+.cmp-tabs button,.cl-tabs button{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-2);cursor:pointer;transition:.3s var(--ease-out)}
+.cmp-tabs button:hover,.cl-tabs button:hover{border-color:var(--ink);color:var(--ink)}
+.cmp-tabs button.on,.cl-tabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:3px 3px 0 0 var(--seal)}
+html:not(.en) .cmp-tabs button{font-family:var(--fa);font-size:13.5px;letter-spacing:0}
+.cmp-pane{overflow-x:auto}
+.cmp td.p{color:var(--gold);font-style:italic}
+.cmp td.hl{background:var(--gold-soft)}
+.cmp tbody tr{transition:background .25s}.cmp tbody tr:hover{background:var(--paper-3)}
+.cmp-note{margin-top:14px;font-size:13px;color:var(--ink-2)}
+.cmp-note a{color:var(--seal)}
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.cl{display:flex;flex-direction:column;gap:8px;padding:18px 18px 14px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper-hi);text-decoration:none;color:var(--ink);position:relative;overflow:hidden;box-shadow:var(--shadow-soft);transition:transform .35s var(--ease-out),box-shadow .35s,border-color .35s;animation:clIn .5s var(--ease-out) both;animation-delay:calc(var(--i)*60ms)}
+@keyframes clIn{from{opacity:0;transform:translateY(10px) rotate(-.5deg)}to{opacity:1;transform:none}}
+html.dark .cl{background:var(--paper-2)}
+.cl:hover{transform:translateY(-3px) rotate(-.4deg);border-color:var(--ink);box-shadow:5px 6px 0 0 var(--graphite)}
+.cl.star{border-color:var(--ink)}
+.cl.star::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--seal)}
+.cl-n{font-family:var(--serif);font-weight:700;font-size:1.15rem;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cl-n i{font-family:var(--mono);font-style:normal;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--seal);border:1px solid var(--seal);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.cl-d{font-size:13.5px;color:var(--ink-2);line-height:1.6;min-height:2.6em}
+.cl-f{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--pencil);border-top:1px dashed var(--line);padding-top:8px;margin-top:auto}
+.cl-how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.cl-how div{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.6;color:var(--ink-2)}
+.cl-how b{font-family:var(--serif);font-style:italic;font-size:1.6rem;line-height:1;color:var(--seal);min-width:22px}
+@media(max-width:700px){.cl-how{grid-template-columns:1fr}}
+html.board .cl,html.board .cmp td.hl{background:transparent}
+html.board .cmp-tabs button.on,html.board .cl-tabs button.on{background:var(--chalk);color:#1c1c1e;border-color:var(--chalk)}

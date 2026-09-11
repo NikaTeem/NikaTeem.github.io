@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=29">
+<link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -549,28 +549,68 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   </div>
 </section>
 <!-- COMPARE -->
-<section class="wrap rv">
+<section class="wrap rv" id="compare">
   <div class="sec-head">
-    <div class="num">06 — Compared</div>
-    <h2 class="en" dir="ltr">Why not <span class="ul">a VPS?<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
-    <p class="h2-fa" data-fa>چرا VPS نه؟</p>
+    <div class="num">06 — Compared, honestly</div>
+    <h2 class="en" dir="ltr">Where it <span class="ul">stands.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>مقایسهٔ <mark class="hl">صادقانه</mark> با بقیه.</p>
+    <p data-fa>هر ابزاری جای خودش را دارد. اگر VPS داری، 3x-ui و Marzban عالی‌اند. نیکا نت برای وقتی است که سرور نداری، پول نمی‌خواهی بدهی، و می‌خواهی در دو دقیقه از گوشی راه بیفتی.</p>
+    <p data-en>Every tool has its place. If you own a VPS, 3x-ui and Marzban are excellent. Nika Net is for when you have no server, no budget, and two minutes on your phone.</p>
   </div>
-  <div style="overflow-x:auto">
-  <div class="cmp-wrap"><table class="cmp">
-    <thead><tr><th></th><th class="hl">Nika Net</th><th>VPS + X-UI</th><th data-fa>سرویس اشتراکی</th><th data-en>Shared service</th></tr></thead>
+  <div class="cmp-tabs" role="tablist"><button class="on" data-cmp="edge"><span data-fa>پنل‌های Cloudflare</span><span data-en>Cloudflare panels</span></button><button data-cmp="vps"><span data-fa>پنل‌های VPS</span><span data-en>VPS panels</span></button></div>
+  <div class="cmp-wrap cmp-pane" id="cmp-edge"><table class="cmp">
+    <thead><tr><th></th><th class="hl">Nika Net</th><th>BPB Panel</th><th data-fa>Worker خام (edgetunnel)</th><th data-en>Raw worker (edgetunnel)</th></tr></thead>
     <tbody>
-      <tr><td data-fa>هزینه ماهانه</td><td data-en>Monthly cost</td><td class="hl y">$0</td><td class="n">$5–10</td><td class="n">$3–8</td></tr>
-      <tr><td data-fa>سرور اختصاصی خودت</td><td data-en>Your own server</td><td class="hl y">✔</td><td class="y">✔</td><td class="n">✕</td></tr>
-      <tr><td data-fa>نگهداری / آپدیت</td><td data-en>Maintenance</td><td class="hl y">✔ <span data-fa>صفر</span><span data-en>zero</span></td><td class="n">✕</td><td class="y">✔</td></tr>
-      <tr><td data-fa>IP سوختنی</td><td data-en>Burnable IP</td><td class="hl y">✔ Anycast</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>چندکاربره + سهمیه</td><td data-en>Multi-user + quota</td><td class="hl y">✔</td><td class="y">✔</td><td class="n">✕</td></tr>
-      <tr><td data-fa>متن‌باز</td><td data-en>Open source</td><td class="hl y">✔ MIT</td><td class="y">✔</td><td class="n">✕</td></tr>
-      <tr><td data-fa>UDP / تماس</td><td data-en>UDP / calls</td><td class="hl y">WARP</td><td class="y">✔</td><td class="n">?</td></tr>
+      <tr><td data-fa>هزینه / سرور</td><td data-en>Cost / server</td><td class="hl y">$0 · <span data-fa>بدون سرور</span><span data-en>serverless</span></td><td class="y">$0</td><td class="y">$0</td></tr>
+      <tr><td data-fa>چندکاربره با سهمیه و انقضا</td><td data-en>Multi-user, quota & expiry</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>صفحهٔ وضعیت خصوصی هر کاربر</td><td data-en>Private status page per user</td><td class="hl y">✔ QR</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>اسکنر IP تمیز داخل پنل</td><td data-en>In-panel clean-IP scanner</td><td class="hl y">✔ 1.5M</td><td class="p">~</td><td class="n">✕</td></tr>
+      <tr><td data-fa>استخر IP کشوری + پرچم</td><td data-en>Country IP pool + flag</td><td class="hl y">✔ 79</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>تست سرعت واقعی از مسیر پروکسی</td><td data-en>Real speed test via proxy path</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>به‌روزرسانی خودکار OTA</td><td data-en>One-tap OTA update</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>نصب از تلگرام + پشتیبانی داخل ربات</td><td data-en>Install from Telegram + in-bot support</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>فارسی و راست‌چین</td><td data-en>Persian & RTL</td><td class="hl y">✔</td><td class="p">~</td><td class="n">✕</td></tr>
+      <tr><td data-fa>Fragment ضد-DPI</td><td data-en>Anti-DPI fragment</td><td class="p" data-fa>در نقشهٔ راه</td><td class="p" data-en>on roadmap</td><td class="y">✔</td><td class="n">✕</td></tr>
+      <tr><td data-fa>متن‌باز</td><td data-en>Open source</td><td class="hl y">MIT</td><td class="y">✔</td><td class="y">✔</td></tr>
     </tbody>
-  </table></div></div>
+  </table></div>
+  <div class="cmp-wrap cmp-pane" id="cmp-vps" hidden><table class="cmp">
+    <thead><tr><th></th><th class="hl">Nika Net</th><th>3x-ui</th><th>Marzban</th><th>Hiddify</th></tr></thead>
+    <tbody>
+      <tr><td data-fa>سرور لازم دارد</td><td data-en>Needs a server</td><td class="hl y">✕ <span data-fa>خیر</span><span data-en>no</span></td><td class="n">VPS</td><td class="n">VPS</td><td class="n">VPS</td></tr>
+      <tr><td data-fa>هزینهٔ ماهانه</td><td data-en>Monthly cost</td><td class="hl y">$0</td><td class="n">$4–10</td><td class="n">$4–10</td><td class="n">$4–10</td></tr>
+      <tr><td data-fa>زمان راه‌اندازی</td><td data-en>Setup time</td><td class="hl y">≈ 2 min</td><td class="p">15–30 min</td><td class="p">20–40 min</td><td class="p">10–20 min</td></tr>
+      <tr><td data-fa>IP سوختنی؟</td><td data-en>Burnable IP?</td><td class="hl y">✕ Anycast</td><td class="n">✔</td><td class="n">✔</td><td class="n">✔</td></tr>
+      <tr><td data-fa>نگهداری / امنیت سرور</td><td data-en>Server upkeep / hardening</td><td class="hl y"><span data-fa>صفر</span><span data-en>zero</span></td><td class="n">✔</td><td class="n">✔</td><td class="p">~</td></tr>
+      <tr><td data-fa>پروتکل‌ها</td><td data-en>Protocols</td><td class="hl p">VLESS · Trojan · WARP</td><td class="y">10+</td><td class="y">10+</td><td class="y">10+</td></tr>
+      <tr><td data-fa>UDP / تماس</td><td data-en>UDP / calls</td><td class="hl p">WARP</td><td class="y">✔</td><td class="y">✔</td><td class="y">✔</td></tr>
+      <tr><td data-fa>محدودیت روزانه</td><td data-en>Daily limit</td><td class="hl p">100k req</td><td class="y">—</td><td class="y">—</td><td class="y">—</td></tr>
+      <tr><td data-fa>چندکاربره + سهمیه</td><td data-en>Multi-user + quota</td><td class="hl y">✔</td><td class="y">✔</td><td class="y">✔</td><td class="y">✔</td></tr>
+      <tr><td data-fa>نصب از گوشی</td><td data-en>Install from a phone</td><td class="hl y">✔ Telegram</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td></tr>
+    </tbody>
+  </table></div>
+  <p class="cmp-note"><span data-fa>✎ جدول بر اساس مستندات عمومی هر پروژه در شهریور ۱۴۰۵ نوشته شده. اشتباهی دیدی؟ در <a href="#feedback">صندوق</a> بگو تا اصلاح کنیم.</span><span data-en>✎ Based on each project's public docs as of Sep 2026. Spotted an error? Drop it in the <a href="#feedback">box</a> and we'll fix it.</span></p>
 </section>
 
 <div class="sk-div rv"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path pathLength="1" d="M0 30 C 150 10, 250 50, 400 30 S 560 8, 590 30 c 6 6 -8 14 -12 4 s 10 -18 22 -4 C 640 44, 760 12, 900 30 S 1100 50, 1200 30"/></svg></div>
+
+<!-- CLIENTS -->
+<section class="wrap rv" id="clients">
+  <div class="sec-head">
+    <div class="num">— Clients</div>
+    <h2 class="en" dir="ltr">Works with the apps <span class="ul">you already have.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>با اپ‌هایی که <mark class="hl">همین الان</mark> داری کار می‌کند.</p>
+    <p data-fa>لینک اشتراک هر کاربر را در هر کدام از این‌ها بریز. سیستم‌عاملت را انتخاب کن.</p><p data-en>Paste a user's subscription link into any of these. Pick your platform.</p>
+  </div>
+  <div class="cl-tabs" role="tablist"><button class="on" data-cl="android">Android</button><button data-cl="ios">iOS</button><button data-cl="win">Windows</button><button data-cl="mac">macOS</button><button data-cl="linux">Linux</button></div>
+  <div class="cl-grid" id="clGrid"></div>
+  <div class="cl-how">
+    <div><b>1</b><span data-fa>در پنل، روی کاربر «باز کردن صفحهٔ وضعیت» بزن</span><span data-en>In the panel, open the user's status page</span></div>
+    <div><b>2</b><span data-fa>دکمهٔ «افزودن به اپ» را بزن یا QR را اسکن کن</span><span data-en>Tap "Add to app" or scan the QR</span></div>
+    <div><b>3</b><span data-fa>در اپ، اشتراک را به‌روز کن و وصل شو</span><span data-en>Update the subscription in the app and connect</span></div>
+  </div>
+</section>
+
 <!-- FEEDBACK BOX -->
 <section id="feedback" class="wrap rv">
   <div class="sec-head">
@@ -733,6 +773,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <a href="#blueprint" data-r="blueprint"><b>VII</b><span>Blueprint</span></a>
 <a href="#start" data-r="start"><b>VIII</b><span>Start</span></a>
 <a href="#toolkit" data-r="toolkit"><b>IX</b><span>Toolkit</span></a>
+<a href="#clients" data-r="clients"><b>IX·b</b><span>Clients</span></a>
 <a href="#releases" data-r="releases"><b>X</b><span>Releases</span></a>
 <a href="#logbook" data-r="logbook"><b>XI</b><span>Logbook</span></a>
 <a href="#feedback" data-r="feedback"><b>XII</b><span>Box</span></a>
@@ -883,6 +924,8 @@ const PAL=[
  {k:'go showcase panel',fa:'برو به: نگاهی به داخل پنل',en:'Go to: Inside the panel',run:()=>location.hash='#showcase'},
  {k:'go playground demo try sandbox',fa:'برو به: دموی زنده',en:'Go to: Live demo',run:()=>location.hash='#playground'},
  {k:'go releases versions',fa:'برو به: نسخه‌ها',en:'Go to: Releases',run:()=>location.hash='#releases'},
+ {k:'go compare comparison alternatives',fa:'برو به: مقایسه',en:'Go to: Comparison',run:()=>location.hash='#compare'},
+ {k:'go clients apps v2rayng hiddify',fa:'برو به: کلاینت‌ها',en:'Go to: Clients',run:()=>location.hash='#clients'},
  {k:'go telegram bot channel',fa:'برو به: تلگرام',en:'Go to: Telegram',run:()=>location.hash='#telegram'},
  {k:'go features',fa:'برو به: ویژگی‌ها',en:'Go to: Features',run:()=>location.hash='#features'},
  {k:'go protocols vless trojan warp',fa:'برو به: پروتکل‌ها',en:'Go to: Protocols',run:()=>location.hash='#protocols'},
@@ -1087,6 +1130,21 @@ const dayFmt=k=>new Date(k).toLocaleDateString(isEn()?'en-GB':'fa-IR',{day:'nume
 let html='';let first=true;for(const k of Object.keys(byDay)){html+=`<div class="rel-day"><div class="rel-date">${dayFmt(k)}<small>${isEn()?byDay[k].length+' releases':fa(byDay[k].length)+' نسخه'}</small></div><div class="rel-items">`+byDay[k].map(i=>{const L=first;first=false;return `<a class="rel ${i.major?'major':''} ${L?'latest':''}" href="${i.url}" target="_blank" rel="noopener"><b>v${i.v}</b><span dir="auto">${esc(i.title)}</span>${L?'<i>'+(isEn()?'latest':'آخرین')+'</i>':''}</a>`}).join('')+'</div></div>'}
 box.innerHTML=html;const c=document.getElementById('relCount');const days=Object.keys(byDay).length;c.textContent=isEn()?`${items.length} releases in ${days} days`:`${fa(items.length)} نسخه در ${fa(days)} روز`;
 }).catch(()=>{box.innerHTML=`<div class="ledger-empty">${isEn()?'GitHub is quiet right now ↗':'الان دسترسی به GitHub نیست ↗'}</div>`})},{rootMargin:'300px'});io.observe(box)})();
+
+// v30: compare tabs + clients
+(()=>{document.querySelectorAll('.cmp-tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.cmp-tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.cmp-pane').forEach(p=>p.hidden=p.id!=='cmp-'+b.dataset.cmp)}));
+const C={
+android:[{n:'v2rayNG',d:['ساده‌ترین؛ Base64 را می‌خورد','Simplest; takes the Base64 link'],u:'https://github.com/2dust/v2rayNG/releases',f:'base64',star:1},{n:'Hiddify',d:['رابط فارسی، Sing-box داخلش','Persian UI, Sing-box inside'],u:'https://github.com/hiddify/hiddify-app/releases',f:'singbox / base64',star:1},{n:'NekoBox',d:['برای کاربران حرفه‌ای','For power users'],u:'https://github.com/MatsuriDayo/NekoBoxForAndroid/releases',f:'base64'},{n:'Clash Meta',d:['قوانین مسیریابی پیشرفته','Advanced routing rules'],u:'https://github.com/MetaCubeX/ClashMetaForAndroid/releases',f:'clash yaml'},{n:'WireGuard',d:['فقط برای کانفیگ WARP','WARP config only'],u:'https://play.google.com/store/apps/details?id=com.wireguard.android',f:'wireguard'}],
+ios:[{n:'Streisand',d:['رایگان، پرطرفدار در ایران','Free, popular in Iran'],u:'https://apps.apple.com/app/streisand/id6450534064',f:'base64',star:1},{n:'Hiddify',d:['رابط فارسی، رایگان','Persian UI, free'],u:'https://apps.apple.com/app/hiddify-proxy-vpn/id6596777532',f:'singbox / base64',star:1},{n:'V2Box',d:['رایگان، پایدار','Free, stable'],u:'https://apps.apple.com/app/v2box-v2ray-client/id6446814690',f:'base64'},{n:'Shadowrocket',d:['پولی، قدرتمند','Paid, powerful'],u:'https://apps.apple.com/app/shadowrocket/id932747118',f:'base64'},{n:'WireGuard',d:['فقط برای کانفیگ WARP','WARP config only'],u:'https://apps.apple.com/app/wireguard/id1441195209',f:'wireguard'}],
+win:[{n:'v2rayN',d:['کلاسیک ویندوز','The Windows classic'],u:'https://github.com/2dust/v2rayN/releases',f:'base64',star:1},{n:'Hiddify',d:['ساده و فارسی','Simple, Persian'],u:'https://github.com/hiddify/hiddify-app/releases',f:'singbox / base64',star:1},{n:'Nekoray',d:['سبک، Sing-box','Light, Sing-box core'],u:'https://github.com/MatsuriDayo/nekoray/releases',f:'base64'},{n:'Clash Verge Rev',d:['قوانین مسیریابی','Routing rules'],u:'https://github.com/clash-verge-rev/clash-verge-rev/releases',f:'clash yaml'},{n:'WireGuard',d:['فقط برای کانفیگ WARP','WARP config only'],u:'https://www.wireguard.com/install/',f:'wireguard'}],
+mac:[{n:'Hiddify',d:['ساده و فارسی','Simple, Persian'],u:'https://github.com/hiddify/hiddify-app/releases',f:'singbox / base64',star:1},{n:'V2Box',d:['از اپ‌استور','From the App Store'],u:'https://apps.apple.com/app/v2box-v2ray-client/id6446814690',f:'base64',star:1},{n:'Clash Verge Rev',d:['قوانین مسیریابی','Routing rules'],u:'https://github.com/clash-verge-rev/clash-verge-rev/releases',f:'clash yaml'},{n:'Streisand',d:['همان نسخهٔ iOS','Same as the iOS app'],u:'https://apps.apple.com/app/streisand/id6450534064',f:'base64'},{n:'WireGuard',d:['فقط برای کانفیگ WARP','WARP config only'],u:'https://apps.apple.com/app/wireguard/id1451685025',f:'wireguard'}],
+linux:[{n:'Hiddify',d:['AppImage / deb','AppImage / deb'],u:'https://github.com/hiddify/hiddify-app/releases',f:'singbox / base64',star:1},{n:'Nekoray',d:['AppImage، Sing-box','AppImage, Sing-box core'],u:'https://github.com/MatsuriDayo/nekoray/releases',f:'base64',star:1},{n:'Clash Verge Rev',d:['deb / rpm / AppImage','deb / rpm / AppImage'],u:'https://github.com/clash-verge-rev/clash-verge-rev/releases',f:'clash yaml'},{n:'sing-box CLI',d:['برای ترمینال‌دوست‌ها','For terminal people'],u:'https://sing-box.sagernet.org/installation/package-manager/',f:'singbox json'},{n:'wg-quick',d:['فقط برای کانفیگ WARP','WARP config only'],u:'https://www.wireguard.com/install/',f:'wireguard'}]};
+const g=document.getElementById('clGrid');if(!g)return;const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function draw(k){g.innerHTML=(C[k]||[]).map((c,i)=>`<a class="cl ${c.star?'star':''}" href="${c.u}" target="_blank" rel="noopener" style="--i:${i}"><div class="cl-n">${esc(c.n)}${c.star?'<i>'+(isEn()?'recommended':'پیشنهادی')+'</i>':''}</div><div class="cl-d">${esc(isEn()?c.d[1]:c.d[0])}</div><div class="cl-f" dir="ltr">↳ ${esc(c.f)}</div></a>`).join('')}
+const ua=navigator.userAgent;let k=/Android/i.test(ua)?'android':/iPhone|iPad/i.test(ua)?'ios':/Mac/i.test(ua)?'mac':/Linux/i.test(ua)?'linux':'win';
+document.querySelectorAll('.cl-tabs button').forEach(b=>{b.classList.toggle('on',b.dataset.cl===k);b.addEventListener('click',()=>{k=b.dataset.cl;document.querySelectorAll('.cl-tabs button').forEach(x=>x.classList.toggle('on',x===b));draw(k)})});
+draw(k);let L=isEn();new MutationObserver(()=>{if(isEn()!==L){L=isEn();draw(k)}}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
