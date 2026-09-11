@@ -1182,3 +1182,29 @@ html.en .toast{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;tex
 .wr .w>span{display:inline-block;transform:translateY(110%) rotate(3deg);transform-origin:left bottom;transition:transform .9s var(--ease-out);transition-delay:calc(var(--i) * 90ms)}
 .wr.in .w>span{transform:none}
 html.en .way-steps b[data-en],html.en .way-steps span[data-en]{display:block!important}
+
+/* ===== v22: audit fixes (contrast, dark nav, overflow) ===== */
+html.dark nav{background:rgba(29,28,26,.86);border-bottom-color:#4a4640}
+html.dark nav .links a{color:var(--ink-2)}
+html.dark nav .brand b,html.dark nav .brand span b{color:var(--ink)}
+.bp-card{opacity:.82}
+.bp-card b{color:var(--ink)}
+.bp-card p{color:var(--ink-2)}
+.bp-card.on{opacity:1}
+.bp-note{font-size:9px;fill:var(--graphite)}
+.way-steps code,.tk-copy code,.prose code{color:var(--ink);background:rgba(23,21,18,.08)}
+html.dark .way-steps code,html.dark .tk-copy code,html.dark .prose code{background:rgba(255,255,255,.1)}
+.ways button i{color:var(--graphite)}
+.ways button:hover i,.ways button.on i{color:var(--seal)}
+.tk-tabs button i{color:var(--graphite)}
+.tk-tabs button.on i{color:var(--gold)}
+.lg-ver{font-size:.68rem;color:var(--graphite);border-color:var(--graphite)}
+.fb-score{color:var(--gold)}.fb-score i{color:var(--line)}
+.stars i{color:var(--graphite)}
+.pr-row em,.st,.status,.way-note,.fb-note,.cap,.shot-note,.pano .lbl,.lg-time,.lg-sha,.rail a b{color:var(--graphite)}
+html.dark .pr-row em,html.dark .st,html.dark .status,html.dark .way-note,html.dark .fb-note,html.dark .cap,html.dark .shot-note,html.dark .lg-time,html.dark .lg-sha{color:#a8a194}
+.num{color:var(--graphite)}
+.cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-inline:-4px;padding-inline:4px}
+.cmp td.n{opacity:.85}
+.pre-ring,.pre-bar{max-width:100vw}
+@media(max-width:720px){.bp-note{display:none}}
