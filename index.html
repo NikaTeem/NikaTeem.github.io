@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=24">
+<link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -46,6 +46,12 @@
 </div>
 <div class="prog"><i id="prog"></i></div>
 <div class="grid-bg"></div><div class="grain"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<filter id="pencil" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="wobble" x="-4%" y="-4%" width="108%" height="108%"><feTurbulence type="turbulence" baseFrequency=".02" numOctaves="1" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3"/></filter>
+<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="1"/></pattern>
+</defs></svg>
+
 
 <!-- NAV -->
 <nav id="nav">
@@ -941,6 +947,17 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 // ---- v24 suggestion box: counter + drop animation
 (()=>{const ta=document.getElementById('fbText'),c=document.getElementById('fbCount');if(!ta)return;const up=()=>{const n=ta.value.length;c.textContent=(isEn()?n:fmtN(n))+' / '+(isEn()?'400':fmtN(400));c.classList.toggle('warn',n>360);c.classList.toggle('low',n>0&&n<8)};ta.addEventListener('input',up);new MutationObserver(up).observe(document.documentElement,{attributes:true,attributeFilter:['class']});up();
 window.fbDrop=()=>{const box=document.getElementById('fbBox'),form=document.getElementById('fbForm');if(!box)return;form.classList.add('sent');box.classList.remove('drop');void box.offsetWidth;box.classList.add('drop');setTimeout(()=>form.classList.remove('sent'),2600);setTimeout(()=>box.classList.remove('drop'),4200)};})();
+// ---- v25 graphics layer: plate corners, marginalia, icon draw, scribble progress
+(()=>{const secs=[...document.querySelectorAll('main section.wrap')].filter(s=>s.querySelector('.sec-head'));
+secs.forEach((sec,i)=>{sec.classList.add('plate');const n=String(i+1).padStart(2,'0');const c=document.createElement('div');c.className='plate-marks';c.innerHTML=`<i></i><i></i><i></i><i></i><span class="plate-no">plate ${n}</span><span class="plate-scale">scale 1:1 · graphite on paper</span>`;sec.appendChild(c)});
+// feature icons: draw on reveal
+document.querySelectorAll('.card .ico svg').forEach(svg=>{svg.querySelectorAll('path,circle,rect,line,polyline,ellipse').forEach(e=>{try{const L=e.getTotalLength?e.getTotalLength():60;e.style.strokeDasharray=L;e.style.strokeDashoffset=L}catch(x){}})});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('drawn');io.unobserve(e.target)}}),{threshold:.5});document.querySelectorAll('.card').forEach(c=>io.observe(c));
+// scribble progress: replace bar with jittery pencil line
+const prog=document.getElementById('prog');if(prog){prog.classList.add('scribble');prog.innerHTML='<svg preserveAspectRatio="none" viewBox="0 0 1000 6"><path id="progPath" d="M0 3 Q 50 1 100 3 T 200 3 T 300 3 T 400 3 T 500 3 T 600 3 T 700 3 T 800 3 T 900 3 T 1000 3"/></svg>';const pp=document.getElementById('progPath');const upd=()=>{const h=document.documentElement;const r=h.scrollTop/(h.scrollHeight-h.clientHeight||1);pp.style.strokeDashoffset=1000-r*1000};pp.style.strokeDasharray=1000;addEventListener('scroll',upd,{passive:true});upd()}
+// marginalia (desktop only)
+if(innerWidth>1520){const notes={showcase:['↑ اسکرین‌شات‌های واقعی، نه ماکاپ','↑ real screenshots, not mock-ups'],features:['هر کارت را لمس کن','tilt me'],protocols:['سه در، یک کلید','three doors, one key'],toolkit:['همه‌چیز محلی می‌ماند','everything stays local'],feedback:['نامه‌ات را بینداز','drop your letter'],start:['۲ دقیقه، جدی','2 minutes, really']};
+Object.entries(notes).forEach(([id,[fa,en]])=>{const sec=document.getElementById(id);if(!sec)return;const m=document.createElement('div');m.className='margin-note';m.innerHTML=`<svg viewBox="0 0 60 40"><path d="M2 36 C 14 30, 30 14, 56 6 M46 4 l10 2 -4 9"/></svg><span data-fa>${fa}</span><span data-en>${en}</span>`;sec.appendChild(m)})}})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
