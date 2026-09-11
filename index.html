@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=2","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2">
-<link rel="stylesheet" href="style.css?v=27">
+<link rel="stylesheet" href="style.css?v=28">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -82,7 +82,7 @@
 <!-- HERO -->
 <header class="wrap hero">
   <div class="hero-text">
-    <div class="tag"><span data-fa>نسخه‌ی گرافیت · ۰٫۲</span><span data-en>Graphite edition · v0.2</span></div>
+    <div class="tag"><span data-fa>نسخه‌ی گرافیت · <b id="verFa">۰٫۲</b></span><span data-en>Graphite edition · <b id="verEn">v0.2</b></span></div>
     <h1 class="en" dir="ltr"><span class="w"><span>Freedom.</span></span><br><span class="w"><span>Speed.</span></span><br><span class="w"><span class="thin">Security, your way.</span></span></h1>
     <p class="hero-fa rv d3" data-fa>آزادی، سرعت، امنیت — <mark class="hl">به روش خودت.</mark></p>
     <p class="lead rv d4" data-fa>پنل پروکسی شخصی‌ات، روی یک Cloudflare Worker <b class="acc">رایگان</b>. VLESS، Trojan و WARP — روی حساب خودت، بدون سرور، بدون واسطه، بدون هزینه. با مداد کشیده شده.</p>
@@ -91,6 +91,7 @@
       <a class="btn solid mag" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار روی Cloudflare</span><span data-en>Deploy to Cloudflare</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></a>
       <a class="btn mag" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener"><span data-fa>ساخت با ربات تلگرام</span><span data-en>Build via Telegram bot</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/><path d="M11 16l10-12"/></svg></a>
     </div>
+    <a class="try-link rv d5" href="#playground"><span class="dot-live"></span><span data-fa>بدون نصب امتحانش کن — دموی زنده</span><span data-en>Try it without installing — live demo</span> ↓</a>
     <div class="typer rv d4" dir="ltr"><span>// running:</span> <b id="typer"></b><i></i></div>
     <div class="ticker rv d5">
       <div><b data-count="0" data-prefix="$">$0</b><span data-fa>هزینه ماهانه</span><span data-en>per month</span></div>
@@ -151,6 +152,45 @@
         <div class="phone"><img loading="lazy" src="assets/shot-mobile.webp?v=3" alt="Mobile"></div>
         <span class="shot-note">fig. 06 — actual panel</span>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PLAYGROUND -->
+<section class="wrap rv" id="playground">
+  <div class="sec-head">
+    <div class="num">— Playground</div>
+    <h2 class="en" dir="ltr">Don't take our word — <span class="ul">touch it.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
+    <p class="h2-fa" data-fa>حرف ما را باور نکن — <mark class="hl">خودت لمسش کن</mark>.</p>
+    <p data-fa>این خودِ پنل واقعی است که روی یک Worker نمایشی اجرا می‌شود — با داده‌های ساختگی که فقط برای تو ساخته می‌شوند. کاربر بساز، حذف کن، تنظیمات را عوض کن؛ هیچ‌چیز واقعی خراب نمی‌شود.</p>
+    <p data-en>This is the actual panel, running on a sandbox Worker with fake data spun up just for you. Add users, delete them, change settings — nothing real can break.</p>
+  </div>
+  <div class="pg-wrap">
+    <div class="pg-monitor">
+      <div class="pg-bar" dir="ltr"><i></i><i></i><i></i><span class="pg-url">nika-demo.nikanetteem.workers.dev/admin</span><span class="pg-live"><b></b>sandbox</span></div>
+      <div class="pg-screen">
+        <div class="pg-cover" id="pgCover">
+          <img src="assets/shot-fa-light-dash.webp?v=3" alt="" loading="lazy">
+          <button class="btn solid mag pg-go" id="pgGo"><span data-fa>روشن کردن دمو</span><span data-en>Power on the demo</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+          <div class="pg-hint"><span data-fa>رمز ورود از قبل پر شده: <code>demo</code> · هر بازدیدکننده یک نسخهٔ مستقل می‌گیرد</span><span data-en>Password is pre-filled: <code>demo</code> · every visitor gets an isolated copy</span></div>
+        </div>
+        <iframe id="pgFrame" title="Nika Net live demo" loading="lazy" allow="clipboard-write" referrerpolicy="no-referrer"></iframe>
+      </div>
+      <div class="pg-foot">
+        <span class="pg-note">fig. 07 — live sandbox · resets every 24h</span>
+        <div class="pg-actions">
+          <button class="btn pg-btn" id="pgReset" title="reset"><span data-fa>ریست دمو</span><span data-en>Reset demo</span></button>
+          <a class="btn pg-btn" href="https://nika-demo.nikanetteem.workers.dev/" target="_blank" rel="noopener"><span data-fa>تمام‌صفحه ↗</span><span data-en>Full screen ↗</span></a>
+          <a class="btn solid pg-btn" href="#start"><span data-fa>نسخهٔ خودت را بساز</span><span data-en>Build your own</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="pg-legend">
+      <div><b>01</b><span data-fa>داشبورد با نمودار ترافیک ۷ روزه</span><span data-en>Dashboard with 7-day traffic</span></div>
+      <div><b>02</b><span data-fa>کاربر بساز و لینک وضعیتش را ببین</span><span data-en>Add a user, open their status link</span></div>
+      <div><b>03</b><span data-fa>اسکنر IP و تست رله را از شبکهٔ خودت اجرا کن</span><span data-en>Run the IP scanner & relay test from your own network</span></div>
+      <div><b>04</b><span data-fa>حالت تیره و زبان را از همان پنل عوض کن</span><span data-en>Flip dark mode & language in-panel</span></div>
     </div>
   </div>
 </section>
@@ -652,17 +692,18 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <div class="rail" id="rail" role="navigation" aria-label="Chapters" dir="ltr">
 <a href="#top" data-r="top"><b>I</b><span>Hero</span></a>
 <a href="#showcase" data-r="showcase"><b>II</b><span>Panel</span></a>
-<a href="#telegram" data-r="telegram"><b>III</b><span>Telegram</span></a>
-<a href="#features" data-r="features"><b>IV</b><span>Features</span></a>
-<a href="#protocols" data-r="protocols"><b>V</b><span>Protocols</span></a>
-<a href="#blueprint" data-r="blueprint"><b>VI</b><span>Blueprint</span></a>
-<a href="#start" data-r="start"><b>VII</b><span>Start</span></a>
-<a href="#toolkit" data-r="toolkit"><b>VIII</b><span>Toolkit</span></a>
-<a href="#logbook" data-r="logbook"><b>IX</b><span>Logbook</span></a>
-<a href="#feedback" data-r="feedback"><b>X</b><span>Box</span></a>
-<a href="#mirrors" data-r="mirrors"><b>XI</b><span>Mirrors</span></a>
-<a href="#faq" data-r="faq"><b>XII</b><span>FAQ</span></a>
-<a href="#manifesto" data-r="manifesto"><b>XIII</b><span>Manifesto</span></a>
+<a href="#playground" data-r="playground"><b>III</b><span>Demo</span></a>
+<a href="#telegram" data-r="telegram"><b>IV</b><span>Telegram</span></a>
+<a href="#features" data-r="features"><b>V</b><span>Features</span></a>
+<a href="#protocols" data-r="protocols"><b>VI</b><span>Protocols</span></a>
+<a href="#blueprint" data-r="blueprint"><b>VII</b><span>Blueprint</span></a>
+<a href="#start" data-r="start"><b>VIII</b><span>Start</span></a>
+<a href="#toolkit" data-r="toolkit"><b>IX</b><span>Toolkit</span></a>
+<a href="#logbook" data-r="logbook"><b>X</b><span>Logbook</span></a>
+<a href="#feedback" data-r="feedback"><b>XI</b><span>Box</span></a>
+<a href="#mirrors" data-r="mirrors"><b>XII</b><span>Mirrors</span></a>
+<a href="#faq" data-r="faq"><b>XIII</b><span>FAQ</span></a>
+<a href="#manifesto" data-r="manifesto"><b>XIV</b><span>Manifesto</span></a>
 </div>
 <a class="tg-pill" id="tgpill" href="https://t.me/NikaSociety" target="_blank" rel="noopener" aria-label="Telegram channel"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span>@NikaSociety</span></a>
 <div class="lb" id="lb" hidden><button class="lb-x" aria-label="close">×</button><img alt=""><div class="lb-cap" id="lbCap"></div></div>
@@ -805,6 +846,7 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',a
 const PAL=[
  {k:'go',fa:'برو به: بالای صفحه',en:'Go to: Top',run:()=>scrollTo({top:0,behavior:'smooth'})},
  {k:'go showcase panel',fa:'برو به: نگاهی به داخل پنل',en:'Go to: Inside the panel',run:()=>location.hash='#showcase'},
+ {k:'go playground demo try sandbox',fa:'برو به: دموی زنده',en:'Go to: Live demo',run:()=>location.hash='#playground'},
  {k:'go telegram bot channel',fa:'برو به: تلگرام',en:'Go to: Telegram',run:()=>location.hash='#telegram'},
  {k:'go features',fa:'برو به: ویژگی‌ها',en:'Go to: Features',run:()=>location.hash='#features'},
  {k:'go protocols vless trojan warp',fa:'برو به: پروتکل‌ها',en:'Go to: Protocols',run:()=>location.hash='#protocols'},
@@ -988,6 +1030,15 @@ Object.entries(notes).forEach(([id,[fa,en]])=>{const sec=document.getElementById
 const cp=document.getElementById('mirCopy');if(cp)cp.addEventListener('click',()=>{const t=[...els].map(a=>a.href).join('\n');navigator.clipboard.writeText(t).then(()=>toast('آدرس‌ها کپی شد ✓','Addresses copied ✓')).catch(()=>{})});
 const sw=document.getElementById('mirSw');const set=(cls,fa,en)=>{if(!sw)return;sw.className='mir-sw '+cls;sw.querySelector('[data-fa]').textContent=fa;sw.querySelector('[data-en]').textContent=en};
 if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('/sw.js').then(reg=>{const ready=()=>set('ok','نسخهٔ آفلاین ذخیره شد — این صفحه بدون اینترنت هم باز می‌شود.','Offline copy saved — this page opens without internet.');if(reg.active)ready();else reg.addEventListener('updatefound',()=>{const w=reg.installing;w&&w.addEventListener('statechange',()=>{if(w.state==='activated')ready()})})}).catch(()=>set('bad','مرورگر اجازهٔ ذخیرهٔ آفلاین نداد.','Browser refused the offline copy.'))}else set('','نسخهٔ آفلاین فقط روی https فعال می‌شود.','Offline copy is only available over https.')})();
+
+// v28: playground + live version
+(()=>{const f=document.getElementById('pgFrame'),c=document.getElementById('pgCover'),go=document.getElementById('pgGo'),rs=document.getElementById('pgReset');if(!f)return;
+const URL_='https://nika-demo.nikanetteem.workers.dev/';let on=false;
+function power(){if(on)return;on=true;c.classList.add('booting');f.src=URL_+'?lang='+(isEn()?'en':'fa');f.addEventListener('load',()=>{setTimeout(()=>{c.classList.add('off');document.querySelector('.pg-monitor').classList.add('on')},350)},{once:true});setTimeout(()=>{c.classList.add('off');document.querySelector('.pg-monitor').classList.add('on')},6000)}
+go.addEventListener('click',power);
+rs.addEventListener('click',()=>{if(!on){power();return}f.src='about:blank';setTimeout(()=>{f.src=URL_+'?reset='+Date.now()},80);toast('دمو ریست شد','Demo reset')});
+fetch('https://raw.githubusercontent.com/NikaTeem/Nika-Net/main/version.json',{cache:'no-store'}).then(r=>r.json()).then(v=>{if(!v.version)return;const fa=v.version.replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]).replace(/\./g,'٫');document.getElementById('verFa').textContent=fa;document.getElementById('verEn').textContent='v'+v.version;document.querySelectorAll('[data-ver]').forEach(e=>e.textContent='v'+v.version)}).catch(()=>{});
+})();
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
