@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"><link rel="stylesheet" href="style.css?v=36"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json"><title>Docs — Nika Net</title>
+<link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"><link rel="stylesheet" href="style.css?v=37"><meta name="theme-color" content="#d8d1c2"><link rel="manifest" href="manifest.json"><title>Docs — Nika Net</title>
 <style>
 .doc{display:grid;grid-template-columns:240px 1fr;gap:56px;padding:60px 0 100px}
 .toc{position:sticky;top:100px;align-self:start;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
@@ -64,9 +64,9 @@ html.dark .prose code{background:rgba(255,255,255,.08)}
   <div class="callout"><b>Limits · free plan</b><p data-fa>۱۰۰٬۰۰۰ درخواست در روز، ۱۰ms CPU برای هر درخواست، بدون UDP. برای تماس صوتی/تصویری از خروجی WARP استفاده کن.</p><p data-en>100,000 requests/day, 10 ms CPU per request, no UDP. Use the WARP export for voice/video.</p></div>
 
   <h2 id="deploy" data-fa>استقرار</h2><h2 id="deploy" data-en>Deploy</h2>
-  <h3 data-fa>روش ۱ — یک کلیک</h3><h3 data-en>Option 1 — One click</h3>
-  <p data-fa>روی <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a> بزن، وارد حساب Cloudflare شو و مراحل را تأیید کن. در پایان آدرسی مثل <code>https://nika-net.&lt;you&gt;.workers.dev</code> می‌گیری.</p>
-  <p data-en>Click <a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a>, sign in and confirm. You'll get a URL like <code>https://nika-net.&lt;you&gt;.workers.dev</code>.</p>
+  <h3 data-fa>روش ۱ — ربات تلگرام</h3><h3 data-en>Option 1 — Telegram bot</h3>
+  <p data-fa>در تلگرام به <a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a> برو و <code>/start</code> بزن. ربات لینک ساخت یک توکن API کلودفلر با دسترسی درست را می‌دهد؛ توکن را برایش بفرست. Worker و KV ساخته می‌شوند و آدرسی مثل <code>https://nika-net.&lt;you&gt;.workers.dev</code> به‌همراه رمز اولیه برایت می‌آید.</p>
+  <p data-en>Open <a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a> and send <code>/start</code>. The bot links you to a Cloudflare API-token template with the right scopes; paste the token back. It creates the Worker and KV and replies with a URL like <code>https://nika-net.&lt;you&gt;.workers.dev</code> plus the first password.</p>
   <h3 data-fa>روش ۲ — خط فرمان</h3><h3 data-en>Option 2 — CLI</h3>
   <div class="code"><pre>git clone https://github.com/NikaTeem/Nika-Net.git
 cd Nika-Net
@@ -157,7 +157,6 @@ npm run deploy</pre></div>
         <li><a href="https://github.com/NikaTeem/Nika-Net/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li></ul></div>
       <div><h5>Links</h5><ul>
         <li><a href="https://github.com/NikaTeem" target="_blank" rel="noopener">@NikaTeem on GitHub</a></li>
-        <li><a href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">Deploy to Cloudflare</a></li>
         <li><a href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener">@NikaNetLauncher_bot</a></li>
         <li><a href="https://t.me/NikaSociety" target="_blank" rel="noopener">@NikaSociety — channel</a></li></ul></div>
     </div>
