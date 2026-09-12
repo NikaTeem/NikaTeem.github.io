@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=3","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=34">
+<link rel="stylesheet" href="style.css?v=35">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -58,6 +58,7 @@
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/logo-512.webp?v=2" alt="Nika Net"><span><b>Nika Net</b><small>Connecting Intelligence</small></span></a>
     <div class="links" id="links">
+      <div class="dr-head" aria-hidden="true"><span class="dr-k">— Index</span><span class="dr-v" dir="ltr" id="drVer"></span></div>
       <a href="#features" data-fa>ویژگی‌ها</a><a href="#features" data-en>Features</a>
       <a href="#showcase" data-fa>نگاهی به پنل</a><a href="#showcase" data-en>Panel</a>
       <a href="#protocols" data-fa>پروتکل‌ها</a><a href="#protocols" data-en>Protocols</a>
@@ -70,12 +71,14 @@
       <a href="brand.html" data-fa>برند</a><a href="brand.html" data-en>Brand</a>
       <a href="trust.html" data-fa>اعتماد</a><a href="trust.html" data-en>Trust</a>
       <a href="https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a>
+      <div class="dr-foot"><a class="btn solid" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><span data-fa>استقرار روی Cloudflare</span><span data-en>Deploy to Cloudflare</span></a><a class="btn" href="https://t.me/NikaNetLauncher_bot" target="_blank" rel="noopener"><span data-fa>ربات تلگرام</span><span data-en>Telegram bot</span></a><span class="dr-slogan" data-fa>اینترنت، دست‌نوشتهٔ خودت.</span><span class="dr-slogan" data-en>The internet, in your own handwriting.</span></div>
     </div>
+    <div class="dr-bg" id="drBg" onclick="toggleMenu(false)"></div>
     <div class="ctrls">
       <button class="lang-btn kbtn" onclick="openPal()" title="Command palette (Ctrl+K)" aria-label="Command palette">⌘K</button>
       <button class="lang-btn" onclick="toggleTheme(event)" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">▦</span><span class="tb-b">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
-      <button class="burger" onclick="document.getElementById('links').classList.toggle('open')" aria-label="Menu">☰</button>
+      <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
     </div>
   </div>
 </nav>
@@ -153,6 +156,7 @@
         <img loading="lazy" src="assets/shot-en-dark-scanner.webp?v=3" alt="IP scanner">
         <div class="phone"><img loading="lazy" src="assets/shot-mobile.webp?v=3" alt="Mobile"></div>
         <span class="shot-note">fig. 06 — actual panel</span>
+        <div class="sc-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
       </div>
     </div>
   </div>
@@ -563,32 +567,32 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   <div class="cmp-wrap cmp-pane" id="cmp-edge"><table class="cmp">
     <thead><tr><th></th><th class="hl">Nika Net</th><th>BPB Panel</th><th data-fa>Worker خام (edgetunnel)</th><th data-en>Raw worker (edgetunnel)</th></tr></thead>
     <tbody>
-      <tr><td data-fa>هزینه / سرور</td><td data-en>Cost / server</td><td class="hl y">$0 · <span data-fa>بدون سرور</span><span data-en>serverless</span></td><td class="y">$0</td><td class="y">$0</td></tr>
-      <tr><td data-fa>چندکاربره با سهمیه و انقضا</td><td data-en>Multi-user, quota & expiry</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>صفحهٔ وضعیت خصوصی هر کاربر</td><td data-en>Private status page per user</td><td class="hl y">✔ QR</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>اسکنر IP تمیز داخل پنل</td><td data-en>In-panel clean-IP scanner</td><td class="hl y">✔ 1.5M</td><td class="p">~</td><td class="n">✕</td></tr>
-      <tr><td data-fa>استخر IP کشوری + پرچم</td><td data-en>Country IP pool + flag</td><td class="hl y">✔ 79</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>تست سرعت واقعی از مسیر پروکسی</td><td data-en>Real speed test via proxy path</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>به‌روزرسانی خودکار OTA</td><td data-en>One-tap OTA update</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>نصب از تلگرام + پشتیبانی داخل ربات</td><td data-en>Install from Telegram + in-bot support</td><td class="hl y">✔</td><td class="n">✕</td><td class="n">✕</td></tr>
-      <tr><td data-fa>فارسی و راست‌چین</td><td data-en>Persian & RTL</td><td class="hl y">✔</td><td class="p">~</td><td class="n">✕</td></tr>
-      <tr><td data-fa>Fragment ضد-DPI</td><td data-en>Anti-DPI fragment</td><td class="p" data-fa>در نقشهٔ راه</td><td class="p" data-en>on roadmap</td><td class="y">✔</td><td class="n">✕</td></tr>
-      <tr><td data-fa>متن‌باز</td><td data-en>Open source</td><td class="hl y">MIT</td><td class="y">✔</td><td class="y">✔</td></tr>
+      <tr><td data-fa>هزینه / سرور</td><td data-en>Cost / server</td><td data-col="Nika Net" class="hl y">$0 · <span data-fa>بدون سرور</span><span data-en>serverless</span></td><td data-col="BPB Panel" class="y">$0</td><td data-col="edgetunnel" class="y">$0</td></tr>
+      <tr><td data-fa>چندکاربره با سهمیه و انقضا</td><td data-en>Multi-user, quota & expiry</td><td data-col="Nika Net" class="hl y">✔</td><td data-col="BPB Panel" class="n">✕</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>صفحهٔ وضعیت خصوصی هر کاربر</td><td data-en>Private status page per user</td><td data-col="Nika Net" class="hl y">✔ QR</td><td data-col="BPB Panel" class="n">✕</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>اسکنر IP تمیز داخل پنل</td><td data-en>In-panel clean-IP scanner</td><td data-col="Nika Net" class="hl y">✔ 1.5M</td><td data-col="BPB Panel" class="p">~</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>استخر IP کشوری + پرچم</td><td data-en>Country IP pool + flag</td><td data-col="Nika Net" class="hl y">✔ 79</td><td data-col="BPB Panel" class="n">✕</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>تست سرعت واقعی از مسیر پروکسی</td><td data-en>Real speed test via proxy path</td><td data-col="Nika Net" class="hl y">✔</td><td data-col="BPB Panel" class="n">✕</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>به‌روزرسانی خودکار OTA</td><td data-en>One-tap OTA update</td><td data-col="Nika Net" class="hl y">✔</td><td data-col="BPB Panel" class="n">✕</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>نصب از تلگرام + پشتیبانی داخل ربات</td><td data-en>Install from Telegram + in-bot support</td><td data-col="Nika Net" class="hl y">✔</td><td data-col="BPB Panel" class="n">✕</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>فارسی و راست‌چین</td><td data-en>Persian & RTL</td><td data-col="Nika Net" class="hl y">✔</td><td data-col="BPB Panel" class="p">~</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>Fragment ضد-DPI</td><td data-en>Anti-DPI fragment</td><td data-col="Nika Net" class="p" data-fa>در نقشهٔ راه</td><td data-col="BPB Panel" class="p" data-en>on roadmap</td><td data-col="edgetunnel" class="y">✔</td><td data-col="edgetunnel" class="n">✕</td></tr>
+      <tr><td data-fa>متن‌باز</td><td data-en>Open source</td><td data-col="Nika Net" class="hl y">MIT</td><td data-col="BPB Panel" class="y">✔</td><td data-col="edgetunnel" class="y">✔</td></tr>
     </tbody>
   </table></div>
   <div class="cmp-wrap cmp-pane" id="cmp-vps" hidden><table class="cmp">
     <thead><tr><th></th><th class="hl">Nika Net</th><th>3x-ui</th><th>Marzban</th><th>Hiddify</th></tr></thead>
     <tbody>
-      <tr><td data-fa>سرور لازم دارد</td><td data-en>Needs a server</td><td class="hl y">✕ <span data-fa>خیر</span><span data-en>no</span></td><td class="n">VPS</td><td class="n">VPS</td><td class="n">VPS</td></tr>
-      <tr><td data-fa>هزینهٔ ماهانه</td><td data-en>Monthly cost</td><td class="hl y">$0</td><td class="n">$4–10</td><td class="n">$4–10</td><td class="n">$4–10</td></tr>
-      <tr><td data-fa>زمان راه‌اندازی</td><td data-en>Setup time</td><td class="hl y">≈ 2 min</td><td class="p">15–30 min</td><td class="p">20–40 min</td><td class="p">10–20 min</td></tr>
-      <tr><td data-fa>IP سوختنی؟</td><td data-en>Burnable IP?</td><td class="hl y">✕ Anycast</td><td class="n">✔</td><td class="n">✔</td><td class="n">✔</td></tr>
-      <tr><td data-fa>نگهداری / امنیت سرور</td><td data-en>Server upkeep / hardening</td><td class="hl y"><span data-fa>صفر</span><span data-en>zero</span></td><td class="n">✔</td><td class="n">✔</td><td class="p">~</td></tr>
-      <tr><td data-fa>پروتکل‌ها</td><td data-en>Protocols</td><td class="hl p">VLESS · Trojan · WARP</td><td class="y">10+</td><td class="y">10+</td><td class="y">10+</td></tr>
-      <tr><td data-fa>UDP / تماس</td><td data-en>UDP / calls</td><td class="hl p">WARP</td><td class="y">✔</td><td class="y">✔</td><td class="y">✔</td></tr>
-      <tr><td data-fa>محدودیت روزانه</td><td data-en>Daily limit</td><td class="hl p">100k req</td><td class="y">—</td><td class="y">—</td><td class="y">—</td></tr>
-      <tr><td data-fa>چندکاربره + سهمیه</td><td data-en>Multi-user + quota</td><td class="hl y">✔</td><td class="y">✔</td><td class="y">✔</td><td class="y">✔</td></tr>
-      <tr><td data-fa>نصب از گوشی</td><td data-en>Install from a phone</td><td class="hl y">✔ Telegram</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td></tr>
+      <tr><td data-fa>سرور لازم دارد</td><td data-en>Needs a server</td><td data-col="Nika Net" class="hl y">✕ <span data-fa>خیر</span><span data-en>no</span></td><td data-col="3x-ui" class="n">VPS</td><td data-col="Marzban" class="n">VPS</td><td data-col="Hiddify" class="n">VPS</td></tr>
+      <tr><td data-fa>هزینهٔ ماهانه</td><td data-en>Monthly cost</td><td data-col="Nika Net" class="hl y">$0</td><td data-col="3x-ui" class="n">$4–10</td><td data-col="Marzban" class="n">$4–10</td><td data-col="Hiddify" class="n">$4–10</td></tr>
+      <tr><td data-fa>زمان راه‌اندازی</td><td data-en>Setup time</td><td data-col="Nika Net" class="hl y">≈ 2 min</td><td data-col="3x-ui" class="p">15–30 min</td><td data-col="Marzban" class="p">20–40 min</td><td data-col="Hiddify" class="p">10–20 min</td></tr>
+      <tr><td data-fa>IP سوختنی؟</td><td data-en>Burnable IP?</td><td data-col="Nika Net" class="hl y">✕ Anycast</td><td data-col="3x-ui" class="n">✔</td><td data-col="Marzban" class="n">✔</td><td data-col="Hiddify" class="n">✔</td></tr>
+      <tr><td data-fa>نگهداری / امنیت سرور</td><td data-en>Server upkeep / hardening</td><td data-col="Nika Net" class="hl y"><span data-fa>صفر</span><span data-en>zero</span></td><td data-col="3x-ui" class="n">✔</td><td data-col="Marzban" class="n">✔</td><td data-col="Hiddify" class="p">~</td></tr>
+      <tr><td data-fa>پروتکل‌ها</td><td data-en>Protocols</td><td data-col="Nika Net" class="hl p">VLESS · Trojan · WARP</td><td data-col="3x-ui" class="y">10+</td><td data-col="Marzban" class="y">10+</td><td data-col="Hiddify" class="y">10+</td></tr>
+      <tr><td data-fa>UDP / تماس</td><td data-en>UDP / calls</td><td data-col="Nika Net" class="hl p">WARP</td><td data-col="3x-ui" class="y">✔</td><td data-col="Marzban" class="y">✔</td><td data-col="Hiddify" class="y">✔</td></tr>
+      <tr><td data-fa>محدودیت روزانه</td><td data-en>Daily limit</td><td data-col="Nika Net" class="hl p">100k req</td><td data-col="3x-ui" class="y">—</td><td data-col="Marzban" class="y">—</td><td data-col="Hiddify" class="y">—</td></tr>
+      <tr><td data-fa>چندکاربره + سهمیه</td><td data-en>Multi-user + quota</td><td data-col="Nika Net" class="hl y">✔</td><td data-col="3x-ui" class="y">✔</td><td data-col="Marzban" class="y">✔</td><td data-col="Hiddify" class="y">✔</td></tr>
+      <tr><td data-fa>نصب از گوشی</td><td data-en>Install from a phone</td><td data-col="Nika Net" class="hl y">✔ Telegram</td><td data-col="3x-ui" class="n">✕</td><td data-col="Marzban" class="n">✕</td><td data-col="Hiddify" class="n">✕</td></tr>
     </tbody>
   </table></div>
   <p class="cmp-note"><span data-fa>✎ جدول بر اساس مستندات عمومی هر پروژه در شهریور ۱۴۰۵ نوشته شده. اشتباهی دیدی؟ در <a href="#feedback">صندوق</a> بگو تا اصلاح کنیم.</span><span data-en>✎ Based on each project's public docs as of Sep 2026. Spotted an error? Drop it in the <a href="#feedback">box</a> and we'll fix it.</span></p>
@@ -793,6 +797,13 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   <ul id="palList"></ul>
   <div class="pal-hint"><kbd>↑↓</kbd> navigate <kbd>↵</kbd> run <kbd>esc</kbd> close</div>
 </div></div>
+<div class="dock" id="dock" role="navigation" aria-label="Quick actions" dir="ltr">
+  <a href="#playground"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H4zM9 20h6M12 16v4"/></svg><span data-fa>دمو</span><span data-en>Demo</span></a>
+  <a href="#start"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span data-fa>شروع</span><span data-en>Start</span></a>
+  <a class="dk-main" href="https://deploy.workers.cloudflare.com/?url=https://github.com/NikaTeem/Nika-Net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 17a4 4 0 0 1 .5-8 6 6 0 0 1 11.3 1.5A3.5 3.5 0 0 1 18 17z"/></svg><span data-fa>استقرار</span><span data-en>Deploy</span></a>
+  <a href="#toolkit"><svg viewBox="0 0 24 24"><path d="M14 4l6 6-9 9H5v-6z"/><path d="M12 6l6 6"/></svg><span data-fa>ابزار</span><span data-en>Tools</span></a>
+  <a href="https://t.me/NikaSociety" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 11l18-7-4 17-6-5-3 4v-5z"/></svg><span data-fa>تلگرام</span><span data-en>Telegram</span></a>
+</div>
 <button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
 <footer>
   <div class="wordmark" id="wordmark" aria-hidden="true">NIKA NET</div>
@@ -923,6 +934,17 @@ const io=new IntersectionObserver(es=>{if(!es.some(e=>e.isIntersecting))return;i
 new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['class']})})();
 // ---- copy buttons
 document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy)}catch(e){}b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),1600)}));
+// ---- drawer menu
+function toggleMenu(force){const l=document.getElementById('links'),b=document.getElementById('burger');const on=force===undefined?!l.classList.contains('open'):force;l.classList.toggle('open',on);document.documentElement.classList.toggle('menu-open',on);b.setAttribute('aria-expanded',on)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false)});
+(()=>{const v=document.getElementById('drVer'),src=document.getElementById('verEn');if(v&&src){const sync=()=>v.textContent=src.textContent;sync();new MutationObserver(sync).observe(src,{childList:true,characterData:true,subtree:true})}})();
+// ---- mobile dock: hide while scrolling down, show on up / idle
+(()=>{const d=document.getElementById('dock');if(!d)return;let last=scrollY,t;addEventListener('scroll',()=>{const y=scrollY;d.classList.toggle('hide',y>last&&y>300);last=y;clearTimeout(t);t=setTimeout(()=>d.classList.remove('hide'),900);d.classList.toggle('show',y>innerHeight*.6)},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{const a=d.querySelector(`a[href="#${e.target.id}"]`);if(a)a.classList.toggle('on',e.isIntersecting)}),{rootMargin:'-40% 0px -50% 0px'});['playground','start','toolkit'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)})})();
+// ---- showcase swipe (touch) + dots
+(()=>{const f=document.querySelector('.shot-frame');if(!f)return;const dots=[...f.querySelectorAll('.sc-dots i')];let cur=0,x0=null;const set=i=>{cur=(i+scImgs.length)%scImgs.length;scImgs.forEach((im,k)=>im.classList.toggle('on',k===cur));dots.forEach((d,k)=>d.classList.toggle('on',k===cur));scSteps.forEach((s,k)=>s.classList.toggle('on',k===cur))};
+f.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});f.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>40)set(cur+(dx<0?1:-1))},{passive:true});
+new MutationObserver(()=>{const i=scImgs.findIndex(im=>im.classList.contains('on'));if(i>=0){cur=i;dots.forEach((d,k)=>d.classList.toggle('on',k===i))}}).observe(f,{attributes:true,subtree:true,attributeFilter:['class']})})();
 // ---- back to top
 (()=>{const t=document.getElementById('totop');addEventListener('scroll',()=>t.classList.toggle('show',scrollY>innerHeight*1.2),{passive:true});t.onclick=()=>scrollTo({top:0,behavior:'smooth'})})();
 // ---- command palette
