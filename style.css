@@ -23,3 +23,85 @@ html.board .pano img{filter:invert(1) sepia(.2)!important;opacity:.5}
 html.dark .pano img,html.board .pano img{filter:none!important;opacity:.7}
 @media(max-width:920px){.guide{width:58px;bottom:84px;inset-inline-start:8px}.g-bubble{width:min(230px,70vw);inset-inline-start:50%;font-size:.74rem;padding:8px 12px;transform-origin:bottom center;transform:translate(-50%,6px) scale(.96)}html[dir=rtl] .g-bubble{transform:translate(50%,6px) scale(.96)}.guide.talk .g-bubble{transform:translate(-50%,0)}html[dir=rtl] .guide.talk .g-bubble{transform:translate(50%,0)}.g-bubble::after{inset-inline-start:calc(50% - 6px)}}
 html:has(#links.open) .guide,html:has(.pal:not([hidden])) .guide{opacity:0;pointer-events:none}
+/* ═══ v43: craft pass — type, buttons, brand ═══ */
+/* brand lockup */
+.brand{gap:14px;align-items:center}
+.brand-mark{position:relative;width:46px;height:46px;flex:none}
+.brand-mark img{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--ink);padding:2px;filter:grayscale(1) contrast(1.1);transition:transform .8s var(--ease)}
+.brand-mark::before{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px dashed var(--line);transition:transform 1.2s var(--ease)}
+.brand:hover .brand-mark::before{transform:rotate(180deg)}
+.brand:hover .brand-mark img{transform:rotate(-8deg)}
+.brand-n{position:absolute;right:-6px;bottom:-4px;width:18px;height:18px;border-radius:50%;background:var(--seal);color:#fff;font-family:var(--serif);font-weight:700;font-size:.7rem;font-style:normal;display:grid;place-items:center;border:1.5px solid var(--paper);transform:rotate(-8deg)}
+.brand-type{display:flex;flex-direction:column;gap:3px;line-height:1}
+.brand-type .logotype{width:118px;height:auto;display:block;overflow:visible}
+.brand-type .logotype .o{fill:var(--ink);stroke:var(--ink);stroke-width:1.2;stroke-linejoin:round}
+.brand-type .logotype .hh{display:none}
+.brand-type small{font-family:var(--mono);font-size:.56rem;letter-spacing:.34em;color:var(--pencil);text-transform:uppercase;padding-inline-start:2px}
+nav.shrink .brand-type .logotype{width:96px}
+@media(max-width:720px){.brand-type .logotype{width:96px}.brand-type small{display:none}.brand-mark{width:38px;height:38px}.brand-mark img{width:38px;height:38px}}
+html.dark .brand-mark img{filter:grayscale(1) contrast(1.1) brightness(1.05)}
+/* buttons: one pencil-and-paper system */
+.btn{font-family:var(--fa-display);font-weight:700;font-size:.98rem;letter-spacing:0;padding:0 26px;min-height:54px;gap:12px;border:1.5px solid var(--ink);border-radius:2px;background:var(--paper-hi);color:var(--ink);box-shadow:3px 3px 0 var(--paper-3),3px 3px 0 1px var(--ink);transform:translate(0,0);transition:transform .18s var(--ease-out),box-shadow .18s var(--ease-out),background .25s,color .25s;overflow:visible;isolation:auto;align-items:center;justify-content:center}
+html.en .btn{font-family:var(--serif);font-weight:700;font-style:italic;letter-spacing:.01em}
+.btn::before{inset:3px;border:1px dashed var(--line);border-radius:1px;opacity:.9}
+.btn::after{display:none}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--paper-3),4px 4px 0 1px var(--ink);background:var(--paper-hi);color:var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--paper-3),1px 1px 0 1px var(--ink)}
+.btn .ic,.btn svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:3px 3px 0 var(--seal)}
+.btn.solid::before{border-color:rgba(255,255,255,.28)}
+.btn.solid:hover{background:var(--ink);color:var(--paper);box-shadow:4px 4px 0 var(--seal)}
+.btn.solid:active{box-shadow:1px 1px 0 var(--seal)}
+.btn.big{min-height:62px;padding:0 34px;font-size:1.08rem}
+.btn.pg-btn{min-height:40px;padding:0 16px;font-size:.82rem;box-shadow:2px 2px 0 var(--paper-3),2px 2px 0 1px var(--ink)}
+.btn.pg-btn:hover{box-shadow:3px 3px 0 var(--paper-3),3px 3px 0 1px var(--ink)}
+.btn.solid.pg-btn{box-shadow:2px 2px 0 var(--seal)}
+html.dark .btn{background:var(--paper-2);box-shadow:3px 3px 0 #0f0e0c,3px 3px 0 1px var(--ink)}
+html.dark .btn:hover{box-shadow:4px 4px 0 #0f0e0c,4px 4px 0 1px var(--ink)}
+html.dark .btn.solid{background:var(--ink);color:var(--paper);box-shadow:3px 3px 0 var(--seal)}
+html.board .btn{border-style:dashed;border-color:var(--chalk);color:var(--chalk);background:transparent;box-shadow:none}
+html.board .btn.solid{background:var(--chalk);color:#1f2321;border-style:solid;box-shadow:3px 3px 0 var(--gold)}
+/* red underline seal on primary CTA — the "signed" button */
+.btn.solid.mag{position:relative}
+.btn.solid.mag::after{content:"";display:block;position:absolute;left:8%;right:8%;bottom:-9px;height:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 8' preserveAspectRatio='none'%3E%3Cpath d='M2 5 C 60 1, 120 7, 180 3 S 280 2, 298 5' fill='none' stroke='%23a8322a' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") 0 0/100% 100% no-repeat;opacity:.9}
+/* small utility buttons (lang/theme/palette) */
+.lang-btn{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;border:1.5px solid var(--ink);background:var(--paper-hi);color:var(--ink);border-radius:2px;min-width:38px;height:38px;padding:0 10px;box-shadow:2px 2px 0 var(--paper-3),2px 2px 0 1px var(--ink);transition:transform .15s,box-shadow .15s}
+.lang-btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--paper-3),3px 3px 0 1px var(--ink)}
+.lang-btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--paper-3),1px 1px 0 1px var(--ink)}
+/* copy buttons & small actions */
+.copy,.cp,.tl-play,.mk-add{border-radius:2px;font-family:var(--fa);font-weight:700}
+.tl-play,.mk-add{box-shadow:2px 2px 0 rgba(0,0,0,.35)}
+/* text craft */
+h1{font-family:var(--fa-display);font-weight:800;letter-spacing:-.01em;word-spacing:.04em;line-height:1.28}
+html.en h1{font-family:var(--serif);font-weight:700;letter-spacing:-.005em;line-height:1.1}
+.hero p.lead,.hero>div>p:not(.eyebrow){font-size:1.12rem;line-height:2;color:var(--ink-2);max-width:52ch}
+.sec-head p{line-height:1.95;max-width:58ch}
+.card p{line-height:1.9;font-size:.95rem;color:var(--ink-2)}
+.card h3{font-family:var(--fa-display);font-weight:800;font-size:1.22rem;letter-spacing:0;margin-bottom:4px}
+.card h3 .en{font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.24em;color:var(--pencil);display:block;margin-top:6px;text-transform:uppercase}
+.act-sub{font-size:1.08rem;color:var(--ink-2)}
+.eyebrow,.num,.k,.pg-no,.act-no,.j-cap,.nfig figcaption{font-family:var(--mono);letter-spacing:.26em;text-transform:uppercase}
+blockquote,.fa-q{text-wrap:balance}
+p,li{hanging-punctuation:first;text-wrap:pretty}
+html:not(.en) body{font-feature-settings:"kern","liga","calt"}
+html:not(.en) strong,html:not(.en) b{font-weight:800}
+mark.hl{font-weight:inherit}
+/* Persian numerals in Persian UI */
+html:not(.en) .kpi b,html:not(.en) .stat b,html:not(.en) .mk-kpis b,html:not(.en) .fb-num{font-variant-numeric:tabular-nums}
+/* logo hero: keep monochrome sharp */
+.frame .ink .fin{image-rendering:auto}
+.hero-fa{font-family:var(--fa-display);font-weight:800;font-size:clamp(2rem,3.6vw,3rem);line-height:1.4;letter-spacing:-.01em;margin:8px 0 18px}
+.hero .lead{font-size:1.12rem;line-height:2.05;color:var(--ink-2);max-width:50ch}
+.hero .lead .acc{color:var(--seal);font-weight:800;position:relative}
+.hero .lead .acc::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--seal);opacity:.5;border-radius:1px}
+.hero .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--pencil);text-transform:uppercase}
+.try-link{font-family:var(--fa);font-size:.9rem;color:var(--ink-2)}
+.cta{gap:16px;margin-top:8px}
+.hero .hero-text p.hero-fa{font-family:var(--fa-display);font-weight:800;font-size:clamp(2.1rem,3.7vw,3.1rem);line-height:1.45;margin:10px 0 20px;color:var(--ink)}
+@media(max-width:720px){.hero .hero-text p.hero-fa{font-size:clamp(1.8rem,7.6vw,2.5rem)}}
+html.dark .btn.solid{background:var(--paper-hi);color:var(--ink);border-color:var(--paper-hi);box-shadow:3px 3px 0 var(--seal)}
+html.dark .btn.solid::before{border-color:rgba(0,0,0,.25)}
+html.dark .btn:not(.solid){background:transparent;color:var(--ink);border-color:var(--ink)}
+.dossier::after{display:none}
+html.dark .dossier .card{background:#252220}
+html.dark .card .ico.sk-ico{background:#2c2926}
