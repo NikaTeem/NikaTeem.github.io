@@ -1,5 +1,5 @@
 // lang
-function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
+function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l);dispatchEvent(new CustomEvent('nika:lang',{detail:l}))}
 function toggleTheme(ev){const h=document.documentElement,go=()=>{const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)};window.nkSound&&nkSound('page');if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches)return go();document.startViewTransition(go)}
 (()=>{const t=localStorage.getItem('nika-theme');if(t==='dark')document.documentElement.classList.add('dark');if(t==='board')document.documentElement.classList.add('dark','board')})();
 function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
@@ -468,3 +468,66 @@ draw(k);let L=isEn();new MutationObserver(()=>{if(isEn()!==L){L=isEn();draw(k)}}
 // nav shrink
 addEventListener('scroll',()=>document.getElementById('nav').style.boxShadow=scrollY>40?'0 8px 30px -18px rgba(0,0,0,.5)':'none',{passive:true});
 document.querySelectorAll('#links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('links').classList.remove('open')));
+// ---- v44: story timeline (live repo stats)
+(()=>{
+  const sec=document.getElementById('story');if(!sec)return;
+  const q=s=>sec.querySelectorAll(s);
+  const set=(k,v)=>q('[data-n="'+k+'"]').forEach(e=>{e.textContent=v});
+  const fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+  const count=(el,to)=>{const t0=performance.now(),d=900;const step=t=>{const p=Math.min(1,(t-t0)/d),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=v;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)};
+  const born=new Date('2026-09-08T20:42:58Z');
+  const days=Math.max(1,Math.round((Date.now()-born)/864e5));
+  const now=new Date();q('[data-now]').forEach(e=>e.textContent=now.toISOString().slice(0,10));
+  let done=false;
+  const load=async()=>{if(done)return;done=true;
+    set('days',days);
+    try{const r=await fetch('https://api.github.com/repos/NikaTeem/Nika-Net');if(r.ok){const j=await r.json();q('[data-n="stars"]').forEach(e=>count(e,j.stargazers_count||0))}}catch(e){}
+    try{const r=await fetch('https://api.github.com/repos/NikaTeem/Nika-Net/commits?per_page=1',{});const l=r.headers.get('Link')||'';const m=l.match(/page=(\d+)>; rel="last"/);if(m)q('[data-n="commits"]').forEach(e=>count(e,+m[1]))}catch(e){}
+    try{const r=await fetch('https://api.github.com/repos/NikaTeem/Nika-Net/commits?per_page=100&path=version.json');if(r.ok){const j=await r.json();q('[data-n="bumps"]').forEach(e=>count(e,j.length))}}catch(e){}
+    try{const r=await fetch('https://raw.githubusercontent.com/NikaTeem/Nika-Net/main/version.json?'+Date.now());if(r.ok){const j=await r.json();q('[data-ver]').forEach(e=>e.textContent='v'+j.version)}}catch(e){}
+    q('[data-n]').forEach(e=>{if(e.textContent==='—')e.textContent='·'});
+  };
+  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){load();sec.classList.add('sty-in');o.disconnect()}},{rootMargin:'200px'}).observe(sec);
+})();
+
+// ---- v44: Telegram bot conversation replay
+(()=>{
+  const log=document.getElementById('tgcLog');if(!log)return;
+  const S={
+    fa:[['u','/start'],['b','سلام! من لانچر نیکا نت هستم.\nبرایت روی حساب Cloudflare خودت پنل می‌سازم. آماده‌ای؟','🔑 لینک مستقیم توکن|🚀 ساخت پنل جدید'],['u','🔑 لینک مستقیم توکن'],['b','این لینک را باز کن — همهٔ دسترسی‌ها از قبل تیک خورده. فقط Create Token بزن و توکن را برایم بفرست.'],['u','cf_••••••••••••••••••••••7Yq2'],['b','توکن معتبر است ✓  ذخیره‌اش کنم؟ (با AES-GCM رمز می‌شود)','بله|نه'],['u','بله'],['u','🚀 ساخت پنل جدید'],['b','اسم پنل را بفرست (فقط حروف انگلیسی):'],['u','my-paper'],['b','در حال ساخت…\n▸ Worker ساخته شد\n▸ KV وصل شد\n▸ پنل مستقر شد','',1],['b','پنلت آماده است ✨\nhttps://my-paper.<you>.workers.dev/admin\nرمز اول را همان‌جا تعیین کن.','باز کردن پنل']],
+    en:[['u','/start'],['b','Hi! I am the Nika Net Launcher.\nI build a panel on your own Cloudflare account. Ready?','🔑 Token link|🚀 New panel'],['u','🔑 Token link'],['b','Open this link — every permission is pre-ticked. Just hit Create Token and send it to me.'],['u','cf_••••••••••••••••••••••7Yq2'],['b','Token is valid ✓  Save it? (encrypted with AES-GCM)','Yes|No'],['u','Yes'],['u','🚀 New panel'],['b','Send a panel name (letters only):'],['u','my-paper'],['b','Building…\n▸ Worker created\n▸ KV bound\n▸ Panel deployed','',1],['b','Your panel is ready ✨\nhttps://my-paper.<you>.workers.dev/admin\nSet your first password there.','Open panel']]
+  };
+  let tm=[],run=0;
+  const clear=()=>{tm.forEach(clearTimeout);tm=[];log.innerHTML=''};
+  const bubble=(who,txt,kb)=>{const d=document.createElement('div');d.className='tgc-m '+who;d.innerHTML='<span>'+txt.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</span>'+(kb?'<div class="tgc-kb">'+kb.split('|').map(k=>'<i>'+k+'</i>').join('')+'</div>':'');log.appendChild(d);log.scrollTop=log.scrollHeight;return d};
+  window.tgcPlay=(force)=>{if(run&&!force)return;run=1;clear();
+    const lang=document.documentElement.classList.contains('en')?'en':'fa';let t=300;
+    S[lang].forEach(([who,txt,kb,slow])=>{
+      if(who==='b'){tm.push(setTimeout(()=>{const ty=bubble('b typing','···');ty.dataset.t=1},t));t+=slow?1400:700;
+        tm.push(setTimeout(()=>{const ty=log.querySelector('[data-t]');ty&&ty.remove();bubble('b',txt,kb);window.nkSound&&nkSound('tap')},t));t+=900}
+      else{tm.push(setTimeout(()=>{bubble('u',txt);window.nkSound&&nkSound('tap')},t));t+=800}
+    });
+    tm.push(setTimeout(()=>{run=0},t));
+  };
+  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){tgcPlay();o.disconnect()}},{threshold:.35}).observe(log);
+  addEventListener('nika:lang',()=>{if(log.children.length)tgcPlay(true)});
+})();
+
+// ---- v44: chalkboard interactions + page-turn sound between acts
+(()=>{
+  const h=document.documentElement;
+  // chalk dust puff on click (board theme only)
+  document.addEventListener('pointerdown',e=>{
+    if(!h.classList.contains('board')||e.pointerType==='touch'&&false)return;
+    for(let i=0;i<7;i++){const p=document.createElement('i');p.className='chalk-p';const a=Math.random()*Math.PI*2,r=14+Math.random()*26;p.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;--dx:${Math.cos(a)*r}px;--dy:${Math.sin(a)*r+18}px;--s:${.6+Math.random()}`;document.body.appendChild(p);setTimeout(()=>p.remove(),900)}
+    if(window.nkSound)nkSound('chalk');
+  },{passive:true});
+  // extend sound palette
+  const prev=window.nkSound;
+  if(prev){window.nkSound=k=>{if(k==='chalk'){prev('scratch');setTimeout(()=>prev('scratch'),40);return}prev(k)}}
+  // page-turn when a new act enters (throttled)
+  let last=0;const acts=document.querySelectorAll('.act');
+  if(acts.length&&'IntersectionObserver'in window){const io=new IntersectionObserver(es=>{es.forEach(x=>{if(x.isIntersecting&&Date.now()-last>1500){last=Date.now();if(h.classList.contains('snd')&&window.nkSound)nkSound('page')}})},{threshold:.6});acts.forEach(a=>io.observe(a))}
+  // eraser smudge trail on board: pointer moves leave brief chalk haze
+  let acc=0;addEventListener('pointermove',e=>{if(!h.classList.contains('board')||e.pointerType==='touch')return;acc+=Math.hypot(e.movementX||0,e.movementY||0);if(acc<60)return;acc=0;const s=document.createElement('i');s.className='chalk-s';s.style.cssText=`left:${e.clientX}px;top:${e.clientY}px`;document.body.appendChild(s);setTimeout(()=>s.remove(),1200)},{passive:true});
+})();
