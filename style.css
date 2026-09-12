@@ -21,3 +21,5 @@ html.dark nav{background:var(--paper)!important}
 html.dark .pano img{filter:invert(1)!important;opacity:.6}
 html.board .pano img{filter:invert(1) sepia(.2)!important;opacity:.5}
 html.dark .pano img,html.board .pano img{filter:none!important;opacity:.7}
+@media(max-width:920px){.guide{width:58px;bottom:84px;inset-inline-start:8px}.g-bubble{width:min(230px,70vw);inset-inline-start:50%;font-size:.74rem;padding:8px 12px;transform-origin:bottom center;transform:translate(-50%,6px) scale(.96)}html[dir=rtl] .g-bubble{transform:translate(50%,6px) scale(.96)}.guide.talk .g-bubble{transform:translate(-50%,0)}html[dir=rtl] .guide.talk .g-bubble{transform:translate(50%,0)}.g-bubble::after{inset-inline-start:calc(50% - 6px)}}
+html:has(#links.open) .guide,html:has(.pal:not([hidden])) .guide{opacity:0;pointer-events:none}

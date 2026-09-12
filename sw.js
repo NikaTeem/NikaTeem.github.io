@@ -1,6 +1,6 @@
 // Nika Net service worker — offline copy of the site (v1)
-const V='nika-v15';
-const CORE=['/','/index.html','/docs.html','/changelog.html','/brand.html','/trust.html','/404.html','/style.css?v=41','/app.js?v=41','/manifest.json','/assets/qr.js','/assets/logo-nav.webp','/assets/logo-hero.webp?v=41','/assets/face-draw.svg','/assets/favicon.png?v=2','/assets/paper.webp',
+const V='nika-v16';
+const CORE=['/','/index.html','/docs.html','/changelog.html','/brand.html','/trust.html','/404.html','/style.css?v=42','/app.js?v=42','/manifest.json','/assets/qr.js','/assets/logo-nav.webp','/assets/logo-hero.webp?v=42','/assets/face-draw.svg','/assets/favicon.png?v=2','/assets/paper.webp',
 '/assets/fonts/vazirmatn-arabic-400-normal.woff2','/assets/fonts/vazirmatn-arabic-700-normal.woff2','/assets/fonts/parastoo-700.woff2','/assets/fonts/playfair-display-latin-700-normal.woff2','/assets/fonts/playfair-display-latin-400-italic.woff2','/assets/fonts/special-elite-latin-400-normal.woff2'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.allSettled(CORE.map(u=>c.add(u)))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
