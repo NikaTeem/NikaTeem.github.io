@@ -1,1 +1,35 @@
-{"name": "Nika Net", "short_name": "Nika Net", "start_url": "/", "display": "standalone", "background_color": "#d8d1c2", "theme_color": "#d8d1c2", "icons": [{"src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png"}, {"src": "assets/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable"}, {"src": "assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}], "description": "Pencil-drawn, censorship-resistant proxy panel on your own Cloudflare Worker.", "lang": "fa", "dir": "rtl"}
+{
+ "name": "Nika Net",
+ "short_name": "Nika Net",
+ "start_url": "/",
+ "display": "standalone",
+ "background_color": "#d8d1c2",
+ "theme_color": "#d8d1c2",
+ "icons": [
+  {
+   "src": "assets/icons/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "assets/icons/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "assets/icons/maskable-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "maskable"
+  },
+  {
+   "src": "assets/icons/maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "description": "Pencil-drawn, censorship-resistant proxy panel on your own Cloudflare Worker.",
+ "lang": "fa",
+ "dir": "rtl"
+}
