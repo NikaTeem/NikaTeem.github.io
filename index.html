@@ -15,7 +15,7 @@
 <link rel="preload" as="image" href="assets/logo-pre.webp?v=2" fetchpriority="high"><link rel="preload" as="font" type="font/woff2" href="assets/fonts/parastoo-700.woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Nika Net","applicationCategory":"SecurityApplication","operatingSystem":"Cloudflare Workers","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://opensource.org/licenses/MIT","url":"https://nikanet.dpdns.org/","downloadUrl":"https://github.com/NikaTeem/Nika-Net","image":"https://nikanet.dpdns.org/assets/og.jpg?v=3","description":"Self-hosted proxy config panel (VLESS, Trojan, WARP) running on a single free Cloudflare Worker."},{"@type":"Organization","name":"Nika Net","url":"https://nikanet.dpdns.org/","logo":"https://nikanet.dpdns.org/assets/logo-512.webp?v=2","sameAs":["https://github.com/NikaTeem","https://t.me/NikaSociety"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png?v=2"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=38">
+<link rel="stylesheet" href="style.css?v=39">
 </head>
 <body>
 <a class="skip" href="#showcase" data-fa>پرش به محتوا</a><a class="skip" href="#showcase" data-en>Skip to content</a>
@@ -75,6 +75,7 @@
     </div>
     <div class="dr-bg" id="drBg" onclick="toggleMenu(false)"></div>
     <div class="ctrls">
+      <button class="lang-btn sbtn" id="sndBtn" onclick="toggleSound()" title="Pencil sounds" aria-label="Sound"><span class="s-on">♪</span><span class="s-off">♪̸</span></button>
       <button class="lang-btn kbtn" onclick="openPal()" title="Command palette (Ctrl+K)" aria-label="Command palette">⌘K</button>
       <button class="lang-btn" onclick="toggleTheme(event)" title="Theme" aria-label="Theme"><span class="tb-l">☾</span><span class="tb-d">▦</span><span class="tb-b">☀</span></button>
       <button class="lang-btn" onclick="toggleLang()"><span data-fa>EN</span><span data-en>فارسی</span></button>
@@ -671,45 +672,47 @@
     <p data-fa>هر چیزی که برای ساختن یک گذرگاه شخصی و امن لازم داری — در یک فایل، روی لبه‌ی شبکه.</p>
     <p data-en>Everything you need to run a private, secure gateway — in one file, at the edge.</p>
   </div>
+  <div class="dossier"><div class="dos-tab" dir="ltr"><span>NIKA NET</span><span>FIELD NOTES</span><span>№ 01–12</span></div>
   <div class="feat-grid">
-    <div class="card tilt rv d1"><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M9 39c2-9 7-15 13-21l6-6 5 5-6 6c-6 6-12 11-21 13z"/><path class="w" d="M10 38c3-8 7-13 12-18"/><path d="M28 12l6 6"/><path d="M12 36l3 3"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d1"><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 01</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M9 39c2-9 7-15 13-21l6-6 5 5-6 6c-6 6-12 11-21 13z"/><path class="w" d="M10 38c3-8 7-13 12-18"/><path d="M28 12l6 6"/><path d="M12 36l3 3"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>تم گرافیت و کاغذ<span class="en">Graphite / Paper theme</span></h3><h3 data-en>Graphite / Paper theme</h3>
       <p data-fa>حس نوستالژیک طراحی دستی: حاشیه‌های خط‌چین مدادی، بافت کاغذ، تایپوگرافی سریف و تایپ‌رایتر، حالت روشن و تیره.</p>
       <p data-en>A nostalgic hand-drawn aesthetic — dashed pencil borders, paper grain, serif &amp; typewriter typography, dark and light mode.</p></div>
-    <div class="card tilt rv d2"><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M8 14h16M16 10v4c0 8-4 14-9 17"/><path d="M13 19c2 6 6 10 11 12"/><path d="M27 38l6-16 6 16M29.5 32h7"/><path class="w" d="M9 15h14"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d2"><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 02</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M8 14h16M16 10v4c0 8-4 14-9 17"/><path d="M13 19c2 6 6 10 11 12"/><path d="M27 38l6-16 6 16M29.5 32h7"/><path class="w" d="M9 15h14"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>دوزبانه و راست‌چین<span class="en">Bilingual &amp; RTL</span></h3><h3 data-en>Bilingual &amp; RTL</h3>
       <p data-fa>انگلیسی و فارسی در یک پنل؛ با یک کلیک زبان را عوض کن.</p><p data-en>English and Persian in the same panel — switch with a single click.</p></div>
-    <div class="card tilt rv d3"><div class="ico sk-ico"><svg viewBox="0 0 48 48"><circle cx="18" cy="16" r="5"/><circle cx="31" cy="18" r="4"/><path d="M8 36c0-6 4-10 10-10s10 4 10 10"/><path d="M29 27c5 0 9 3 9 8"/><path class="w" d="M9 35c1-5 4-8 9-8"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d3"><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 03</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><circle cx="18" cy="16" r="5"/><circle cx="31" cy="18" r="4"/><path d="M8 36c0-6 4-10 10-10s10 4 10 10"/><path d="M29 27c5 0 9 3 9 8"/><path class="w" d="M9 35c1-5 4-8 9-8"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>چندکاربره<span class="en">Multi-user</span></h3><h3 data-en>Multi-user</h3>
-      <p data-fa>سهمیه‌ی حجم (GB)، تاریخ انقضا، فعال/غیرفعال و یک لینک اشتراک خصوصی برای هر کاربر.</p><p data-en>Per-user quota (GB), expiry (days), active/inactive, and one private subscription link each.</p></div>
-    <div class="card tilt rv d1"><div class="ico sk-ico"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="8"/><path d="M24 24l11-9"/><circle cx="35" cy="15" r="1.4"/><circle cx="17" cy="30" r="1"/><path class="w" d="M10 22a15 15 0 0 1 4-8"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+      <p data-fa>سهمیه‌ی حجم (GB)، تاریخ انقضا، فعال/غیرفعال و یک لینک اشتراک خصوصی برای هر کاربر.</p><p data-en>Per-user quota (GB), expiry (days), active/inactive, and one private subscription link each.</p><figure class="nfig fig-ledger" dir="ltr"><div class="row h"><span>user</span><span>quota</span><span>exp</span></div><div class="row"><span>sara</span><span><i style="--p:.62"></i></span><span>12d</span></div><div class="row"><span>amir</span><span><i style="--p:.28"></i></span><span>30d</span></div><div class="row"><span>guest</span><span><i style="--p:.91"></i></span><span>2d</span></div><figcaption data-fa>دفتر کاربران — هر سطر یک لینک خصوصی</figcaption><figcaption data-en>User ledger — one private link per row</figcaption></figure></div>
+    <div class="card tilt rv d1"><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 04</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="8"/><path d="M24 24l11-9"/><circle cx="35" cy="15" r="1.4"/><circle cx="17" cy="30" r="1"/><path class="w" d="M10 22a15 15 0 0 1 4-8"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>اسکنر IP تمیز<span class="en">Clean-IP scanner</span></h3><h3 data-en>Clean-IP scanner</h3>
-      <p data-fa>رادار داخل پنل، بیش از ۴۲۰ آی‌پی کلادفلر را از شبکه‌ی <em>خودت</em> تست می‌کند و بهترین‌ها را روی همه‌ی کانفیگ‌ها اعمال می‌کند.</p><p data-en>An in-panel radar probes 420+ Cloudflare IPs from <em>your</em> network and applies the best to every config.</p></div>
-    <div class="card tilt rv d2"><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M12 8h16l8 8v24H12z"/><path d="M28 8v8h8"/><path d="M18 26h12M18 31h12M18 21h6"/><path class="w" d="M13 9v30"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+      <p data-fa>رادار داخل پنل، بیش از ۴۲۰ آی‌پی کلادفلر را از شبکه‌ی <em>خودت</em> تست می‌کند و بهترین‌ها را روی همه‌ی کانفیگ‌ها اعمال می‌کند.</p><p data-en>An in-panel radar probes 420+ Cloudflare IPs from <em>your</em> network and applies the best to every config.</p><figure class="nfig fig-radar" dir="ltr"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="38"/><circle cx="60" cy="60" r="20"/><path d="M60 4v112M4 60h112" class="w"/><g class="dots" id="radarDots"></g><g class="sweep"><path d="M60 60L60 4A56 56 0 0 1 100 20z"/></g></svg><figcaption><b id="radarN">420</b> <span data-fa>IP در رادار — زنده از مخزن</span><span data-en>IPs on radar — live from repo</span></figcaption></figure></div>
+    <div class="card tilt rv d2"><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 05</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M12 8h16l8 8v24H12z"/><path d="M28 8v8h8"/><path d="M18 26h12M18 31h12M18 21h6"/><path class="w" d="M13 9v30"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>خروجی چندفرمته<span class="en">Multi-format configs</span></h3><h3 data-en>Multi-format configs</h3>
       <p data-fa>Base64 (v2rayNG)، Clash/Mihomo، Sing-box و WireGuard (WARP) — با تقریباً هر کلاینتی سازگار است.</p><p data-en>Base64 (v2rayNG), Clash/Mihomo, Sing-box and WireGuard (WARP) — imports into almost any client.</p></div>
-    <div class="card tilt rv d3"><div class="ico sk-ico"><svg viewBox="0 0 48 48"><rect x="12" y="21" width="24" height="18" rx="2"/><path d="M17 21v-5a7 7 0 0 1 14 0v5"/><circle cx="24" cy="30" r="2"/><path d="M24 32v3"/><path class="w" d="M13 22h22"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d3"><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 06</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><rect x="12" y="21" width="24" height="18" rx="2"/><path d="M17 21v-5a7 7 0 0 1 14 0v5"/><circle cx="24" cy="30" r="2"/><path d="M24 32v3"/><path class="w" d="M13 22h22"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>امنیت<span class="en">Security</span></h3><h3 data-en>Security</h3>
       <p data-fa>رمز ادمین با SHA-256، نشست‌های امضاشده با HMAC، مسیر مخفی ادمین و استتار برای مسیرهای ناشناس.</p><p data-en>SHA-256 hashed admin password, HMAC-signed sessions, hidden admin path and camouflage for unknown routes.</p></div>
-    <div class="card tilt rv d1 new"><em class="nb">new</em><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M9 33a16 16 0 1 1 30 0"/><path d="M24 33l8-12"/><circle cx="24" cy="33" r="2"/><path d="M12 30h3M33 30h3M24 14v3"/><path class="w" d="M10 32a15 15 0 0 1 6-13"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d1 new"><em class="nb">new</em><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 07</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M9 33a16 16 0 1 1 30 0"/><path d="M24 33l8-12"/><circle cx="24" cy="33" r="2"/><path d="M12 30h3M33 30h3M24 14v3"/><path class="w" d="M10 32a15 15 0 0 1 6-13"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>موتور سرعت<span class="en">Speed Engine · v0.12</span></h3><h3 data-en>Speed Engine</h3>
-      <p data-fa>آی‌پی‌های کم‌پینگ بر اساس دیتاسنتر (colo) نزدیک به تو، اشتراک چندنودی، و تست سرعت <em>واقعی</em> از مسیر پروکسی — نه از یک سرور ثالث.</p><p data-en>Colo-aware low-ping IPs, multi-node subscriptions and a <em>real</em> speed test through the proxy path — not some third-party server.</p></div>
-    <div class="card tilt rv d2 new"><em class="nb">new</em><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M12 42V8"/><path d="M12 10c8-4 12 4 20 0v16c-8 4-12-4-20 0"/><path class="w" d="M13 11c7-3 11 3 18 0"/><path d="M15 15h4M15 20h6"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+      <p data-fa>آی‌پی‌های کم‌پینگ بر اساس دیتاسنتر (colo) نزدیک به تو، اشتراک چندنودی، و تست سرعت <em>واقعی</em> از مسیر پروکسی — نه از یک سرور ثالث.</p><p data-en>Colo-aware low-ping IPs, multi-node subscriptions and a <em>real</em> speed test through the proxy path — not some third-party server.</p><figure class="nfig fig-gauge" dir="ltr"><svg viewBox="0 0 120 70"><path d="M10 64A50 50 0 0 1 110 64" class="track"/><path d="M10 64A50 50 0 0 1 110 64" class="val" pathLength="1"/><g class="needle"><path d="M60 64L60 22"/><circle cx="60" cy="64" r="3"/></g><text x="60" y="58" text-anchor="middle" class="n">ms</text></svg><figcaption><b class="gauge-n">—</b> <span data-fa>پینگ زندهٔ شما تا لبهٔ Cloudflare</span><span data-en>your live ping to the Cloudflare edge</span></figcaption></figure></div>
+    <div class="card tilt rv d2 new"><em class="nb">new</em><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 08</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M12 42V8"/><path d="M12 10c8-4 12 4 20 0v16c-8 4-12-4-20 0"/><path class="w" d="M13 11c7-3 11 3 18 0"/><path d="M15 15h4M15 20h6"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>استخر IP کشوری<span class="en">Country IP Pool · v0.7</span></h3><h3 data-en>Country IP Pool</h3>
       <p data-fa>کشور را انتخاب کن (۷۹ کشور)، پنل خودش تست می‌کند و بهترین‌ها را روی کانفیگ می‌نشاند — اسم کانفیگ هم پرچمش را می‌گیرد: 🇩🇪 Nika Net.</p><p data-en>Pick a country (79 available), the panel probes and applies the best — the config name even gets the flag: 🇩🇪 Nika Net.</p></div>
-    <div class="card tilt rv d3 new"><em class="nb">new</em><div class="ico sk-ico"><svg viewBox="0 0 48 48"><rect x="9" y="11" width="30" height="24" rx="1"/><path d="M9 23h30"/><path d="M14 17h6M14 29h10M28 17h6"/><path class="w" d="M10 12h28"/><path d="M18 40h12M24 35v5"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d3 new"><em class="nb">new</em><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 09</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><rect x="9" y="11" width="30" height="24" rx="1"/><path d="M9 23h30"/><path d="M14 17h6M14 29h10M28 17h6"/><path class="w" d="M10 12h28"/><path d="M18 40h12M24 35v5"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>مگا اسکنر + تست رله<span class="en">Mega scanner · v0.13</span></h3><h3 data-en>Mega scanner + relay test</h3>
       <p data-fa>اسکن کامل رنج‌های کلادفلر (تا ۱٫۵ میلیون IP، IPv4 و IPv6) با ETA و ذخیرهٔ نتیجه؛ به‌علاوه تست همهٔ دامنه‌های رله و انتخاب خودکار بهترین.</p><p data-en>Full Cloudflare-range enumeration (up to 1.5M IPs, v4 + v6) with ETA and saved results, plus relay-domain testing with auto-pick.</p></div>
-    <div class="card tilt rv d1 new"><em class="nb">new</em><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M36 22a12 12 0 1 0-3 8"/><path d="M36 12v10h-10"/><path d="M24 18v7l4 3"/><path class="w" d="M13 22a11 11 0 0 1 8-9"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d1 new"><em class="nb">new</em><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 10</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M36 22a12 12 0 1 0-3 8"/><path d="M36 12v10h-10"/><path d="M24 18v7l4 3"/><path class="w" d="M13 22a11 11 0 0 1 8-9"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>به‌روزرسانی خودکار (OTA)<span class="en">One-tap updates · v0.5</span></h3><h3 data-en>One-tap OTA updates</h3>
       <p data-fa>پنل نسخهٔ جدید مخزن را می‌بیند، با یک دکمه خودش را جایگزین می‌کند و KV دست‌نخورده می‌ماند. ربات هم به همه اعلام می‌کند.</p><p data-en>The panel spots a new release, redeploys itself with one tap and keeps your KV intact. The bot announces it to everyone.</p></div>
-    <div class="card tilt rv d2 new"><em class="nb">new</em><div class="ico sk-ico"><svg viewBox="0 0 48 48"><rect x="10" y="10" width="28" height="28" rx="1"/><path d="M16 20h9M16 25h16M16 30h12"/><rect x="28" y="15" width="6" height="6"/><path class="w" d="M11 11h26"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d2 new"><em class="nb">new</em><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 11</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><rect x="10" y="10" width="28" height="28" rx="1"/><path d="M16 20h9M16 25h16M16 30h12"/><rect x="28" y="15" width="6" height="6"/><path class="w" d="M11 11h26"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>صفحهٔ وضعیت کاربر<span class="en">User status page · v0.7</span></h3><h3 data-en>User status page</h3>
       <p data-fa>هر کاربر یک لینک خصوصی دارد: گیج دایره‌ای مصرف، روزهای باقی‌مانده، QR و دکمهٔ افزودن به کلاینت — با همان طراحی مدادی.</p><p data-en>Every user gets a private page: circular usage gauge, days left, QR code and add-to-client buttons — in the same pencil style.</p></div>
-    <div class="card tilt rv d3 new"><em class="nb">new</em><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M10 14h28v18H20l-7 6v-6h-3z"/><path d="M17 21h14M17 26h9"/><path class="w" d="M11 15h26"/><circle cx="32" cy="26" r="1"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
+    <div class="card tilt rv d3 new"><em class="nb">new</em><span class="npin" aria-hidden="true"></span><span class="pg-no" dir="ltr">fig. 12</span><div class="ico sk-ico"><svg viewBox="0 0 48 48"><path d="M10 14h28v18H20l-7 6v-6h-3z"/><path d="M17 21h14M17 26h9"/><path class="w" d="M11 15h26"/><circle cx="32" cy="26" r="1"/><path class="h" d="M12 36l6-6M16 38l6-6M20 40l6-6"/></svg></div>
       <h3 data-fa>پشتیبانی داخل ربات<span class="en">In-bot support · v0.9</span></h3><h3 data-en>In-bot support</h3>
       <p data-fa>تیکت با انتخاب دسته، پیام شخصی به مالک، پروفایل کاربر در پنل ادمین، جست‌وجو/فیلتر/خروجی CSV — همه در تلگرام.</p><p data-en>Category tickets, private messages to the owner, user profiles in the admin view, search/filter/CSV export — all inside Telegram.</p></div>
   </div>
+</div>
 </section>
 
 <!-- PROTOCOLS -->
@@ -847,6 +850,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <span class="k">npm run deploy</span>
 
 <span class="c"># open https://&lt;your-worker&gt;.workers.dev/admin</span> <span class="cursor"></span></pre></div>
+<div class="term-live" id="termLive" dir="ltr"><div class="tl-bar"><i></i><i></i><i></i><span>nika@paper ~/Nika-Net</span><button type="button" class="tl-play" onclick="runTerm()"><span data-fa>▶ اجرا کن</span><span data-en>▶ run it</span></button></div><pre class="tl-out" id="termOut"><span class="p">$</span> <span class="t" id="termTyped"></span><span class="cursor"></span></pre></div>
   </div>
 </div>
 </section>
@@ -870,7 +874,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 </section>
 
 <!-- LOGBOOK -->
-<section class="wrap rv" id="logbook">
+<section class="wrap rv torn" id="logbook"><div class="coffee" aria-hidden="true"></div>
   <div class="sec-head">
     <div class="num">— Logbook</div>
     <h2 class="en" dir="ltr">Still <span class="ul">being drawn.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
@@ -963,7 +967,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
   </div>
 </section>
 <!-- COMPARE -->
-<section class="wrap rv" id="compare">
+<section class="wrap rv" id="compare"><div class="stamp-ok" aria-hidden="true"><span data-fa>تأیید شد</span><span data-en>APPROVED</span><small>NIKA · QA</small></div>
   <div class="sec-head">
     <div class="num">06 — Compared, honestly</div>
     <h2 class="en" dir="ltr">Where it <span class="ul">stands.<svg viewBox="0 0 300 14" preserveAspectRatio="none"><path d="M2 9 C 60 2, 120 12, 180 6 S 280 4, 298 8"/></svg></span></h2>
@@ -1173,6 +1177,21 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
     <svg class="signature" viewBox="0 0 320 90" aria-hidden="true"><path pathLength="1" d="M18 66 C 30 40, 40 20, 44 14 C 46 30, 40 56, 36 68 C 50 50, 62 34, 70 24 C 66 44, 74 60, 88 52 C 96 46, 98 36, 92 34 C 84 38, 90 56, 104 50 C 116 44, 120 30, 118 26 C 116 40, 118 56, 128 52 C 140 46, 150 30, 146 24 C 142 40, 152 58, 166 48 C 176 40, 178 28, 172 26 C 164 30, 170 52, 186 46 M 200 30 C 230 18, 262 22, 296 34 M 40 80 C 100 74, 200 74, 300 78"/></svg>
     <p class="slogan" data-fa>اینترنت، دست‌نوشتهٔ خودت.</p><p class="slogan" data-en>The internet, in your own handwriting.</p>
     <div class="sig" dir="ltr">— Nika Net · Connecting Intelligence</div>
+    <svg class="nk-wm" viewBox="0 0 520 110" aria-hidden="true"><g class="wm" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path pathLength="1" style="--i:0" d="M22 92 C 24 70, 26 44, 27 20 C 40 44, 56 68, 72 90 C 74 66, 75 42, 76 18"/>
+<path pathLength="1" style="--i:1" d="M24 94 C 26 72, 27 50, 28 24"/>
+<path pathLength="1" style="--i:2" d="M108 20 C 106 44, 105 68, 106 92 M96 20 C 104 21, 112 21, 120 20 M96 92 C 104 93, 112 93, 120 92"/>
+<path pathLength="1" style="--i:3" d="M150 18 C 149 44, 149 68, 150 92 M200 18 C 184 40, 168 52, 152 58 C 168 68, 186 80, 204 92"/>
+<path pathLength="1" style="--i:4" d="M228 92 C 240 66, 252 40, 266 16 C 278 40, 290 66, 300 92 M244 64 C 258 65, 274 65, 288 64"/>
+<path pathLength="1" style="--i:5" d="M232 90 C 244 66, 254 44, 266 22"/>
+<path pathLength="1" style="--i:6" d="M340 92 C 341 70, 342 46, 343 22 C 354 44, 366 68, 380 90 C 381 66, 382 44, 383 20"/>
+<path pathLength="1" style="--i:7" d="M410 22 C 409 46, 409 68, 410 90 M410 22 C 424 22, 436 22, 448 21 M410 56 C 422 56, 432 56, 442 55 M410 90 C 424 91, 438 91, 450 90"/>
+<path pathLength="1" style="--i:8" d="M462 21 C 478 22, 494 22, 510 21 M486 22 C 485 46, 485 68, 486 92"/>
+<path pathLength="1" style="--i:9" d="M342 90 C 343 68, 344 48, 345 28"/>
+<path pathLength="1" style="--i:10" class="red" d="M14 104 C 100 100, 200 106, 300 102 C 380 100, 460 102, 514 100"/>
+</g></svg>
+    <div class="seal-wax" id="sealWax" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><filter id="waxf"><feTurbulence baseFrequency=".9" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter></defs><path filter="url(#waxf)" class="blob" d="M60 6c14-2 26 4 36 12 10 9 16 20 17 34 1 13-4 26-12 36-9 11-22 18-36 20-13 2-27-2-38-10C15 90 7 78 5 64 3 52 6 39 13 28 22 15 36 8 50 6z"/><circle cx="60" cy="60" r="38" class="ring"/><text x="60" y="76" text-anchor="middle" class="N">N</text><text x="60" y="97" text-anchor="middle" class="t">EST · 2025</text></svg></div>
+    <div class="ps" dir="rtl"><span data-fa>پی‌نوشت: این نامه را نیکا با مداد نوشت، نه با قالب.</span><span data-en dir="ltr">P.S. — Nika wrote this letter in pencil, not from a template.</span></div>
     <div class="ornament">✦</div>
       </div>
 </section>
@@ -1248,7 +1267,7 @@ npm run deploy"><span>copy</span></button><pre><span class="c"># 1. clone</span>
 <script>
 // lang
 function applyLang(l){const h=document.documentElement;if(l==='en'){h.classList.add('en');h.lang='en';h.dir='ltr'}else{h.classList.remove('en');h.lang='fa';h.dir='rtl'}localStorage.setItem('nika-lang',l)}
-function toggleTheme(ev){const h=document.documentElement,go=()=>{const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)};if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches)return go();const x=ev?ev.clientX:innerWidth/2,y=ev?ev.clientY:40,r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));document.startViewTransition(go).ready.then(()=>document.documentElement.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${r}px at ${x}px ${y}px)`]},{duration:700,easing:'cubic-bezier(.7,0,.2,1)',pseudoElement:'::view-transition-new(root)'}))}
+function toggleTheme(ev){const h=document.documentElement,go=()=>{const cur=h.classList.contains('board')?'board':h.classList.contains('dark')?'dark':'light';const nxt=cur==='light'?'dark':cur==='dark'?'board':'light';h.classList.toggle('dark',nxt!=='light');h.classList.toggle('board',nxt==='board');localStorage.setItem('nika-theme',nxt)};window.nkSound&&nkSound('page');if(!document.startViewTransition||matchMedia('(prefers-reduced-motion:reduce)').matches)return go();document.startViewTransition(go)}
 (()=>{const t=localStorage.getItem('nika-theme');if(t==='dark')document.documentElement.classList.add('dark');if(t==='board')document.documentElement.classList.add('dark','board')})();
 function toggleLang(){applyLang(document.documentElement.classList.contains('en')?'fa':'en')}
 applyLang(localStorage.getItem('nika-lang')||'fa');
@@ -1397,6 +1416,56 @@ new MutationObserver(()=>{const i=scImgs.findIndex(im=>im.classList.contains('on
 })();
 // ---- v38: draw card borders on reveal
 document.querySelectorAll('.feat-grid .card').forEach(c=>c.classList.add('drawn-b'));
+
+// ---- v39: figures from project data
+(()=>{
+  const g=document.getElementById('radarDots');if(g){
+    fetch('https://raw.githubusercontent.com/NikaTeem/Nika-Net/main/ui/scan-ips.json').then(r=>r.json()).then(d=>{
+      const ips=d.ips||[];document.getElementById('radarN').textContent=(d.count||ips.length).toLocaleString(document.documentElement.classList.contains('en')?'en':'fa');
+      let h='';ips.slice(0,90).forEach((ip,i)=>{const o=ip.split('.').map(Number);const a=(o[2]*7+o[3])%360*Math.PI/180,r=8+(o[1]*13+o[3])%48;h+=`<circle cx="${(60+Math.cos(a)*r).toFixed(1)}" cy="${(60+Math.sin(a)*r).toFixed(1)}" r="${o[3]%3?.9:1.5}" style="--d:${(a/(2*Math.PI)*4).toFixed(2)}s"/>`});g.innerHTML=h}).catch(()=>{});
+  }
+  const gauge=document.querySelector('.fig-gauge');if(gauge){
+    const run=()=>{const t=performance.now();fetch('https://cloudflare.com/cdn-cgi/trace',{mode:'no-cors',cache:'no-store'}).catch(()=>{}).finally(()=>{const ms=Math.round(performance.now()-t);gauge.style.setProperty('--g',Math.min(1,ms/400));const n=gauge.querySelector('.gauge-n');n.textContent=ms+' ms';gauge.querySelector('.n').textContent=ms<80?'fast':ms<200?'ok':'slow'})};
+    new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){run();o.disconnect()}}).observe(gauge);
+  }
+})();
+// ---- v39: pencil sounds (synthesized, no files) + haptics
+(()=>{
+  let ctx,noise;const on=()=>document.documentElement.classList.contains('snd');
+  if(localStorage.getItem('nika-snd')==='1')document.documentElement.classList.add('snd');
+  const ac=()=>{if(!ctx){ctx=new(window.AudioContext||window.webkitAudioContext)();const len=ctx.sampleRate*2,b=ctx.createBuffer(1,len,ctx.sampleRate),d=b.getChannelData(0);for(let i=0;i<len;i++)d[i]=Math.random()*2-1;noise=b}if(ctx.state==='suspended')ctx.resume();return ctx};
+  const burst=(dur,f,q,gain,type='bandpass')=>{const c=ac(),s=c.createBufferSource();s.buffer=noise;const fl=c.createBiquadFilter();fl.type=type;fl.frequency.value=f;fl.Q.value=q;const g=c.createGain();g.gain.setValueAtTime(0,c.currentTime);g.gain.linearRampToValueAtTime(gain,c.currentTime+.01);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+dur);s.connect(fl).connect(g).connect(c.destination);s.start();s.stop(c.currentTime+dur)};
+  window.nkSound=k=>{if(!on())return;try{
+    if(k==='scratch')burst(.12+Math.random()*.08,1800+Math.random()*800,1.2,.05);
+    else if(k==='tap'){burst(.05,900,3,.12);burst(.03,300,1,.08,'lowpass')}
+    else if(k==='stamp'){burst(.18,180,.8,.5,'lowpass');burst(.06,2500,1,.08)}
+    else if(k==='page'){burst(.35,900,.5,.12,'highpass');setTimeout(()=>burst(.25,1400,.7,.08,'highpass'),120)}
+  }catch(e){}};
+  window.toggleSound=()=>{const h=document.documentElement;h.classList.toggle('snd');localStorage.setItem('nika-snd',h.classList.contains('snd')?'1':'0');if(h.classList.contains('snd'))nkSound('tap')};
+  // hooks
+  document.addEventListener('click',e=>{const t=e.target.closest('a,button,summary');if(t){nkSound('tap');navigator.vibrate&&navigator.vibrate(6)}},{passive:true});
+  let acc=0;addEventListener('mousemove',e=>{acc+=Math.hypot(e.movementX,e.movementY);if(acc>140){acc=0;nkSound('scratch')}},{passive:true});
+  const st=document.querySelector('.stamp-ok');if(st)new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){setTimeout(()=>{nkSound('stamp');navigator.vibrate&&navigator.vibrate([20,30,40])},650);o.disconnect()}}).observe(st);
+  const wax=document.getElementById('sealWax');if(wax)new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){setTimeout(()=>{nkSound('stamp');navigator.vibrate&&navigator.vibrate([30,40,60])},3800);o.disconnect()}}).observe(wax);
+  // palette entry
+  if(window.PAL)PAL.push({k:'sound pencil audio صدا',fa:'صدای مداد: روشن/خاموش',en:'Pencil sounds: toggle',run:toggleSound});
+})();
+
+// ---- v39: live terminal replay
+window.runTerm=async function(){const out=document.getElementById('termOut'),ty=document.getElementById('termTyped');if(!out||out.dataset.busy)return;out.dataset.busy=1;
+  const steps=[['git clone https://github.com/NikaTeem/Nika-Net.git && cd Nika-Net',["Cloning into 'Nika-Net'...","remote: Enumerating objects: 1240, done.","Receiving objects: 100% (1240/1240), 2.1 MiB | 4.2 MiB/s, done."]],
+    ['npm install',["added 212 packages in 6s"]],
+    ['npm run build',["> nika-net@0.13.4 build","> esbuild src/worker.ts --bundle --outfile=dist/worker.js","","  dist/worker.js  1.2mb ⚠️","","⚡ Done in 412ms"]],
+    ['npx wrangler login',["Attempting to login via OAuth...","Successfully logged in."]],
+    ['npm run deploy',["Total Upload: 1180.44 KiB / gzip: 214.30 KiB","Uploaded nika-net (2.13 sec)","Published nika-net (0.71 sec)","  https://nika-net.<you>.workers.dev","Current Deployment ID: 3f9a1c2e-…"]],
+    ['open https://nika-net.<you>.workers.dev/admin',["<span class='ok'>✔ Nika Net v0.13.4 — panel is live. Sign in and change the password.</span>"]]];
+  out.innerHTML='';
+  for(const [cmd,lines] of steps){const line=document.createElement('div');line.innerHTML='<span class="p">$</span> <span class="t"></span><span class="cursor"></span>';out.appendChild(line);const t=line.querySelector('.t');
+    for(const ch of cmd){t.textContent+=ch;window.nkSound&&Math.random()<.3&&nkSound('tap');await new Promise(r=>setTimeout(r,18+Math.random()*40))}
+    line.querySelector('.cursor').remove();await new Promise(r=>setTimeout(r,260));
+    for(const l of lines){const d=document.createElement('div');d.className='o';d.innerHTML=l||'&nbsp;';out.appendChild(d);out.scrollTop=out.scrollHeight;await new Promise(r=>setTimeout(r,90+Math.random()*160))}
+    await new Promise(r=>setTimeout(r,300))}
+  const end=document.createElement('div');end.innerHTML='<span class="p">$</span> <span class="cursor"></span>';out.appendChild(end);out.scrollTop=out.scrollHeight;delete out.dataset.busy};
 // ---- back to top
 (()=>{const t=document.getElementById('totop');addEventListener('scroll',()=>t.classList.toggle('show',scrollY>innerHeight*1.2),{passive:true});t.onclick=()=>scrollTo({top:0,behavior:'smooth'})})();
 // ---- command palette
