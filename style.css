@@ -1887,3 +1887,68 @@ html.menu-open .burger i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg
 /* desktop nav: 8 primary links; the rest live in the drawer / ⌘K */
 @media(min-width:1101px){#links>a.lk-more,html.en #links>a.lk-more[data-en],html:not(.en) #links>a.lk-more[data-fa]{display:none!important}}
 @media(min-width:1101px) and (max-width:1320px){html.en .links{gap:10px;font-size:.58rem}html.en .links a{letter-spacing:.1em}.brand small{display:none}.kbtn{display:none}}
+
+/* ══════════ v38: the signature moment ══════════ */
+/* 1. face line-draw over the hero portrait */
+.face-wrap{position:absolute;inset:16px;z-index:4;pointer-events:none;mix-blend-mode:multiply;opacity:1;transition:opacity 1.4s var(--ease) 3.9s}
+.face-wrap svg{width:100%;height:100%;display:block;overflow:visible}
+.face-wrap path{fill:none;stroke:var(--ink);stroke-width:.42;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.85}
+html.go .face-wrap path{animation:facedraw var(--t,.6s) linear calc(var(--d,0s) + .3s) forwards}
+@keyframes facedraw{to{stroke-dashoffset:0}}
+.frame.drawn .face-wrap{opacity:0}
+.ink .fin,.ink::after{animation-play-state:paused!important}
+html.go .ink .fin,html.go .ink::after{animation-play-state:running!important;animation-delay:2.7s!important;animation-duration:2s!important}
+.ink .sk{opacity:0}html.go .ink .sk{animation:skfade 1.2s ease 1.9s forwards}
+@keyframes skfade{to{opacity:1}}
+html.dark .face-wrap{mix-blend-mode:screen}html.dark .face-wrap path{stroke:#e8e2d4}
+html.seen .face-wrap path{animation-duration:.01s;animation-delay:0s}
+html.seen .face-wrap{transition-delay:.6s}
+html.seen.go .ink .fin,html.seen.go .ink::after{animation-delay:.2s!important;animation-duration:1.2s!important}
+html.seen.go .ink .sk{animation-delay:0s;animation-duration:.3s}
+/* pencil that draws the face */
+.pen{position:absolute;width:26px;height:26px;z-index:6;pointer-events:none;transform:translate(-3px,-23px) rotate(0deg);opacity:0;transition:opacity .4s}
+.pen svg{width:100%;height:100%;fill:none;stroke:var(--ink);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.pen.on{opacity:1}
+/* 2. depth parallax layers in the hero */
+.hero-art{transform-style:preserve-3d}
+.frame{transition:transform .12s linear,box-shadow .6s var(--ease)}
+.frame .tape,.frame .annot{transform:translateZ(60px)}
+/* 3. pencil cursor (desktop, fine pointer) */
+.pcur{display:none}
+@media(hover:hover) and (pointer:fine){
+  .pcur{display:block;position:fixed;top:0;left:0;width:30px;height:30px;z-index:10001;pointer-events:none;transform:translate(-2px,-28px);opacity:0;transition:opacity .3s,filter .3s;will-change:transform}
+  .pcur svg{width:100%;height:100%;fill:var(--paper-hi);stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(1px 2px 0 rgba(23,21,18,.25))}
+  .pcur.on{opacity:1}
+  .pcur.press{transform:translate(-2px,-24px) rotate(-8deg)}
+  .pcur.link svg{fill:var(--gold-soft);stroke:var(--seal)}
+  html.pencil-cursor,html.pencil-cursor *{cursor:none!important}
+  .cur{display:none!important}
+}
+/* 4. graphite dust canvas */
+.dust{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9998;mix-blend-mode:multiply;opacity:.9}
+html.dark .dust{mix-blend-mode:screen;opacity:.5}
+@media(hover:none),(prefers-reduced-motion:reduce){.dust{display:none}}
+/* 5. hand-sketched feature icons */
+.card .ico.sk-ico{width:64px;height:64px;border-radius:50%;border:1px solid var(--line);background:var(--paper-hi);box-shadow:none;position:relative;overflow:visible}
+.card .ico.sk-ico::before{content:"";position:absolute;inset:-4px;border:1px dashed var(--line-soft);border-radius:50%;transform:rotate(12deg);transition:transform .8s var(--ease-out)}
+.card .ico.sk-ico svg{width:40px;height:40px;stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.card .ico.sk-ico svg path,.card .ico.sk-ico svg circle,.card .ico.sk-ico svg rect{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.3s var(--ease)}
+.card .ico.sk-ico svg .w{stroke:var(--graphite);stroke-width:.8;opacity:.7}
+.card .ico.sk-ico svg .h{stroke:var(--graphite);stroke-width:.7;opacity:.55}
+.card.in .ico.sk-ico svg *{stroke-dashoffset:0}
+.card.in .ico.sk-ico svg .h{transition-delay:.9s}
+.card:hover .ico.sk-ico{animation:wobble .6s var(--ease-out)}
+.card:hover .ico.sk-ico::before{transform:rotate(100deg)}
+@keyframes wobble{0%{transform:rotate(0)}25%{transform:rotate(-6deg) translateY(-2px)}55%{transform:rotate(4deg)}80%{transform:rotate(-2deg)}100%{transform:rotate(0)}}
+html.board .card .ico.sk-ico svg{stroke:var(--chalk)}
+/* 6. lines that draw on scroll: card borders + sec-head rule */
+.card.drawn-b{position:relative}
+.card.drawn-b::before{content:"";position:absolute;inset:-1px;border:1px solid var(--ink);pointer-events:none;clip-path:inset(0 100% 100% 0);transition:clip-path 1.1s var(--ease-out);opacity:.55}
+.card.drawn-b.in::before{clip-path:inset(0 0 0 0)}
+.sec-head .num{position:relative}
+.sec-head .num::after{content:"";position:absolute;inset-inline-start:0;bottom:-6px;height:1px;width:0;background:var(--seal);transition:width 1.2s var(--ease-out) .2s}
+.rv.in .sec-head .num::after,.sec-head.in .num::after{width:56px}
+/* 7. hero title: typewriter cursor on the Persian headline while drawing */
+.hero-fa.rv.in{animation:none}
+/* reduced motion: skip the show */
+@media(prefers-reduced-motion:reduce){.face-wrap{display:none}.ink .sk,.ink .fin{animation:none;opacity:1;clip-path:none}}
